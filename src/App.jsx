@@ -32,13 +32,10 @@ function App() {
                     </div>
                 </div>
                 <div className="rightSideBar">
-                    <p>
-                        Edit <code>App.jsx</code> and save to test HMR updates.
-                    </p>
                     <div className="endirect">
                         <h3>En direct</h3>
                         <iframe
-                            width="80%"
+                            width="100%"
                             height="330"
                             src="https://www.youtube.com/embed/5qap5aO4i9A"
                             title="YouTube video player"
@@ -61,18 +58,24 @@ function App() {
                                 </h2>
                                 <div className="headresBotoms">
                                     <img
-                                        src="https://images.unsplash.com/photo-1466285746891-30d1cd3a5409?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                        src="https://images.unsplash.com/photo-1533056344954-8acef6d63650?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
                                         alt=""
-                    />
-                    |<span>publier le 02 juin 2021</span>
+                                    />
+                                    <p>
+                                        jonathan morison
+                                        <span> | il y a 2h</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div className="postbody">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit.
+                                INFRASTRUCTURES : VISITE DES TRAVAUX DU 5ÈME
+                                PONT COCODY-PLATEAU.
                             </p>
+                            <span>
+                                #Politique #Infrastrutures #Election #Paix
+                            </span>
                             <img
                                 src="https://media-files.abidjan.net/photo/infrastructures-visite-des-travaux-du-5eme-pont-cocody-plateau_fapdtvvgm2.jpg"
                                 alt=""

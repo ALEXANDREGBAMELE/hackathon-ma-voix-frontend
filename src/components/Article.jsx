@@ -8,11 +8,9 @@ export default function Article() {
                 />
             </div>
             <div className="newsDetails">
-                <h3>Titre</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, voluptatum.
-                </p>
+                <span>14 aout 2023</span>
+                <h3>Ouverture du 5em pont </h3>
+                <p>1200 vues</p>
             </div>
         </div>
     );
