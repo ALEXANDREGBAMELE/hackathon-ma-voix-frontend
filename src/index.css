@@ -305,3 +305,14 @@ section {
     justify-content: center;
     align-items: start;
 }
+
+.postBotom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    width: 100%;
+    font-size: medium;
+}

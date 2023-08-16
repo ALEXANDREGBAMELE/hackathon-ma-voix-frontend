@@ -33,7 +33,6 @@ function App() {
                 </div>
                 <div className="rightSideBar">
                     <div className="endirect">
-                        <h3>En direct</h3>
                         <iframe
                             width="100%"
                             height="330"
@@ -80,6 +79,19 @@ function App() {
                                 src="https://media-files.abidjan.net/photo/infrastructures-visite-des-travaux-du-5eme-pont-cocody-plateau_fapdtvvgm2.jpg"
                                 alt=""
                             />
+                            <div className="postBotom">
+                                <p>
+                                    <i class="fas fa-thumbs-up"></i> Like
+                                </p>
+                                <p>Commentaire</p>
+                                <p>
+                                    <i class="fa-solid fa-bookmark"></i>{" "}
+                                    Enregistrer
+                                </p>
+                                <p>
+                                    <i class="fa-solid fa-share"></i>partager
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
