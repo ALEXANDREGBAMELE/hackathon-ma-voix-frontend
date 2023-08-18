@@ -33,6 +33,30 @@ export const candidats = [{
     commune: 'Abobo',
 }, {
     id: 4,
-    name: 'Yasse seraphin ',
+    name: 'Yasse Jean marc ',
     commune: 'cocody',
+}, {
+    id: 5,
+    name: 'Tchagba eric ',
+    commune: 'Treichville',
+}, {
+    id: 6,
+    name: 'Aby raoul ',
+    commune: 'marcory',
+}, {
+    id: 7,
+    name: 'Yacouba camara ',
+    commune: 'Adjamé',
+}, {
+    id: 8,
+    name: 'Kotta serge ',
+    commune: 'cocody',
+}, {
+    id: 9,
+    name: 'Yao Yolande ',
+    commune: 'Treichville',
+}, {
+    id: 10,
+    name: 'Bamogo yacouba ',
+    commune: 'marcory',
 }]

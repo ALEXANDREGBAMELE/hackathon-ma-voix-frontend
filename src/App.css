@@ -9,14 +9,8 @@
 .Layout {
     flex: 9.5;
     margin-left: 5rem;
-    overflow-y: auto;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    /* Fixe la position en haut de la fenêtre */
-    right: 0;
-    /* Fixe la position à droite de la fenêtre */
-    height: 100vh;
+    overflow-y: hidden;
+    height: calc(100vh - 10rem);
 }
 
 .endirect {
