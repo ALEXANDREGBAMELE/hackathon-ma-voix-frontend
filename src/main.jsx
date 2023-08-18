@@ -23,15 +23,14 @@ const router = createBrowserRouter([
                 element: <Candidats />,
             },
             {
+                path: "/sondage",
+                element: <Sondage />,
+            },
+            {
                 path: "/candidats/:id",
                 element: <CandidatDetails />,
             },
         ],
-    },
-   
-    {
-        path: "/sondage",
-        element: <Sondage />,
     },
 ]);
 
@@ -41,6 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             theme={{
                 token: {
                     colorPrimary: "#027314",
+                    colorPrimaryBg: "#ff7200",
                     borderRadius: "10px",
                 },
             }}

@@ -6,12 +6,13 @@
     overflow: hidden;
 }
 
-.Layout {
+
+/* {
     flex: 9.5;
     margin-left: 5rem;
     overflow-y: hidden;
     height: calc(100vh - 10rem);
-}
+} */
 
 .endirect {
     display: flex;
@@ -24,7 +25,7 @@
     padding: 1rem;
 }
 
-.Layout .post {
+.post {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -36,30 +37,30 @@
     height: 20rem;
 }
 
-.Layout .post img,
+.post img,
 .postheader__img img {
     height: 170px;
     width: 100%;
     object-fit: cover;
 }
 
-.Layout .post .postheader {
+.post .postheader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.Layout .post .postheader h2 {
+.post .postheader h2 {
     align-self: flex-start;
 }
 
-.Layout .post .postheader img {
+.post .postheader img {
     width: 50px;
     height: 50px;
     border-radius: 50px;
 }
 
-.Layout .post .postheader .headresBotoms {
+.post .postheader .headresBotoms {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -67,30 +68,30 @@
     justify-content: start;
 }
 
-.Layout .post .postheader .headresBotoms img {
+.post .postheader .headresBotoms img {
     width: 20px;
     height: 20px;
     border-radius: 50px;
     object-fit: contain;
 }
 
-.Layout .post .postheader .headresBotoms p {
+.post .postheader .headresBotoms p {
     margin-right: .5rem;
     color: #027314;
     font-size: medium;
     font-weight: bold;
 }
 
-.Layout .post .postheader .headresBotoms span {
+.post .postheader .headresBotoms span {
     color: black;
     font-size: small;
 }
 
-.Layout .post .postheader .postheader__details {
+.post .postheader .postheader__details {
     margin-left: 1.5rem;
 }
 
-.Layout .post .postbody {
+.post .postbody {
     padding: .5rem;
     display: flex;
     flex-direction: column;

@@ -14,7 +14,7 @@ export default function SideBar() {
                     <Article key={n.id} article={n} />
                 ))}
                 <div className="botom">
-                    <CustomButon />
+                    <CustomButon title="Voir plus" />
                 </div>
             </div>
             <div className="sideBarBottom">
@@ -26,7 +26,7 @@ export default function SideBar() {
                     <Sondage key={s.id} article={s} />
                 ))}
                 <div className="botom">
-                    <CustomButon />
+                    <CustomButon title="Voir plus" />
                 </div>
             </div>
         </div>

@@ -1,73 +1,56 @@
 import React, { useState } from "react";
 import "./swipeStack.css";
-import { useSprings, animated } from "react-spring";
-import { useGesture } from "react-use-gesture";
+import TinderCard from "react-tinder-card";
 import { candidats } from "../../data";
+import CustomButon from "../CustomButon";
+import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
+
+const cardData = [
+    { id: 1, content: "Card 1" },
+    { id: 2, content: "Card 2" },
+    { id: 3, content: "Card 3" },
+    // Ajoutez plus de cartes si nécessaire
+];
 
 const SwipeStack = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-const calcOffset = (index, currentIndex) => (index - currentIndex) * 8;
-
-    const [springs, set] = useSprings(candidats.length, (index) => ({
-        x: calcOffset(index, currentIndex),
-        scale: 1,
-    }));
-
-    const bind = useGesture(
-        ({ down, movement: [mx], direction: [xDir], distance, cancel }) => {
-            if (down && distance > window.innerWidth / 3) {
-                const newIndex = xDir > 0 ? currentIndex + 1 : currentIndex - 1;
-                setCurrentIndex(newIndex);
-                cancel();
-            }
-
-            set((index) => {
-                if (index < currentIndex - 1)
-                    return { x: calcOffset(index, currentIndex - 2) };
-                if (index > currentIndex + 1)
-                    return { x: calcOffset(index, currentIndex + 2) };
-                return { x: calcOffset(index, currentIndex) };
-            });
-        }
-    );
-    const handleLike = () => {
-        // Gérer l'action de Like
-        console.log("Liked");
+    const [direction, setDirection] = useState(null);
+    const swiped = (dir, cardIndex) => {
+        console.log(`Swiped ${dir} on card ${cardIndex}`);
     };
-
-    const handleUnlike = () => {
-        // Gérer l'action de Unlike
-        console.log("Unliked");
+    const outOfFrame = (cardIndex) => {
+        console.log(`Card ${cardIndex} left the screen`);
+    };
+    const handleSwipe = (dir) => {
+        setDirection(dir);
     };
     return (
         <div className="swipe-container">
-            {springs.map(({ x }, index) => (
-                <animated.div
-                    key={candidats[index].id}
-                    className="card"
-                    {...bind()}
-                    style={{
-                        transform: x.interpolate(
-                            (x) => `translate3d(${x}px, 0, 0)`
-                        ),
-                        zIndex: candidats.length - index,
-                    }}
+            {cardData.map((card, index) => (
+                <TinderCard
+                    key={card.id}
+                    onSwipe={(dir) => swiped(dir, index)}
+                    onCardLeftScreen={() => outOfFrame(index)}
                 >
-                    <div className="card-content">
-                        {candidats[index].content}
+                    <div className="card">
+                        {card.content}
+                        <div className="button-container">
+                            <CustomButon
+                                type="fillPrimary"
+                                onClicked={() => handleSwipe("left")}
+                                title="J'aime pas"
+                            >
+                                <DislikeOutlined />
+                            </CustomButon>
+                            <CustomButon
+                                type="fill"
+                                onClicked={() => handleSwipe("right")}
+                                title="J'aime"
+                            >
+                                <LikeOutlined />
+                            </CustomButon>
+                        </div>
                     </div>
-                    <div className="action-buttons">
-                        <button className="like-button" onClick={handleLike}>
-                            Like
-                        </button>
-                        <button
-                            className="unlike-button"
-                            onClick={handleUnlike}
-                        >
-                            Unlike
-                        </button>
-                    </div>
-                </animated.div>
+                </TinderCard>
             ))}
         </div>
     );

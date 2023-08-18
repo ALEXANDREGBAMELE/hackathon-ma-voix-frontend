@@ -1,9 +1,10 @@
 .sidebarCotainer {
-    flex: 2.5;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    position: sticky;
+    height: 100%;
+    gap: 2rem;
+    margin-top: 4rem;
+    overflow: hidden;
 }
 
 .sondageComponent {

@@ -15,7 +15,7 @@ const menuItems = [
     },
     {
         label: "Candidats",
-        key: "candidats/10",
+        key: "candidats",
     },
 
     {

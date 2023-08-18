@@ -34,16 +34,16 @@ html {
     overflow-x: hidden;
 }
 
-.footer {
+
+/* .footer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 4rem;
     background: var(--black);
     color: var(--white);
-}
-
-
+} *
+h
 /* sideBar start */
 
 
@@ -80,6 +80,18 @@ html {
     color: #fff;
 }
 
+.butomFillPrimaryLeft {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid #fff;
+    background: var(--orange);
+    padding: 0.5rem;
+    text-align: center;
+    font-size: medium;
+    cursor: pointer;
+    color: #fff;
+}
+
 .butomAoutlin:hover {
     background-color: var(--green);
     color: var(--white);
@@ -98,3 +110,18 @@ html {
 
 
 /* cardswipe */
+
+aside {
+    width: 350px !important;
+    max-width: 400px !important;
+    padding: 1rem;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    background: var(--black);
+    color: var(--white);
+}
