@@ -1,38 +1,40 @@
+import { Input, Space } from "antd";
+const { Search } = Input;
 export default function Header() {
+    const onSearch = (value) => console.log(value);
+    
     return (
-      <div class="header">
-        <header>
-                <div class="img_logo">
-                    <img src="./05.png" alt="logo"/>
+        <div class="header">
+            <header>
+                <div class="Logo_input">
+                    <div class="img_logo">
+                        <img src="./05.png" alt="logo" />
+                    </div>
+                    <Search
+                        size="large"
+                        allowClear
+                        placeholder="input search text"
+                        onSearch={onSearch}
+                        style={{
+                            width: "800px",
+                            height: "4rem",
+                            alignSelf: "center",
+                            marginLeft: "5rem",
+                            backgroundColor: "#F1F125",
+                        }}
+                    />
                 </div>
-
-
-                    <form action="#" class="search_bar">
-                        <input type="search" placeholder="Recherche" class="input_search"></input>
-                    </form>
-                    
-
-                    
-
-                <nav class="icons">
-                        <a href="#">yacou</a>
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <i class="fa fa-bell" aria-hidden="true"></i>
-                    </nav>
-
-        </header>
-        <div class="header_2">
-            <div class="title">
-                <h3>Rubriques</h3>
-            </div>
-            <nav class="links">
-                <a href="index.html" class="all">Accueil</a>
-                <a href="Pages/candidat.html" class="all">Candidats</a>
-                <a href="#" class="all">Votes</a>
-                <a href="#" class="all">Resultats</a>
+            </header>
+            <nav class="icons">
+                <i class="fa fa-bell" aria-hidden="true"></i>
+                <div className="userAvatar">
+                    <p>yacou</p>
+                    <img
+                        src="https://images.unsplash.com/photo-1517598024396-46c53fb391a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+                        alt=""
+                    />
+                </div>
             </nav>
-            <div id="menu_bar" class="fa fa-bars" aria-hidden="true"></div>
         </div>
-    </div>
-)
+    );
 }

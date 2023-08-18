@@ -6,9 +6,10 @@
     text-decoration: none;
     border: none;
     box-sizing: border-box;
-    transition: all .3s linear;
+    transition: all 0.3s linear;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,600;0,700;1,400;1,700&display=swap');
 :root {
     --green: #027314;
     --orange: #ff7200;
@@ -18,8 +19,8 @@
     --util: #e0e0e0;
     --white: #ffff;
     --black: #2c2c54;
-    --border: .1rem solid rgba(0, 0, 0, .1);
-    --shadow: 1px 1px 3px rgba(0, 0, 0, .12), 1px 1px 3px rgba(0, 0, 0, .12);
+    --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    --shadow: 1px 1px 3px rgba(0, 0, 0, 0.12), 1px 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 *::selection {
@@ -28,187 +29,32 @@
 }
 
 html {
-    font-size: 62.5%;
     scroll-behavior: smooth;
     scroll-padding-top: 7.5rem;
     overflow-x: hidden;
 }
 
-.header {
-    display: block;
-    box-shadow: var(--shadow);
-}
-
-.header header {
+.footer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
-.header header .img_logo {
-    width: 15rem;
-    height: 5rem;
-}
-
-.header header .img_logo img {
-    width: 100%;
-    height: 100%;
-}
-
-.header header .search_bar {
-    display: flex;
-    width: 50rem;
-}
-
-.header header .search_bar .input_search {
-    border: var(--border);
-    height: 5rem;
-    border-radius: .5rem;
-    padding: .5rem;
-    width: 100%;
-}
-
-.header header .icons {
-    display: flex;
-    margin: .5rem;
-}
-
-.header header .icons i {
-    font-size: 1.5rem;
-    padding: 2rem;
-    border: var(--border);
-    color: var(--black);
-    border-radius: .5rem;
-    margin: .5rem;
-}
-
-.header header .icons i:hover {
-    background-color: var(--green);
-    color: var(--white);
-    border-bottom: var(--border);
-    transition: background-color 1s ease-in-out;
-    cursor: pointer;
-}
-
-.header header .icons a {
-    display: flex;
-    margin-right: .5rem;
-    font-size: 1.5rem;
-    color: var(--black);
-    font-weight: bolder;
-    align-items: center;
-}
-
-
-/* second du header */
-
-.header .header_2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    border-bottom: var(--border);
-}
-
-.header_2 .title {
-    display: block;
-}
-
-.header .header_2 .title h3 {
-    font-size: 2rem;
-    color: var(--orange);
-    font-weight: bolder;
-}
-
-h3 {
-    margin-left: 2rem;
-}
-
-.header_2 .links {
-    display: flex;
-}
-
-.header_2 .links a {
-    display: flex;
-    padding: 2rem;
-    font: 1.5rem;
-    color: var(--black);
-    cursor: pointer;
-}
-
-.header_2 .links a:hover {
-    text-decoration: underline;
-}
-
-.header_2 #menu_bar {
-    padding: 2rem;
-    border: var(--border);
-    font-size: 1.2rem;
-    color: var(--black);
-    cursor: pointer;
-}
-
-.header_2 #menu_bar:hover {
-    background-color: var(--orange);
-    color: var(--white);
-    border-radius: .5rem;
-    transition: background-color 1s ease-in-out;
-}
-
-
-/* second du header */
-
-section {
-    padding: 2rem;
-}
-
-.btn2 {
-    /* display: block; */
-    padding: 2rem 9%;
-    text-align: center;
-    background-color: var(--white);
-    color: var(--black);
-    border: .1rem solid var(--green);
-    box-shadow: var(--shadow);
-    border-radius: 30px;
-    justify-content: center;
-    /* width: 100%; */
-}
-
-.btn2:hover {
-    background-color: var(--green);
-    color: var(--white);
-    transition: background-color 1s ease-in-out;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.Main_page {
-    display: flex;
-}
-
-.sideBar {
-    flex: 3;
-}
-
-.rightSideBar {
-    flex: 9;
-    background-color: #ffff;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 4rem;
+    background: var(--black);
+    color: var(--white);
 }
 
-.sondages .sideBareNews {}
+
+/* sideBar start */
+
+
+/* sideBar end */
 
 .customButom {
     border-radius: 50px;
     border: 1px solid #027314;
     background: #FFF;
     width: 50%;
-    padding: 1.3rem;
+    padding: .5rem;
     text-align: center;
     font-size: medium;
 }
@@ -219,100 +65,4 @@ section {
     transition: background-color 1s ease-in-out;
     border-radius: 30px;
     cursor: pointer;
-}
-
-.rightSideBar .endirect {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    width: 600px;
-    padding: 1rem;
-}
-
-.rightSideBar .post {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    padding: 1rem;
-    box-shadow: 0px 1px 3px 0.5px rgba(0, 0, 0, 0.25);
-    align-self: center;
-    width: 600px;
-}
-
-.rightSideBar .post img,
-.postheader__img img {
-    height: 300px;
-    width: 100%;
-}
-
-.rightSideBar .post .postheader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.rightSideBar .post .postheader h2 {
-    align-self: flex-start;
-}
-
-.rightSideBar .post .postheader img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-}
-
-.rightSideBar .post .postheader .headresBotoms {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: .1rem;
-    justify-content: start;
-}
-
-.rightSideBar .post .postheader .headresBotoms img {
-    width: 20px;
-    height: 20px;
-    border-radius: 50px;
-    object-fit: contain;
-}
-
-.rightSideBar .post .postheader .headresBotoms p {
-    margin-right: .5rem;
-    color: #027314;
-    font-size: medium;
-    font-weight: bold;
-}
-
-.rightSideBar .post .postheader .headresBotoms span {
-    color: black;
-    font-size: small;
-}
-
-.rightSideBar .post .postheader .postheader__details {
-    margin-left: 1.5rem;
-}
-
-.rightSideBar .post .postbody {
-    margin: 1rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-}
-
-.postBotom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1rem;
-    padding: 1rem;
-    width: 100%;
-    font-size: medium;
 }

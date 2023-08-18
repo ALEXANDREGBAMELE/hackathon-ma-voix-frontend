@@ -1,0 +1,98 @@
+.topbarContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+    padding: 0 24px;
+    height: 3.4rem;
+}
+
+.topbarContainer h3 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 86.523%;
+    color: var(--orange);
+    margin-left: 12px;
+}
+
+.header {
+    display: block;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(84, 84, 84, 0.33);
+    padding: 0 24px;
+}
+
+.header header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.topbarContainer .img_logo {
+    height: 4rem;
+    width: 10.5rem;
+}
+
+.topbarContainer .img_logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.header header .Logo_input {
+    display: flex;
+    width: 55rem;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.topbarContainer .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-right: 10px;
+}
+
+.topbarContainer .icons i {
+    font-size: .8rem;
+    padding: .5rem;
+    border: var(--border);
+    color: var(--black);
+    border-radius: .5rem;
+    margin-right: 2.5rem;
+}
+
+.topbarContainer .icons .userAvatar {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.topbarContainer .icons .userAvatar img {
+    margin-left: .8rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    object-fit: contain;
+}
+
+.topbarContainer .icons i:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border-bottom: var(--border);
+    transition: background-color 1s ease-in-out;
+    cursor: pointer;
+}
+
+.topbarContainer header .icons a {
+    display: flex;
+    margin-right: .5rem;
+    font-size: 1.5rem;
+    color: var(--black);
+    font-weight: bolder;
+    align-items: center;
+}
