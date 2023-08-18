@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,600;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,600;0,700;1,400;1,700&display=swap");
 * {
     margin: 0;
     padding: 0;
@@ -52,8 +52,8 @@ html {
 .butomAoutlin {
     border-radius: 50px;
     border: 1px solid #027314;
-    background: #FFF;
-    padding: .5rem;
+    background: #fff;
+    padding: 0.5rem;
     text-align: center;
     font-size: small;
     cursor: pointer;
@@ -63,7 +63,7 @@ html {
     border-radius: 50px;
     border: 1px solid #fff;
     background: #027314;
-    padding: .5rem;
+    padding: 0.5rem;
     text-align: center;
     font-size: medium;
     color: #fff;
@@ -73,7 +73,7 @@ html {
     border-radius: 50px;
     border: 1px solid #fff;
     background: var(--orange);
-    padding: .5rem;
+    padding: 0.5rem;
     text-align: center;
     font-size: medium;
     cursor: pointer;
@@ -95,3 +95,6 @@ html {
     gap: 2rem;
     flex-wrap: wrap;
 }
+
+
+/* cardswipe */
