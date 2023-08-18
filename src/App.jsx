@@ -12,7 +12,8 @@ import { ConfigProvider } from "antd";
 import SideBar from "./components/sideBar/SideBar";
 import Footer from "./components/Footer";
 import MainLayout from "./components/MainLayout";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";  
+import Register from "./page/Register";
 
 function App() {
     return (
