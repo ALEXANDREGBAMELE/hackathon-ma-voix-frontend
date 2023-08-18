@@ -3,13 +3,12 @@ import { Card } from "antd";
 import { Tabs } from "antd";
 import Sondage from "../../components/Sondage";
 import Article from "../../components/Article";
-import Biographie from "../../components/Biographie";
 
 const tabeItems = [
     {
         key: "1",
         label: `Apropo`,
-        children: <Biographie />,
+        children: <Article />,
     },
     {
         key: "2",

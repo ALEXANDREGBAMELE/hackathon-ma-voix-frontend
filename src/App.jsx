@@ -99,7 +99,7 @@ function App() {
                                     width: "100%",
                                 }}
                             >
-                                <Input defaultValue="Combine input and button" />
+                                <Input placeholder="entrez votre pour recevoir les dernier nouvelle" />
                                 <CustomButon
                                     title="S'abonner"
                                     type="butomFillPrimaryLeft"

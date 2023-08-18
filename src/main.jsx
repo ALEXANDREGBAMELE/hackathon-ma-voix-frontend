@@ -7,6 +7,8 @@ import { ConfigProvider } from "antd";
 import MainLayout from "./components/MainLayout.jsx";
 import Sondage from "./page/Sondage.jsx";
 import Candidats from "./page/Candidats.jsx";
+import Register from "./page/Register.jsx";
+import Login from "./page/Login.jsx";
 import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 const router = createBrowserRouter([
     {
@@ -30,6 +32,15 @@ const router = createBrowserRouter([
                 path: "/candidats/:id",
                 element: <CandidatDetails />,
             },
+
+            {
+                path:"/register",
+                element: <Register/>,
+            },
+            {
+                path:"/login",
+                element: <Login/>
+            }
         ],
     },
 ]);
