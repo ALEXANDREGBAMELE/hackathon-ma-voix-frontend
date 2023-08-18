@@ -22,7 +22,7 @@ export default function SideBar() {
                     <h3>Quelques sondages</h3>
                     <div></div>
                 </div>
-                {sondages.map((s) => (
+                {news.map((s) => (
                     <Sondage key={s.id} article={s} />
                 ))}
                 <div className="botom">

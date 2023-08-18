@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import "./swipeStack.css";
 import TinderCard from "react-tinder-card";
-import { candidats } from "../../data";
+import { candidats, sondages } from "../../data";
 import CustomButon from "../CustomButon";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
+import CustomResult from "../CustomResult";
 
-const cardData = [
+const sondagess = [
     { id: 1, content: "Card 1" },
     { id: 2, content: "Card 2" },
     { id: 3, content: "Card 3" },
@@ -13,45 +14,98 @@ const cardData = [
 ];
 
 const SwipeStack = () => {
+    const [open, setOpen] = useState(true);
     const [direction, setDirection] = useState(null);
-    const swiped = (dir, cardIndex) => {
-        console.log(`Swiped ${dir} on card ${cardIndex}`);
+    const [currentIndex, setCurrentIndex] = useState(sondages.length - 1);
+    const currentIndexRef = useRef(currentIndex);
+    const [lastDirection, setLastDirection] = useState();
+    const [showResult, setShowResult] = useState(false);
+
+    const childRefs = useMemo(
+        () =>
+            Array(sondages.length)
+                .fill(0)
+                .map((i) => React.createRef()),
+        []
+    );
+    const updateCurrentIndex = (val) => {
+        setCurrentIndex(val);
+        currentIndexRef.current = val;
     };
-    const outOfFrame = (cardIndex) => {
-        console.log(`Card ${cardIndex} left the screen`);
+
+    const canGoBack = currentIndex < sondages.length - 1;
+
+    const canSwipe = currentIndex >= 0;
+
+    // set last direction and decrease current index
+    const swiped = (direction, nameToDelete, index) => {
+        setLastDirection(direction);
+        updateCurrentIndex(index - 1);
     };
-    const handleSwipe = (dir) => {
-        setDirection(dir);
+
+    const outOfFrame = (name, idx) => {
+        console.log(
+            `${name} (${idx}) left the screen!`,
+            currentIndexRef.current
+        );
+        if (idx == 0) {
+            setShowResult(true);
+        }
+        // handle the case in which go back is pressed before card goes outOfFrame
+        currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    };
+
+    const swipe = async (dir) => {
+        if (canSwipe && currentIndex < sondages.length) {
+            await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+            console.log(canGoBack);
+        }
+    };
+
+    // increase current index and show card
+    const goBack = async () => {
+        if (!canGoBack) return;
+        const newIndex = currentIndex + 1;
+        updateCurrentIndex(newIndex);
+        await childRefs[newIndex].current.restoreCard();
     };
     return (
         <div className="swipe-container">
-            {cardData.map((card, index) => (
-                <TinderCard
-                    key={card.id}
-                    onSwipe={(dir) => swiped(dir, index)}
-                    onCardLeftScreen={() => outOfFrame(index)}
-                >
-                    <div className="card">
-                        {card.content}
-                        <div className="button-container">
-                            <CustomButon
-                                type="fillPrimary"
-                                onClicked={() => handleSwipe("left")}
-                                title="J'aime pas"
-                            >
-                                <DislikeOutlined />
-                            </CustomButon>
-                            <CustomButon
-                                type="fill"
-                                onClicked={() => handleSwipe("right")}
-                                title="J'aime"
-                            >
-                                <LikeOutlined />
-                            </CustomButon>
+            {!showResult ? (
+                sondages.map((character, index) => (
+                    <TinderCard
+                        ref={childRefs[index]}
+                        className="swipe"
+                        key={character.name}
+                        onSwipe={(dir) => swiped(dir, character.name, index)}
+                        onCardLeftScreen={() =>
+                            outOfFrame(character.name, index)
+                        }
+                    >
+                        <div className="card">
+                            {character.content}
+                            <div className="button-container">
+                                <CustomButon
+                                    type="fillPrimary"
+                                    onClicked={() => swipe("left")}
+                                    title="J'aime pas"
+                                >
+                                    <DislikeOutlined />
+                                </CustomButon>
+                                <CustomButon
+                                    type="fill"
+                                    onClicked={() => swipe("right")}
+                                    title="J'aime"
+                                >
+                                    <LikeOutlined />
+                                </CustomButon>
+                            </div>
                         </div>
-                    </div>
-                </TinderCard>
-            ))}
+                    </TinderCard>
+                ))
+            ) : (
+                <CustomResult />
+            )}
         </div>
     );
 };
