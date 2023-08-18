@@ -18,3 +18,21 @@ export const sondages = [{
         date: '02 juin 2021'
     }
 ]
+
+export const candidats = [{
+    id: 1,
+    name: 'Bacongo ',
+    commune: 'Koumassi',
+}, {
+    id: 2,
+    name: 'Bictogo ',
+    commune: 'Marcory',
+}, {
+    id: 3,
+    name: 'Candia camara ',
+    commune: 'Abobo',
+}, {
+    id: 4,
+    name: 'Yasse seraphin ',
+    commune: 'cocody',
+}]

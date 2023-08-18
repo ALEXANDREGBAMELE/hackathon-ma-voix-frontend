@@ -16,21 +16,16 @@ import { Outlet } from "react-router-dom";
 
 function App() {
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: "#027314",
-                    borderRadius: "10px",
-                },
-            }}
-        >
+        <>
             <Topbar />
             <div className="mainLayout">
                 <SideBar />
-                <MainLayout />
+                <div className="Layout">
+                    <Outlet />
+                </div>
             </div>
             <Footer />
-        </ConfigProvider>
+        </>
     );
 }
 

@@ -6,12 +6,12 @@ import {
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import "./topbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
 const menuItems = [
     {
         label: "Aceuille",
-        key: "acceuille",
+        key: "/",
     },
     {
         label: "Candidats",
@@ -23,11 +23,13 @@ const menuItems = [
         key: "sondage",
     },
 ];
-function Topbar() {
+function Topbar({}) {
     const [ShowNave, setShowNave] = useState(true);
-    const [current, setCurrent] = useState("acceuille");
+    const [current, setCurrent] = useState("/");
+   const navigation = useNavigate();
     const onClick = (e) => {
         setCurrent(e.key);
+        navigation(e.key);
     };
 
     return (

@@ -1,7 +1,16 @@
-export default function CustomButon() {
+export default function CustomButon({ title, type ,children }) {
+    const setClasseName = () => {
+        if (type === "fill") {
+            return "butomFillSecondary";
+        }
+        if (type === "fillPrimary") {
+            return "butomFillPrimary";
+        }
+        return "butomAoutlin";
+    }
     return (
-        <div className="customButom">
-            <p>Voir plus</p>
+        <div className={setClasseName()}>
+            <p> {children} {title} </p>
         </div>
     );
 }

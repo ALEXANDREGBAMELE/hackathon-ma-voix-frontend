@@ -2,7 +2,7 @@ import SideBar from "./sideBar/SideBar";
 
 export default function MainLayout() {
     return (
-        <div className="Layout">
+        <>
             <div className="direct">
                 <img
                     src="./vid.jpg"
@@ -61,6 +61,6 @@ export default function MainLayout() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
