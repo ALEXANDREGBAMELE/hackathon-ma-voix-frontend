@@ -78,10 +78,8 @@ export default function CandidatCard({ candidat }) {
                     alignItems: "center",
                 }}
             >
-                <MuyButon type="fill" secondary title="26/12/2023" />
-                <MuyButon type="fillPrimary" title="voir plus"/>
-                    
-              
+                <CustomButon type="fill" secondary title="26/12/2023" />
+                <CustomButon type="fillPrimary" title="voir plus" />
             </div>
         </div>
     );

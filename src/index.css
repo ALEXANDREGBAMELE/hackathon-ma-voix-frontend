@@ -120,6 +120,15 @@ h
     cursor: pointer;
 }
 
+.butomFillPrimary:hover {
+    background-color: var(--white);
+    color: var(--orange);
+    transition: background-color 1s ease-out;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid var(--green);
+}
+
 .listCandidat {
     display: flex;
     justify-content: center;
