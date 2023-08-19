@@ -9,6 +9,8 @@ import "./topbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import CustomButon from "../CustomButon";
+import { useSelector } from "react-redux";
+import { curentUser, isLoggedIn } from "../../features/auth/authSlice";
 const menuItems = [
     {
         label: "Aceuil",
@@ -25,8 +27,9 @@ const menuItems = [
     },
 ];
 function Topbar({}) {
-    const [isloge, setIslog] = useState(false);
     const [current, setCurrent] = useState("/");
+    const isLogged = useSelector(isLoggedIn);
+    const logUser = useSelector(curentUser);
     const navigation = useNavigate();
     const onClick = (e) => {
         setCurrent(e.key);
@@ -36,7 +39,7 @@ function Topbar({}) {
     return (
         <>
             <div className="topbarContainer">
-                <div class="img_logo">
+                <div className="img_logo">
                     <Link to="/">
                         <img src="./05.png" alt="logo" />
                     </Link>
@@ -54,11 +57,11 @@ function Topbar({}) {
                         alignItems: "end",
                     }}
                 />
-                {isloge ? (
+                {isLogged ? (
                     <nav class="icons">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                         <div className="userAvatar">
-                            <p>yacou</p>
+                            <p>{logUser.nom}</p>
                             <img
                                 src="https://images.unsplash.com/photo-1517598024396-46c53fb391a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
                                 alt=""
@@ -66,7 +69,9 @@ function Topbar({}) {
                         </div>
                     </nav>
                 ) : (
-                    <Button onClick={()=>setIslog(true)} >Mon Compte</Button>
+                    <Button onClick={() => navigation("/login")}>
+                        Mon Compte
+                    </Button>
                 )}
             </div>
         </>

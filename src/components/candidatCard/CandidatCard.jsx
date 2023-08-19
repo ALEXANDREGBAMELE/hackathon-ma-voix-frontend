@@ -1,5 +1,6 @@
 import CustomButon from "../CustomButon";
 import { SmallDashOutlined, EyeOutlined } from "@ant-design/icons";
+import MuyButon from "../MuyButon";
 export default function CandidatCard({ candidat }) {
     return (
         <div
@@ -77,10 +78,10 @@ export default function CandidatCard({ candidat }) {
                     alignItems: "center",
                 }}
             >
-                <CustomButon type="fill" title="26/12/2023" />
-                <CustomButon type="fillPrimary" title="voir plus">
-                    <EyeOutlined />
-                </CustomButon>
+                <MuyButon type="fill" secondary title="26/12/2023" />
+                <MuyButon type="fillPrimary" title="voir plus"/>
+                    
+              
             </div>
         </div>
     );

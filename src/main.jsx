@@ -10,6 +10,10 @@ import Candidats from "./page/Candidats.jsx";
 import Register from "./page/Register.jsx";
 import Login from "./page/Login.jsx";
 import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
+import { store } from "./store";
+import { Provider } from "react-redux";
+
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -46,16 +50,18 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: "#027314",
-                    colorPrimaryBg: "#ff7200",
-                    borderRadius: "10px",
-                },
-            }}
-        >
-            <RouterProvider router={router} />
-        </ConfigProvider>
+        <Provider store={store}>
+            <ConfigProvider
+                theme={{
+                    token: {
+                        colorPrimary: "#027314",
+                        colorPrimaryBg: "#ff7200",
+                        borderRadius: "10px",
+                    },
+                }}
+            >
+                <RouterProvider router={router} />
+            </ConfigProvider>
+        </Provider>
     </React.StrictMode>
 );

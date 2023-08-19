@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
-import "./Register.css"
+import React, { useState } from "react";
+import "./Register.css";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { useRegisterMutation } from "../app/api/apiSlice";
 import { Button, Checkbox, Form, Input } from "antd";
 import CustomButon from "../components/CustomButon";
+import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../features/auth/authSlice";
 
 function Register() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [register, { isLoading }] = useRegisterMutation();
     const [email, setEmail] = useState("salut");
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         console.log("Success:", values);
+        const data = {...values,role_id:3,commune:"marcory"}
+
+        try {
+            const result = await register(data);
+            dispatch(setCredentials(result.data));
+            navigate("/");
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
     };
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
@@ -51,7 +67,14 @@ function Register() {
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
-                    <div style={{ display: "flex" }} className="topRegister">
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "29rem",
+                            justifyContent: "space-between",
+                        }}
+                        className="topRegister"
+                    >
                         <Form.Item
                             label="Nom"
                             name="nom"
@@ -69,7 +92,7 @@ function Register() {
                                 value={email}
                                 onChange={(text) => setEmail(text)}
                                 style={{
-                                    width: "15rem",
+                                    width: "13rem",
                                 }}
                             />
                         </Form.Item>
@@ -100,7 +123,7 @@ function Register() {
                         style={{
                             marginBottom: "2px",
                         }}
-                        name="telephone"
+                        name="phone"
                         rules={[
                             {
                                 required: true,
@@ -123,9 +146,8 @@ function Register() {
                         name="email"
                         rules={[
                             {
-                            required: true,
-                            message:
-                                "Veuillez entrer votre email svp!",
+                                required: true,
+                                message: "Veuillez entrer votre email svp!",
                             },
                         ]}
                     >
@@ -184,12 +206,15 @@ function Register() {
                             marginBottom: "1px",
                         }}
                     >
-                        <CustomButon
-                            rd="8px"
-                            title="S'inscrit"
-                            type="fill"
-                            width="29rem"
-                        />
+                        <Button
+                            htmlType="submit"
+                            type="primary"
+                            style={{
+                                width: "29rem",
+                            }}
+                        >
+                            S'inscrire
+                        </Button>
                     </Form.Item>
                 </Form>
                 <p>
@@ -203,6 +228,4 @@ function Register() {
     );
 }
 
-
-
-export default Register
+export default Register;

@@ -1,19 +1,32 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../app/api/apiSlice";
+import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../features/auth/authSlice";
 
 import { Button, Checkbox, Form, Input } from "antd";
 import CustomButon from "../components/CustomButon";
 
 function Login() {
     const [email, setEmail] = useState("salut");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const onFinish = (values) => {
+    const [login, { isLoading }] = useLoginMutation();
+    const onFinish = async (values) => {
         console.log("Success:", values);
+        
+        try {
+            const result = await login(values);
+            dispatch(setCredentials(result.data));
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
     };
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
-    };
+    const onFinishFailed = async (errorInfo) => {console.log("Failed:", errorInfo);};
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -114,20 +127,23 @@ function Login() {
                             marginBottom: "1px",
                         }}
                     >
-                        <CustomButon
-                            rd="8px"
-                            title="Se connecter"
-                            type="fill"
-                            width="25rem"
-                        />
+                        <Button
+                            htmlType="submit"
+                            type="primary"
+                            style={{
+                                width: "29rem",
+                            }}
+                        >
+                            Se connecter
+                        </Button>
                     </Form.Item>
                 </Form>
-          <p>aucun compte ?
+                <p>
+                    aucun compte ?
                     <Link to="/register">
                         <span> S'inscrire</span>
                     </Link>
                 </p>
-                
             </div>
         </div>
     );

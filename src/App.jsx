@@ -11,10 +11,15 @@ import { ConfigProvider } from "antd";
 import SideBar from "./components/sideBar/SideBar";
 import Footers from "./components/Footer";
 import MainLayout from "./components/MainLayout";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { curentUser } from "./features/auth/authSlice";
+
 import { Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
+
 function App() {
     return (
         <>
