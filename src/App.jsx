@@ -80,12 +80,13 @@ function App() {
                         }}
                     >
                         <img
-                            src="./05.png"
+                            src="./logoB.png"
                             alt=""
                             style={{
-                                width: "3rem",
-                                height: "3rem",
+                                width: "auto",
+                                height: "3.5rem",
                                 marginRight: "1rem",
+                                objectFit: "cover",
                             }}
                         />
                         <span style={{ color: "#fff" }}>Election 2023</span>
