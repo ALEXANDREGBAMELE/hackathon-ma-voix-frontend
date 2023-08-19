@@ -19,7 +19,16 @@ import { Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
-
+const botomProps = {
+    borderTopRightRadius: "20px",
+    borderBottomRightRadius: "20px",
+    background: "#ff7200",
+    padding: " 0.5rem",
+    textAlign: "center",
+    fontSize: "medium",
+    cursor: "pointer",
+    color: " #fff",
+};
 function App() {
     return (
         <>
@@ -89,26 +98,34 @@ function App() {
                                 objectFit: "cover",
                             }}
                         />
-                        <span style={{ color: "#fff" }}>Election 2023</span>
+                        <span style={{ color: "#fff" }}>
+                            ©2023 All rights reserved
+                        </span>
                         <div
                             className="newsLetter"
                             style={{
                                 display: "flex",
-                                alignItems: "center",
+                                alignItems: "flex-start",
                                 justifyContent: "space-between",
-                                width: "30rem",
+                                width: "25rem",
                                 flexDirection: "column",
                             }}
                         >
+                            <h4
+                                style={{ color: "#fff", marginBottom: ".5rem" }}
+                            >
+                                Abonnez-vous a notre NewsLetter
+                            </h4>
                             <Space.Compact
                                 style={{
                                     width: "100%",
                                 }}
                             >
-                                <Input placeholder="entrez votre pour recevoir les dernier nouvelle" />
+                                <Input placeholder="entrez votre email" />
                                 <CustomButon
                                     title="S'abonner"
                                     type="butomFillPrimaryLeft"
+                                    stylePropes={botomProps}
                                 />
                             </Space.Compact>
                         </div>

@@ -20,7 +20,7 @@ export default function MainLayout() {
             <Card
                 style={{
                     width: "40rem",
-                    marginBottom: "1.5rem",
+                    marginBottom: "2rem",
                     padding: "1rem",
                 }}
                 actions={[

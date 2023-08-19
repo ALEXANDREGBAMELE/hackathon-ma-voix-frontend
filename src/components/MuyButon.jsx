@@ -1,4 +1,4 @@
-export default function MuyButon({title,secondary}) {
+export default function MuyButon({ title, styleProps, secondary }) {
     return (
         <div
             style={{ background: secondary ? "green" : "#ff7200" }}
