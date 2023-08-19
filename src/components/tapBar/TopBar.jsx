@@ -4,13 +4,14 @@ import {
     MailOutlined,
     SettingOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import "./topbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
+import CustomButon from "../CustomButon";
 const menuItems = [
     {
-        label: "Aceuille",
+        label: "Aceuil",
         key: "/",
     },
     {
@@ -24,9 +25,9 @@ const menuItems = [
     },
 ];
 function Topbar({}) {
-    const [ShowNave, setShowNave] = useState(true);
+    const [isloge, setIslog] = useState(false);
     const [current, setCurrent] = useState("/");
-   const navigation = useNavigate();
+    const navigation = useNavigate();
     const onClick = (e) => {
         setCurrent(e.key);
         navigation(e.key);
@@ -36,25 +37,37 @@ function Topbar({}) {
         <>
             <div className="topbarContainer">
                 <div class="img_logo">
-                    <img src="./05.png" alt="logo" />
+                    <Link to="/">
+                        <img src="./05.png" alt="logo" />
+                    </Link>
                 </div>
                 <Menu
                     onClick={onClick}
                     selectedKeys={[current]}
                     mode="horizontal"
                     items={menuItems}
-                    style={{ flex: "auto", marginLeft: "25rem",height:"55px",display:"flex",alignItems:"end" }}
+                    style={{
+                        flex: "auto",
+                        marginLeft: "25rem",
+                        height: "55px",
+                        display: "flex",
+                        alignItems: "end",
+                    }}
                 />
-                <nav class="icons">
-                    <i class="fa fa-bell" aria-hidden="true"></i>
-                    <div className="userAvatar">
-                        <p>yacou</p>
-                        <img
-                            src="https://images.unsplash.com/photo-1517598024396-46c53fb391a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
-                            alt=""
-                        />
-                    </div>
-                </nav>
+                {isloge ? (
+                    <nav class="icons">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                        <div className="userAvatar">
+                            <p>yacou</p>
+                            <img
+                                src="https://images.unsplash.com/photo-1517598024396-46c53fb391a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+                                alt=""
+                            />
+                        </div>
+                    </nav>
+                ) : (
+                    <Button onClick={()=>setIslog(true)} >Mon Compte</Button>
+                )}
             </div>
         </>
     );

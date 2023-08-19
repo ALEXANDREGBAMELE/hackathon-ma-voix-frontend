@@ -1,4 +1,4 @@
-export default function CustomButon({ title, type, children, onClicked,width }) {
+export default function CustomButon({ title, type, children, onClicked,width,rd }) {
     const handleClick = () => {
         if (onClicked) {
             onClicked();
@@ -19,11 +19,12 @@ export default function CustomButon({ title, type, children, onClicked,width }) 
     }
     return (
         <div onClick={handleClick} style={{
-            width: width ? width : "8rem",
+            width: width ? width : "5rem",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            borderRadius:rd ? rd:"10px"
         }} className={setClasseName()}>
             <p> {children} {title} </p>
         </div>
