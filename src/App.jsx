@@ -46,36 +46,7 @@ function App() {
                 >
                     <Topbar />
                 </Header>
-                <Layout>
-                    <Sider
-                        style={{
-                            overflow: "auto",
-                            height: "100vh",
-                            position: "fixed",
-                            left: 0,
-                            top: 0,
-                            bottom: 0,
-                            background: "#fff",
-                            overflow: "hidden",
-                        }}
-                    >
-                        <SideBar />
-                    </Sider>
-                    <Layout
-                        className="site-layout"
-                        style={{
-                            marginLeft: 450,
-                        }}
-                    >
-                        <Content
-                            style={{
-                                margin: "24px 16px 0",
-                                overflow: "initial",
-                            }}
-                        >
-                            <Outlet />
-                        </Content>
-                    </Layout>
+                <Outlet />
                     <Footer
                         style={{
                             textAlign: "center",
@@ -130,7 +101,6 @@ function App() {
                             </Space.Compact>
                         </div>
                     </Footer>
-                </Layout>
             </Layout>
         </>
     );

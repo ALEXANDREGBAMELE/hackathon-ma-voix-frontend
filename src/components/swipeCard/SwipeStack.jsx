@@ -1,7 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import "./swipeStack.css";
 import TinderCard from "react-tinder-card";
-import { candidats, sondages } from "../../data";
 import CustomButon from "../CustomButon";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import CustomResult from "../CustomResult";
@@ -13,7 +12,7 @@ const sondagess = [
     // Ajoutez plus de cartes si nécessaire
 ];
 
-const SwipeStack = () => {
+const SwipeStack = ({ sondages }) => {
     const [open, setOpen] = useState(true);
     const [direction, setDirection] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(sondages.length - 1);
@@ -23,7 +22,7 @@ const SwipeStack = () => {
 
     const childRefs = useMemo(
         () =>
-            Array(sondages.length)
+            Array(sondages.length +1)
                 .fill(0)
                 .map((i) => React.createRef()),
         []
@@ -56,9 +55,10 @@ const SwipeStack = () => {
     };
 
     const swipe = async (dir) => {
+        console.log("swipe", dir);
+        console.log(childRefs[1]);
         if (canSwipe && currentIndex < sondages.length) {
             await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
-            console.log(canGoBack);
         }
     };
 
@@ -76,14 +76,14 @@ const SwipeStack = () => {
                     <TinderCard
                         ref={childRefs[index]}
                         className="swipe"
-                        key={character.name}
+                        key={character.id}
                         onSwipe={(dir) => swiped(dir, character.name, index)}
                         onCardLeftScreen={() =>
                             outOfFrame(character.name, index)
                         }
                     >
                         <div className="card">
-                            {character.content}
+                            {character.description}
                             <div className="button-container">
                                 <CustomButon
                                     type="fillPrimary"

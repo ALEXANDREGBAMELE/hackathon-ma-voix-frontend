@@ -73,39 +73,39 @@ export const candidats = [{
     // creer un tableau de 20 sondages
 export const sondages = [{
     id: 1,
-    content: 'Contruir un pont entre la commune de cocody et la commune de treichville',
+    description: 'Contruir un pont entre la commune de cocody et la commune de treichville',
 }, {
     id: 2,
-    content: 'creer un centre de formation pour les jeunes de la commune de cocody',
+    description: 'creer un centre de formation pour les jeunes de la commune de cocody',
 }, {
     id: 3,
-    content: 'rehabiliter les routes de la commune de cocody',
+    description: 'rehabiliter les routes de la commune de cocody',
 }, {
     id: 4,
-    content: 'aménager les routes de la commune de koumassi',
+    description: 'aménager les routes de la commune de koumassi',
 }, {
     id: 5,
-    content: 'rehabiliter l\' hopital  de la commune de koumassi',
+    description: 'rehabiliter l\' hopital  de la commune de koumassi',
 }, {
     id: 6,
-    content: 'creer un centre de formation pour les jeunes de la commune de koumassi',
+    description: 'creer un centre de formation pour les jeunes de la commune de koumassi',
 }, {
     id: 7,
-    content: 'augmenter le nombre de bus dans la commune de koumassi',
+    description: 'augmenter le nombre de bus dans la commune de koumassi',
 }, {
     id: 8,
-    content: 'elever le niveau de l\'education dans la commune d\'adjamé',
+    description: 'elever le niveau de l\'education dans la commune d\'adjamé',
 }, {
     id: 9,
-    content: 'construction d\'un centre de formation pour les jeunes de la commune d\'adjamé',
+    description: 'construction d\'un centre de formation pour les jeunes de la commune d\'adjamé',
 }, {
     id: 10,
-    content: 'bitumer les routes du marché la commune d\'adjamé',
+    description: 'bitumer les routes du marché la commune d\'adjamé',
 }, {
     id: 11,
-    content: 'construire un centre de formation pour les jeunes de la commune de marcory',
+    description: 'construire un centre de formation pour les jeunes de la commune de marcory',
 
 }, {
     id: 12,
-    content: 'construir un lycée dans la commune de marcory',
+    description: 'construir un lycée dans la commune de marcory',
 }]

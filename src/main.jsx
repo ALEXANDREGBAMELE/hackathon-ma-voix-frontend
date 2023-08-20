@@ -23,18 +23,21 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <MainLayout />,
             },
-
             {
                 path: "/candidats",
                 element: <Candidats />,
             },
             {
-                path: "/sondage",
-                element: <Sondage />,
+                path: "/candidat/:id",
+                element: <CandidatDetails />,
             },
             {
-                path: "/candidats/:id",
+                path: "/candidats/:commune",
                 element: <CandidatDetails />,
+            },
+            {
+                path: "/sondage",
+                element: <Sondage />,
             },
         ],
     },
@@ -45,6 +48,20 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <Login />,
+    },
+    {
+        path: "/candidats",
+        element: <Candidats />,
+        children: [
+            {
+                path: "/candidats/:id",
+                element: <CandidatDetails />,
+            },
+            {
+                path: "/candidats/:commune/",
+                element: <CandidatDetails />,
+            },
+        ],
     },
 ]);
 
