@@ -12,7 +12,7 @@ import Login from "./page/Login.jsx";
 import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import Detail from "./page/candidatDetail/details.jsx";
+import Resultat from "./page/Resultat.jsx";
 
 
 const router = createBrowserRouter([
@@ -24,18 +24,25 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <MainLayout />,
             },
-
             {
                 path: "/candidats",
                 element: <Candidats />,
+            },
+            {
+                path: "/candidat/:id",
+                element: <CandidatDetails />,
+            },
+            {
+                path: "/candidats/:commune",
+                element: <CandidatDetails />,
             },
             {
                 path: "/sondage",
                 element: <Sondage />,
             },
             {
-                path: "/candidats/:id",
-                element: <CandidatDetails />,
+                path: "/resultat",
+                element: <Resultat />,
             },
             {
                 path: "detail",
@@ -50,6 +57,20 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <Login />,
+    },
+    {
+        path: "/candidats",
+        element: <Candidats />,
+        children: [
+            {
+                path: "/candidats/:id",
+                element: <CandidatDetails />,
+            },
+            {
+                path: "/candidats/:commune/",
+                element: <CandidatDetails />,
+            },
+        ],
     },
 ]);
 

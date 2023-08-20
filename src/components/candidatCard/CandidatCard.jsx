@@ -1,7 +1,12 @@
 import CustomButon from "../CustomButon";
 import { SmallDashOutlined, EyeOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import MuyButon from "../MuyButon";
 export default function CandidatCard({ candidat }) {
+    const navigation = useNavigate();
+    const handleClick = () => {
+        navigation(`/candidat/${candidat.id}`);
+    };
     return (
         <div
             style={{
@@ -74,12 +79,17 @@ export default function CandidatCard({ candidat }) {
                 className="botomCard"
                 style={{
                     display: "flex",
-                    justifyContent: "space-between",
+                    justifyContent: "center",
                     alignItems: "center",
                 }}
             >
-                <CustomButon type="fill" secondary title="26/12/2023" />
-                <CustomButon type="fillPrimary" title="voir plus" />
+                
+                <CustomButon
+                    onClicked={handleClick}
+                    type="fillPrimary"
+                    title="Voir Details"
+                    width='100%'
+                />
             </div>
         </div>
     );

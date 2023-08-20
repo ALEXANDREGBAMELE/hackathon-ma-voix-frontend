@@ -13,22 +13,33 @@ export const candidats = [{
         id: 1,
         name: 'Bacongo ',
         commune: 'Koumassi',
+        img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+        post: [{
+            id: 1,
+            title: 'Inauguration du nouveau Marché de la commune de koumassi',
+            post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+        }]
+
     }, {
         id: 2,
         name: 'Bictogo ',
         commune: 'Marcory',
+        img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
     }, {
         id: 3,
-        name: 'Candia camara ',
-        commune: 'Abobo',
+        name: 'Yasmina Ouegnin ',
+        commune: 'Cocody',
+        img_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Yasmina_Ouegnin_01.jpg/330px-Yasmina_Ouegnin_01.jpg',
     }, {
         id: 4,
         name: 'Yasse Jean marc ',
         commune: 'cocody',
+        img_url: 'https://mairiecocody.com/extra-images/mayor-fig.jpg',
     }, {
         id: 5,
         name: 'Tchagba eric ',
         commune: 'Treichville',
+        img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
     }, {
         id: 6,
         name: 'Aby raoul ',
@@ -73,39 +84,39 @@ export const candidats = [{
     // creer un tableau de 20 sondages
 export const sondages = [{
     id: 1,
-    content: 'Contruir un pont entre la commune de cocody et la commune de treichville',
+    description: 'Contruir un pont entre la commune de cocody et la commune de treichville',
 }, {
     id: 2,
-    content: 'creer un centre de formation pour les jeunes de la commune de cocody',
+    description: 'creer un centre de formation pour les jeunes de la commune de cocody',
 }, {
     id: 3,
-    content: 'rehabiliter les routes de la commune de cocody',
+    description: 'rehabiliter les routes de la commune de cocody',
 }, {
     id: 4,
-    content: 'aménager les routes de la commune de koumassi',
+    description: 'aménager les routes de la commune de koumassi',
 }, {
     id: 5,
-    content: 'rehabiliter l\' hopital  de la commune de koumassi',
+    description: 'rehabiliter l\' hopital  de la commune de koumassi',
 }, {
     id: 6,
-    content: 'creer un centre de formation pour les jeunes de la commune de koumassi',
+    description: 'creer un centre de formation pour les jeunes de la commune de koumassi',
 }, {
     id: 7,
-    content: 'augmenter le nombre de bus dans la commune de koumassi',
+    description: 'augmenter le nombre de bus dans la commune de koumassi',
 }, {
     id: 8,
-    content: 'elever le niveau de l\'education dans la commune d\'adjamé',
+    description: 'elever le niveau de l\'education dans la commune d\'adjamé',
 }, {
     id: 9,
-    content: 'construction d\'un centre de formation pour les jeunes de la commune d\'adjamé',
+    description: 'construction d\'un centre de formation pour les jeunes de la commune d\'adjamé',
 }, {
     id: 10,
-    content: 'bitumer les routes du marché la commune d\'adjamé',
+    description: 'bitumer les routes du marché la commune d\'adjamé',
 }, {
     id: 11,
-    content: 'construire un centre de formation pour les jeunes de la commune de marcory',
+    description: 'construire un centre de formation pour les jeunes de la commune de marcory',
 
 }, {
     id: 12,
-    content: 'construir un lycée dans la commune de marcory',
+    description: 'construir un lycée dans la commune de marcory',
 }]

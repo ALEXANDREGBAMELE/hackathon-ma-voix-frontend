@@ -1,29 +1,38 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./swipeStack.css";
 import TinderCard from "react-tinder-card";
-import { candidats, sondages } from "../../data";
 import CustomButon from "../CustomButon";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import CustomResult from "../CustomResult";
+import { Button, Result } from "antd";
+let sondagess;
 
-const sondagess = [
-    { id: 1, content: "Card 1" },
-    { id: 2, content: "Card 2" },
-    { id: 3, content: "Card 3" },
-    // Ajoutez plus de cartes si nécessaire
-];
-
-const SwipeStack = () => {
-    const [open, setOpen] = useState(true);
-    const [direction, setDirection] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(sondages.length - 1);
+const SwipeStack = ({ sondages, name }) => {
+    const [sondage, setSondage] = useState(sondages);
+    const [currentIndex, setCurrentIndex] = useState(sondage.length - 1);
     const currentIndexRef = useRef(currentIndex);
     const [lastDirection, setLastDirection] = useState();
     const [showResult, setShowResult] = useState(false);
-
+    const noSondage = (name) => {
+        return (
+            <Result
+                status="404"
+                title={`Aucun sondage pour la commune de ${name} actuellement`}
+                subTitle={`vous serez notifié par mail dès qu'un sondage sera disponible pour la commune de ${name}`}
+            />
+        );
+    }
+    useEffect(() => {
+        const filterSondage = () => {
+            let filtreSodage = sondages.filter((s) => s.commune == name);
+            setSondage(filtreSodage);
+            setShowResult(false);
+        };
+        filterSondage();
+    }, [name]);
     const childRefs = useMemo(
         () =>
-            Array(sondages.length)
+            Array(sondage.length)
                 .fill(0)
                 .map((i) => React.createRef()),
         []
@@ -33,7 +42,7 @@ const SwipeStack = () => {
         currentIndexRef.current = val;
     };
 
-    const canGoBack = currentIndex < sondages.length - 1;
+    const canGoBack = currentIndex < sondage.length - 1;
 
     const canSwipe = currentIndex >= 0;
 
@@ -44,10 +53,7 @@ const SwipeStack = () => {
     };
 
     const outOfFrame = (name, idx) => {
-        console.log(
-            `${name} (${idx}) left the screen!`,
-            currentIndexRef.current
-        );
+        console.log(`${name} (${idx}) left the screen!`);
         if (idx == 0) {
             setShowResult(true);
         }
@@ -56,9 +62,9 @@ const SwipeStack = () => {
     };
 
     const swipe = async (dir) => {
-        if (canSwipe && currentIndex < sondages.length) {
+        console.log(childRefs[currentIndex]);
+        if (canSwipe && currentIndex < sondage.length) {
             await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
-            console.log(canGoBack);
         }
     };
 
@@ -71,40 +77,46 @@ const SwipeStack = () => {
     };
     return (
         <div className="swipe-container">
-            {!showResult ? (
-                sondages.map((character, index) => (
-                    <TinderCard
-                        ref={childRefs[index]}
-                        className="swipe"
-                        key={character.name}
-                        onSwipe={(dir) => swiped(dir, character.name, index)}
-                        onCardLeftScreen={() =>
-                            outOfFrame(character.name, index)
-                        }
-                    >
-                        <div className="card">
-                            {character.content}
-                            <div className="button-container">
-                                <CustomButon
-                                    type="fillPrimary"
-                                    onClicked={() => swipe("left")}
-                                    title="J'aime pas"
-                                >
-                                    <DislikeOutlined />
-                                </CustomButon>
-                                <CustomButon
-                                    type="fill"
-                                    onClicked={() => swipe("right")}
-                                    title="J'aime"
-                                >
-                                    <LikeOutlined />
-                                </CustomButon>
+            {sondage.length > 0 ? (
+                !showResult ? (
+                    sondage.map((character, index) => (
+                        <TinderCard
+                            ref={childRefs[index]}
+                            className="swipe"
+                            key={character.id}
+                            onSwipe={(dir) =>
+                                swiped(dir, character.name, index)
+                            }
+                            onCardLeftScreen={() =>
+                                outOfFrame(character.name, index)
+                            }
+                        >
+                            <div className="card">
+                                {character.description}
+                                <div className="button-container">
+                                    <CustomButon
+                                        type="fillPrimary"
+                                        onClicked={() => swipe("left")}
+                                        title="J'aime pas"
+                                    >
+                                        <DislikeOutlined />
+                                    </CustomButon>
+                                    <CustomButon
+                                        type="fill"
+                                        onClicked={() => swipe("right")}
+                                        title="J'aime"
+                                    >
+                                        <LikeOutlined />
+                                    </CustomButon>
+                                </div>
                             </div>
-                        </div>
-                    </TinderCard>
-                ))
+                        </TinderCard>
+                    ))
+                ) : (
+                    <CustomResult />
+                )
             ) : (
-                <CustomResult />
+                noSondage(name)
             )}
         </div>
     );
