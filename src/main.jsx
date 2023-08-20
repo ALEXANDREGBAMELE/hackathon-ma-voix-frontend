@@ -12,6 +12,7 @@ import Login from "./page/Login.jsx";
 import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import Detail from "./page/candidatDetail/details.jsx";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/candidats/:id",
                 element: <CandidatDetails />,
+            },
+            {
+                path: "detail",
+                element: <Detail/>,
             },
         ],
     },

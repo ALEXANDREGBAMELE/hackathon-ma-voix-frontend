@@ -25,6 +25,10 @@ const menuItems = [
         label: "Sondages",
         key: "sondage",
     },
+    {
+        label: "Detail",
+        key:"detail"
+    }
 ];
 function Topbar({}) {
     const [current, setCurrent] = useState("/");
