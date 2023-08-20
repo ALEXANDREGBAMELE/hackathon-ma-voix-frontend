@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CustomButon from "../CustomButon";
+import { notification } from "antd";
 
 const commun = [
     { name: "Yopougon", id: 1 },
@@ -20,10 +21,27 @@ import { Input } from "antd";
 const { TextArea } = Input;
 export default function SondageSideBar({ handleClick }) {
     const [select, setSelect] = useState("Yopougon");
+    const [avis, setAvis] = useState("");
     const clicked = (name) => {
         setSelect(name);
         handleClick(name);
-    }
+    };
+    const [api, contextHolder] = notification.useNotification();
+    const openNotificationWithIcon = (text) => {
+        api.success({
+            message: "message envoyer",
+            description:
+                " merci  d'avoir partagé votre avis .",
+            placement: "bottomLeft",
+        });
+    };
+    const sendAvis = () => {
+        if (avis == "") {
+            return;
+        }
+        setAvis("");
+        openNotificationWithIcon("succes");
+    };
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTop">
@@ -69,6 +87,7 @@ export default function SondageSideBar({ handleClick }) {
                 </div>
             </div>
             <div className="sideBarBottom sondageSide">
+                {contextHolder}
                 <div className="title">
                     <h3>Donnez votre avis</h3>
                     <div></div>
@@ -80,8 +99,13 @@ export default function SondageSideBar({ handleClick }) {
                         marginBottom: "1rem",
                     }}
                     rows={4}
+                    placeholder="Donnez votre avis"
+                    value={avis}
+                    onChange={(e) => setAvis(e.target.value)}
                 />
-                <CustomButon title="Envoyer" />
+                <div onClick={sendAvis} className="butomAoutlin">
+                    <p>Envoyer</p>
+                </div>
             </div>
         </div>
     );
