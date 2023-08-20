@@ -4,7 +4,13 @@ import { Avatar, Card } from "antd";
 const { Meta } = Card;
 export default function MainLayout() {
     return (
-        <div style={{ overflow: "auto", minHeightheight: "calc(100vh - 11rem)",paddingBottom:"3rem" }}>
+        <div
+            style={{
+                overflow: "auto",
+                minHeightheight: "calc(100vh - 11rem)",
+                paddingBottom: "4rem",
+            }}
+        >
             <div className="direct">
                 <img
                     src="./vid.jpg"
@@ -20,7 +26,7 @@ export default function MainLayout() {
             <Card
                 style={{
                     width: "40rem",
-                    marginBottom: "2rem",
+                    marginBottom: "1.5rem",
                     padding: "1rem",
                 }}
                 actions={[
