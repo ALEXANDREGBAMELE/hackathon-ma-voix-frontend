@@ -5,7 +5,7 @@ export default function CustomResult() {
         <Result
             status="success"
             title="Merci d'avoir participé au sondage  . "
-            subTitle="Vous pouvez consulter les resultats dans la page sondage."
+            subTitle="Vous pouvez choisir une autre commune pour participer aux sondages."
             extra={[
                 <Link to="/" >
                     <Button type="primary" key="console">

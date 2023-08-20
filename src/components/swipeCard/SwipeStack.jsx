@@ -4,22 +4,29 @@ import TinderCard from "react-tinder-card";
 import CustomButon from "../CustomButon";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import CustomResult from "../CustomResult";
-
+import { Button, Result } from "antd";
 let sondagess;
 
 const SwipeStack = ({ sondages, name }) => {
     const [sondage, setSondage] = useState(sondages);
-    const [direction, setDirection] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(sondage.length - 1);
     const currentIndexRef = useRef(currentIndex);
     const [lastDirection, setLastDirection] = useState();
     const [showResult, setShowResult] = useState(false);
+    const noSondage = (name) => {
+        return (
+            <Result
+                status="404"
+                title={`Aucun sondage pour la commune de ${name} actuellement`}
+                subTitle={`vous serez notifié par mail dès qu'un sondage sera disponible pour la commune de ${name}`}
+            />
+        );
+    }
     useEffect(() => {
         const filterSondage = () => {
-            console.log("nom changé");
-            
             let filtreSodage = sondages.filter((s) => s.commune == name);
             setSondage(filtreSodage);
+            setShowResult(false);
         };
         filterSondage();
     }, [name]);
@@ -70,40 +77,46 @@ const SwipeStack = ({ sondages, name }) => {
     };
     return (
         <div className="swipe-container">
-            {!showResult ? (
-                sondage.map((character, index) => (
-                    <TinderCard
-                        ref={childRefs[index]}
-                        className="swipe"
-                        key={character.id}
-                        onSwipe={(dir) => swiped(dir, character.name, index)}
-                        onCardLeftScreen={() =>
-                            outOfFrame(character.name, index)
-                        }
-                    >
-                        <div className="card">
-                            {character.description}
-                            <div className="button-container">
-                                <CustomButon
-                                    type="fillPrimary"
-                                    onClicked={() => swipe("left")}
-                                    title="J'aime pas"
-                                >
-                                    <DislikeOutlined />
-                                </CustomButon>
-                                <CustomButon
-                                    type="fill"
-                                    onClicked={() => swipe("right")}
-                                    title="J'aime"
-                                >
-                                    <LikeOutlined />
-                                </CustomButon>
+            {sondage.length > 0 ? (
+                !showResult ? (
+                    sondage.map((character, index) => (
+                        <TinderCard
+                            ref={childRefs[index]}
+                            className="swipe"
+                            key={character.id}
+                            onSwipe={(dir) =>
+                                swiped(dir, character.name, index)
+                            }
+                            onCardLeftScreen={() =>
+                                outOfFrame(character.name, index)
+                            }
+                        >
+                            <div className="card">
+                                {character.description}
+                                <div className="button-container">
+                                    <CustomButon
+                                        type="fillPrimary"
+                                        onClicked={() => swipe("left")}
+                                        title="J'aime pas"
+                                    >
+                                        <DislikeOutlined />
+                                    </CustomButon>
+                                    <CustomButon
+                                        type="fill"
+                                        onClicked={() => swipe("right")}
+                                        title="J'aime"
+                                    >
+                                        <LikeOutlined />
+                                    </CustomButon>
+                                </div>
                             </div>
-                        </div>
-                    </TinderCard>
-                ))
+                        </TinderCard>
+                    ))
+                ) : (
+                    <CustomResult />
+                )
             ) : (
-                <CustomResult />
+                noSondage(name)
             )}
         </div>
     );
