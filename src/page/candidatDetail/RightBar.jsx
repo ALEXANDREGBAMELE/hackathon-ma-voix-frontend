@@ -1,9 +1,12 @@
 import React from "react";
+import SubNavbarDetailCandidat from "./SubNavbarDetailCandidat";
 
 function RightBar(){
     return(
         <div className="container">
-            <div className="top-bar"></div>
+            <div className="top-bar">
+                <SubNavbarDetailCandidat></SubNavbarDetailCandidat>
+            </div>
             <div className="content-card">
                 <div className="infor-candidat" style={{backgroundColor:"red"}}>
                     <div className="img-card">

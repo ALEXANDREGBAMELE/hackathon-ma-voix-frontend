@@ -36,19 +36,19 @@ function Sidebardetail(){
             
                 <div className="images-card" style={{marginTop: "40px",paddingBottom: "50px", display: "flex", flexWrap: "wrap", gap: "20px" , justifyContent: "center", alignItems: "center"}}>
                     <div className="item-img">
-                    <img src="https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg" alt="image de Bitogo" style={{width:"100px", borderRadius:"100%", border:"solid 2px red"}} />
+                    <img src="src/assets/yace.jpeg" alt="image de Bitogo" style={{width:"100px", height:"100px" ,borderRadius:"100%", }} />
                     <h3>Yace Jean Marc</h3>
                     </div>
                     <div className="item-img">
-                    <img src="https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg" alt="image de Bitogo" style={{width:"100px", borderRadius:"100%", border:"solid 2px red"}} />
+                    <img src="src/assets/yace.jpeg" alt="image de Bitogo" style={{width:"100px", height:"100px" ,borderRadius:"100%", }} />
                     <h3>Yace Jean Marc</h3>
                     </div>
                     <div className="item-img">
-                    <img src="https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg" alt="image de Bitogo" style={{width:"100px", borderRadius:"100%", border:"solid 2px red"}} />
+                    <img src="src/assets/yace.jpeg" alt="image de Bitogo" style={{width:"100px", height:"100px" ,borderRadius:"100%", }} />
                     <h3>Yace Jean Marc</h3>
                     </div>
                     <div className="item-img">
-                    <img src="https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg" alt="image de Bitogo" style={{width:"100px", borderRadius:"100%", border:"solid 2px red"}} />
+                    <img src="src/assets/yace.jpeg" alt="image de Bitogo" style={{width:"100px", height:"100px" ,borderRadius:"100%", }} />
                     <h3>Yace Jean Marc</h3>
                     </div>
                 </div>
