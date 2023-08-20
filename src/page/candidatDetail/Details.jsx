@@ -8,7 +8,7 @@ function Detail(){
     return(
     
         <div className="container" style={{display:"flex", gridTemplateColumns:"1fr 1fr", gap:"25px"}}>
-            <div className="left" style={{backgroundColor:"grey",padding:"10px"}}>
+            <div className="left" style={{backgroundColor:"",padding:"10px"}}>
                 <Sidebardetail></Sidebardetail>
             </div>
             <div className="right" style={{backgroundColor:"blue", padding:"5px"}}>
