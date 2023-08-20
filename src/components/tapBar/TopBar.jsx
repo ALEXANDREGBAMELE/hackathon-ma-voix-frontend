@@ -4,7 +4,7 @@ import {
     MailOutlined,
     SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { Button, Menu,Badge } from "antd";
 import "./topbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { curentUser, isLoggedIn } from "../../features/auth/authSlice";
 const menuItems = [
     {
-        label: "Aceuil",
+        label: "Acceuil",
         key: "/",
     },
     {
