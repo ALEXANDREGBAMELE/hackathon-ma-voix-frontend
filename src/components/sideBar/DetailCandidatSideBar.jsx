@@ -1,4 +1,4 @@
-import { news, sondages } from "../../data";
+import { candidats, news, sondages } from "../../data";
 import Article from "../Article";
 import Sondage from "../Sondage";
 import CustomButon from "../CustomButon";
@@ -27,7 +27,7 @@ export default function DetailCandidatSideBar() {
                     }
                 >
                     <Meta
-                        title="BICTOGO"
+                        title=" ADAMA BICTOGO"
                         description="Adama Bictogo (né le 14 décembre 1962), est un homme d'affaires et homme politique ivoirien. Il est le fondateur de l'entreprise Snedai Il est le secrétaire exécutif ."
                         style={{
                             textAlign: "center",
@@ -42,34 +42,35 @@ export default function DetailCandidatSideBar() {
             </div>
             <div className="sideBarBottom">
                 <div className="title">
-                    <h4>Voici les autres candidats de Cocody</h4>
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            width: "100%",
-                        }}
-                    >
-                        <img
-                            src="./yace.jpg"
-                            alt=""
-                            style={{
-                                height: "2rem",
-                                width: "2rem",
-                                borderRadius: "50%",
-                            }}
-                        />
-                        <img
-                            src="./yace.jpg"
-                            alt=""
-                            style={{
-                                height: "2rem",
-                                width: "2rem",
-                                borderRadius: "50%",
-                            }}
-                        />
-                    </div>
+                    <h4>Quelques candidats de Cocody</h4>
+                    <div></div>
+                </div>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                        width: "100%",
+                        marginTop: ".5rem",
+                        flexWrap: "wrap",
+                        gap: ".3rem",
+                    }}
+                >
+                    {candidats.slice(0, 4).map((c) => (
+                        <div key={c.id} className="imgCan">
+                            <img
+                                src={c.img_url}
+                                alt=""
+                                style={{
+                                    height: "3rem",
+                                    width: "3rem",
+                                    borderRadius: "50%",
+                                    objectFit: "cover",
+                                }}
+                            />
+                            <span>{ c.name}</span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

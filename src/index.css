@@ -154,3 +154,17 @@ footer {
     background: var(--black);
     color: var(--white);
 }
+
+.imgCan {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+}
+
+.ant-pagination-next {
+    text-align: center;
+    align-items: center;
+}

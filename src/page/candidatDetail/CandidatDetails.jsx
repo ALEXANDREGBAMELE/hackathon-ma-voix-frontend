@@ -4,21 +4,23 @@ import { Tabs, Layout } from "antd";
 import Sondage from "../../components/Sondage";
 import Article from "../../components/Article";
 import DetailCandidatSideBar from "../../components/sideBar/DetailCandidatSideBar";
+import { NewsCard } from "../../components/candidatCard/NewsCard";
+import ActualiteCandidat from "./ActualiteCandidat";
 const { Header, Content, Footer, Sider } = Layout;
 const tabeItems = [
     {
         key: "1",
-        label: `Apropo`,
-        children: <Article />,
+        label: `Actualités`,
+        children: <ActualiteCandidat />,
     },
     {
         key: "2",
-        label: `Projet`,
+        label: `Idéologie`,
         children: <Article />,
     },
     {
         key: "3",
-        label: `Portofolio`,
+        label: `Historique professionnel`,
         children: <Article />,
     },
 ];
@@ -60,8 +62,17 @@ export default function CandidatDetails() {
                         overflow: "initial",
                     }}
                 >
-                    <div>
+                    <div style={{ paddingTop: "4rem" }}>
                         <Tabs
+                            tabBarStyle={{
+                                position: "fixed",
+                                top: "3.8rem",
+                                paddingTop: ".1rem",
+                                zIndex: 1,
+                                background: "#fff",
+                                width: "42%",
+                                height: "4rem",
+                            }}
                             defaultActiveKey="1"
                             centered
                             onChange={onTab1Change}

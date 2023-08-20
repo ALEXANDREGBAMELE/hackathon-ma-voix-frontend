@@ -13,22 +13,28 @@ export const candidats = [{
         id: 1,
         name: 'Bacongo ',
         commune: 'Koumassi',
+        img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+
     }, {
         id: 2,
         name: 'Bictogo ',
         commune: 'Marcory',
+        img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
     }, {
         id: 3,
-        name: 'Candia camara ',
-        commune: 'Abobo',
+        name: 'Yasmina Ouegnin ',
+        commune: 'Cocody',
+        img_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Yasmina_Ouegnin_01.jpg/330px-Yasmina_Ouegnin_01.jpg',
     }, {
         id: 4,
         name: 'Yasse Jean marc ',
         commune: 'cocody',
+        img_url: 'https://mairiecocody.com/extra-images/mayor-fig.jpg',
     }, {
         id: 5,
         name: 'Tchagba eric ',
         commune: 'Treichville',
+        img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
     }, {
         id: 6,
         name: 'Aby raoul ',
