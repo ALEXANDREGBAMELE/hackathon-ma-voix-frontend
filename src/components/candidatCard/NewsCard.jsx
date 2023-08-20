@@ -29,7 +29,7 @@ export const NewsCard = () => {
                 description="#Politique  #Infrastrutures  #Election  #Paix"
             />
             <img
-                src="./pont.jpg"
+                src="https://media-files.abidjan.net/photo/infrastructures-visite-des-travaux-du-5e-pont-reliant-les-communes-de-cocod_kyp0xb88me.jpg"
                 style={{
                     width: "100%",
                     height: "10rem",

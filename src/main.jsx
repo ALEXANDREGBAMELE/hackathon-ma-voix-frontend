@@ -12,6 +12,7 @@ import Login from "./page/Login.jsx";
 import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import Resultat from "./page/Resultat.jsx";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: "/sondage",
                 element: <Sondage />,
+            },
+            {
+                path: "/resultat",
+                element: <Resultat />,
             },
         ],
     },

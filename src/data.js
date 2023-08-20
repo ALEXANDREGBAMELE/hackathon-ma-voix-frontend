@@ -14,6 +14,11 @@ export const candidats = [{
         name: 'Bacongo ',
         commune: 'Koumassi',
         img_url: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+        post: [{
+            id: 1,
+            title: 'Inauguration du nouveau Marché de la commune de koumassi',
+            post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+        }]
 
     }, {
         id: 2,
