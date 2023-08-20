@@ -1,28 +1,31 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./swipeStack.css";
 import TinderCard from "react-tinder-card";
 import CustomButon from "../CustomButon";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import CustomResult from "../CustomResult";
 
-const sondagess = [
-    { id: 1, content: "Card 1" },
-    { id: 2, content: "Card 2" },
-    { id: 3, content: "Card 3" },
-    // Ajoutez plus de cartes si nécessaire
-];
+let sondagess;
 
-const SwipeStack = ({ sondages }) => {
-    const [open, setOpen] = useState(true);
+const SwipeStack = ({ sondages, name }) => {
+    const [sondage, setSondage] = useState(sondages);
     const [direction, setDirection] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(sondages.length - 1);
+    const [currentIndex, setCurrentIndex] = useState(sondage.length - 1);
     const currentIndexRef = useRef(currentIndex);
     const [lastDirection, setLastDirection] = useState();
     const [showResult, setShowResult] = useState(false);
-
+    useEffect(() => {
+        const filterSondage = () => {
+            console.log("nom changé");
+            
+            let filtreSodage = sondages.filter((s) => s.commune == name);
+            setSondage(filtreSodage);
+        };
+        filterSondage();
+    }, [name]);
     const childRefs = useMemo(
         () =>
-            Array(sondages.length +1)
+            Array(sondage.length)
                 .fill(0)
                 .map((i) => React.createRef()),
         []
@@ -32,7 +35,7 @@ const SwipeStack = ({ sondages }) => {
         currentIndexRef.current = val;
     };
 
-    const canGoBack = currentIndex < sondages.length - 1;
+    const canGoBack = currentIndex < sondage.length - 1;
 
     const canSwipe = currentIndex >= 0;
 
@@ -43,10 +46,7 @@ const SwipeStack = ({ sondages }) => {
     };
 
     const outOfFrame = (name, idx) => {
-        console.log(
-            `${name} (${idx}) left the screen!`,
-            currentIndexRef.current
-        );
+        console.log(`${name} (${idx}) left the screen!`);
         if (idx == 0) {
             setShowResult(true);
         }
@@ -55,9 +55,8 @@ const SwipeStack = ({ sondages }) => {
     };
 
     const swipe = async (dir) => {
-        console.log("swipe", dir);
-        console.log(childRefs[1]);
-        if (canSwipe && currentIndex < sondages.length) {
+        console.log(childRefs[currentIndex]);
+        if (canSwipe && currentIndex < sondage.length) {
             await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
         }
     };
@@ -72,7 +71,7 @@ const SwipeStack = ({ sondages }) => {
     return (
         <div className="swipe-container">
             {!showResult ? (
-                sondages.map((character, index) => (
+                sondage.map((character, index) => (
                     <TinderCard
                         ref={childRefs[index]}
                         className="swipe"

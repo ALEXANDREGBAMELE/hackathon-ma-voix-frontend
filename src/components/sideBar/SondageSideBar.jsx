@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CustomButon from "../CustomButon";
 
 const commun = [
@@ -12,12 +13,17 @@ const commun = [
     { name: "Songon", id: 9 },
     { name: "TreichVille", id: 10 },
     { name: "PortBouet", id: 11 },
-    { name: "Ariana", id: 12 },
-    { name: "Ariana", id: 13 },
+    { name: "Attécoubé", id: 12 },
+    { name: "Anyama", id: 13 },
 ];
 import { Input } from "antd";
 const { TextArea } = Input;
-export default function SondageSideBar() {
+export default function SondageSideBar({ handleClick }) {
+    const [select, setSelect] = useState("Yopougon");
+    const clicked = (name) => {
+        setSelect(name);
+        handleClick(name);
+    }
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTop">
@@ -32,7 +38,7 @@ export default function SondageSideBar() {
                         flexWrap: "wrap",
                         width: "100%",
                         gap: ".5rem",
-                        padding:"5px"
+                        padding: "5px",
                     }}
                 >
                     {commun.map((item) => {
@@ -47,7 +53,16 @@ export default function SondageSideBar() {
                                 key={item.id}
                                 className="commun"
                             >
-                                <CustomButon title={item.name} />
+                                <div
+                                    onClick={() => clicked(item.name)}
+                                    className={
+                                        select == item.name
+                                            ? "butomFillSecondary"
+                                            : "butomAoutlin"
+                                    }
+                                >
+                                    <p>{item.name} </p>
+                                </div>
                             </div>
                         );
                     })}
@@ -58,14 +73,16 @@ export default function SondageSideBar() {
                     <h3>Donnez votre avis</h3>
                     <div></div>
                 </div>
-                <TextArea style={{
-                    marginTop: "1rem",
-                    height: "60%",
-                    marginBottom:"1rem"
-                }} rows={4} />
+                <TextArea
+                    style={{
+                        marginTop: "1rem",
+                        height: "60%",
+                        marginBottom: "1rem",
+                    }}
+                    rows={4}
+                />
                 <CustomButon title="Envoyer" />
-                
-        </div>
+            </div>
         </div>
     );
 }
