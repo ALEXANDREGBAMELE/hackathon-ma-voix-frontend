@@ -192,171 +192,60 @@ export const candidats = [{
                                     img_url: '',
                                     logo: '',
                                     post: [{
-                                                id: 1,
-                                                title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                            }, {
-                                                id: 1,
-                                                title: '',
-                                                post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                            }, {
-                                                id: 1,
-                                                title: '',
-                                                post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                            },
+                                            id: 1,
+                                            title: 'Inauguration du nouveau Marché de la commune de koumassi',
+                                            post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+                                        }, {
+                                            id: 1,
+                                            title: '',
+                                            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+                                        }, {
+                                            id: 1,
+                                            title: '',
+                                            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+                                        },
 
-                                            {
-                                                id: 10,
-                                                name: 'Bamogo yacouba ',
-                                                commune: 'marcory',
-                                                img_url: '',
-                                                logo: '',
-                                                post: [{
-                                                    id: 1,
-                                                    title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                    post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }],
-                                            }, {
-                                                id: 11,
-                                                name: 'Aby raoul ',
-                                                commune: 'marcory',
-                                                img_url: '',
-                                                logo: '',
-                                                post: [{
-                                                    id: 1,
-                                                    title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                    post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }],
-                                            }, {
-                                                id: 12,
-                                                name: 'Yacouba camara ',
-                                                commune: 'Adjamé',
-                                                img_url: '',
-                                                logo: '',
-                                                post: [{
-                                                    id: 1,
-                                                    title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                    post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }],
-                                            }, {
-                                                id: 13,
-                                                name: 'Kotta serge ',
-                                                commune: 'cocody',
-                                                img_url: '',
-                                                logo: '',
-                                                post: [{
-                                                    id: 1,
-                                                    title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                    post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }],
-                                            }, {
-                                                id: 14,
-                                                name: 'Yao Yolande ',
-                                                commune: 'Treichville',
-                                                logo: '',
-                                                img_url: '',
-                                                post: [{
-                                                    id: 1,
-                                                    title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                    post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }],
-                                            }, {
-                                                id: 15,
-                                                name: 'Bamogo yacouba ',
-                                                commune: 'marcory',
-                                                logo: '',
-                                                img_url: '',
-                                                post: [{
-                                                    id: 1,
-                                                    title: 'Inauguration du nouveau Marché de la commune de koumassi',
-                                                    post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }, {
-                                                    id: 1,
-                                                    title: '',
-                                                    post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-                                                }],
-                                            }
-                                        ]
-                                        // creer un tableau de 20 sondages
-                                    export const sondages = [{
-                                        id: 1,
-                                        description: 'Construir un pont entre la commune de cocody et la commune de treichville',
-                                    }, {
-                                        id: 2,
-                                        description: 'creer un centre de formation pour les jeunes de la commune de cocody',
-                                    }, {
-                                        id: 3,
-                                        description: 'rehabiliter les routes de la commune de cocody',
-                                    }, {
-                                        id: 4,
-                                        description: 'aménager les routes de la commune de koumassi',
-                                    }, {
-                                        id: 5,
-                                        description: 'rehabiliter l\' hopital  de la commune de koumassi',
-                                    }, {
-                                        id: 6,
-                                        description: 'creer un centre de formation pour les jeunes de la commune de koumassi',
-                                    }, {
-                                        id: 7,
-                                        description: 'augmenter le nombre de bus dans la commune de koumassi',
-                                    }, {
-                                        id: 8,
-                                        description: 'elever le niveau de l\'education dans la commune d\'adjamé',
-                                    }, {
-                                        id: 9,
-                                        description: 'construction d\'un centre de formation pour les jeunes de la commune d\'adjamé',
-                                    }, {
-                                        id: 10,
-                                        description: 'bitumer les routes du marché la commune d\'adjamé',
-                                    }, {
-                                        id: 11,
-                                        description: 'construire un centre de formation pour les jeunes de la commune de marcory',
 
-                                    }, {
-                                        id: 12,
-                                        description: 'construir un lycée dans la commune de marcory',
-                                    }]
+                                    ]
+
+                                }
+                            ]
+                            // creer un tableau de 20 sondages
+                        export const sondages = [{
+                            id: 1,
+                            description: 'Construir un pont entre la commune de cocody et la commune de treichville',
+                        }, {
+                            id: 2,
+                            description: 'creer un centre de formation pour les jeunes de la commune de cocody',
+                        }, {
+                            id: 3,
+                            description: 'rehabiliter les routes de la commune de cocody',
+                        }, {
+                            id: 4,
+                            description: 'aménager les routes de la commune de koumassi',
+                        }, {
+                            id: 5,
+                            description: 'rehabiliter l\' hopital  de la commune de koumassi',
+                        }, {
+                            id: 6,
+                            description: 'creer un centre de formation pour les jeunes de la commune de koumassi',
+                        }, {
+                            id: 7,
+                            description: 'augmenter le nombre de bus dans la commune de koumassi',
+                        }, {
+                            id: 8,
+                            description: 'elever le niveau de l\'education dans la commune d\'adjamé',
+                        }, {
+                            id: 9,
+                            description: 'construction d\'un centre de formation pour les jeunes de la commune d\'adjamé',
+                        }, {
+                            id: 10,
+                            description: 'bitumer les routes du marché la commune d\'adjamé',
+                        }, {
+                            id: 11,
+                            description: 'construire un centre de formation pour les jeunes de la commune de marcory',
+
+                        }, {
+                            id: 12,
+                            description: 'construir un lycée dans la commune de marcory',
+                        }]
