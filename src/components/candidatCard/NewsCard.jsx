@@ -48,7 +48,7 @@ export const NewsCard = ({post}) => {
                     width: "100%",
                     height: "10rem",
                     margin: "1rem",
-                    objectFit: "fill",
+                    objectFit: "contain",
                 }}
                 alt=""
             />

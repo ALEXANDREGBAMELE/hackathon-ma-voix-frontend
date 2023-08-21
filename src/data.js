@@ -219,7 +219,7 @@ export const candidats = [{
             }],
         }, {
             id: 11,
-            name: 'Aby raoul ',
+            name: 'Aby king ',
             commune: 'marcory',
             img_url: '',
             logo: '',
