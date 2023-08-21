@@ -87,7 +87,7 @@ export const candidats = [{
         },{ id: 2,
             title: 'mon rêve est celui d’un monde, d’un pays, d’une commune, où les peuples et les cultures s’embrassent',
             post_img: 'https://pbs.twimg.com/media/FEOoAFZWYAEYJQ2?format=webp&name=small',
-        },{
+        },{ 
             id: 3,
             title: 'Parténariat: le Maire de Cocody Jean Marc Yacé séjourne à Mayenne',
             post_img: 'https://media-files.abidjan.net/photo/Kassav02.jpg',
