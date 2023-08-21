@@ -19,19 +19,20 @@ export const candidats = [{
             id: 1,
             title: 'M. Bacongo a rassuré les femmes que conformément à la loi N°2019-870 du 14 octobre 2019 favorisant la représentation de la femme dans les assemblées élues et de son décret d’application, la parité sera respectée. « Même si à l’impossible nul n’est tenu, nous nous battrons pour que le quota soit respecté », a-t-il soutenu.',
             post_img: '',
-         }],
 
-        post: [{
+         },{
             id: 2,
             title: 'AMÉLIORATION DU CADRE DE VIE À KOUMASSI : CISSÉ IBRAHIMA BACONGO CHANGE LE VISAGE DU QUARTIER ‘’ 3 AMPOULES’’',
             post_img: 'https://linfodrome.com/media/article/images/src/84073-koumassi-3-ampoules.webp',
-        }],
-
-        post: [{
+        },{
             id: 3,
             title: 'https://linfodrome.com/media/article/images/src/84073-koumassi-3-ampoules.webp',
             post_img: 'https://linfodrome.com/media/article/images/src/88649-ossin-didier.webp',
-        }],
+        } ],
+
+       
+
+      
 
     }, {
         id: 2,
@@ -43,17 +44,17 @@ export const candidats = [{
             id: 1,
             title: 'Adama Bictogo : « Alassane Ouattara est ma boussole et le catalyseur de mes ambitions »',
             post_img: '',
-        }],
-        post: [{
+        },{
             id: 2,
             title: 'Yopougon : Le président de l’Assemblée Nationale célèbre les pèlerins de la commune',
             post_img: 'https://cdn4.premiumread.com/?url=https://fratmat.info/uploads/images/2023/08/20/164034.jpg&w=800&q=100&f=jpg&t=1',
-        }],
-        post: [{
+        },{
             id: 3,
             title: 'Chronique: Adama Bictogo est prêt à relever tous les défis qui s’offrent à lui',
             post_img: 'http://www.ivoireactu.net/wp-content/uploads/2022/10/Adama-Bictogo.jpg',
-        }]
+        }],
+       
+      
      },
 
     
