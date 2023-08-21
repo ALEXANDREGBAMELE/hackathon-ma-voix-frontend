@@ -174,13 +174,14 @@ footer {
     margin-bottom: 1.3rem;
 }
 
-.sideBarTopsvg path,
+
+/* .sideBarTopsvg path,
 .sideBarTopsvg polyline,
 .sideBarTopsvg polygon,
 .sideBarTopsvg rect {
     fill: #7d7d7d;
     color: #fff;
-}
+} */
 
 .st10 {
     fill: #fff;
@@ -201,4 +202,8 @@ polyline text,
 polygon text,
 rect text {
     fill: #fff;
+}
+
+.st2 .st12 .st11 .st5 .st4 {
+    fill: #E42A16;
 }

@@ -20,7 +20,6 @@ export default function CarteInteractif() {
         <div
             style={{
                 width: "100%",
-                
             }}
         >
             <svg
@@ -36,103 +35,114 @@ export default function CarteInteractif() {
             >
                 <polyline
                     className="st0"
-                    fill="#fff"
                     points="77.78,363.88 162.63,297.21 281.82,278.02 327.27,358.83 264.65,394.18 159.6,377.01 107.07,417.41 
 	"
+                    fill="#D59612"
                     onMouseEnter={() => handleCommuneHover("Commune 1")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Abobo")}
                 />
                 <polyline
                     className="st1"
                     points="293.94,267.92 454.55,194.18 506.06,296.2 407.07,430.55 337.37,358.83 284.85,278.02 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Bingergville")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("Yopougon")}
+                    onClick={() => handleCommuneClick("Bingergville")}
+                    fill="#E15A16"
                 />
                 <polyline
                     className="st2"
                     points="127.78,442.67 140.91,502.26 224.75,498.22 230.81,596.2 475.25,596.2 471.21,489.13 319.7,383.07 
 	235.86,408.32 163.13,388.12 115.66,418.92 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    fill="#E42A16"
+                    onMouseEnter={() => handleCommuneHover("Commune 3")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("Treichville")}
+                    onClick={() => handleCommuneClick("Yopougon")}
                 />
                 <polygon
                     className="st1"
                     points="527.27,319.43 702.02,223.47 577.78,178.02 468.69,190.14 520.2,308.32 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 4")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Treichville")}
                 />
                 <polyline
                     className="st1"
                     points="494.95,598.22 707.07,598.22 692.93,497.72 484.85,561.86 478.79,569.94 478.79,598.22 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 5")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Plateau")}
+                    fill="#E42A16"
                 />
                 <polyline
                     className="st3"
                     points="495.96,318.42 409.09,429.54 458.59,468.93 587.88,416.4 658.59,268.93 538.38,318.42 533.84,333.58 
 	527.27,324.48 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 6")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Adjame")}
+                    fill="#045B1F"
                 />
                 <path
                     className="st1"
                     d="M579.8,376"
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 7")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Commune 7")}
+                    
                 />
                 <polyline
                     className="st4"
                     points="771.72,596.2 776.77,596.2 785.86,596.2 1020.2,596.2 1061.62,541.66 1072.73,529.54 1018.18,481.05 
 	1017.17,400.24 953.54,498.22 835.35,498.22 707.07,514.38 721.21,584.08 728.28,598.22 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 8")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Attécoubé")}
+                    fill="#D59612"
                 />
                 <polyline
                     className="st5"
                     points="614.9,445.19 868.47,272.93 903.25,336.71 643.55,501.25 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("PortBouet")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Koumassi")}
+                    fill="#D59612"
                 />
                 <polyline
                     className="st4"
                     points="485.86,468.93 604.04,420.94 626.26,499.23 506.06,543.68 478.79,489.64 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 10")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Marcory")}
+                    fill="#D59612"
                 />
                 <polyline
                     className="st6"
                     points="692.93,258.83 877.78,244.65 890.91,244.65 885.86,252.77 649.49,414.38 600,414.38 592.93,414.38 
 	661.62,266.91 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 11")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("PortBouet")}
+                    fill="#D59612"
                 />
                 <path className="st4" d="M822.22,329.51" />
                 <polyline
                     className="st7"
                     points="681.82,492.16 668.69,500.24 911.11,341.15 1010.1,378.52 951.52,484.83 683.84,500.24 677.78,500.24 
 	"
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 12")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Cocody")}
+                    fill="#E42A16"
                 />
                 <polyline
                     className="st7"
                     points="600.76,171.96 1024.24,197.21 1038.38,366.91 905.05,332.54 900,262.87 914.14,232.57 692.93,240.65 
 	698.99,217.41 595.96,181.05 571.21,176 "
-                    onMouseEnter={() => handleCommuneHover("Commune 1")}
+                    onMouseEnter={() => handleCommuneHover("Commune 13")}
                     onMouseLeave={handleCommuneMouseLeave}
-                    onClick={() => handleCommuneClick("ABOBO")}
+                    onClick={() => handleCommuneClick("Anyama")}
+                    fill="#E42A16"
                 />
                 <path
                     className="st8"
