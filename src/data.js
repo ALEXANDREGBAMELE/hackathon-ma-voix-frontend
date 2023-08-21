@@ -18,7 +18,7 @@ export const candidats = [{
         post: [{
             id: 1,
             title: 'M. Bacongo a rassuré les femmes que conformément à la loi N°2019-870 du 14 octobre 2019 favorisant la représentation de la femme dans les assemblées élues et de son décret d’application, la parité sera respectée. « Même si à l’impossible nul n’est tenu, nous nous battrons pour que le quota soit respecté », a-t-il soutenu.',
-            post_img: '',
+            post_img: 'https://www.7info.ci/wp-content/uploads/2021/07/nomination-de-cisse-bacongo-un-choix-tactique-a-quelques-heures-de-la-rencontre-ouattara-gbagbo-7info-670x360.jpg',
 
          },{
             id: 2,
@@ -34,8 +34,8 @@ export const candidats = [{
         id: 2,
         name: 'Bictogo ',
         commune: 'Yopougon',
-        img_url: ',https://s.rfi.fr/media/display/93ef28d0-e690-11ec-bb76-005056a97e36/w:980/p:16x9/000_32C28A3.webp',
-        logo:'',
+        img_url:'https://linfodrome.com/media//article/images/src/31401-339ed3435d099dd0a91c267af376e8f0.webp',
+        logo:'http://www.africanewsquick.net/wp-content/uploads/2019/11/67124150_2105073152938156_2248974648622448640_n-712x491.jpg',
         post: [{
             id: 1,
             title: 'Adama Bictogo : « Alassane Ouattara est ma boussole et le catalyseur de mes ambitions »',
@@ -57,7 +57,7 @@ export const candidats = [{
         name: 'Yasmina Ouegnin ',
         commune: 'Cocody',
         img_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Yasmina_Ouegnin_01.jpg/330px-Yasmina_Ouegnin_01.jpg',
-        logo:'',
+        logo:'https://upload.wikimedia.org/wikipedia/fr/7/7f/PDCI_logo.PNG',
         post: [{
             id: 1,
             title: 'Ce que j’ai toujours souhaité pour ce parti qui m’est cher est qu’il recommence à retrouver son identité. “',
@@ -79,7 +79,7 @@ export const candidats = [{
         name: 'YaCé Jean marc ',
         commune: 'cocody',
         img_url: 'https://mairiecocody.com/extra-images/mayor-fig.jpg',
-        logo: 'https://credochristi.com/wp-content/uploads/2021/02/logo-pdci%C2%A7rda.jpg',
+        logo: 'https://upload.wikimedia.org/wikipedia/fr/7/7f/PDCI_logo.PNG',
         post: [{
             id: 1,
             title: 'Abidjan: Le nouveau Maire de Cocody, Jean-Marc Yacé va bientôt chasser tous les « Gnambros et syndicats »',
@@ -99,7 +99,7 @@ export const candidats = [{
         name: 'Touré Souleymane',
         commune: 'Treichville',
         img_url: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg', 
-        logo:'',
+        logo:'http://www.africanewsquick.net/wp-content/uploads/2019/11/67124150_2105073152938156_2248974648622448640_n-712x491.jpg',
         post: [{
             id: 1,
             title: 'Municipales 2023 : Touré Souleymane annonce sa candidature pour « rendre à Treichville toute sa splendeur »',
@@ -107,11 +107,11 @@ export const candidats = [{
         }, {
             id: 1,
             title: '',
-            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+            post_img: '',
         },{
             id: 1,
             title: '',
-            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+            post_img: '',
         },
     ]},
 
@@ -119,16 +119,16 @@ export const candidats = [{
         id: 6,
         name: 'Aby raoul ',
         commune: 'marcory',
-        img_url:'',
-        logo:'',
+        img_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Aby_Raoul.jpg/800px-Aby_Raoul.jpg',
+        logo:'https://upload.wikimedia.org/wikipedia/fr/7/7f/PDCI_logo.PNG',
         post: [{
             id: 1,
-            title: 'Inauguration du nouveau Marché de la commune de koumassi',
-            post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
+            title: 'Aby Raoul lors de la cérémonie d/ouverture du FEMUA 14 à Abidjan en Mai 2022',
+            post_img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Aby_Raoul.jpg/800px-Aby_Raoul.jpg',
         },{
             id: 1,
-            title: '',
-            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+            title: 'Municipales à Marcory : Aby Raoul appelle à des élections ouvertes',
+            post_img: 'https://www.koaci.com/assets/news/thumbnails/1000/2021/06/photo_1622721692.JPG',
         },{
             id: 1,
             title: '',
