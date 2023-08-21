@@ -30,10 +30,6 @@ export const candidats = [{
             post_img: 'https://linfodrome.com/media/article/images/src/88649-ossin-didier.webp',
         } ],
 
-       
-
-      
-
     }, {
         id: 2,
         name: 'Bictogo ',
@@ -43,7 +39,7 @@ export const candidats = [{
         post: [{
             id: 1,
             title: 'Adama Bictogo : « Alassane Ouattara est ma boussole et le catalyseur de mes ambitions »',
-            post_img: '',
+            post_img: 'https://www.7info.ci/wp-content/uploads/2022/02/cisse-670x360.jpg',
         },{
             id: 2,
             title: 'Yopougon : Le président de l’Assemblée Nationale célèbre les pèlerins de la commune',
@@ -52,13 +48,11 @@ export const candidats = [{
             id: 3,
             title: 'Chronique: Adama Bictogo est prêt à relever tous les défis qui s’offrent à lui',
             post_img: 'http://www.ivoireactu.net/wp-content/uploads/2022/10/Adama-Bictogo.jpg',
-        }],
-       
-      
-     },
+        }], 
+      },
 
     
-    {
+        {
         id: 3,
         name: 'Yasmina Ouegnin ',
         commune: 'Cocody',
@@ -68,22 +62,21 @@ export const candidats = [{
             id: 1,
             title: 'Ce que j’ai toujours souhaité pour ce parti qui m’est cher est qu’il recommence à retrouver son identité. “',
             post_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNTxlwrzcEQz7fDUFzUQDHhWBS-2DXA6xiUw&usqp=CAU',
-        }],
-        post: [{
+        },{
             id: 2,
             title: 'Pdci-Rda : Yasmina Ouégnin annonce bientôt un livre dédié à Henri Konan Bédié',
             post_img: 'https://cdn4.premiumread.com/?url=https://fratmat.info/uploads/images/2021/10/21/84290.jpg&w=800&q=100&f=jpg&t=1',
-        }],
-        post: [{
+
+        },{
             id: 3,
             title: 'En Côte d’Ivoire, Yasmina Ouégnin à l’assaut de Cocody',
             post_img: 'https://organe.pressecotedivoire.fr/img/article/1593611474-6641.jpg',
         }],
     },
     
-    {
+         {
         id: 4,
-        name: 'Yasse Jean marc ',
+        name: 'YaCé Jean marc ',
         commune: 'cocody',
         img_url: 'https://mairiecocody.com/extra-images/mayor-fig.jpg',
         logo: 'https://credochristi.com/wp-content/uploads/2021/02/logo-pdci%C2%A7rda.jpg',
@@ -91,13 +84,10 @@ export const candidats = [{
             id: 1,
             title: 'Abidjan: Le nouveau Maire de Cocody, Jean-Marc Yacé va bientôt chasser tous les « Gnambros et syndicats »',
             post_img: 'https://i0.wp.com/cotedivoirenews.ci/wp-content/uploads/2018/11/jean-marc-yac%C3%A9.jpg?w=1620&ssl=1',
-        }],
-        post: [{
-            id: 2,
+        },{ id: 2,
             title: 'mon rêve est celui d’un monde, d’un pays, d’une commune, où les peuples et les cultures s’embrassent',
             post_img: 'https://pbs.twimg.com/media/FEOoAFZWYAEYJQ2?format=webp&name=small',
-        }],
-        post: [{
+        },{
             id: 3,
             title: 'Parténariat: le Maire de Cocody Jean Marc Yacé séjourne à Mayenne',
             post_img: 'https://media-files.abidjan.net/photo/Kassav02.jpg',
@@ -114,14 +104,17 @@ export const candidats = [{
             id: 1,
             title: 'Municipales 2023 : Touré Souleymane annonce sa candidature pour « rendre à Treichville toute sa splendeur »',
             post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-        }],
-
-        post: [{
+        }, {
             id: 1,
             title: '',
             post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
-        }],
-    },
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },
+    ]},
+
      {
         id: 6,
         name: 'Aby raoul ',
@@ -132,7 +125,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, 
     
     {
@@ -145,7 +146,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, 
     {
         id: 8,
@@ -157,7 +166,15 @@ export const candidats = [{
             id: 1,
             title: 'ADJARATOU TRAORÉ (CADRE DU RHDP ET CANDIDATE INDÉPENDANTE À KOUMASSI) « JE METS EN JEU MA CARRIÈRE POLITIQUE POUR RÉPONDRE À L’APPEL DES HABITANTS »',
             post_img:'https://www.7info.ci/wp-content/uploads/2023/08/itw-670x360.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
         
     }, {
         id: 9,
@@ -169,8 +186,18 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
-    }, {
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },
+    ]}, 
+        
+        {
         id: 10,
         name: 'Bamogo yacouba ',
         commune: 'marcory',
@@ -180,7 +207,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, {
         id: 11,
         name: 'Aby raoul ',
@@ -191,7 +226,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, {
         id: 12,
         name: 'Yacouba camara ',
@@ -202,7 +245,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, {
         id: 13,
         name: 'Kotta serge ',
@@ -213,7 +264,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, {
         id: 14,
         name: 'Yao Yolande ',
@@ -224,7 +283,15 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }, {
         id: 15,
         name: 'Bamogo yacouba ',
@@ -235,12 +302,20 @@ export const candidats = [{
             id: 1,
             title: 'Inauguration du nouveau Marché de la commune de koumassi',
             post_img: 'https://www.ivoireco.com/wp-content/uploads/2018/10/IMG_20181013_150830.jpg',
-        }]
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        },{
+            id: 1,
+            title: '',
+            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+        }],
     }]
     // creer un tableau de 20 sondages
 export const sondages = [{
     id: 1,
-    description: 'Contruir un pont entre la commune de cocody et la commune de treichville',
+    description: 'Construir un pont entre la commune de cocody et la commune de treichville',
 }, {
     id: 2,
     description: 'creer un centre de formation pour les jeunes de la commune de cocody',
