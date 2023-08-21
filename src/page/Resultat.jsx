@@ -1,19 +1,22 @@
 import Collapse from "rc-collapse";
 import React from "react";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
+import ListeCommune from "../components/sideBar/ListeCommune";
 
 export function Resultat() {
   const bitogoImgUrl = "https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg"
   return (
     <div className="container" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "5px" }}>
-      <div className="side-bar" style={{width:"25rem"}}>
-        <SondageSideBar></SondageSideBar>
+      <div className="side-bar" style={{width:"20rem" }}>
+        <div className="liste-commune" style={{border:"solid 1px e0e0e0", backgroundColor:"white" ,borderRadius:"15px", marginTop:"2rem", padding:"1rem"}}>
+        <ListeCommune></ListeCommune>
+        </div>
       </div>
 
-      <div className="resultat-container" style={{ }}>
-        <div className="top-card" style={{ display: "flex", gridTemplateColumns:"1fr 1fr" , gap:"10px"}}>
-          <div className="left" style={{ width: "400px" }}>
-            <img src={bitogoImgUrl} alt="" />
+      <div className="resultat-container" style={{ overflowY:"auto", msOverflowStyle:"none",width:"100%"}}>
+        <div className="top-card" style={{ display: "flex", gridTemplateColumns:"1fr 1fr" , gap:"10px", marginLeft:"3.7rem", marginTop:"2rem"}}>
+          <div className="left" style={{ width: "400px", }}>
+            <img style={{borderBottomRightRadius:"15px", borderBottomLeftRadius:"15px"}} src={bitogoImgUrl} alt="" />
           </div>
           <div className="right">
             <div className="title" style={{ fontSize: "24px", padding:"5px", textAlign:"center" }}>Au Somet : </div>
@@ -24,7 +27,7 @@ export function Resultat() {
         </div>
 
 
-        <div className="bottom-card" style={{ display: "flex", flexDirection: "row", borderRadius: "15px", marginTop:"15px" }}>
+        <div className="bottom-card" style={{ display: "flex", flexDirection: "row", borderRadius: "15px", marginTop:"15px", marginBottom:"6rem" }}>
           <div className="item-1" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "70rem", marginLeft: "5%", padding: "10px", marginBottom: "-15px" , borderRadius:"15px" , border:"solid 1px e0e0e0", backgroundColor:"white"}}>
             <table className="users-table" style={{ borderCollapse: "collapse", marginTop: "40px", borderRadius:"15px" , backgroundColor:"#e0e0e0"}}>
               <thead>
