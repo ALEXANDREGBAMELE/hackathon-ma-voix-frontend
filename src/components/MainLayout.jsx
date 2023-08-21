@@ -16,6 +16,7 @@ export default function MainLayout() {
                     bottom: 0,
                     background: "#fff",
                     overflow: "hidden",
+                    
                 }}
             >
                 <SideBar />

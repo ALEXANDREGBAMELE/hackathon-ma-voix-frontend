@@ -1,160 +1,180 @@
-.sidebarCotainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 2rem;
-    margin-top: 4rem;
-    overflow: hidden;
-}
-
-.sondageComponent {
-    border-radius: 10px;
-    border: 0.5px dashed #000;
-    background: #FFF;
-    padding: 10px;
-    margin-top: 15px;
-}
-
-.sondageComponent h2 {
-    font-family: Mulish;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 86.523%;
-    margin-bottom: 5px;
-}
-
-.sondageComponent span {
-    color: rgba(93, 90, 90, 0.54);
-    font-family: Mulish;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 86.523%;
-}
-
-.sideBarTop,
-.sideBarBottom {
-    border: var(--border);
-    box-shadow: 0px 1px 3px 0.5px rgba(0, 0, 0, 0.25);
-    padding: 5px;
-}
-
-.sideBarTop .botom,
-.sideBarBottom .botom {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-}
-
-.sideBarTop .title,
-.sideBarBottom .title {
-    height: 1.9rem;
-    background: #FFF;
-    border-bottom: var(--border);
-    padding: 5px;
-}
-
-.sideBarBottom .title div {
-    height: .4rem;
-    background: green;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 10px;
-    width: 9rem
-}
-
-.newsCard {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 5px;
-    margin: 2px;
-    height: 5rem;
-    background: #FFF;
-}
-
-.newsCard .newsCard__img {
-    width: 30%;
-    height: 3.5rem;
-}
-
-.newsCard .newsCard__img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 5px;
-}
-
-.newsCard .newsDetails {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-left: 15px;
-    height: 95%;
-}
-
-.newsCard .newsDetails span {
-    color: #5D5A5A;
-    font-family: Mulish;
-    font-size: .875rem;
-    line-height: 1.5rem;
-    font-weight: 700;
-    line-height: 86.523%;
-}
-
-.newsCard .newsDetails h3 {
-    font-family: "Mulish";
-    font-size: .875rem;
-    line-height: 1.25rem;
-    font-weight: 700;
-    line-height: 86.523%;
-}
-
-.newsCard .newsDetails p {
-    font-family: Mulish;
-    color: #5D5A5A;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 86.523%;
-}
-
-.candidatStatusContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #e4aeae;
-    padding: 3px;
-    border-radius: 8px;
-    background: #F5F5F5;
-    margin-top: 3px;
-    height: 3rem;
-}
-
-.candidatStatusContainer p {
-    background: var(--green);
-    padding: 5px;
-    width: 65%;
-    height: 80%;
-    color: #FFF;
-    text-align: center;
-    font-family: Mulish;
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 99.523%;
-    border-radius: 25px;
-}
-
-.candidatStatusContainer span {
-    padding-left: 5px;
-}
-
-.sondageSide {
-    height: 17rem;
-    margin-top: 2rem;
-}
+    .sidebarCotainer {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 2rem;
+        margin-top: 4rem;
+        overflow: hidden;
+    }
+    
+    .sondageComponent {
+        border-radius: 10px;
+        border: 0.5px dashed #000;
+        background: #FFF;
+        padding: 10px;
+        margin-top: 15px;
+    }
+    
+    .sondageComponent h2 {
+        font-family: Mulish;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 86.523%;
+        margin-bottom: 5px;
+    }
+    
+    .sondageComponent span {
+        color: rgba(93, 90, 90, 0.54);
+        font-family: Mulish;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 86.523%;
+    }
+    
+    .sideBarTop,
+    .sideBarBottom {
+        border: var(--border);
+        box-shadow: 0px 1px 3px 0.5px rgba(0, 0, 0, 0.25);
+        padding: 5px;
+    }
+    
+    .sideBarTop .botom,
+    .sideBarBottom .botom {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+    
+    .sideBarTop .title,
+    .sideBarBottom .title {
+        height: 1.9rem;
+        background: #FFF;
+        border-bottom: var(--border);
+        padding: 5px;
+    }
+    
+    .sideBarBottom .title div {
+        height: .4rem;
+        background: green;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+        width: 9rem
+    }
+    
+    .newsCard {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 5px;
+        margin: 2px;
+        height: 5rem;
+        background: #FFF;
+    }
+    
+    .newsCard .newsCard__img {
+        width: 30%;
+        height: 3.5rem;
+    }
+    
+    .newsCard .newsCard__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 5px;
+    }
+    
+    .newsCard .newsDetails {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 15px;
+        height: 95%;
+    }
+    
+    .newsCard .newsDetails span {
+        color: #5D5A5A;
+        font-family: Mulish;
+        font-size: .875rem;
+        line-height: 1.5rem;
+        font-weight: 700;
+        line-height: 86.523%;
+    }
+    
+    .newsCard .newsDetails h3 {
+        font-family: "Mulish";
+        font-size: .875rem;
+        line-height: 1.25rem;
+        font-weight: 700;
+        line-height: 86.523%;
+    }
+    
+    .newsCard .newsDetails p {
+        font-family: Mulish;
+        color: #5D5A5A;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 86.523%;
+    }
+    
+    .candidatStatusContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #e4aeae;
+        padding: 3px;
+        border-radius: 8px;
+        background: #F5F5F5;
+        margin-top: 3px;
+        height: 3rem;
+    }
+    
+    .candidatStatusContainer p {
+        background: var(--green);
+        padding: 5px;
+        width: 65%;
+        height: 80%;
+        color: #FFF;
+        text-align: center;
+        font-family: Mulish;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 99.523%;
+        border-radius: 25px;
+    }
+    
+    .candidatStatusContainer span {
+        padding-left: 5px;
+    }
+    
+    .sondageSide {
+        height: 17rem;
+        margin-top: 2rem;
+    }
+    
+    aside {
+        width: 500px !important;
+    }
+    
+    .sideBarTopsvg svg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scale: 1.3;
+    }
+    
+    .sideBarTopsvg {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }

@@ -30,6 +30,7 @@ export default function Candidats() {
                         bottom: 0,
                         background: "#fff",
                         overflow: "hidden",
+                        minWidth: "450px",
                     }}
                 >
                     <CandidatSideBar />
