@@ -131,8 +131,8 @@ export const candidats = [{
             post_img: 'https://www.koaci.com/assets/news/thumbnails/1000/2021/06/photo_1622721692.JPG',
         },{
             id: 1,
-            title: '',
-            post_img: 'https://organe.pressecotedivoire.fr/img/posts/2023/07/1689466502-17358.jpg',
+            title: 'Marcory: Charles Blé Goudé et le Maire Aby Raoul préparent un coup!',
+            post_img: 'https://linfoexpress.com/wp-content/uploads/2023/05/346077730_1826427404440939_3061976776317853587_n.jpg',
         }],
     }, 
     
