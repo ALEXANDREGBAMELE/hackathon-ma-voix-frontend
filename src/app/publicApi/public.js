@@ -108,3 +108,32 @@ export const getSondages = async() => {
     }
 
 }
+export const getAllCandidats = async() => {
+    const resp =
+        await publicServices.get(`/public/candidats`);
+    console.log(resp.data);
+
+
+}
+
+export const LoginUser = async(data) => {
+    const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((res) => res.json());
+    return response
+}
+
+export const RegisterUser = async(data) => {
+    const response = await fetch("https://lesinnovateurs.me/api/auth/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((res) => res.json());
+    return response
+}

@@ -1,7 +1,7 @@
 import { EditOutlined, SendOutlined, LikeOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 const { Meta } = Card;
-export const NewsCard = () => {
+export const NewsCard = ({post}) => {
     return (
         <Card
             style={{
@@ -23,17 +23,32 @@ export const NewsCard = () => {
         >
             <Meta
                 avatar={
-                    <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+                    <Avatar
+                        src={
+                            post.post_img
+                                ? post.post_img
+                                : "https://xsgames.co/randomusers/avatar.php?g=pixel"
+                        }
+                    />
                 }
-                title="Ouverture prochaine du pont alassane Dramane ouatara"
+                title={
+                    post.title
+                        ? post.title
+                        : "Ouverture prochaine du pont alassane Dramane ouatara"
+                }
                 description="#Politique  #Infrastrutures  #Election  #Paix"
             />
             <img
-                src="https://media-files.abidjan.net/photo/infrastructures-visite-des-travaux-du-5e-pont-reliant-les-communes-de-cocod_kyp0xb88me.jpg"
+                src={
+                    post.post_img
+                        ? post.post_img
+                        : "https://media-files.abidjan.net/photo/infrastructures-visite-des-travaux-du-5e-pont-reliant-les-communes-de-cocod_kyp0xb88me.jpg"
+                }
                 style={{
                     width: "100%",
                     height: "10rem",
                     margin: "1rem",
+                    objectFit: "fill",
                 }}
                 alt=""
             />

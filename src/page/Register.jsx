@@ -3,44 +3,44 @@ import "./Register.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useRegisterMutation } from "../app/api/apiSlice";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, notification } from "antd";
 import CustomButon from "../components/CustomButon";
 import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 
 import { setCredentials } from "../features/auth/authSlice";
+import { RegisterUser } from "../app/publicApi/public";
 
 function Register() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [register, { isLoading }] = useRegisterMutation();
     const [email, setEmail] = useState("salut");
-    const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    
+    const [api, contextHolder] = notification.useNotification();
+    const openErrorNotificationWithIcon = (text) => {
+        api.error({
+            message: text,
+            description: " merci de reesayer",
+            placement: "topRight",
+        });
+    };
     const onFinish = async (values) => {
-        const data = {...values,role_id:3,commune:"marcory"}
-
-        try {
-            const result = await register(data);
-            dispatch(setCredentials(result.data));
+        setIsLoading(true);
+        const data = { ...values, role_id: 3, commune: "marcory" };
+        const response = await RegisterUser(data);
+        setIsLoading(false);
+        if (response.user) {
+            dispatch(setCredentials(response));
             navigate("/");
-        } catch (error) {
-            console.log(error);
+            return;
         }
+        openErrorNotificationWithIcon(response.message);        
     };
     const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
+        openErrorNotificationWithIcon("veuillez remplir tous les champs svp!");
     };
 
-    const handleLogin = (event) => {
-        event.preventDefault();
-        //  d'authentification ici
-
-        if (email === "user@example.com" && password === "password") {
-            setIsLoggedIn(true);
-        }
-    };
 
     return (
         <Spin spinning={isLoading}>
@@ -69,6 +69,7 @@ function Register() {
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
+                        {contextHolder}
                         <div
                             style={{
                                 display: "flex",

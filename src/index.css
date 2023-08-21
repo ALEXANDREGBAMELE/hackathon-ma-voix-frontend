@@ -164,7 +164,12 @@ footer {
     width: 45%;
 }
 
-.ant-pagination-next {
+.ant-pagination-next,
+.ant-pagination-prev {
     text-align: center;
     align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.3rem;
 }

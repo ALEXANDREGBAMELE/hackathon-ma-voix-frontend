@@ -5,43 +5,48 @@ import { useLoginMutation } from "../app/api/apiSlice";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../features/auth/authSlice";
 
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, notification } from "antd";
 import CustomButon from "../components/CustomButon";
-import {  Spin } from "antd";
+import { Spin } from "antd";
+import { LoginUser } from "../app/publicApi/public";
+import { openErrorNotificationWithIcon } from "../components/CustomNotification";
 function Login() {
     const [email, setEmail] = useState("salut");
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const [password, setPassword] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [login, { isLoading }] = useLoginMutation();
-    const onFinish = async (values) => {
-        
-        try {
-            const result = await login(values);
-            dispatch(setCredentials(result.data));
-            navigate("/");
-        } catch (error) {
-            console.log(error);
-        }
+    const [api, contextHolder] = notification.useNotification();
+    const openErrorNotificationWithIcon = (text) => {
+        api.error({
+            message: text || "une erreur est survenue",
+            description: " merci de reesayer",
+            placement: "topRight",
+        });
     };
-    const onFinishFailed = async (errorInfo) => {console.log("Failed:", errorInfo);};
-
-    const handleLogin = (event) => {
-        event.preventDefault();
-        //  d'authentification ici
-
-        if (email === "user@example.com" && password === "password") {
-            setIsLoggedIn(true);
+    const onFinish = async (values) => {
+        setIsLoading(true);
+        const resutl = await LoginUser(values);
+        setIsLoading(false);
+        if (!resutl.user) {
+            openErrorNotificationWithIcon(resutl.error);
+            return;
         }
+        dispatch(setCredentials(resutl));
+        navigate("/");
+    };
+    const onFinishFailed = async () => {
+        openErrorNotificationWithIcon("veuillez remplir tous les champs svp!");
     };
 
     return (
         <Spin spinning={isLoading}>
+            {contextHolder}
             <div className="register-box">
                 <div className="image-container">
                     <img src="05.png" alt="" />
                 </div>
+                {contextHolder}
                 <div className="register-container">
                     <h2>Connectez vous</h2>
                     <Form

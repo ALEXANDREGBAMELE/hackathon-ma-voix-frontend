@@ -19,8 +19,8 @@ export default function CandidatSideBar() {
                             alt="example"
                             src="./abj.png"
                             style={{
-                                width: "80%",
-                                height: "8rem",
+                                width: "100%",
+                                height: "100%",
                                 objectFit: "cover",
                                 alignSelf: "center",
                             }}

@@ -5,10 +5,19 @@ import { Card, List } from "antd";
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
 import SideBar from "../components/sideBar/SideBar";
 import CandidatSideBar from "../components/sideBar/CandidatSideBar";
+import { useEffect } from "react";
+import { getAllActvities } from "../app/publicApi/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 
 export default function Candidats() {
+    useEffect(() => {
+        const getCandidats = async () => {
+            const candidats = await getAllActvities();
+            console.log(candidats);
+        }
+        getCandidats();
+    })
     return (
         <div>
             <Layout>
@@ -40,7 +49,7 @@ export default function Candidats() {
                         <List
                             pagination={{
                                 position: "bottom",
-                                pageSize: 5,
+                                pageSize: 6,
                                 align: "center",
                             }}
                             style={{

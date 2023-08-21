@@ -37,20 +37,21 @@ export default function CandidatCard({ candidat }) {
                     }}
                 >
                     <img
-                        src="./pont.jpg"
-                        alt=""
+                        src={candidat.img_url ? candidat.img_url : "./abj.png"}
+                        alt="candidat profil"
                         style={{
                             width: "2.5rem",
                             height: "2.5rem",
                             borderRadius: "50%",
                             marginRight: "1rem",
+                            objectFit: "cover",
                         }}
                     />
                     {candidat.name}
                 </div>
                 <img
-                    src="./rhd.jpg"
-                    alt=""
+                    src={candidat.logo ? candidat.logo : "./rhd.jpg"}
+                    alt="logo partie"
                     style={{
                         width: "2rem",
                         height: "2rem",
@@ -83,12 +84,11 @@ export default function CandidatCard({ candidat }) {
                     alignItems: "center",
                 }}
             >
-                
                 <CustomButon
                     onClicked={handleClick}
                     type="fillPrimary"
                     title="Voir Details"
-                    width='100%'
+                    width="100%"
                 />
             </div>
         </div>
