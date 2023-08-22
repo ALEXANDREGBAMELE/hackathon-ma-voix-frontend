@@ -14,80 +14,42 @@ export function Resultat() {
   //     .catch(error => console.error('Erreur lors de la récupération des données:', error));
   // }, [])
 
-  // const columns = [
-  //   {
-  //     title: 'Photo',
-  //     dataIndex: 'url',
-  //     key: 'url',
-  //     render: (text) => <img src={text} alt="Image" style={{ maxWidth: '60px', borderRadius: "100%" }} />,
-  //   },
-  //   {
-  //     title: 'Nom',
-  //     dataIndex: 'nom',
-  //     key: 'nom',
-  //     render: (text) => <>{text}</>,
-  //   },
-  //   {
-  //     title: 'Prenom',
-  //     dataIndex: 'prenom',
-  //     key: 'prenom',
-  //   },
-  //   {
-  //     title: 'Partie Politique',
-  //     dataIndex: 'partie',
-  //     key: 'partie',
-  //     render: (text) => <img src={text} alt="Image" style={{ maxWidth: '50px' }} />,
-  //   },
-  //   {
-  //     title: 'Commune',
-  //     key: 'commune',
-  //     dataIndex: 'commune',
-  //   },
-  //   {
-  //     title: 'Resultat Sondage(%)',
-  //     key: 'resultat',
-  //     dataIndex: 'resultat',
-  //     render: (text) => <>{text}</>,
-  //   },
-  // ];
-
-
-const columns = [
-  {
-    title: 'Photo',
-    dataIndex: 'url',
-    key: 'url',
-    render: (text) => <img src={text} alt="Image" style={{ maxWidth: '60px', borderRadius: "100%" }} />,
-  },
-  {
-    title: 'Nom',
-    dataIndex: 'nom',
-    key: 'nom',
-    render: (text) => <>{text}</>,
-  },
-  {
-    title: 'Prenom',
-    dataIndex: 'prenom',
-    key: 'prenom',
-  },
-  {
-    title: 'Partie Politique',
-    dataIndex: 'partie',
-    key: 'partie',
-    render: (text) => <img src={text} alt="Image" style={{ maxWidth: '50px' }} />,
-  },
-  {
-    title: 'Commune',
-    key: 'commune',
-    dataIndex: 'commune',
-  },
-  {
-    title: 'Resultat Sondage(%)',
-    key: 'resultat',
-    dataIndex: 'resultat',
-    render: (text) => <>{text}</>
-  },
-];
+  const columns = [
+    {
+      title: 'Photo',
+      dataIndex: 'url',
+      key: 'url',
+      render: (text) => <img src={text} alt="Image" style={{ maxWidth: '60px', borderRadius: "100%" }} />,
+    },
+    {
+      title: 'Nom',
+      dataIndex: 'nom',
+      key: 'nom',
+      render: (text) => <>{text}</>,
+    },
+    {
+      title: 'Prenom',
+      dataIndex: 'prenom',
+      key: 'prenom',
+    },
+    {
+      title: 'Partie Politique',
+      dataIndex: 'partie',
+      key: 'partie',
+      render: (text) => <img src={text} alt="Image" style={{ maxWidth: '50px' }} />,
+    },
+    {
+      title: 'Commune',
+      key: 'commune',
+      dataIndex: 'commune',
+    },
+    {
+      title: 'Resultat Sondage(%)',
+      key: 'resultat',
+      dataIndex: 'resultat',
+      render: (text) => <>{text}</>,
+    },
+  ];
 
   const data = [
     {
