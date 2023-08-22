@@ -9,10 +9,11 @@ let sondagess;
 
 const SwipeStack = ({ sondages, name }) => {
     const [sondage, setSondage] = useState(sondages);
-    const [currentIndex, setCurrentIndex] = useState(sondage.length - 1);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const currentIndexRef = useRef(currentIndex);
     const [lastDirection, setLastDirection] = useState();
     const [showResult, setShowResult] = useState(false);
+    const [loading, setLoading] = useState(false);
     const noSondage = (name) => {
         return (
             <Result
@@ -27,15 +28,16 @@ const SwipeStack = ({ sondages, name }) => {
             let filtreSodage = sondages.filter((s) => s.commune == name);
             setSondage(filtreSodage);
             setShowResult(false);
+            setCurrentIndex(0);
         };
         filterSondage();
-    }, [name]);
+    }, [name, sondages]);
     const childRefs = useMemo(
         () =>
             Array(sondage.length)
                 .fill(0)
                 .map((i) => React.createRef()),
-        []
+        [sondage.length]
     );
     const updateCurrentIndex = (val) => {
         setCurrentIndex(val);
@@ -77,7 +79,7 @@ const SwipeStack = ({ sondages, name }) => {
     };
     return (
         <div className="swipe-container">
-            {sondage.length > 0 ? (
+            {sondage.length >= 1 ? (
                 !showResult ? (
                     sondage.map((character, index) => (
                         <TinderCard

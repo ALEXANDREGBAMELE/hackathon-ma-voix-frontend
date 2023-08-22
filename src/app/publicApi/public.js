@@ -100,12 +100,8 @@ export const resetPassword = (data) => {
     }
 }
 export const getSondages = async() => {
-    try {
-        return await publicServices.get(`/public/sondages`);
-    } catch (error) {
-        console.log(error);
-
-    }
+    const resp = await fetch("https://lesinnovateurs.me/api/public/sondages").then((res) => res.json());
+    return resp
 
 }
 export const getAllCandidats = async() => {

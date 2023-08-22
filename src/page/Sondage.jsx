@@ -27,8 +27,12 @@ export default function Sondage() {
     useEffect(() => {
         const fetchSondage = async () => {
             setLoading(true);
-            const sondage = await getSondages();
-            setSondage(sondage.data.data.data);
+            const sondages = await getSondages();
+            console.log(sondages);
+
+            setSondage(sondages.data);
+            console.log(sondage);
+
             setLoading(false);
         };
         fetchSondage();
