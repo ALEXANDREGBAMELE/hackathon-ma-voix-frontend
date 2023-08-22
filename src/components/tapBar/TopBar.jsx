@@ -11,6 +11,7 @@ import Header from "../Header";
 import CustomButon from "../CustomButon";
 import { useSelector } from "react-redux";
 import { curentUser, isLoggedIn } from "../../features/auth/authSlice";
+
 const menuItems = [
     {
         label: "Acceuil",
@@ -26,6 +27,7 @@ const menuItems = [
         key: "sondage",
     },
     {
+
         label: "Resultat",
         key: "resultat",
     },
