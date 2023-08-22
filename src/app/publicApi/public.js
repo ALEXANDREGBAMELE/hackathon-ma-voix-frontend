@@ -133,3 +133,8 @@ export const RegisterUser = async(data) => {
     }).then((res) => res.json());
     return response
 }
+export const getAllPosts = async() => {
+    const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
+    return resp
+
+}

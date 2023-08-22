@@ -9,11 +9,10 @@ let sondagess;
 
 const SwipeStack = ({ sondages, name }) => {
     const [sondage, setSondage] = useState(sondages);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(sondage.length - 1);
     const currentIndexRef = useRef(currentIndex);
     const [lastDirection, setLastDirection] = useState();
     const [showResult, setShowResult] = useState(false);
-    const [loading, setLoading] = useState(false);
     const noSondage = (name) => {
         return (
             <Result
@@ -36,7 +35,10 @@ const SwipeStack = ({ sondages, name }) => {
         () =>
             Array(sondage.length)
                 .fill(0)
-                .map((i) => React.createRef()),
+                .map((_, index) => ({
+                    ref: React.createRef(),
+                    cardIndex: index,
+                })),
         [sondage.length]
     );
     const updateCurrentIndex = (val) => {
@@ -65,8 +67,8 @@ const SwipeStack = ({ sondages, name }) => {
 
     const swipe = async (dir) => {
         console.log(childRefs[currentIndex]);
-        if (canSwipe && currentIndex < sondage.length) {
-            await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+        if (canSwipe && currentIndex >= 0 && currentIndex < sondage.length) {
+            await childRefs[currentIndex].ref.current.swipe(dir);// Swipe the card
         }
     };
 
@@ -79,16 +81,14 @@ const SwipeStack = ({ sondages, name }) => {
     };
     return (
         <div className="swipe-container">
-            {sondage.length >= 1 ? (
+            {sondage.length >0 ? (
                 !showResult ? (
                     sondage.map((character, index) => (
                         <TinderCard
-                            ref={childRefs[index]}
+                            ref={childRefs[index].ref}
                             className="swipe"
                             key={character.id}
-                            onSwipe={(dir) =>
-                                swiped(dir, character.name, index)
-                            }
+                            onSwipe={(dir) => swiped(dir, index)}
                             onCardLeftScreen={() =>
                                 outOfFrame(character.name, index)
                             }
