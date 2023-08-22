@@ -3,8 +3,19 @@ import { EditOutlined, SendOutlined, LikeOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 const { Meta } = Card;
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
+import { getAllPosts } from "../app/publicApi/public";
+import { useEffect, useState } from "react";
 const { Header, Content, Footer, Sider } = Layout;
 export default function MainLayout() {
+    const [post, setPost] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const getPost = async () => {
+        setLoading(true);
+        const post = await getAllPosts();
+        setPost(post.data);
+        setLoading(false);
+    }
+    useEffect(() => {getPost()}, [])
     return (
         <Layout>
             <Sider
@@ -16,6 +27,7 @@ export default function MainLayout() {
                     bottom: 0,
                     background: "#fff",
                     overflow: "hidden",
+                    
                 }}
             >
                 <SideBar />

@@ -164,7 +164,46 @@ footer {
     width: 45%;
 }
 
-.ant-pagination-next {
+.ant-pagination-next,
+.ant-pagination-prev {
     text-align: center;
     align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.3rem;
+}
+
+
+/* .sideBarTopsvg path,
+.sideBarTopsvg polyline,
+.sideBarTopsvg polygon,
+.sideBarTopsvg rect {
+    fill: #7d7d7d;
+    color: #fff;
+} */
+
+.st10 {
+    fill: #fff;
+    font-size: .9rem;
+    font-family: Mulish;
+    font-weight: 600;
+}
+
+path:hover,
+polyline:hover,
+polygon:hover,
+rect:hover {
+    fill: #ff7200
+}
+
+path text,
+polyline text,
+polygon text,
+rect text {
+    fill: #fff;
+}
+
+.st2 .st12 .st11 .st5 .st4 {
+    fill: #E42A16;
 }

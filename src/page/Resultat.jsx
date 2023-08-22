@@ -1,3 +1,4 @@
+
 import Collapse from "rc-collapse";
 import { React, useEffect, useState } from "react";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
@@ -171,6 +172,3 @@ export function Resultat() {
       </div>
     </div>
   );
-
-}
-export default Resultat;

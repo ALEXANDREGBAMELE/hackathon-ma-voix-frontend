@@ -27,15 +27,19 @@ const SwipeStack = ({ sondages, name }) => {
             let filtreSodage = sondages.filter((s) => s.commune == name);
             setSondage(filtreSodage);
             setShowResult(false);
+            setCurrentIndex(0);
         };
         filterSondage();
-    }, [name]);
+    }, [name, sondages]);
     const childRefs = useMemo(
         () =>
             Array(sondage.length)
                 .fill(0)
-                .map((i) => React.createRef()),
-        []
+                .map((_, index) => ({
+                    ref: React.createRef(),
+                    cardIndex: index,
+                })),
+        [sondage.length]
     );
     const updateCurrentIndex = (val) => {
         setCurrentIndex(val);
@@ -63,8 +67,8 @@ const SwipeStack = ({ sondages, name }) => {
 
     const swipe = async (dir) => {
         console.log(childRefs[currentIndex]);
-        if (canSwipe && currentIndex < sondage.length) {
-            await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+        if (canSwipe && currentIndex >= 0 && currentIndex < sondage.length) {
+            await childRefs[currentIndex].ref.current.swipe(dir);// Swipe the card
         }
     };
 
@@ -77,16 +81,14 @@ const SwipeStack = ({ sondages, name }) => {
     };
     return (
         <div className="swipe-container">
-            {sondage.length > 0 ? (
+            {sondage.length >0 ? (
                 !showResult ? (
                     sondage.map((character, index) => (
                         <TinderCard
-                            ref={childRefs[index]}
+                            ref={childRefs[index].ref}
                             className="swipe"
                             key={character.id}
-                            onSwipe={(dir) =>
-                                swiped(dir, character.name, index)
-                            }
+                            onSwipe={(dir) => swiped(dir, index)}
                             onCardLeftScreen={() =>
                                 outOfFrame(character.name, index)
                             }

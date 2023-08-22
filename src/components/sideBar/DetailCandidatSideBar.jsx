@@ -2,9 +2,14 @@ import { candidats, news, sondages } from "../../data";
 import Article from "../Article";
 import Sondage from "../Sondage";
 import CustomButon from "../CustomButon";
+import { useParams } from "react-router-dom";
 import { Card } from "antd";
 const { Meta } = Card;
+
 export default function DetailCandidatSideBar() {
+    const { id } = useParams();
+    const candidat = candidats.find((c) => c.id == id);
+
     return (
         <div style={{ width: "85%" }} className="sidebarCotainer">
             <div className="sideBarTop">
@@ -16,9 +21,13 @@ export default function DetailCandidatSideBar() {
                     cover={
                         <img
                             alt="example"
-                            src="https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg"
+                            src={
+                                id!==3
+                                    ? candidat.img_url
+                                    : "https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg"
+                            }
                             style={{
-                                width: "80%",
+                                width: "100%",
                                 height: "8rem",
                                 objectFit: "fill",
                                 alignSelf: "center",
@@ -27,8 +36,11 @@ export default function DetailCandidatSideBar() {
                     }
                 >
                     <Meta
-                        title=" ADAMA BICTOGO"
-                        description="Adama Bictogo (né le 14 décembre 1962), est un homme d'affaires et homme politique ivoirien. Il est le fondateur de l'entreprise Snedai Il est le secrétaire exécutif ."
+                        title={candidat.name}
+                        description=" Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti quae animi quo repudiandae optio accusamus,
+                        eligendi dolor unde facere magni
+                        obcaecati quisquam neque id. Sit sequi error maiores."
                         style={{
                             textAlign: "center",
                             borderTop: "5px solid #027314",
@@ -37,6 +49,7 @@ export default function DetailCandidatSideBar() {
                     <div className="candidatStatusContainer">
                         <span>Status</span>
                         <p>Président de l’assemblé Nationnale</p>
+                        
                     </div>
                 </Card>
             </div>
@@ -56,7 +69,7 @@ export default function DetailCandidatSideBar() {
                         gap: ".3rem",
                     }}
                 >
-                    {candidats.slice(0, 4).map((c) => (
+                    {candidats.filter((c)=> c.commune ==candidat.commune).map((c) => (
                         <div key={c.id} className="imgCan">
                             <img
                                 src={c.img_url}
@@ -68,7 +81,7 @@ export default function DetailCandidatSideBar() {
                                     objectFit: "cover",
                                 }}
                             />
-                            <span>{ c.name}</span>
+                            <span>{c.name}</span>
                         </div>
                     ))}
                 </div>
