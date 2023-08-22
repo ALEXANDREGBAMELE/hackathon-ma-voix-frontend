@@ -79,7 +79,7 @@ export default function FramerCard({ sondages, name }) {
                     {showResult && <CustomResult />}
                 </AnimatePresence>
             ) : (
-               noSondage(name)
+                noSondage(name)
             )}
         </div>
     );
