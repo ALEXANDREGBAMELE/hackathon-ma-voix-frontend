@@ -100,11 +100,41 @@ export const resetPassword = (data) => {
     }
 }
 export const getSondages = async() => {
-    try {
-        return await publicServices.get(`/public/sondages`);
-    } catch (error) {
-        console.log(error);
+    const resp = await fetch("https://lesinnovateurs.me/api/public/sondages").then((res) => res.json());
+    return resp
 
-    }
+}
+export const getAllCandidats = async() => {
+    const resp =
+        await publicServices.get(`/public/candidats`);
+    console.log(resp.data);
+
+
+}
+
+export const LoginUser = async(data) => {
+    const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((res) => res.json());
+    return response
+}
+
+export const RegisterUser = async(data) => {
+    const response = await fetch("https://lesinnovateurs.me/api/auth/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((res) => res.json());
+    return response
+}
+export const getAllPosts = async() => {
+    const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
+    return resp
 
 }

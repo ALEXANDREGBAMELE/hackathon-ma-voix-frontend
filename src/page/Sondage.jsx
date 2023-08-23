@@ -16,6 +16,7 @@ import {
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
 import { getSondages } from "../app/publicApi/public";
+import FramerCard from "../components/swipeCard/FramerCard";
 const { Header, Content, Footer, Sider } = Layout;
 export default function Sondage() {
     const [sondage, setSondage] = useState([]);
@@ -27,8 +28,12 @@ export default function Sondage() {
     useEffect(() => {
         const fetchSondage = async () => {
             setLoading(true);
-            const sondage = await getSondages();
-            setSondage(sondage.data.data.data);
+            const sondages = await getSondages();
+            console.log(sondages);
+
+            setSondage(sondages.data);
+            console.log(sondage);
+
             setLoading(false);
         };
         fetchSondage();
@@ -77,7 +82,7 @@ export default function Sondage() {
                                 height: "calc(100vh - 11rem)",
                             }}
                         >
-                            <SwipeStack sondages={sondage} name={select} />
+                            <FramerCard sondages={sondage} name={select} />
                         </div>
                     </Spin>
                 </Content>

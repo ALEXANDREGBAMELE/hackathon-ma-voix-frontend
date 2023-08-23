@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 import { Tabs, Layout } from "antd";
 import Sondage from "../../components/Sondage";
@@ -7,6 +7,8 @@ import DetailCandidatSideBar from "../../components/sideBar/DetailCandidatSideBa
 import { NewsCard } from "../../components/candidatCard/NewsCard";
 import ActualiteCandidat from "./ActualiteCandidat";
 const { Header, Content, Footer, Sider } = Layout;
+import { useParams } from "react-router-dom";
+import { candidats } from "../../data";
 const tabeItems = [
     {
         key: "1",
@@ -16,12 +18,20 @@ const tabeItems = [
     {
         key: "2",
         label: `Idéologie`,
-        children: <Article />,
+        children: (
+            <p>
+                
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptas temporibus quas a provident cumque numquam sequi
+                doloribus, nisi modi maiores expedita ullam dolores ex neque
+                ipsa voluptatibus optio molestias? Porro?
+            </p>
+        ),
     },
     {
         key: "3",
         label: `Historique professionnel`,
-        children: <Article />,
+        children: <p>Historique professionnel content</p>,
     },
 ];
 const contentListNoTitle = {
@@ -31,10 +41,18 @@ const contentListNoTitle = {
 };
 export default function CandidatDetails() {
     const [activeTabKey2, setActiveTabKey2] = useState("1");
-
+    const { id } = useParams();
+    const [candidat, setCandidat] = useState({})
     const onTab1Change = (key) => {
         setActiveTabKey2(key);
     };
+    useEffect(() => {
+        const getCandidats = async () => {
+            const candidat =  candidats.find((c) => c.id == id);
+            setCandidat(candidat);
+        }
+        getCandidats();
+    })
     return (
         <Layout>
             <Sider

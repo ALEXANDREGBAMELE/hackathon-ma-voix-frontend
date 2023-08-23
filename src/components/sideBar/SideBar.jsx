@@ -3,19 +3,12 @@ import Article from "../Article";
 import Sondage from "../Sondage";
 import CustomButon from "../CustomButon";
 import "./sidebar.css";
+import CarteInteractif from "../carteInteractif/CarteInteractif";
 export default function SideBar() {
     return (
         <div className="sidebarCotainer">
-            <div className="sideBarTop">
-                <div className="title">
-                    <h3>Informations du jour</h3>
-                </div>
-                {news.map((n) => (
-                    <Article key={n.id} article={n} />
-                ))}
-                <div className="botom">
-                    <CustomButon title="Voir plus" />
-                </div>
+            <div className="sideBarTopsvg">
+               <CarteInteractif />
             </div>
             <div className="sideBarBottom">
                 <div className="title">
