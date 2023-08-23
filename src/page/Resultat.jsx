@@ -138,7 +138,7 @@ export function Resultat() {
 
   const bitogoImgUrl = "https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg"
   return (
-    <div className="container" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "5px", overflow: "hidden", height: "calc(100vh - 11 rem)" }}>
+    <div className="container" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "5px", overflow: "hidden", height: "calc(100vh - 11 rem)",position:"fixed",top:"3rem",width:"100%" }}>
       <div className="side-bar" style={{ width: "26rem" }}>
         <div className="liste-commune" style={{ border: "solid 1px e0e0e0", backgroundColor: "white", borderRadius: "15px", marginTop: "1rem", padding: "2rem" }}>
           <h3 style={{ textAlign: "center" }}>Liste des communes</h3><br />
@@ -152,10 +152,10 @@ export function Resultat() {
             <img style={{ borderBottomRightRadius: "15px", borderRadius: "15px" }} src={bitogoImgUrl} alt="" />
           </div>
           <div className="right">
-            <div className="title" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}>Au Somet : </div>
-            <div className="nome-candidat-winer" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}><h3>Adaman Bictogo</h3></div>
-            <div className="total-vote" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}>Total vote : </div>
-            <div className="score" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}>Score : 77%</div>
+            <p className="title" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}>Au Somet : </p>
+            <p className="nome-candidat-winer" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}><h3>Adaman Bictogo</h3></p>
+            <p className="total-vote" style={{ fontSize: "24px", padding: "5px", textAlign: "center" }}>Total vote : 18758 </p>
+            <p className="score" style={{ fontSize: "24px", padding: "5px", textAlign: "center",color:"green" }}>Score : 77%</p>
           </div>
         </div>
 
@@ -171,4 +171,6 @@ export function Resultat() {
         </div>
       </div>
     </div>
-  );
+  )
+}
+export default Resultat;
