@@ -13,6 +13,7 @@ import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import Resultat from "./page/Resultat.jsx";
+import ProfilCandidat from "./page/ProfilCandidat.jsx";
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: "/resultat",
                 element: <Resultat />,
+            },
+            {
+                path: "/profil",
+                element: <ProfilCandidat />,
             },
         ],
     },
