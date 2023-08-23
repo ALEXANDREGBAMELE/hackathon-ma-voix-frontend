@@ -36,6 +36,7 @@ export default function CustomButon({
                           alignItems: "center",
                           justifyContent: "center",
                           borderRadius: rd ? rd : "10px",
+                         
                       }
             }
             className={setClasseName()}

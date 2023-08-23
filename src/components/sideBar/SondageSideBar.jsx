@@ -51,12 +51,13 @@ export default function SondageSideBar({ handleClick }) {
                 <div
                     style={{
                         display: "flex",
-                        justifyContent: "space-between",
+                        justifyContent: "space-around",
                         alignItems: "center",
                         flexWrap: "wrap",
                         width: "100%",
                         gap: ".5rem",
                         padding: "5px",
+
                     }}
                 >
                     {commun.map((item) => {
@@ -64,7 +65,6 @@ export default function SondageSideBar({ handleClick }) {
                             <div
                                 style={{
                                     display: "flex",
-
                                     alignItems: "center",
                                     flexWrap: "nowrap",
                                 }}
@@ -78,6 +78,7 @@ export default function SondageSideBar({ handleClick }) {
                                             ? "butomFillSecondary"
                                             : "butomAoutlin"
                                     }
+                                    style={{width:"6.5rem"}}
                                 >
                                     <p>{item.name} </p>
                                 </div>
