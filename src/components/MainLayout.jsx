@@ -9,13 +9,18 @@ const { Header, Content, Footer, Sider } = Layout;
 export default function MainLayout() {
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(false);
-    const getPost = async () => {
-        setLoading(true);
-        const post = await getAllPosts();
-        setPost(post.data);
-        setLoading(false);
-    }
-    useEffect(() => {getPost()}, [])
+
+    useEffect(() => {
+        const getPost = async () => {
+            setLoading(true);
+            const post = await getAllPosts();
+            console.log(post);
+
+            setPost(post.data);
+            setLoading(false);
+        };
+        getPost();
+    }, []);
     return (
         <Layout>
             <Sider
@@ -27,7 +32,6 @@ export default function MainLayout() {
                     bottom: 0,
                     background: "#fff",
                     overflow: "hidden",
-                    
                 }}
             >
                 <SideBar />

@@ -5,19 +5,22 @@ import { Card, List } from "antd";
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
 import SideBar from "../components/sideBar/SideBar";
 import CandidatSideBar from "../components/sideBar/CandidatSideBar";
-import { useEffect } from "react";
-import { getAllActvities } from "../app/publicApi/public";
+import { useEffect, useState } from "react";
+import { getAllActvities, getAllCandidats } from "../app/publicApi/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 
 export default function Candidats() {
+    const [candidat, setCandidat] = useState([]);
+    const [candidats, setCandidats] = useState("");
     useEffect(() => {
         const getCandidats = async () => {
-            const candidats = await getAllActvities();
-            console.log(candidats);
+            const candidats = await getAllCandidats();
+            console.log(candidats.data);
+            setCandidat(candidats.data);
         }
         getCandidats();
-    })
+    }, [])
     return (
         <div>
             <Layout>
@@ -60,7 +63,7 @@ export default function Candidats() {
                                 padding: "1rem",
                             }}
                             grid={{ gutter: 8, xs: 1, sm: 2, md: 3 }}
-                            dataSource={candidats}
+                            dataSource={candidat}
                             renderItem={(item) => (
                                 <List.Item>
                                     <CandidatCard candidat={item} />
@@ -70,7 +73,6 @@ export default function Candidats() {
                     </Content>
                 </Layout>
             </Layout>
-            
         </div>
     );
 }

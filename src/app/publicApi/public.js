@@ -107,7 +107,7 @@ export const getSondages = async() => {
 export const getAllCandidats = async() => {
     const resp =
         await publicServices.get(`/public/candidats`);
-    console.log(resp.data);
+    return resp.data
 
 
 }
@@ -135,6 +135,12 @@ export const RegisterUser = async(data) => {
 }
 export const getAllPosts = async() => {
     const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
+    return resp
+
+}
+
+export const getCandidatPosts = async(id) => {
+    const resp = await fetch(`https://lesinnovateurs.me/api/public/candidat/${id}/posts`).then((res) => res.json());
     return resp
 
 }

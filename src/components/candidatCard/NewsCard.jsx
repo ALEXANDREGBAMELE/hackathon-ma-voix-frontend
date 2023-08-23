@@ -5,7 +5,7 @@ export const NewsCard = ({post}) => {
     return (
         <Card
             style={{
-                width: "40rem",
+                width: "46.5rem",
                 marginBottom: "1.5rem",
                 padding: "1rem",
             }}
