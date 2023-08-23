@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import ListeCommune from "../components/sideBar/ListeCommune";
+import ListeCommune from "../../components/sideBar/ListeCommune";
 import { ShareAltOutlined } from '@ant-design/icons';
 import { Button, Radio, Space, Divider, Select } from 'antd';
 
