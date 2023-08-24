@@ -14,7 +14,7 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import Resultat from "./page/Resultat.jsx";
 import ProfilCandidat from "./page/profilCandidat/ProfilCandidat.jsx";
-
+import ProfilUtilisateur from "./page/profilUtilisateur/ProfilUtilisateur.jsx";
 
 const router = createBrowserRouter([
     {
@@ -46,8 +46,12 @@ const router = createBrowserRouter([
                 element: <Resultat />,
             },
             {
-                path: "/profil",
+                path: "/profil/candidat",
                 element: <ProfilCandidat />,
+            },
+            {
+                path: "profil/utilisateur",
+                element: <ProfilUtilisateur />,
             },
         ],
     },
