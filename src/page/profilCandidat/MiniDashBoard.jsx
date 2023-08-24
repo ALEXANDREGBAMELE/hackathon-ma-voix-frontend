@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from "antd";
-import GraphTendance from "./GraphTendance";
+// import GraphTendance from "./GraphTendance";
 
 // const chartData = {
 //     labels: ["Jan", "Feb", "Mar", "Apr", "May"],

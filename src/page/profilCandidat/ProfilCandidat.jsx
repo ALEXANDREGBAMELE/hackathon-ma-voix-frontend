@@ -6,7 +6,7 @@ import NotificationCandidat from "./NotificationCandidat";
 import ModificationProfilCandidat from "./modificationProfilCandidat";
 import UserInfoCard from "./InfoUserCard";
 import Dashboard from "./MiniDashBoard";
-import TrendChart from "./GraphTendance";
+// import TrendChart from "./GraphTendance";
 
 function ProfilCandidat() {
     const [select, setSelect] = useState("Programme");
@@ -44,26 +44,26 @@ function ProfilCandidat() {
                 <UserInfoCard></UserInfoCard>
             </div>
             <div className="botton-part">
-                <div className="container" style={{ display: "flex", backgroundColor: "white",justifyContent: "center", alignItems: "center",gap: "20px", paddingTop:"40px" }}>
+                <div className="container" style={{ display: "flex", backgroundColor: "white",justifyContent: "center", alignItems: "center",gap: "20px", paddingTop:"40px", paddingBot:"40px" }}>
 
                     {/* ... Autres parties de votre composant ... */}
 
                     <div className="card-button" style={{}} onClick={handleProgrammeModalOpen}>
                         {/* ... Bouton 1 ... */}
                         <div className="card-button" style={{}}>
-                            <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Resultats</span> </div>
+                            <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-bell" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Notification</span> </div>
                         </div>
                     </div>
                     <div className="card-button" style={{}} onClick={handleNotificationModalOpen}>
                         {/* ... Bouton 2 ... */}
                         <div className="card-button" style={{}}>
-                            <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Resultats</span> </div>
+                            <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Voir les sondages</span> </div>
                         </div>
                     </div>
                         <div className="card-button" style={{}} onClick={handleParamettreModalOpen}>
                             {/* ... Bouton 3 ... */}
                             <div className="card-button" style={{}}>
-                                <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Resultats</span> </div>
+                                <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Publier un programme</span> </div>
                             </div>
                         </div>
                             <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
