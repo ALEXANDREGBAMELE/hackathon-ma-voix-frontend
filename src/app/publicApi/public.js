@@ -1,5 +1,8 @@
 /* eslint-disable no-useless-catch */
 import axios from "axios";
+import { useSelector } from "react-redux";
+
+
 const API_BASE_URL = "https://lesinnovateurs.me/api";
 
 const publicServices = axios.create({
@@ -104,12 +107,26 @@ export const resetPassword = (data) => {
         throw error;
     }
 };
-export const getSondages = async() => {
-    const resp = await fetch(
-        "https://lesinnovateurs.me/api/public/sondages"
-    ).then((res) => res.json());
-    return resp;
+export const getSondages = async (isLoggedIn, token) => {
+    const url = isLoggedIn
+        ? "/private/user/get-sondages"
+        : "/public/sondages";
+
+    const headers = isLoggedIn
+        ? { Authorization: `Bearer ${token}` }
+        : {};
+
+    try {
+        const response = await publicServices.get(url, { headers });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
 };
+
+
+
+
 export const getAllCandidats = async() => {
     const resp = await publicServices.get(`/public/candidats`);
     return resp.data;

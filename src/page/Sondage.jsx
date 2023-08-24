@@ -20,6 +20,7 @@ import FramerCard from "../components/swipeCard/FramerCard";
 import CarteInteractif from "../components/carteInteractif/CarteInteractif";
 import { curentUser, isLoggedIn, token } from "../features/auth/authSlice";
 import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 export default function Sondage() {
     const [sondage, setSondage] = useState([]);
@@ -32,21 +33,23 @@ export default function Sondage() {
     let tokenUser = useSelector(token);
     let User = useSelector(curentUser);
     useEffect(() => {
-        const fetchSondage = async () => {
-            setLoading(true);
-            const sondages = await getSondages();
-            console.log(sondages);
-
-            setSondage(sondages.data);
-            console.log(sondage);
-
-            setLoading(false);
-        };
-        fetchSondage();
-    }, []);
+      const fetchSondage = async () => {
+        setLoading(true);
+        try {
+          const sondagesData = await getSondages(user, tokenUser);
+          setSondage(sondagesData.data);
+        } catch (error) {
+          // Handle error here
+          console.error("Error fetching sondages:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchSondage();
+    }, [user, tokenUser]);
     const addSondageVote = async (id, choix) => {
         if (!user) {
-            alert("vous devez vous connecter pour voter");
+            window.location.href = "/login";
             return;
         }
         console.log(id, choix, tokenUser, User.id);
