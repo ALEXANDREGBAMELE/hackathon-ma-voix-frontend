@@ -16,8 +16,10 @@ export default function MainLayout() {
         console.log(post);
         setPost(post.data);
         setLoading(false);
-    }
-
+    };
+    const handleCarteClick = (e) => {
+        console.log("commune cliquer");
+    };
     useEffect(() => {
         const getPost = async () => {
             setLoading(true);
@@ -41,7 +43,7 @@ export default function MainLayout() {
                     overflow: "hidden",
                 }}
             >
-                <SideBar />
+                <SideBar handleCarteClick={handleCarteClick} />
             </Sider>
             <Layout
                 className="site-layout"
@@ -75,11 +77,8 @@ export default function MainLayout() {
                         </div>
 
                         {post.map((item, index) => {
-                            return (
-                               <NewsCard post={item} key={index} />
-                            );
-                        } )}
-                       
+                            return <NewsCard post={item} key={index} />;
+                        })}
                     </div>
                 </Content>
             </Layout>

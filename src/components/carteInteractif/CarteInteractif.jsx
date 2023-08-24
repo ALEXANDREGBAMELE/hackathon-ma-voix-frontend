@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CarteInteractif({ handleCommuneClicked}) {
+export default function CarteInteractif({ handleCommuneClicked }) {
     const [hoveredCommune, setHoveredCommune] = useState(null);
     const [clickCommune, setClickCommune] = useState(null);
 
@@ -14,7 +14,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
         setHoveredCommune(null);
     };
     const handleCommuneClick = (communeName) => {
-        alert(`Vous avez cliqué sur la commune : ${communeName}`);
+        handleCommuneClicked(communeName);
     };
     return (
         <div
@@ -38,8 +38,11 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                 style={{ enableBackground: "new 0 0 595.3 841.9" }}
                 xml:space="preserve"
             >
-                <g>
-                    <g fill="#FFEF26">
+                <g fill="">
+                    <g
+                        onClick={() => handleCommuneClick("Abobo")}
+                        fill="#FFEF26"
+                    >
                         <path
                             className="st0"
                             d="M9.1,148.1l20.5,5.4l21.9-5.4l10.9,5.4H72l6.8,6.3l12.3,9h15h23.2c0,0-9.6,7.2,0,8.1
@@ -58,7 +61,10 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                         </text>
                     </g>
 
-                    <g fill="#F9B233">
+                    <g
+                        onClick={() => handleCommuneClick("Cocody")}
+                        fill="#F9B233"
+                    >
                         <path
                             class="st4"
                             d="M380.9,128.8c7.4-2,11.7-3.1,16.2-1.2c9.4,4,7.2,15.2,17.1,23.4c9.8,8.1,17.1,1.4,25.9,8.1
@@ -89,6 +95,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             fill: "url(#SVGID_00000121961913261015768980000010214819372111091890_)",
                             stroke: "#000203",
                         }}
+                        onClick={() => handleCommuneClick("Bingerville")}
                     >
                         <path
                             class="st6"
@@ -111,6 +118,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             fill: "url(#SVGID_00000121961913261015768980000010214819372111091890_)",
                             stroke: "#020203",
                         }}
+                        onClick={() => handleCommuneClick("Adjame")}
                     >
                         <polygon
                             class="st8"
@@ -156,13 +164,12 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             E
                         </text>
                     </g>
-                    <g onClick={() => handleCommuneClick("YOPOUGON")}>
+                    <g onClick={() => handleCommuneClick("Yopougon")}>
                         <path
                             style={{
                                 fill: "#CA9E67",
-                                
                             }}
-                            onClick={() => handleCommuneHover("YOPOUGON")}
+                            onClick={() => handleCommuneHover("Yopougon")}
                             class="st10"
                             d="M54.4,267.2c5.4,0.4,4.7,3.4,15.5,7.2c8.3,2.9,18.3,4.5,18.3,4.5l0,0c0,0,5.8,4.2,11.9,5.4
 			c6.4,1.2,8.2-1.9,10.9,0c5.3,3.6,2.7,18.1,2.7,18.1l0,0c0,0,4.7,4.5,8.2,7.2c5.1,3.9,9.3,7.2,14.6,7.2c6.6,0,8.1-5.2,13.7-4.5
@@ -190,6 +197,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             fill: "#F39200",
                             stroke: "#020203",
                         }}
+                        onClick={() => handleCommuneClick("Songon")}
                     >
                         <path
                             class="st4"
@@ -206,7 +214,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             SONGON
                         </text>
                     </g>
-                    <g>
+                    <g onClick={() => handleCommuneClick("Plateau")}>
                         <path
                             style={{
                                 fill: "#CA9E67",
@@ -246,7 +254,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             TREICHVILLE
                         </text>
                     </g>
-                    <g>
+                    <g onClick={() => handleCommuneClick("Marcory")}>
                         <path
                             style={{
                                 fill: "url(#SVGID_00000121961913261015768980000010214819372111091890_)",
@@ -267,7 +275,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             MARCORY
                         </text>
                     </g>
-                    <g>
+                    <g onClick={() => handleCommuneClick("Koumassi")}>
                         <linearGradient
                             id="SVGID_00000121961913261015768980000010214819372111091890_"
                             gradientUnits="userSpaceOnUse"
@@ -320,7 +328,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             KOUMASSI
                         </text>
                     </g>
-                    <g>
+                    <g onClick={() => handleCommuneClick("Portbouet")}>
                         <linearGradient
                             id="SVGID_00000001636161667942020010000016282628438238053295_"
                             gradientUnits="userSpaceOnUse"
@@ -373,7 +381,7 @@ export default function CarteInteractif({ handleCommuneClicked}) {
                             PORT-BOUET
                         </text>
                     </g>
-                    <g>
+                    <g onClick={() => handleCommuneClick("Attecoube")}>
                         <g fill="#95C11F">
                             <path
                                 class="st12"

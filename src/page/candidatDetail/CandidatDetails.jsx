@@ -18,7 +18,7 @@ const tabeItems = [
     },
     {
         key: "2",
-        label: `Idéologie`,
+        label: `Programmes`,
         children: (
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -30,7 +30,7 @@ const tabeItems = [
     },
     {
         key: "3",
-        label: `Historique professionnel`,
+        label: `programe `,
         children: <p>Historique professionnel content</p>,
     },
 ];
@@ -49,10 +49,11 @@ export default function CandidatDetails() {
     };
     useEffect(() => {
         const getCandidats = async () => {
-            const candidats= await getAllCandidats();
+            const candidats = await getAllCandidats();
             console.log(candidats.data);
             setCandidats(candidats.data);
-            setCandidat(candidats.data.find((c) => c.id == id));
+            setCandidat(candidats.data.find((c) => c.user_id == id).user);
+            console.log(candidat);
         };
         getCandidats();
     }, []);
@@ -99,7 +100,7 @@ export default function CandidatDetails() {
                     >
                         <div className="right">
                             <img
-                                src={`https://lesinnovateurs.me/${candidat?.user?.photo_url}`}
+                                src={`https://lesinnovateurs.me/${candidat?.photo_url}`}
                                 alt=""
                                 style={{
                                     height: "12rem",

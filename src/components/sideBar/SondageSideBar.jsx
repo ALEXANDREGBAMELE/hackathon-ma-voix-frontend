@@ -22,7 +22,6 @@ const { TextArea } = Input;
 export default function SondageSideBar({ handleClick }) {
     const [select, setSelect] = useState("Yopougon");
     const [avis, setAvis] = useState("");
-    
     const clicked = (name) => {
         setSelect(name);
         handleClick(name);
