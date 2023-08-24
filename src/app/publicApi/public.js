@@ -6,14 +6,6 @@ const publicServices = axios.create({
     baseURL: API_BASE_URL,
 });
 
-const setHeader = (token) => {
-    if (token) {
-        publicServices.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    } else {
-        delete publicServices.defaults.headers.common["Authorization"];
-    }
-};
-
 export const getAllActvities = () => {
     try {
         return publicServices.get("/public/activities");
@@ -114,7 +106,7 @@ export const resetPassword = (data) => {
 };
 export const getSondages = async() => {
     const resp = await fetch(
-        publicServices.get("/public/sondages")
+        "https://lesinnovateurs.me/api/public/sondages"
     ).then((res) => res.json());
     return resp;
 };
@@ -124,8 +116,7 @@ export const getAllCandidats = async() => {
 };
 
 export const LoginUser = async(data) => {
-    const response = await fetch(publicServices.post("/auth/login"),
-     {
+    const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -136,8 +127,7 @@ export const LoginUser = async(data) => {
 };
 
 export const RegisterUser = async(data) => {
-    const response = await fetch(publicServices.post("/auth/register"), 
-    {
+    const response = await fetch("https://lesinnovateurs.me/api/auth/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -147,15 +137,13 @@ export const RegisterUser = async(data) => {
     return response;
 };
 export const getAllPosts = async() => {
-    const resp = await fetch(
-        publicServices.get("/public/posts")
-    ).then((res) => res.json());
+    const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
     return resp
 }
 
 export const getCandidatPosts = async(id) => {
     const resp = await fetch(
-        publicServices.get(`/public/candidat/${id}/posts`)
+        `https://lesinnovateurs.me/api/public/candidat/${id}/posts`
     ).then((res) => res.json());
     return resp;
 };
