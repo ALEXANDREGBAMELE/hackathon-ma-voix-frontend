@@ -5,7 +5,7 @@ import MuyButon from "../MuyButon";
 export default function CandidatCard({ candidat }) {
     const navigation = useNavigate();
     const handleClick = () => {
-        navigation(`/candidat/${candidat.user_id}`);
+        navigation(`/candidat/${candidat.id}`);
     };
     return (
         <div

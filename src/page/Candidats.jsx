@@ -24,6 +24,10 @@ export default function Candidats() {
         }
         getCandidats();
     }, [])
+    const handleCommuneClick = (name) => {
+        console.log("commune cliquer");
+        setCandidats(candidat.filter((c) => c.commune == name));
+    }
     return (
         <div>
             <Layout>

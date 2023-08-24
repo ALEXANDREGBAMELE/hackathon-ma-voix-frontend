@@ -64,18 +64,6 @@ export default function MainLayout() {
                             paddingBottom: "4rem",
                         }}
                     >
-                        <div className="direct">
-                            <img
-                                src="./vid.jpg"
-                                alt=""
-                                style={{
-                                    width: "40rem",
-                                    height: "14rem",
-                                    margin: "1rem",
-                                }}
-                            />
-                        </div>
-
                         {post.map((item, index) => {
                             return <NewsCard post={item} key={index} />;
                         })}

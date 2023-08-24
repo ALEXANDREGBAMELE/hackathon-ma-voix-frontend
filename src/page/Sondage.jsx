@@ -77,6 +77,7 @@ export default function Sondage() {
                     style={{
                         margin: "24px 16px 0",
                         overflow: "initial",
+                        background:"linear-gradient(to right, orange 30%, white 40%, green 0%)"
                     }}
                 >
                     <Spin tip="chargement des sondages" spinning={loading}>
