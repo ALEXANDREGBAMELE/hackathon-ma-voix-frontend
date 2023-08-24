@@ -1,9 +1,24 @@
 import { React, useState } from "react";
 import ListeCommune from "../../components/sideBar/ListeCommune";
 import { ShareAltOutlined } from '@ant-design/icons';
-import { Button, Radio, Space, Divider, Select } from 'antd';
+import { Button, Radio, Space, Divider, Select, Result } from 'antd';
+import CandidatPostForm from './CandidatPostForm';
+import Resultat from "../Resultat";
+
+
 
 function ProfilCandidat() {
+    const contents = [
+        <CandidatPostForm />,
+        <Resultat/>,
+
+    ];
+
+    const [currentContentIndex, setCurrentContentIndex] = useState(0);
+
+    const handleNextContent = () => {
+        setCurrentContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+    };
     return (
         <>
             <div>
@@ -17,14 +32,15 @@ function ProfilCandidat() {
                             <Button type="primary" shape="round" icon={<ShareAltOutlined />}>
                                 Publier Programme
                             </Button>
+                            <button onClick={handleNextContent}>Changer le contenu</button>
 
-                        </div>
                     </div>
                 </div>
-                <div className="right-part">
-
-                </div>
             </div>
+            <div className="right-part">
+            {contents[currentContentIndex]}
+            </div>
+        </div >
         </>
     );
 }
