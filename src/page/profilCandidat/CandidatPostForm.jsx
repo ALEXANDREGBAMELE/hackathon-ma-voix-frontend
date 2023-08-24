@@ -92,6 +92,9 @@ const CandidatPostForm = () => {
                                 onChange={handleChange}
                                 rows={10}
                                 cols={80}
+                            style={{
+                                padding:"2rem"
+                            }}
 
                             />
                         </div>
