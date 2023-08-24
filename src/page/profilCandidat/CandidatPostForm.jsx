@@ -31,19 +31,10 @@ const CandidatPostForm = () => {
 
 
     return (
-        <div className="container" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "5rem" }}>
+        <div className="container" style={{  }}>
             <div className="left-part" style={{ width: "20rem", marginTop: "11px" }}>
-                <div className="top" style={{ borderRadius: "15px", backgroundColor: "white" }}>
-                    <img src="https://snedai.com/wp-content/uploads/2022/01/PORTRAIT-PDG-1017x1024.jpg" alt="" />
-                </div>
-                <div className="bottom" style={{ borderRadius: "15px", backgroundColor: "white", marginTop: "15px" }}>
-                    <div className="liste-commune">
-                        <Button type="primary" shape="round" icon={<ShareAltOutlined />}>
-                            Publier Programme
-                        </Button>
-
-                    </div>
-                </div>
+                
+                
             </div>
             <div className="right-part" style={{ marginTop: "11px" }}>
                 <div style={{ width: "500px" }}>

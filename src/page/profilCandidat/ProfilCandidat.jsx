@@ -10,7 +10,7 @@ import Resultat from "../Resultat";
 function ProfilCandidat() {
     const contents = [
         <CandidatPostForm />,
-        <Resultat/>,
+        <Resultat />,
 
     ];
 
@@ -21,7 +21,7 @@ function ProfilCandidat() {
     };
     return (
         <>
-            <div>
+            <div className="container" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "5rem" }}>
 
                 <div className="left-part" style={{ width: "20rem", marginTop: "11px" }}>
                     <div className="top" style={{ borderRadius: "15px", backgroundColor: "white" }}>
@@ -29,18 +29,16 @@ function ProfilCandidat() {
                     </div>
                     <div className="bottom" style={{ borderRadius: "15px", backgroundColor: "white", marginTop: "15px" }}>
                         <div className="liste-commune">
-                            <Button type="primary" shape="round" icon={<ShareAltOutlined />}>
+                            <Button onClick={handleNextContent} type="primary" shape="round" icon={<ShareAltOutlined />}>
                                 Publier Programme
                             </Button>
-                            <button onClick={handleNextContent}>Changer le contenu</button>
-
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="right-part">
-            {contents[currentContentIndex]}
-            </div>
-        </div >
+                <div className="right-part" style={{}}>
+                    {contents[currentContentIndex]}
+                </div>
+            </div >
         </>
     );
 }
