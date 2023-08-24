@@ -2,22 +2,28 @@ import CandidatCard from "../components/candidatCard/CandidatCard";
 import { candidats } from "../data";
 import { Pagination } from "antd";
 import { Card, List } from "antd";
-import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
+import { Breadcrumb, Layout, Menu, theme, Input, Button, Space,Spin } from "antd";
 import SideBar from "../components/sideBar/SideBar";
 import CandidatSideBar from "../components/sideBar/CandidatSideBar";
-import { useEffect } from "react";
-import { getAllActvities } from "../app/publicApi/public";
+import { useEffect, useState } from "react";
+import { getAllActvities, getAllCandidats } from "../app/publicApi/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 
 export default function Candidats() {
+    const [candidat, setCandidat] = useState([]);
+    const [candidats, setCandidats] = useState("");
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         const getCandidats = async () => {
-            const candidats = await getAllActvities();
-            console.log(candidats);
+            setLoading(true);
+            const candidats = await getAllCandidats();
+            console.log(candidats.data);
+            setCandidat(candidats.data);
+            setLoading(false);
         }
         getCandidats();
-    })
+    }, [])
     return (
         <div>
             <Layout>
@@ -47,30 +53,31 @@ export default function Candidats() {
                             overflow: "initial",
                         }}
                     >
-                        <List
-                            pagination={{
-                                position: "bottom",
-                                pageSize: 6,
-                                align: "center",
-                            }}
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                height: "calc(100vh - 11rem)",
-                                padding: "1rem",
-                            }}
-                            grid={{ gutter: 8, xs: 1, sm: 2, md: 3 }}
-                            dataSource={candidats}
-                            renderItem={(item) => (
-                                <List.Item>
-                                    <CandidatCard candidat={item} />
-                                </List.Item>
-                            )}
-                        />
+                        <Spin spinning={loading}>
+                            <List
+                                pagination={{
+                                    position: "bottom",
+                                    pageSize: 6,
+                                    align: "center",
+                                }}
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: "calc(100vh - 11rem)",
+                                    padding: "1rem",
+                                }}
+                                grid={{ gutter: 8, xs: 1, sm: 2, md: 3 }}
+                                dataSource={candidat}
+                                renderItem={(item) => (
+                                    <List.Item>
+                                        <CandidatCard candidat={item} />
+                                    </List.Item>
+                                )}
+                            />
+                        </Spin>
                     </Content>
                 </Layout>
             </Layout>
-            
         </div>
     );
 }

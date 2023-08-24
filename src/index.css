@@ -61,7 +61,6 @@ h
 
 .butomFillSecondary {
     border-radius: 50px;
-    border: 1px solid #fff;
     background: #027314;
     padding: 0.5rem;
     text-align: center;
@@ -80,7 +79,6 @@ h
 
 .butomFillPrimary {
     border-radius: 50px;
-    border: 1px solid #fff;
     background: var(--orange);
     padding: 0.5rem;
     text-align: center;

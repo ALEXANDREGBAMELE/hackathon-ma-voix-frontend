@@ -8,6 +8,8 @@ export default function FramerCard({ sondages, name }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showResult, setShowResult] = useState(false);
     const [sondage, setSondage] = useState(sondages);
+    const [cardVisible, setCardVisible] = useState(true);
+    const [direction, setDirection] = useState(null);
     const noSondage = (name) => {
         return (
             <Result
@@ -17,39 +19,53 @@ export default function FramerCard({ sondages, name }) {
             />
         );
     };
+
     useEffect(() => {
         const filterSondage = () => {
             let filtreSodage = sondages.filter((s) => s.commune === name);
             setSondage(filtreSodage);
             setCurrentIndex(0);
             setShowResult(false);
+            setCardVisible(true);
         };
         filterSondage();
     }, [name, sondages]);
 
     const handleSwipe = (dir) => {
         if (dir === "right" || dir === "left") {
-            setCurrentIndex(currentIndex + 1);
+            setDirection(dir);
+            setCardVisible(false); // Masquer la carte actuelle avant le swipe
+            setTimeout(() => {
+                setCurrentIndex(currentIndex + 1);
+                setCardVisible(true);
+                setDirection(null); // Afficher la carte suivante après le swipe
+            }, 350); // Temps d'attente pour l'animation de sortie
         }
+        
     };
 
     const handleButtonClick = (dir) => {
         handleSwipe(dir);
-        if (currentIndex + 1 >= sondage.length) {
+        if (currentIndex >= sondage.length - 1) {
             setShowResult(true);
         }
     };
 
     return (
         <div className="swipe-container">
-            {sondage.length >= 1 ? (
+            {sondage.length >0 ? (
                 <AnimatePresence>
                     {!showResult && sondage[currentIndex] && (
                         <motion.div
                             key={sondage[currentIndex].id}
-                            initial={{ opacity: 0, x: -100 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 100 }}
+                            initial={{ opacity: 0.5, y: -200 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{
+                                opacity: 0.8,
+                                x: !showResult ? (direction === "right" ? 450 : -450) : 0,
+                            }}
+                            transition={{ duration: 0.9 }}
+                            
                         >
                             <div className="card">
                                 {sondage[currentIndex].description}
