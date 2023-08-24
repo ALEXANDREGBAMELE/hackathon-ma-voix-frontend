@@ -55,9 +55,11 @@ function Login() {
               labelCol={{
                 span: 6,
               }}
-             
+              wrapperCol={{
+                span: 12,
+              }}
               style={{
-                width: "70%",
+                width: "90%",
               }}
               initialValues={{
                 remember: true,
@@ -69,7 +71,9 @@ function Login() {
               <Form.Item
                 label="Email"
                 name="email"
-                
+                style={{
+                  marginBottom: "2px",
+                }}
                 rules={[
                   {
                     required: true,
@@ -80,13 +84,17 @@ function Login() {
                 <Input
                   value={email}
                   onChange={(text) => setEmail(text)}
-                  
+                  style={{
+                    width: "25rem",
+                  }}
                 />
               </Form.Item>
 
               <Form.Item
                 label="Mot de passe"
-                
+                style={{
+                  marginBottom: "2px",
+                }}
                 name="password"
                 rules={[
                   {
@@ -96,7 +104,9 @@ function Login() {
                 ]}
               >
                 <Input.Password
-                  
+                  style={{
+                    width: "25rem",
+                  }}
                 />
               </Form.Item>
 
@@ -112,13 +122,22 @@ function Login() {
               </Form.Item>
 
               <Form.Item
-                
+                wrapperCol={{
+                  offset: 0,
+                  span: 12,
+                }}
+                style={{
+                  width: "25rem",
+                  marginBottom: "1px",
+                }}
               >
                 <Button
                   htmlType="submit"
                   type="primary"
-                  
-                block>
+                  style={{
+                    width: "29rem",
+                  }}
+                >
                   Se connecter
                 </Button>
               </Form.Item>
