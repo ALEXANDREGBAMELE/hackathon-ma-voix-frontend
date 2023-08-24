@@ -1,6 +1,6 @@
+/* eslint-disable no-useless-catch */
 import axios from "axios";
-const API_BASE_URL = 'https://lesinnovateurs.me/api';
-
+const API_BASE_URL = "https://lesinnovateurs.me/api";
 
 const publicServices = axios.create({
     baseURL: API_BASE_URL,
@@ -12,7 +12,7 @@ export const getAllActvities = () => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getActivityDatas = (id) => {
     try {
@@ -20,7 +20,7 @@ export const getActivityDatas = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getCandidatsActivities = (id) => {
     try {
@@ -28,7 +28,7 @@ export const getCandidatsActivities = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getPostComments = (id) => {
     try {
@@ -36,15 +36,20 @@ export const getPostComments = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
+/**
+ * 
+ * @param {number} id
+ * @returns 
+ */
 export const getAllPostLikes = (id) => {
     try {
         return publicServices.get(`/public/post/${id}/likes`);
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getCommentsReplique = (id) => {
     try {
@@ -52,7 +57,7 @@ export const getCommentsReplique = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getCommentAllRepliques = (id) => {
     try {
@@ -60,15 +65,15 @@ export const getCommentAllRepliques = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getAllElections = () => {
     try {
-        return publicServices.get('/public/elections');
+        return publicServices.get("/public/elections");
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getElectionData = (id) => {
     try {
@@ -76,7 +81,7 @@ export const getElectionData = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 export const getElectionParticipants = (id) => {
     try {
@@ -84,34 +89,31 @@ export const getElectionParticipants = (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 const data = {
-        'phone': 'required|string',
-        'nom': 'required|string',
-        'email': 'required|string',
-        'password': 'required|string'
-    }
-    //reset password
+    phone: "required|string",
+    nom: "required|string",
+    email: "required|string",
+    password: "required|string",
+};
 export const resetPassword = (data) => {
     try {
-        return publicServices.post('/public/user/reset-password', data);
+        return publicServices.post("/public/user/reset-password", data);
     } catch (error) {
         throw error;
     }
-}
+};
 export const getSondages = async() => {
-    const resp = await fetch("https://lesinnovateurs.me/api/public/sondages").then((res) => res.json());
-    return resp
-
-}
+    const resp = await fetch(
+        "https://lesinnovateurs.me/api/public/sondages"
+    ).then((res) => res.json());
+    return resp;
+};
 export const getAllCandidats = async() => {
-    const resp =
-        await publicServices.get(`/public/candidats`);
-    return resp.data
-
-
-}
+    const resp = await publicServices.get(`/public/candidats`);
+    return resp.data;
+};
 
 export const LoginUser = async(data) => {
     const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
@@ -121,8 +123,8 @@ export const LoginUser = async(data) => {
         },
         body: JSON.stringify(data),
     }).then((res) => res.json());
-    return response
-}
+    return response;
+};
 
 export const RegisterUser = async(data) => {
     const response = await fetch("https://lesinnovateurs.me/api/auth/register", {
@@ -132,45 +134,65 @@ export const RegisterUser = async(data) => {
         },
         body: JSON.stringify(data),
     }).then((res) => res.json());
-    return response
-}
+    return response;
+};
 export const getAllPosts = async() => {
-    const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
-    return resp
+        const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
+        return resp
 
-}
+        export const getCandidatPosts = async(id) => {
+            const resp = await fetch(
+                `https://lesinnovateurs.me/api/public/candidat/${id}/posts`
+            ).then((res) => res.json());
+            return resp;
+        };
+        export const addLike = async(userId, postId, token) => {
+            const apiUrl = "https://lesinnovateurs.me/api/private/user/add-like";
 
-export const getCandidatPosts = async(id) => {
-    const resp = await fetch(`https://lesinnovateurs.me/api/public/candidat/${id}/posts`).then((res) => res.json());
-    return resp
+            export const getCandidatPosts = async(id) => {
+                const resp = await fetch(
+                    `https://lesinnovateurs.me/api/public/candidat/${id}/posts`
+                ).then((res) => res.json());
+                return resp;
+            };
+            export const addLike = async(userId, postId, token) => {
+                const apiUrl = "https://lesinnovateurs.me/api/private/user/add-like";
 
-}
-export const likedPosts = async(userId, postId, token) => {
-    const resp = await fetch(`https://lesinnovateurs.me/api/private/user/add-like`, {
-        method: "POST",
-        Autorization: {
-            token,
-            type: "Bearer"
-        },
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, postId }),
-    }).then((res) => res.json());
-    return resp
-}
-export const participeSondage = async(userId, sondageId, token, choix, avis) => {
-    const requestOption = {
-        method: "POST",
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        id_post: postId,
+                        id_user: userId,
+                    }),
+                };
+                const response = await fetch(apiUrl, requestOptions).then((res) =>
+                    res.json()
+                );
+                return response;
+            };
 
-        headers: {
-            "Accept": "application/json",
-            Autorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, sondageId, choix, avis }),
-    };
-    const resp = await fetch(`https://lesinnovateurs.me/api/private/user/add-vote`, requestOption).then((res) => res.json());
-    const sondages = await getSondages(sondageId)
-    return { resp, sondages }
-}
+
+            export const removeLike = async(userId, postId, token) => {
+                const apiUrl = `https://lesinnovateurs.me/api/private/user/${postId}/${userId}/delete-like`;
+
+            }
+            export const likedPosts = async(userId, postId, token) => {
+                const resp = await fetch(`https://lesinnovateurs.me/api/private/user/add-like`, {
+                    method: "POST",
+                    Autorization: {
+                        token,
+                        type: "Bearer"
+                    },
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ userId, postId }),
+                }).then((res) => res.json());
+                return resp
+            }
+        }
