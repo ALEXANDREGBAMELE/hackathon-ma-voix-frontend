@@ -15,7 +15,7 @@ import {
 } from "antd";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
-import { getSondages, participeSondage } from "../app/publicApi/public";
+import { getSondages } from "../app/publicApi/public";
 import FramerCard from "../components/swipeCard/FramerCard";
 import CarteInteractif from "../components/carteInteractif/CarteInteractif";
 import { curentUser, isLoggedIn, token } from "../features/auth/authSlice";
@@ -51,8 +51,6 @@ export default function Sondage() {
         }
         console.log(id, choix, tokenUser, User.id);
 
-        let addVote = await participeSondage(User.id, id, tokenUser, choix);
-        console.log(addVote);
     };
     return (
         <Layout>
