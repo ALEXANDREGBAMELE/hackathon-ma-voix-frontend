@@ -1,16 +1,35 @@
 import { EditOutlined, SendOutlined, LikeOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
+import { curentUser, isLoggedIn,token } from "../../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { likedPosts } from "../../app/publicApi/public";
 const { Meta } = Card;
-export const NewsCard = ({post}) => {
+export const NewsCard = ({ post }) => {
+    const user = useSelector(isLoggedIn);
+    const dispatch = useDispatch();
+    const User = useSelector(curentUser);
+    const tokenUser = useSelector(token);
+
+    const handleLike =async () => {
+        if (user) {
+            const rest =await likedPosts(User.id,post.id,tokenUser);
+            console.log(rest);
+            return
+            
+        }
+        alert("vous devez vous connecter pour aimer un post");
+        
+
+    };
     return (
         <Card
             style={{
-                width: "46.5rem",
+                width: "40rem",
                 marginBottom: "1.5rem",
                 padding: "1rem",
             }}
             actions={[
-                <p>
+                <p onClick={handleLike} >
                     <LikeOutlined /> Like
                 </p>,
                 <p>
@@ -23,34 +42,20 @@ export const NewsCard = ({post}) => {
         >
             <Meta
                 avatar={
-                    <Avatar
-                        src={
-                            post.post_img
-                                ? post.post_img
-                                : "https://xsgames.co/randomusers/avatar.php?g=pixel"
-                        }
-                    />
+                    <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
                 }
-                title={
-                    post.title
-                        ? post.title
-                        : "Ouverture prochaine du pont alassane Dramane ouatara"
-                }
-                description="#Politique  #Infrastrutures  #Election  #Paix"
+                title={post.titre}
+                description={post.description}
             />
             <img
-                src={
-                    post.post_img
-                        ? post.post_img
-                        : "https://media-files.abidjan.net/photo/infrastructures-visite-des-travaux-du-5e-pont-reliant-les-communes-de-cocod_kyp0xb88me.jpg"
-                }
+                src={`https://lesinnovateurs.me/${post.url_media}`}
                 style={{
                     width: "100%",
                     height: "10rem",
                     margin: "1rem",
                     objectFit: "contain",
                 }}
-                alt=""
+                alt="image du post"
             />
         </Card>
     );

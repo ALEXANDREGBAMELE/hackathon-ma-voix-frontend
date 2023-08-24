@@ -55,7 +55,7 @@ export default function CandidatDetails() {
             setCandidat(candidats.data.find((c) => c.id == id));
         };
         getCandidats();
-    });
+    }, []);
     return (
         <Layout>
             <Sider
