@@ -10,9 +10,9 @@ export default function ActualiteCandidat({ post }) {
     const [candidatPost, setCandidatPost] = useState([]);
     useEffect(() => {
         const getCandidatPost = async () => {
-            const candidatPosts = await getAllPosts();
-            console.log(candidatPosts);
-            setCandidatPost(candidatPosts.filter((p) => p.user_id == id));
+            const postCandidat = await getAllPosts();
+            console.log(postCandidat.data);
+            setCandidatPost(postCandidat.data.filter((p) => p.id_candidat == id));
         };
         getCandidatPost();
     },[]);
@@ -22,7 +22,7 @@ export default function ActualiteCandidat({ post }) {
                 paddingBottom: "5rem",
                 paddingTop: "10rem",
             }}
-            dataLength={data.length}
+            dataLength={candidatPost.length}
         >
             {candidatPost.map((item, index) => (
                 <NewsCard post={item} key={index} />

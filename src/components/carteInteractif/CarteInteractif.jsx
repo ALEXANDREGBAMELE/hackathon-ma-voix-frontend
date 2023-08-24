@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CarteInteractif() {
+export default function CarteInteractif({ handleCommuneClicked}) {
     const [hoveredCommune, setHoveredCommune] = useState(null);
     const [clickCommune, setClickCommune] = useState(null);
 
