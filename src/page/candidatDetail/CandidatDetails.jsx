@@ -18,7 +18,7 @@ const tabeItems = [
     },
     {
         key: "2",
-        label: `Idéologie`,
+        label: `Programmes`,
         children: (
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -30,7 +30,7 @@ const tabeItems = [
     },
     {
         key: "3",
-        label: `Historique professionnel`,
+        label: `programe `,
         children: <p>Historique professionnel content</p>,
     },
 ];

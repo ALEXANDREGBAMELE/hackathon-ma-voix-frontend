@@ -4,11 +4,11 @@ import Sondage from "../Sondage";
 import CustomButon from "../CustomButon";
 import "./sidebar.css";
 import CarteInteractif from "../carteInteractif/CarteInteractif";
-export default function SideBar() {
+export default function SideBar({ handleCarteClick }) {
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTopsvg">
-               <CarteInteractif />
+                <CarteInteractif handleCommuneClicked={handleCarteClick} />
             </div>
             <div className="sideBarBottom">
                 <div className="title">

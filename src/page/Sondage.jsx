@@ -15,8 +15,11 @@ import {
 } from "antd";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
-import { getSondages } from "../app/publicApi/public";
+import { getSondages, participeSondage } from "../app/publicApi/public";
 import FramerCard from "../components/swipeCard/FramerCard";
+import CarteInteractif from "../components/carteInteractif/CarteInteractif";
+import { curentUser, isLoggedIn, token } from "../features/auth/authSlice";
+import { useSelector } from "react-redux";
 const { Header, Content, Footer, Sider } = Layout;
 export default function Sondage() {
     const [sondage, setSondage] = useState([]);
@@ -25,6 +28,9 @@ export default function Sondage() {
     const handleClick = (name) => {
         setSelect(name);
     };
+    const user = useSelector(isLoggedIn);
+    let tokenUser = useSelector(token);
+    let User = useSelector(curentUser);
     useEffect(() => {
         const fetchSondage = async () => {
             setLoading(true);
@@ -38,6 +44,16 @@ export default function Sondage() {
         };
         fetchSondage();
     }, []);
+    const addSondageVote = async (id, choix) => {
+        if (!user) {
+            alert("vous devez vous connecter pour voter");
+            return;
+        }
+        console.log(id, choix, tokenUser, User.id);
+
+        let addVote = await participeSondage(User.id, id, tokenUser, choix);
+        console.log(addVote);
+    };
     return (
         <Layout>
             <Sider
@@ -51,7 +67,7 @@ export default function Sondage() {
                     overflow: "hidden",
                 }}
             >
-                <SondageSideBar handleClick={handleClick} />
+                <SondageSideBar handleCommuneClicked={handleClick} />
             </Sider>
             <Layout
                 className="site-layout"
@@ -82,7 +98,11 @@ export default function Sondage() {
                                 height: "calc(100vh - 11rem)",
                             }}
                         >
-                            <FramerCard sondages={sondage} name={select} />
+                            <FramerCard
+                                choixSondage={addSondageVote}
+                                sondages={sondage}
+                                name={select}
+                            />
                         </div>
                     </Spin>
                 </Content>

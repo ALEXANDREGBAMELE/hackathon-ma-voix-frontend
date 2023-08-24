@@ -159,3 +159,18 @@ export const likedPosts = async(userId, postId, token) => {
     }).then((res) => res.json());
     return resp
 }
+export const participeSondage = async(userId, sondageId, token, choix, avis) => {
+    const requestOption = {
+        method: "POST",
+
+        headers: {
+            "Accept": "application/json",
+            Autorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, sondageId, choix, avis }),
+    };
+    const resp = await fetch(`https://lesinnovateurs.me/api/private/user/add-vote`, requestOption).then((res) => res.json());
+    const sondages = await getSondages(sondageId)
+    return { resp, sondages }
+}

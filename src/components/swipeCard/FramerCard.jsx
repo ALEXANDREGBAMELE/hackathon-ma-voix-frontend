@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import CustomButon from "../CustomButon";
 import CustomResult from "../CustomResult";
 import { Button, Result } from "antd";
-export default function FramerCard({ sondages, name }) {
+export default function FramerCard({ sondages, name,choixSondage }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showResult, setShowResult] = useState(false);
     const [sondage, setSondage] = useState(sondages);
@@ -31,16 +31,23 @@ export default function FramerCard({ sondages, name }) {
         filterSondage();
     }, [name, sondages]);
 
-    const handleSwipe = (dir) => {
-        if (dir === "right" || dir === "left") {
-            setDirection(dir);
-            setCardVisible(false); // Masquer la carte actuelle avant le swipe
-            setTimeout(() => {
-                setCurrentIndex(currentIndex + 1);
-                setCardVisible(true);
-                setDirection(null); // Afficher la carte suivante après le swipe
-            }, 350); // Temps d'attente pour l'animation de sortie
+    const handleSwipe = async(dir) => {
+        if (dir === "right") {
+            let id = sondage[currentIndex].id;
+            
+            choixSondage(id,true);
+        } else {
+            let id = sondage[currentIndex].id;
+console.log(id);
+
+            await choixSondage(id, false);
+            console.log(id);
+            
+
         }
+        setDirection(dir);
+        setCurrentIndex((prev) => prev + 1);
+        setCardVisible(false);
         
     };
 
