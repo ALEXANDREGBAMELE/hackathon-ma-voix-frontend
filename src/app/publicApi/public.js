@@ -6,6 +6,14 @@ const publicServices = axios.create({
     baseURL: API_BASE_URL,
 });
 
+const setHeader = (token) => {
+    if (token) {
+        publicServices.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    } else {
+        delete publicServices.defaults.headers.common["Authorization"];
+    }
+};
+
 export const getAllActvities = () => {
     try {
         return publicServices.get("/public/activities");
@@ -106,7 +114,7 @@ export const resetPassword = (data) => {
 };
 export const getSondages = async() => {
     const resp = await fetch(
-        "https://lesinnovateurs.me/api/public/sondages"
+        publicServices.get("/public/sondages")
     ).then((res) => res.json());
     return resp;
 };
@@ -116,7 +124,8 @@ export const getAllCandidats = async() => {
 };
 
 export const LoginUser = async(data) => {
-    const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
+    const response = await fetch(publicServices.post("/auth/login"),
+     {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -127,7 +136,8 @@ export const LoginUser = async(data) => {
 };
 
 export const RegisterUser = async(data) => {
-    const response = await fetch("https://lesinnovateurs.me/api/auth/register", {
+    const response = await fetch(publicServices.post("/auth/register"), 
+    {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -137,13 +147,15 @@ export const RegisterUser = async(data) => {
     return response;
 };
 export const getAllPosts = async() => {
-    const resp = await fetch("https://lesinnovateurs.me/api/public/posts").then((res) => res.json());
+    const resp = await fetch(
+        publicServices.get("/public/posts")
+    ).then((res) => res.json());
     return resp
 }
 
 export const getCandidatPosts = async(id) => {
     const resp = await fetch(
-        `https://lesinnovateurs.me/api/public/candidat/${id}/posts`
+        publicServices.get(`/public/candidat/${id}/posts`)
     ).then((res) => res.json());
     return resp;
 };
@@ -172,35 +184,59 @@ export const addLike = async(userId, postId, token) => {
 
 
 export const removeLike = async(userId, postId, token) => {
-    const apiUrl = `https://lesinnovateurs.me/api/private/user/${postId}/${userId}/delete-like`;
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        }
+    };
+    const response = await fetch(
+        `https://lesinnovateurs.me/api/private/user/${postId}/${userId}/delete-like`,
+        requestOptions
+    ).then((res) => res.json());
+    return response;
+
 
 }
 export const likedPosts = async(userId, postId, token) => {
-    const resp = await fetch(`https://lesinnovateurs.me/api/private/user/add-like`, {
+    const requestOptions = {
         method: "POST",
-        Autorization: {
-            token,
-            type: "Bearer"
-        },
         headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId, postId }),
-    }).then((res) => res.json());
-    return resp
-}
+        body: JSON.stringify({
+            id_post: postId,
+            id_user: userId,
+        }),
+    };
+    const response = await fetch(
+        "https://lesinnovateurs.me/api/private/user/add-like",
+        requestOptions
+    ).then((res) => res.json());
+    return response;
+};
+
 
 export const participeSondage = async(userId, sondageId, token) => {
-    const resp = await fetch(`https://lesinnovateurs.me/api/private/user/add-vote`, {
+    const requestOptions = {
         method: "POST",
-        Autorization: {
-            token,
-            type: "Bearer"
-        },
         headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId, sondageId }),
-    }).then((res) => res.json());
-    return resp
-}
+        body: JSON.stringify({
+            id_sondage: sondageId,
+            id_user: userId,
+        }),
+    };
+    const response = await fetch(
+        "https://lesinnovateurs.me/api/private/user/participate-sondage",
+        requestOptions
+    ).then((res) => res.json());
+    return response;
+};
