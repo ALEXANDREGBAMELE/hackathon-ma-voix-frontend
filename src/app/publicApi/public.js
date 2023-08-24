@@ -173,7 +173,7 @@ export const addLike = async(userId, postId, token) => {
 
 export const removeLike = async(userId, postId, token) => {
     const requestOptions = {
-        method: "POST",
+        method: "DELETE",
         headers: {
             Accept: "application/json",
             Authorization: `Bearer ${token}`,
@@ -209,7 +209,7 @@ export const likedPosts = async(userId, postId, token) => {
 };
 
 
-export const participeSondage = async(userId, sondageId, token) => {
+export const participeSondage = async(userId, sondageId, choix, token) => {
     const requestOptions = {
         method: "POST",
         headers: {
@@ -220,10 +220,11 @@ export const participeSondage = async(userId, sondageId, token) => {
         body: JSON.stringify({
             id_sondage: sondageId,
             id_user: userId,
+            choix
         }),
     };
     const response = await fetch(
-        "https://lesinnovateurs.me/api/private/user/participate-sondage",
+        "https://lesinnovateurs.me/api/private/user/add-vote",
         requestOptions
     ).then((res) => res.json());
     return response;

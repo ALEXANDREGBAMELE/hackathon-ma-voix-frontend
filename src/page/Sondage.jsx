@@ -15,11 +15,12 @@ import {
 } from "antd";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
-import { getSondages } from "../app/publicApi/public";
+import { getSondages, participeSondage } from "../app/publicApi/public";
 import FramerCard from "../components/swipeCard/FramerCard";
 import CarteInteractif from "../components/carteInteractif/CarteInteractif";
 import { curentUser, isLoggedIn, token } from "../features/auth/authSlice";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 export default function Sondage() {
     const [sondage, setSondage] = useState([]);
@@ -31,15 +32,12 @@ export default function Sondage() {
     const user = useSelector(isLoggedIn);
     let tokenUser = useSelector(token);
     let User = useSelector(curentUser);
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchSondage = async () => {
             setLoading(true);
             const sondages = await getSondages();
-            console.log(sondages);
-
             setSondage(sondages.data);
-            console.log(sondage);
-
             setLoading(false);
         };
         fetchSondage();
@@ -47,10 +45,18 @@ export default function Sondage() {
     const addSondageVote = async (id, choix) => {
         if (!user) {
             alert("vous devez vous connecter pour voter");
+            navigate("/login");
             return;
         }
         console.log(id, choix, tokenUser, User.id);
+        const sondage = await participeSondage(User.id, id, choix, tokenUser);
+        console.log(id);
+        console.log(sondage);
+        if (sondage.errors) {
+            return false;
+        }
 
+        return true;
     };
     return (
         <Layout>
@@ -77,7 +83,6 @@ export default function Sondage() {
                     style={{
                         margin: "24px 16px 0",
                         overflow: "initial",
-                        background:"linear-gradient(to right, orange 30%, white 40%, green 0%)"
                     }}
                 >
                     <Spin tip="chargement des sondages" spinning={loading}>
