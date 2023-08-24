@@ -1,23 +1,43 @@
 // postSlice.js
 import { createSlice } from '@reduxjs/toolkit';
+import { getAllPosts } from '../app/publicApi/public';
+
+const initialState = {
+    posts: [],
+};
 
 const postSlice = createSlice({
-    name: 'posts',
-    initialState: {
-        posts: [],
-        likedPosts: [],
+    name: 'post',
+    initialState,
+    reducers: {
+        addPost(state, action) {
+            state.posts.push(action.payload);
+        },
+        incrementLikes(state, action) {
+            const { id } = action.payload;
+            const existingPost = state.posts.find((post) => post.id == id);
+            if (existingPost) {
+                existingPost.likes++;
+            }
+        },
+        decrementLikes(state, action) {
+            const { id } = action.payload;
+            const existingPost = state.posts.find((post) => post.id == id);
+            if (existingPost) {
+                existingPost.likes--;
+            }
+        },
+        addLikedPost(state, action) {
+            const { id } = action.payload;
+            const existingPost = state.posts.find((post) => post.id == id);
+            if (existingPost) {
+                existingPost.liked = true;
+            }
+        }
 
     },
-    reducers: {
-        getAllpost(state, action) {
-            state.posts = action.payload;
-        },
-        likedPost(state, action) {
-            const postId = action.payload;
-            state.likedPosts.push(postId);
-        },
-    },
+
 });
 
-export const { addPost, likePost, commentPost } = postSlice.actions;
+export const { addPost, incrementLikes, decrementLikes } = postSlice.actions;
 export default postSlice.reducer;

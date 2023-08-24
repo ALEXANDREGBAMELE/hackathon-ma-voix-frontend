@@ -50,9 +50,11 @@ export default function CandidatDetails() {
     useEffect(() => {
         const getCandidats = async () => {
             const candidats = await getAllCandidats();
+            console.log(id);
+
             console.log(candidats.data);
             setCandidats(candidats.data);
-            setCandidat(candidats.data.find((c) => c.user_id == id).user);
+            setCandidat(candidats.data.find((c) => c.id == id)?.user);
             console.log(candidat);
         };
         getCandidats();

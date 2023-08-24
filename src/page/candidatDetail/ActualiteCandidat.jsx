@@ -11,8 +11,12 @@ export default function ActualiteCandidat({ post }) {
     useEffect(() => {
         const getCandidatPost = async () => {
             const postCandidat = await getAllPosts();
+            console.log(id);
+            
             console.log(postCandidat.data);
             setCandidatPost(postCandidat.data.filter((p) => p.id_candidat == id));
+            console.log(candidatPost);
+            
         };
         getCandidatPost();
     },[]);

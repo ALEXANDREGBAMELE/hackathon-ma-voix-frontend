@@ -15,12 +15,12 @@ import {
 } from "antd";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
-import { getSondages } from "../app/publicApi/public";
+import { getSondages, participeSondage } from "../app/publicApi/public";
 import FramerCard from "../components/swipeCard/FramerCard";
 import CarteInteractif from "../components/carteInteractif/CarteInteractif";
 import { curentUser, isLoggedIn, token } from "../features/auth/authSlice";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 export default function Sondage() {
     const [sondage, setSondage] = useState([]);
@@ -32,28 +32,38 @@ export default function Sondage() {
     const user = useSelector(isLoggedIn);
     let tokenUser = useSelector(token);
     let User = useSelector(curentUser);
-    useEffect(() => {
-      const fetchSondage = async () => {
-        setLoading(true);
-        try {
-          const sondagesData = await getSondages(user, tokenUser);
-          setSondage(sondagesData.data);
-        } catch (error) {
-          // Handle error here
-          console.error("Error fetching sondages:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchSondage();
-    }, [user, tokenUser]);
+    const navigate = useNavigate();
+      useEffect(() => {
+        const fetchSondage = async () => {
+          setLoading(true);
+          try {
+            const sondagesData = await getSondages(user, tokenUser);
+            setSondage(sondagesData.data);
+          } catch (error) {
+            // Handle error here
+            console.error("Error fetching sondages:", error);
+          } finally {
+            setLoading(false);
+          }
+        };
+        fetchSondage();
+      }, [user, tokenUser]);
+
     const addSondageVote = async (id, choix) => {
         if (!user) {
-            window.location.href = "/login";
+            alert("vous devez vous connecter pour voter");
+            navigate("/login");
             return;
         }
         console.log(id, choix, tokenUser, User.id);
+        const sondage = await participeSondage(User.id, id, choix, tokenUser);
+        console.log(id);
+        console.log(sondage);
+        if (sondage.errors) {
+            return false;
+        }
 
+        return true;
     };
     return (
         <Layout>

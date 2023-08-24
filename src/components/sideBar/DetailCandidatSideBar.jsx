@@ -28,7 +28,7 @@ export default function DetailCandidatSideBar({candidats}) {
                         gap: ".3rem",
                     }}
                 >
-                    {candidats.filter((c)=> c.user.commune ==candidat.commune).map((c) => (
+                    {candidats.filter((c)=> c.user?.commune ==candidat?.commune).map((c) => (
                         <div key={c.id} className="imgCan">
                             <img
                                 src={c.img_url}
