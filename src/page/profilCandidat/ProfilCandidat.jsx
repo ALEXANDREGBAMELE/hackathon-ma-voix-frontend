@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { ShareAltOutlined } from '@ant-design/icons';
-import { Button, Radio, Space, Divider, Select, Result } from 'antd';
+import { ShareAltOutlined, DownOutlined } from '@ant-design/icons';
+import { Button, Radio, Space, Divider, Select, Result, Dropdown, Menu, Modal } from 'antd';
 import CandidatPostForm from './CandidatPostForm';
 import { NewsCard } from "../../components/candidatCard/NewsCard";
 import NotificationCandidat from "./NotificationCandidat";
-NotificationCandidat
+import ModificationProfilCandidat from "./modificationProfilCandidat";
+
+
 function ProfilCandidat() {
     const [select, setSelect] = useState("Post");
 
@@ -17,12 +19,20 @@ function ProfilCandidat() {
         handleClick(name);
     };
 
+    // Button paramettre
+    const handleMenuClick = (e) => {
+        console.log("Click on item:", e);
+    };
+
+    const menu = (
+        <Menu onClick={handleMenuClick}>
+            <Menu.Item key="1">Option 1</Menu.Item>
+            <Menu.Item key="2">Option 2</Menu.Item>
+            <Menu.Item key="3">Option 3</Menu.Item>
+        </Menu>
+    );
+
     const buttonAction = [
-        {
-            name: "Post",
-            id: 1,
-            page: <NewsCard />,
-        },
         {
             name: "Programme",
             id: 2,
@@ -33,61 +43,61 @@ function ProfilCandidat() {
             id: 3,
             page: <NotificationCandidat />,
         },
+        {
+            name: "paramettre",
+            id: 4,
+            page: <ModificationProfilCandidat />,
+        },
+
 
     ];
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const publier = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
     return (
-        <div className="container" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", gap: "5rem", height: "calc(100vh - 4rem)" }}>
-            <div className="left-part" style={{ width: "20rem", marginTop: "11px" }}>
-                <div className="top" style={{ borderRadius: "15px", backgroundColor: "white" }}>
-                    <div style={{ textAlign: "center" }}>
-                        <img src="https://cotedivoirenews.ci/wp-content/uploads/2019/02/Jean-Marc-Yace-1.jpeg" alt="" style={{ borderRadius: "100%", height: "100px", width: "100px" }} />
-                    </div>
-                    <div className="information-personnelle" style={{ textAlign: "center" }}>
-                        <h1>Yace Jean-Marc</h1>
-                        <h3 style={{ color: "blue" }}>yacejeanmarc@gmail.com</h3>
-                        <h2 style={{ color: "green" }}>PDCI</h2>
-                    </div>
+        <div className="container" style={{ display: "block", backgroundColor:"white" }}>
+            <div className="top-part" style={{ display: "flex", gridTemplateColumns: "1fr 1fr", padding: "15px" }}>
+                <div className="img-card">
+                    <img src="https://www.koaci.com/assets/news/thumbnails/1500/2023/05/photo_1683720735.jpg" alt="" />
                 </div>
-                <div className="bottom" style={{ borderRadius: "15px", backgroundColor: "white", marginTop: "15px", height: "400px" }}>
-                    <div className="liste-commune" style={{ textAlign: "", padding:"20px" }}>
-                        <h1 >Actions</h1>
-                        {buttonAction.map((item) => (
-                            <div
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    flexWrap: "nowrap",
-                                }}
-                                key={item.id}
-                                className="buttonAction"
-                            >
-                                <div
-                                    onClick={() => clicked(item.name)}
-                                    className={
-                                        select === item.name
-                                            ? "butomFillSecondary"
-                                            : "butomAoutlin"
-                                    }
-                                    style={{ width: "6.5rem" }}
-                                >
-                                    <p>{item.name}</p>
-                                </div>
-                            </div>
-                        ))}
-                        <br />
-                        <div style={{ border: "solid 2px green", height:"40px", padding:"10px" }}><i class="fa-regular fa-eye" style={{ fontSize: "20px" }}></i>  voir mes publications</div><br />
-                        <div style={{ border: "solid 2px green", height:"40px", padding:"10px"  }}><i class="fa-solid fa-share" style={{ fontSize: "20px" }}></i>  Nouvelle Publication</div><br />
-                        <div style={{border: "solid 2px green", height:"40px", padding:"10px" }}><i class="fa-solid fa-bell" style={{ fontSize: "20px" }}></i>  Notifications</div><br />
-                        
-                        <div style={{ border: "solid 2px green", height:"40px", padding:"10px" }}><i class="fa-solid fa-gear" style={{ fontSize: "20px" }}></i>  Paramettre</div><br />
-
+                <div className="info-card" style={{ height: "400px" }}>
+                    <div style={{ fontSize: "25px", fontWeight: "", padding: "10px" }}>Bienvenue, <span style={{ fontSize: "25px", fontWeight: "bolder" }}>Yace Jean Marc</span></div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam maxime, nemo libero fuga eaque laborum exercitationem sequi accusamus perspiciatis pariatur laboriosam assumenda, quos voluptatibus nam ea dolores aperiam ab natus.</p>
                     </div>
                 </div>
             </div>
-            <div className="right-part" style={{}}>
-                {/* Affichage de la page correspondant à l'élément sélectionné */}
-                {buttonAction.find(item => item.name === select)?.page}
+            <div className="bottom-part">
+                <div className="card-container" style={{ display: "flex", gap: "50px", marginLeft: "10%" }}>
+                    <div className="card-button" style={{}} >
+                        <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-bell" style={{ fontSize: "40px", color:"green" }}> </i> <br /><br /> <span style={{fontSize:"24px", color:"", fontWeight:"bold"}}> Notification</span> </div>
+                    </div>
+                    <div className="card-button" style={{}}>
+                        <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-square-poll-vertical" style={{ fontSize: "40px",color:"orange" }}> </i> <br /><br /> <span style={{fontSize:"24px",}}> Voir les sondages</span>  </div>
+                    </div>
+                    <div className="card-button" style={{}} onClick={publier}>
+                        <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px",color:"green" }}> </i> <br /><br /> <span style={{fontSize:"24px"}}> Publier un programme</span> </div>
+                    </div>
+                    <div className="card-button" style={{}}>
+                        <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px",color:"green" }}> </i> <br /><br /> <span style={{fontSize:"24px"}}> Resultats</span> </div>
+                    </div>
+
+                    <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={800} padding={30}>
+                        <CandidatPostForm/>
+                    </Modal>
+
+                    <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={800} padding={30}>
+                        <CandidatPostForm/>
+                    </Modal>
+                </div>
             </div>
         </div>
     );
