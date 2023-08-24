@@ -13,6 +13,7 @@ import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import Resultat from "./page/Resultat.jsx";
+import RecoveryPassword from "./page/password-recovery.jsx";
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <Login />,
+    },
+    {
+        path: "/password-recovery",
+        element: <RecoveryPassword />,
     },
     {
         path: "/candidats",

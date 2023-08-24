@@ -91,7 +91,6 @@ const data = {
         'email': 'required|string',
         'password': 'required|string'
     }
-    //reset password
 export const resetPassword = (data) => {
     try {
         return publicServices.post('/public/user/reset-password', data);

@@ -32,6 +32,7 @@ const menuItems = [
         key: "resultat",
     },
 ];
+// eslint-disable-next-line no-empty-pattern
 function Topbar({}) {
     const [current, setCurrent] = useState("/");
     const isLogged = useSelector(isLoggedIn);
@@ -64,8 +65,8 @@ function Topbar({}) {
                     }}
                 />
                 {isLogged ? (
-                    <nav class="icons">
-                        <i class="fa fa-bell" aria-hidden="true"></i>
+                    <nav className="icons">
+                        <i className="fa fa-bell" aria-hidden="true"></i>
                         <div className="userAvatar">
                             <p>{logUser.nom}</p>
                             <img
