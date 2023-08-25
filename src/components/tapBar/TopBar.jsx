@@ -101,12 +101,10 @@ function Topbar() {
                 }}
             />
             {isLogged ? (
-                <Dropdown overlay={dropdownMenu} placement="bottomRight" arrow>
                     <Button className="account-dropdown">
                         <i className="fa fa-user" aria-hidden="true"></i>
                         <span>{logUser.nom}</span>
                     </Button>
-                </Dropdown>
             ) : (
                 <Button onClick={() => navigation("/login")}>Se connecter</Button>
             )}
