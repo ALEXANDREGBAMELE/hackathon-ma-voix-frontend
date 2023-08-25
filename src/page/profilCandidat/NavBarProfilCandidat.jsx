@@ -22,15 +22,12 @@ const NavbarProfilCandidat = () => {
 
     return (
         <>
-            <Menu mode="horizontal" theme="light" defaultSelectedKeys={["1"]} style={{ display: "flex", justifyContent: "space-between", paddingRight: "65px" }}>
+            <Menu mode="horizontal" theme="light" defaultSelectedKeys={["1"]} style={{ display: "flex", justifyContent: "space-between", paddingRight: "65px", paddingBottom:"20px",paddingTop:"20px" }}>
                 <Menu.Item key="1" icon={<HomeOutlined />}>
-                    Accueil
-                </Menu.Item>
-                <Menu.Item key="2" icon={<CalendarOutlined />}>
-                    Calendrier
+                    Dashboard
                 </Menu.Item>
                 <Menu.Item key="3" icon={<BarChartOutlined />}>
-                    Statistiques
+                    Programme
                 </Menu.Item>
                 <Menu.Item key="4" onClick={handleNotificationModalOpen} icon={<Badge count={5} offset={[10, 0]} overflowCount={99}><BellOutlined /></Badge>}>
                     Notifications

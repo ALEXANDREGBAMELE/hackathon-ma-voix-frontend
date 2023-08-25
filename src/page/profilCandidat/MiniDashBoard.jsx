@@ -1,50 +1,43 @@
 import React from "react";
-import { Row, Col, Card } from "antd";
-// import GraphTendance from "./GraphTendance";
-
-// const chartData = {
-//     labels: ["Jan", "Feb", "Mar", "Apr", "May"],
-//     datasets: [
-//       {
-//         label: "Votes",
-//         data: [50, 60, 70, 80, 90],
-//         fill: false,
-//         borderColor: "rgba(75, 192, 192, 1)",
-//       },
-//     ],
-//   };
+import { Card, Row, Col, Statistic } from "antd";
+import { UserOutlined, BarChartOutlined, CalendarOutlined, FileTextOutlined } from "@ant-design/icons";
 
 const Dashboard = () => {
-    
-
   return (
-    <>
-    <div className="dashboard" style={{ textAlign: "center" ,marginTop:"10px", padding:"1rem"}}>
-      <h2 style={{marginBottom:"10px"}}>Tableau de Bord des Statistiques</h2>
-      <Row gutter={[16, 16]} justify="center">
-        <Col xs={24} sm={12} md={8}>
-          <Card title="Total des Votes" bordered={false} size="small">
-            {/* Affichez ici les statistiques du total des votes */}
+    <div style={{ padding: "20px", justifyContent:"center" , textAlign:"center"}}>
+      <Row gutter={16}>
+        <Col span={6}>
+          <Card>
+            <Statistic
+              title="Followers"
+              value={120}
+              prefix={<UserOutlined />}
+              valueStyle={{ color: "#3f8600" }}
+            />
           </Card>
         </Col>
-        <Col xs={24} sm={12} md={8}>
-          <Card title="Votes par Candidat" bordered={false} size="small">
-            {/* Affichez ici les statistiques des votes par candidat */}
+        <Col span={6}>
+          <Card>
+            <Statistic
+              title="Statistiques"
+              value={350}
+              prefix={<BarChartOutlined />}
+              valueStyle={{ color: "#cf1322" }}
+            />
           </Card>
         </Col>
-        <Col xs={24} sm={12} md={8}>
-          <Card title="Participation par Commune" bordered={false} size="small">
-            {/* Affichez ici les statistiques de la participation par commune */}
+        <Col span={6}>
+          <Card>
+            <Statistic
+              title="Calendrier"
+              value={15}
+              prefix={<CalendarOutlined />}
+              valueStyle={{ color: "#1890ff" }}
+            />
           </Card>
         </Col>
       </Row>
     </div>
-    <div>
-      {/* ... Autres éléments du tableau de bord ... */}
-      {/* <GraphTendance chartData={chartData} /> */}
-      {/* ... Autres éléments du tableau de bord ... */}
-    </div>
-    </>
   );
 };
 

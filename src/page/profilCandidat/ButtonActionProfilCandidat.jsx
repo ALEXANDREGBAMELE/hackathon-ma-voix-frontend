@@ -34,29 +34,36 @@ function ButtonActionProfilCandidat() {
                     {/* ... Autres parties de votre composant ... */}
 
 
-                    <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
-                        {/* ... Bouton 2 ... */}
+                    {/* <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
+                       
                         <div className="card-button" style={{ marginTop: "15px" }}>
                             <div style={{ border: "solid 2px green", height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "30px" }}> </i> <span style={{ fontSize: "24px" }}> Voir les sondages</span> </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="card-button" style={{}} onClick={handleParamettreModalOpen}>
                         {/* ... Bouton 3 ... */}
                         <div className="card-button" style={{ marginTop: "15px" }}>
-                            <div style={{ border: "solid 2px green", height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "30px" }}> </i> <span style={{ fontSize: "24px" }}> Publier Programme</span> </div>
+                            <div style={{ border: "solid 1px gray", height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-share-from-square" style={{ fontSize: "25px" }}> </i> <span style={{ fontSize: "20px" }}> Publier Programme</span> </div>
                         </div>
                     </div>
-                    <div className="card-button" style={{}} onClick={handleProgrammeModalOpen}>
-                        {/* ... Bouton 4 ... */}
+                    {/* <div className="card-button" style={{}} onClick={handleProgrammeModalOpen}>
+                        
                         <div className="card-button" style={{ marginTop: "15px" }}>
                             <div style={{ border: "solid 2px green", height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "30px" }}> </i> <span style={{ fontSize: "24px" }}> Resultats</span> </div>
+                        </div>
+                    </div> */}
+
+                    <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
+                        {/* ... Bouton 4 ... */}
+                        <div className="card-button" style={{ marginTop: "100%" }}>
+                            <div style={{ height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-right-to-bracket" style={{ fontSize: "25px" }}> </i> <span style={{ fontSize: "20px" }}> Deconnexion</span> </div>
                         </div>
                     </div>
 
                     <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
                         {/* ... Bouton 4 ... */}
-                        <div className="card-button" style={{ marginTop: "170px" }}>
-                            <div style={{ height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "30px" }}> </i> <span style={{ fontSize: "24px" }}> Parametre</span> </div>
+                        <div className="card-button" style={{ marginTop: "0px" }}>
+                            <div style={{ height: "60px", width: "275px", padding: "10px", borderRadius: "10px", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "25px" }}> </i> <span style={{ fontSize: "20px" }}> Parametre</span> </div>
                         </div>
                     </div>
 
@@ -65,7 +72,7 @@ function ButtonActionProfilCandidat() {
                     {/* ... Autres boutons et modals ... */}
 
                     <Modal title="Programme Modal" visible={isProgrammeModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
-                        
+
                     </Modal>
                     <Modal title="Paramettre Modal" visible={isParamettreModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
                         <CandidatPostForm />
