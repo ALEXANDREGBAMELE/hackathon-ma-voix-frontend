@@ -20,6 +20,7 @@ export default function MainLayout() {
     const handleCarteClick = (e) => {
         console.log("commune cliquer");
     };
+    
     useEffect(() => {
         const getPost = async () => {
             const getuser = JSON.parse(localStorage.getItem("logUser"));

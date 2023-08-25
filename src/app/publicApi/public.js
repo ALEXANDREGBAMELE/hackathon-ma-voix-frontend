@@ -107,14 +107,12 @@ export const resetPassword = (data) => {
         throw error;
     }
 };
-export const getSondages = async (isLoggedIn, token) => {
-    const url = isLoggedIn
-        ? "/private/user/get-sondages"
-        : "/public/sondages";
+export const getSondages = async(isLoggedIn, token) => {
+    const url = isLoggedIn ?
+        "/private/user/get-sondages" :
+        "/public/sondages";
 
-    const headers = isLoggedIn
-        ? { Authorization: `Bearer ${token}` }
-        : {};
+    const headers = isLoggedIn ? { Authorization: `Bearer ${token}` } : {};
 
     try {
         const response = await publicServices.get(url, { headers });
@@ -136,7 +134,7 @@ export const LoginUser = async(data) => {
     const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
         },
         body: JSON.stringify(data),
     }).then((res) => res.json());
@@ -260,3 +258,16 @@ export const addNewsletter = async(data) => {
     }).then((res) => res.json());
     return response;
 }
+export const getCandidatByCommune = async(commune) => {
+    const resp = await fetch(
+        `https://lesinnovateurs.me/api/public/candidats/commune/${commune}`
+    ).then((res) => res.json());
+    return resp;
+}
+export const getPostByCommune = async(commune) => {
+        const resp = await fetch(
+            `https://lesinnovateurs.me/api/public/commune-posts/${commune}`
+        ).then((res) => res.json());
+        return resp;
+    }
+    // https://lesinnovateurs.me/api/public/commune-posts/Yopougon
