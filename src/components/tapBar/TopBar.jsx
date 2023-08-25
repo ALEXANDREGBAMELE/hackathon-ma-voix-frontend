@@ -5,6 +5,8 @@ import {
     MailOutlined,
     SettingOutlined,
 } from "@ant-design/icons";
+import { Button, Menu, Badge } from "antd";
+import "./topbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { curentUser, isLoggedIn, logOut } from "../../features/auth/authSlice";
@@ -44,9 +46,11 @@ const dropdownItems = [
 
 function Topbar() {
     const [current, setCurrent] = useState("/");
-    const isLogged = useSelector(isLoggedIn);
-    const logUser = useSelector(curentUser);
-    const dispatch = useDispatch();
+    const isLogged = JSON.parse(localStorage.getItem("isLog"));
+    const logUser = JSON.parse(localStorage.getItem("logUser"));
+    console.log(logUser);
+    
+
     const navigation = useNavigate();
 
     const onClick = (e) => {

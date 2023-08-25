@@ -22,9 +22,11 @@ export default function MainLayout() {
     };
     useEffect(() => {
         const getPost = async () => {
+            const getuser = JSON.parse(localStorage.getItem("logUser"));
+            console.log(getuser);
+            
             setLoading(true);
             const post = await getAllPosts();
-            console.log(post);
             setPost(post.data);
             setLoading(false);
         };

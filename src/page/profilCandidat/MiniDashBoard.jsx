@@ -19,8 +19,8 @@ const Dashboard = () => {
 
   return (
     <>
-    <div className="dashboard" style={{ textAlign: "center" }}>
-      <h2>Tableau de Bord des Statistiques</h2>
+    <div className="dashboard" style={{ textAlign: "center" ,marginTop:"10px", padding:"1rem"}}>
+      <h2 style={{marginBottom:"10px"}}>Tableau de Bord des Statistiques</h2>
       <Row gutter={[16, 16]} justify="center">
         <Col xs={24} sm={12} md={8}>
           <Card title="Total des Votes" bordered={false} size="small">

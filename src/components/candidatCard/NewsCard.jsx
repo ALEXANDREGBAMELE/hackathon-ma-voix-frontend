@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import {
-  LikeOutlined,
-  LikeFilled,
-  EditOutlined,
-  SendOutlined,
+    LikeOutlined,
+    LikeFilled,
+    EditOutlined,
+    SendOutlined,
 } from "@ant-design/icons";
 import { Avatar, Card, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAllPostLikes,
-  addLike,
-  removeLike,
+    getAllPostLikes,
+    addLike,
+    removeLike,
 } from "../../app/publicApi/public";
 import {
-  incrementLikes,
-  decrementLikes,
-  addPost,
+    incrementLikes,
+    decrementLikes,
+    addPost,
 } from "../../features/postSlice";
 import { curentUser, token } from "../../features/auth/authSlice";
 import { Navigate } from "react-router-dom";
@@ -23,59 +23,62 @@ import { Navigate } from "react-router-dom";
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
-  const [totalLikes, setTotalLikes] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
-  const User = useSelector(curentUser);
-  let tokenUser = useSelector(token);
-  const dispatch = useDispatch();
+    const [totalLikes, setTotalLikes] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+    const User = JSON.parse(localStorage.getItem("logUser"));
+    let tokenUser = JSON.parse(localStorage.getItem("token"));
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchLikesAndCheckLike = async () => {
-      const allPostLikes = (await getAllPostLikes(post.id)).data.data;
-      setTotalLikes(allPostLikes.length);
+    useEffect(() => {
+        const fetchLikesAndCheckLike = async () => {
+            const allPostLikes = (await getAllPostLikes(post.id)).data.data;
+            setTotalLikes(allPostLikes.length);
+            const userLiked = allPostLikes.some(
+                (like) => like.id_user === User?.id
+            );
+            setIsLiked(userLiked);
+        };
 
-      const userLiked = allPostLikes.some((like) => like.id_user === User?.id);
-      setIsLiked(userLiked);
+        fetchLikesAndCheckLike();
+    }, [post.id, User]);
+
+    const handleLike = async () => {
+        if (!User) {
+            Navigate("/login");
+            return;
+        }
+
+        try {
+            if (isLiked) {
+                const unlike = await removeLike(User.id, post.id, tokenUser);
+                console.log(unlike);
+                if (unlike.success) {
+                    setIsLiked(false);
+                    setTotalLikes(totalLikes - 1);
+                    dispatch(decrementLikes(post.id));
+                } else {
+                    alert(
+                        "Une erreur s'est produite lors de la gestion du like."
+                    );
+                }
+            } else {
+                const like = await addLike(User.id, post.id, tokenUser);
+                console.log(like);
+                if (like.success) {
+                    setIsLiked(true);
+                    setTotalLikes(totalLikes + 1);
+                    dispatch(incrementLikes(post.id));
+                } else {
+                    alert(
+                        "Une erreur s'est produite lors de la gestion du like."
+                    );
+                }
+            }
+        } catch (error) {
+            console.error("Erreur lors de la gestion du like :", error);
+            alert("Une erreur s'est produite lors de la gestion du like.");
+        }
     };
-
-    fetchLikesAndCheckLike();
-  }, [post.id, User]);
-
-  const handleLike = async () => {
-    if (!User) {
-      Navigate("/login");
-      return;
-    }
-
-    try {
-      if (isLiked) {
-        const unlike = await removeLike(User.id, post.id, tokenUser);
-        console.log(unlike);
-        if (unlike.success) {
-            setIsLiked(false);
-            setTotalLikes(totalLikes - 1);
-            dispatch(decrementLikes(post.id));
-        } else {
-            alert("Une erreur s'est produite lors de la gestion du like.");
-            }
-
-        
-      } else {
-        const like = await addLike(User.id, post.id, tokenUser);
-        console.log(like);
-        if (like.success) {
-            setIsLiked(true);
-            setTotalLikes(totalLikes + 1);
-            dispatch(incrementLikes(post.id));
-        } else {
-            alert("Une erreur s'est produite lors de la gestion du like.");
-            }
-      }
-    } catch (error) {
-      console.error("Erreur lors de la gestion du like :", error);
-      alert("Une erreur s'est produite lors de la gestion du like.");
-    }
-  };
 
   return (
     <Card

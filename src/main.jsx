@@ -46,12 +46,15 @@ const router = createBrowserRouter([
                 path: "/resultat",
                 element: <Resultat />,
             },
-
             {
                 path: "profil/utilisateur",
                 element: <ProfilUtilisateur />,
             },
         ],
+    },
+    {
+        path: "/profil/candidat",
+        element: <ProfilCandidat />,
     },
     {
         path: "/register",
