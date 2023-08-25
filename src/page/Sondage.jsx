@@ -12,6 +12,7 @@ import {
     Button,
     Space,
     Spin,
+    message,
 } from "antd";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
@@ -29,6 +30,7 @@ export default function Sondage() {
     const handleClick = (name) => {
         setSelect(name);
     };
+    const [messageApi, contextHolder] = message.useMessage();
     let tokenUser = useSelector(token);
     let user = JSON.parse(localStorage.getItem("logUser"));
     const navigate = useNavigate();
@@ -50,12 +52,14 @@ export default function Sondage() {
 
     const addSondageVote = async (id, choix) => {
         if (!user) {
-            alert("vous devez vous connecter pour voter");
+          await  messageApi.open({
+                type: "error",
+                content: "vous devez vous connecter pour voter",
+            });
             navigate("/login");
             return;
         }
-        console.log(id, choix, tokenUser, User.id);
-        const sondage = await participeSondage(User.id, id, choix, tokenUser);
+        const sondage = await participeSondage(user.id, id, choix, tokenUser);
         console.log(id);
         console.log(sondage);
         if (sondage.errors) {
@@ -91,6 +95,7 @@ export default function Sondage() {
                         overflow: "initial",
                     }}
                 >
+                    {contextHolder}
                     <Spin tip="chargement des sondages" spinning={loading}>
                         <h1
                             style={{
