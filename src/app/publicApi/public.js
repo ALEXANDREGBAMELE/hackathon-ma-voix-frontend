@@ -246,3 +246,17 @@ export const participeSondage = async(userId, sondageId, choix, token) => {
     ).then((res) => res.json());
     return response;
 };
+
+
+
+
+export const addNewsletter = async(data) => {
+    const response = await fetch("https://lesinnovateurs.me/api/public/newsletter", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((res) => res.json());
+    return response;
+}
