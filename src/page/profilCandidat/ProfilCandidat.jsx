@@ -44,7 +44,7 @@ function ProfilCandidat() {
                 <UserInfoCard></UserInfoCard>
             </div>
             <div className="botton-part">
-                <div className="container" style={{ display: "flex", backgroundColor: "white",justifyContent: "center", alignItems: "center",gap: "20px", paddingTop:"40px", paddingBot:"40px" }}>
+                <div className="container" style={{ display: "flex", backgroundColor: "white", justifyContent: "center", alignItems: "center", gap: "20px", paddingTop: "40px", paddingBot: "40px" }}>
 
                     {/* ... Autres parties de votre composant ... */}
 
@@ -60,45 +60,46 @@ function ProfilCandidat() {
                             <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Voir les sondages</span> </div>
                         </div>
                     </div>
-                        <div className="card-button" style={{}} onClick={handleParamettreModalOpen}>
-                            {/* ... Bouton 3 ... */}
-                            <div className="card-button" style={{}}>
-                                <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Publier un programme</span> </div>
-                            </div>
-                        </div>
-                            <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
-                                {/* ... Bouton 4 ... */}
-                                <div className="card-button" style={{}}>
-                                    <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Resultats</span> </div>
-                                </div>
-                            </div>
-
-
-
-                            {/* ... Autres boutons et modals ... */}
-                            <Modal title="Programme Modal" visible={isProgrammeModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
-                                <CandidatPostForm />
-                            </Modal>
-                            <Modal title="Notification Modal" visible={isNotificationModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
-                                <NotificationCandidat />
-                            </Modal>
-                            <Modal title="Paramettre Modal" visible={isParamettreModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
-                                <ModificationProfilCandidat />
-                            </Modal>
-                            <Modal title="Resultats Modal" visible={isResultatsModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
-                                {/* Contenu du modal des résultats */}
-                            </Modal>
-                        </div>
-
-                        <div className="mini-dashboard">
-                            <Dashboard/>
-                        </div>
-                        <div className="graph-tendance">
-                            {/* <TrendChart/> */}
+                    <div className="card-button" style={{}} onClick={handleParamettreModalOpen}>
+                        {/* ... Bouton 3 ... */}
+                        <div className="card-button" style={{}}>
+                            <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Publier un programme</span> </div>
                         </div>
                     </div>
-                </>
-                );
+                    <div className="card-button" style={{}} onClick={handleResultatsModalOpen}>
+                        {/* ... Bouton 4 ... */}
+                        <div className="card-button" style={{}}>
+                            <div style={{ border: "solid 2px green", height: "120px", width: "275px", padding: "10px", borderRadius: "10px", textAlign: "center", padding: "15px" }}><i class="fa-solid fa-gear" style={{ fontSize: "40px", color: "green" }}> </i> <br /><br /> <span style={{ fontSize: "24px" }}> Resultats</span> </div>
+                        </div>
+                    </div>
+
+
+
+                    {/* ... Autres boutons et modals ... */}
+                    <Modal title="Programme Modal" visible={isProgrammeModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
+
+                        <NotificationCandidat />
+                    </Modal>
+                    <Modal title="Notification Modal" visible={isNotificationModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
+                        <ModificationProfilCandidat />
+                    </Modal>
+                    <Modal title="Paramettre Modal" visible={isParamettreModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
+                        <CandidatPostForm />
+                    </Modal>
+                    <Modal title="Resultats Modal" visible={isResultatsModalOpen} onOk={handleModalClose} onCancel={handleModalClose} width={800}>
+                        {/* Contenu du modal des résultats */}
+                    </Modal>
+                </div>
+
+                <div className="mini-dashboard">
+                    <Dashboard />
+                </div>
+                <div className="graph-tendance">
+                    {/* <TrendChart/> */}
+                </div>
+            </div>
+        </>
+    );
 }
 
-                export default ProfilCandidat;
+export default ProfilCandidat;
