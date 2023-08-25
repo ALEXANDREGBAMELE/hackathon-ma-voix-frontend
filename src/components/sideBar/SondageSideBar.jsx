@@ -18,9 +18,8 @@ const commun = [
     { name: "Anyama", id: 13 },
 ];
 import { Input } from "antd";
-import CarteInteractif from "../carteInteractif/CarteInteractif";
 const { TextArea } = Input;
-export default function SondageSideBar({ handleClick, handleCommuneClicked }) {
+export default function SondageSideBar({ handleClick }) {
     const [select, setSelect] = useState("Yopougon");
     const [avis, setAvis] = useState("");
     const clicked = (name) => {
@@ -31,7 +30,8 @@ export default function SondageSideBar({ handleClick, handleCommuneClicked }) {
     const openNotificationWithIcon = (text) => {
         api.success({
             message: "message envoyer",
-            description: " merci  d'avoir partagé votre avis .",
+            description:
+                " merci  d'avoir partagé votre avis .",
             placement: "bottomLeft",
         });
     };
@@ -44,10 +44,49 @@ export default function SondageSideBar({ handleClick, handleCommuneClicked }) {
     };
     return (
         <div className="sidebarCotainer">
-            <div className="sideBarTopsvg">
-                <CarteInteractif handleCommuneClicked={handleCommuneClicked} />
-            </div>
+            <div className="sideBarTop">
+                <div className="title">
+                    <h3>Liste des Commune</h3>
+                </div>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-around",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        width: "100%",
+                        gap: ".5rem",
+                        padding: "5px",
 
+                    }}
+                >
+                    {commun.map((item) => {
+                        return (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    flexWrap: "nowrap",
+                                }}
+                                key={item.id}
+                                className="commun"
+                            >
+                                <div
+                                    onClick={() => clicked(item.name)}
+                                    className={
+                                        select == item.name
+                                            ? "butomFillSecondary"
+                                            : "butomAoutlin"
+                                    }
+                                    style={{width:"6.5rem"}}
+                                >
+                                    <p>{item.name} </p>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
             <div className="sideBarBottom sondageSide">
                 {contextHolder}
                 <div className="title">
