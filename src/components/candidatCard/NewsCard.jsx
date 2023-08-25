@@ -90,7 +90,7 @@ export const NewsCard = ({ post }) => {
           icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
           key="like"
         >
-          {isLiked ? "Unlike" : "Like"} {totalLikes}
+          {isLiked ? "" : ""} {totalLikes}
         </Button>,
         <Button icon={<EditOutlined />} key="comment">
           Commenter

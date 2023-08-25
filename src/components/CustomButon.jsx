@@ -12,6 +12,7 @@ export default function CustomButon({
             onClicked();
         }
     };
+
     const setClasseName = () => {
         if (type === "fill") {
             return "butomFillSecondary";

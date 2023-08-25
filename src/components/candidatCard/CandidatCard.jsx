@@ -2,11 +2,52 @@ import CustomButon from "../CustomButon";
 import { SmallDashOutlined, EyeOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import MuyButon from "../MuyButon";
+import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+import {followCandidat, getFollowedCandidats, unfollowCandidat} from "../../app/publicApi/public.js";
+
 export default function CandidatCard({ candidat }) {
     const navigation = useNavigate();
+    const [isFollowing, setIsFollowing] = useState(false);
+    const userToken = useSelector((state) => state.auth.token);
+
+    useEffect(() => {
+        const checkFollowingStatus = async () => {
+            try {
+                const response = await getFollowedCandidats(userToken);
+                const followedCandidats = response.data;
+
+                const isFollowed = followedCandidats.some(
+                    (candidatData) => candidatData.id_candidat === candidat.id
+                );
+
+                setIsFollowing(isFollowed);
+            } catch (error) {
+                console.error("Erreur lors de la vérification du suivi du candidat:", error);
+            }
+        };
+
+        checkFollowingStatus().then(r => r);
+    }, [candidat.id, userToken]);
+
+
+    const handleFollowClick = async () => {
+        try {
+            if (isFollowing) {
+                await unfollowCandidat(candidat.id, userToken);
+                setIsFollowing(false);
+            } else {
+               const response = await followCandidat(candidat.id, userToken);
+                setIsFollowing(true);
+            }
+        } catch (error) {
+            console.error("Erreur lors de la gestion du suivi du candidat:", error);
+        }
+    };
     const handleClick = () => {
         navigation(`/candidat/${candidat.id}`);
     };
+
     return (
         <div
             style={{
@@ -94,19 +135,20 @@ export default function CandidatCard({ candidat }) {
                     }}
                 >
                     <CustomButon
-                        onClicked={handleClick}
+                        onClicked={handleFollowClick}
                         type="fill"
-                        title="S'Abonner"
+                        title={isFollowing ? "se désabonner" : "suivre"}
                         width="50%"
                     />
                     <CustomButon
                         onClicked={handleClick}
                         type="fillPrimary"
-                        title="Voir Details"
+                        title="Voir Détails"
                         width="50%"
                     />
                 </div>
-            </div>
         </div>
+    </div>
     );
+
 }

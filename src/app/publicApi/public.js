@@ -1,6 +1,5 @@
 /* eslint-disable no-useless-catch */
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 
 const API_BASE_URL = "https://lesinnovateurs.me/api";
@@ -260,3 +259,62 @@ export const addNewsletter = async(data) => {
     }).then((res) => res.json());
     return response;
 }
+
+//follow candidat
+
+export const followCandidat = async(userId, candidatId, token) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id_candidat: candidatId,
+            id_user: userId,
+        }),
+    };
+    const response = await fetch(
+        "https://lesinnovateurs.me/api/private/user/follow-candidat",
+        requestOptions
+    ).then((res) => res.json());
+    return response;
+};
+
+export const unfollowCandidat = async(userId, candidatId, token) => {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify({
+            id_candidat: candidatId,
+            id_user: userId,
+        }),
+    };
+    const response = await fetch(
+        "https://lesinnovateurs.me/api/private/user/unfollow-candidat",
+        requestOptions
+    ).then((res) => res.json());
+    return response;
+};
+
+
+export const getFollowedCandidats = async(token) => {
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    return await fetch(
+        "https://lesinnovateurs.me/api/private/user/get-following",
+        requestOptions
+    ).then((res) => res.json());
+
+};
