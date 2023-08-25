@@ -4,7 +4,7 @@ import {
     MailOutlined,
     SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Menu,Badge } from "antd";
+import { Button, Menu, Badge } from "antd";
 import "./topbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
@@ -27,7 +27,6 @@ const menuItems = [
         key: "sondage",
     },
     {
-
         label: "Resultat",
         key: "resultat",
     },
@@ -35,8 +34,11 @@ const menuItems = [
 // eslint-disable-next-line no-empty-pattern
 function Topbar({}) {
     const [current, setCurrent] = useState("/");
-    const isLogged = useSelector(isLoggedIn);
-    const logUser = useSelector(curentUser);
+    const isLogged = JSON.parse(localStorage.getItem("isLog"));
+    const logUser = JSON.parse(localStorage.getItem("logUser"));
+    console.log(logUser);
+    
+
     const navigation = useNavigate();
     const onClick = (e) => {
         setCurrent(e.key);

@@ -31,7 +31,10 @@ function Login() {
         if (!resutl.user) {
             openErrorNotificationWithIcon(resutl.error);
             return;
-        }
+      }      
+      await localStorage.setItem("logUser", JSON.stringify(resutl.user));
+      localStorage.setItem("token", JSON.stringify(resutl.Authorization.token));
+      localStorage.setItem("isLog", true);
         dispatch(setCredentials(resutl));
         navigate("/");
     };

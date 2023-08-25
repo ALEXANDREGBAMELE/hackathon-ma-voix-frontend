@@ -104,7 +104,7 @@ function App() {
                   title="S'abonner"
                   type="butomFillPrimaryLeft"
                   stylePropes={botomProps}
-                  onClick={handleNewsletterSubscribe} // Appel de la fonction
+                  onClicked={handleNewsletterSubscribe} // Appel de la fonction
                 />
               </Space.Compact>
             </div>

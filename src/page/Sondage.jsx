@@ -29,25 +29,24 @@ export default function Sondage() {
     const handleClick = (name) => {
         setSelect(name);
     };
-    const user = useSelector(isLoggedIn);
     let tokenUser = useSelector(token);
-    let User = useSelector(curentUser);
+    let user = JSON.parse(localStorage.getItem("logUser"));
     const navigate = useNavigate();
-      useEffect(() => {
+    useEffect(() => {
         const fetchSondage = async () => {
-          setLoading(true);
-          try {
-            const sondagesData = await getSondages(user, tokenUser);
-            setSondage(sondagesData.data);
-          } catch (error) {
-            // Handle error here
-            console.error("Error fetching sondages:", error);
-          } finally {
-            setLoading(false);
-          }
+            setLoading(true);
+            try {
+                const sondagesData = await getSondages(user, tokenUser);
+                setSondage(sondagesData.data);
+            } catch (error) {
+                // Handle error here
+                console.error("Error fetching sondages:", error);
+            } finally {
+                setLoading(false);
+            }
         };
         fetchSondage();
-      }, [user, tokenUser]);
+    }, []);
 
     const addSondageVote = async (id, choix) => {
         if (!user) {
