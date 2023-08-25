@@ -104,11 +104,11 @@ export const NewsCard = ({ post }) => {
         avatar={
           <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
         }
-        title={post.titre}
-        description={post.description}
+        title="bhhhhh"
+        description="vghgh hhhg"
       />
       <img
-        src={`https://lesinnovateurs.me/${post.url_media}`}
+        src={`https://lesinnovateurs.me/`}
         style={{
           width: "100%",
           height: "10rem",

@@ -16,19 +16,32 @@ const commun = [
     { name: "Attécoubé", id: 12 },
     { name: "Anyama", id: 13 },
 ];
-
-function ListeCommune(){  
+const style = {
+    width: "2rem"
+}
+function ListeCommune() {
     const [select, setSelect] = useState("Yopougon");
-    return(
-        <div
+    const [avis, setAvis] = useState("");
+    const clicked = (name) => {
+        setSelect(name);
+        handleClick(name);
+    };
+    return (
+        <div className="sidebarCotainer">
+            <div className="sideBarTop">
+                <div className="title">
+                    <h3>Liste des Commune</h3>
+                </div>
+                <div
                     style={{
                         display: "flex",
-                        justifyContent: "space-between",
+                        justifyContent: "space-around",
                         alignItems: "center",
                         flexWrap: "wrap",
                         width: "100%",
                         gap: ".5rem",
                         padding: "5px",
+
                     }}
                 >
                     {commun.map((item) => {
@@ -36,7 +49,6 @@ function ListeCommune(){
                             <div
                                 style={{
                                     display: "flex",
-
                                     alignItems: "center",
                                     flexWrap: "nowrap",
                                 }}
@@ -50,6 +62,7 @@ function ListeCommune(){
                                             ? "butomFillSecondary"
                                             : "butomAoutlin"
                                     }
+                                    style={{ width: "6.5rem" }}
                                 >
                                     <p>{item.name} </p>
                                 </div>
@@ -57,6 +70,8 @@ function ListeCommune(){
                         );
                     })}
                 </div>
+            </div>
+        </div>
     )
 }
 
