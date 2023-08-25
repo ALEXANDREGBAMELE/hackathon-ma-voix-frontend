@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { Modal } from "antd";
-import ModificationProfilCandidat from "./modificationProfilCandidat";
 import CandidatPostForm from "./CandidatPostForm";
 
 function ButtonActionProfilCandidat() {
