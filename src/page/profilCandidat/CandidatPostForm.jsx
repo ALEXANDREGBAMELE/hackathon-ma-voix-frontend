@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Select } from 'antd';
 
 const CandidatPostForm = () => {
     const [formData, setFormData] = useState({
@@ -34,9 +33,9 @@ const CandidatPostForm = () => {
 
 
     return (
-        <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundColor: "#e0e0e0" }}>
-            <div style={{ width: "500px" }}>
-                <h2 style={{ color: "#027314", textAlign: "center" }}>Publier un programme</h2>
+        <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop:"2rem",paddingBottom:"2rem" }}>
+            <div style={{ width: "60%", backgroundColor: "#e0e0e0", padding:"20px", borderRadius:"15px" }}>
+                <h1 style={{ color: "#027314", textAlign: "center" }}>Publier un programme</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Titre:</label><br /><br />
@@ -46,19 +45,6 @@ const CandidatPostForm = () => {
                             value={formData.firstName}
                             onChange={handleChange}
                             style={{ backgroundColor: "white", width: "100%" }}
-                        />
-                    </div>
-                    <div>
-                        <label>Thématique:</label><br /><br />
-                        <Select
-                            defaultValue="Santé"
-                            style={{
-                                width: "100%",
-                            }}
-                            onChange={handleChange}
-                            options={[
-                                // ... Options ...
-                            ]}
                         />
                     </div>
                     <div>
@@ -87,7 +73,7 @@ const CandidatPostForm = () => {
                             <img
                                 src={URL.createObjectURL(formData.image)}
                                 alt="Prévisualisation"
-                                style={{ maxWidth: "100%", marginTop: "10px" }}
+                                style={{ maxWidth: "100%", marginTop: "10px", height:"200px" }}
                             />
                         )}
                     </div>
