@@ -26,18 +26,21 @@ const { Header, Content, Footer, Sider } = Layout;
 export default function Sondage() {
     const [sondage, setSondage] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [select, setSelect] = useState("Yopougon");
+    let user = JSON.parse(localStorage.getItem("logUser"));
+
+    const [select, setSelect] = useState(
+        user?.commune ? user?.commune : "Yopougon"
+    );
     const handleClick = (name) => {
         setSelect(name);
     };
     const [messageApi, contextHolder] = message.useMessage();
     let tokenUser = useSelector(token);
-    let user = JSON.parse(localStorage.getItem("logUser"));
     const navigate = useNavigate();
     useEffect(() => {
         const fetchSondage = async () => {
-            setLoading(true);
             try {
+                setLoading(true);
                 const sondagesData = await getSondages(user, tokenUser);
                 setSondage(sondagesData.data);
             } catch (error) {
@@ -52,11 +55,12 @@ export default function Sondage() {
 
     const addSondageVote = async (id, choix) => {
         if (!user) {
-          await  messageApi.open({
+            await messageApi.open({
                 type: "error",
-                content: "vous devez vous connecter pour voter",
+                content:
+                    "vous devez vous connecter pour effectuer cette action",
             });
-            navigate("/login");
+
             return;
         }
         const sondage = await participeSondage(user.id, id, choix, tokenUser);

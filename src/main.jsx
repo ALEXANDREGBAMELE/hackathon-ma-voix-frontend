@@ -18,6 +18,7 @@ import ProfilUtilisateur from "./page/profilUtilisateur/ProfilUtilisateur.jsx";
 import RecoveryPassword from "./page/password-recovery.jsx";
 import path from "path";
 import Dashboard from "./page/profilCandidat/MiniDashBoard.jsx";
+import Logout from "./page/Logout.jsx";
 
 const router = createBrowserRouter([
     {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
     {
        path: "/password-recovery",
          element: <RecoveryPassword />,
+    },
+    {
+        path: "/logout",
+        element: <Logout />,
     },
     {
         path: "/candidats",

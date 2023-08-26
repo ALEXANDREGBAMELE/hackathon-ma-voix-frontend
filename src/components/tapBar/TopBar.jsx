@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Menu, Button, Dropdown } from "antd";
 import {
@@ -108,6 +109,7 @@ function Topbar() {
                         <i className="fa fa-user" aria-hidden="true"></i>
                         <span>{logUser.nom}</span>
                     </Button>
+                 
             ) : (
                 <Button onClick={() => navigation("/login")}>Se connecter</Button>
             )}

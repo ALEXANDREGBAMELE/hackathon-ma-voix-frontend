@@ -2,11 +2,24 @@ import CandidatCard from "../components/candidatCard/CandidatCard";
 import { candidats } from "../data";
 import { Pagination } from "antd";
 import { Card, List } from "antd";
-import { Breadcrumb, Layout, Menu, theme, Input, Button, Space,Spin } from "antd";
+import {
+    Breadcrumb,
+    Layout,
+    Menu,
+    theme,
+    Input,
+    Button,
+    Space,
+    Spin,
+} from "antd";
 import SideBar from "../components/sideBar/SideBar";
 import CandidatSideBar from "../components/sideBar/CandidatSideBar";
 import { useEffect, useState } from "react";
-import { getAllActvities, getAllCandidats } from "../app/publicApi/public";
+import {
+    getAllActvities,
+    getAllCandidats,
+    getCandidatByCommune,
+} from "../app/publicApi/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 
@@ -21,13 +34,19 @@ export default function Candidats() {
             console.log(candidats.data);
             setCandidat(candidats.data);
             setLoading(false);
-        }
+        };
         getCandidats();
-    }, [])
+    }, []);
+    const getCandidatByCommunes = async (commune) => {
+        setLoading(true);
+        const candidats = await getCandidatByCommune(commune);
+        setCandidat(candidats.data);
+        setLoading(false);
+    };
     const handleCommuneClick = (name) => {
         console.log("commune cliquer");
         setCandidats(candidat.filter((c) => c.commune == name));
-    }
+    };
     return (
         <div>
             <Layout>
@@ -43,7 +62,9 @@ export default function Candidats() {
                         minWidth: "450px",
                     }}
                 >
-                    <CandidatSideBar />
+                    <CandidatSideBar
+                        getCandidatByCommunes={getCandidatByCommunes}
+                    />
                 </Sider>
                 <Layout
                     className="site-layout"
