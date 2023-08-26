@@ -31,18 +31,16 @@ const menuItems = [
     },
 ];
 
-
 const dropdownItems = [
     {
-        key: 'profile',
-        label: 'Mon Profil',
+        key: "profile",
+        label: "Mon Profil",
     },
     {
-        key: 'logout',
-        label: 'Se Déconnecter',
+        key: "logout",
+        label: "Se Déconnecter",
     },
 ];
-
 
 function Topbar() {
     const [current, setCurrent] = useState("/");
@@ -61,26 +59,23 @@ function Topbar() {
         navigation("/login");
     };
 
-    const dropdownMenu = (
-        <Menu>
-            {dropdownItems.map(item => (
-                <Menu.Item key={item.key}>
-                    {item.label}
-                </Menu.Item>
-            ))}
-        </Menu>
-    );
+    const dropdownMenu = () => {
+        return (
+            <Menu>
+                {dropdownItems.map((item) => (
+                    <Menu.Item key={item.key}>{item.label}</Menu.Item>
+                ))}
+            </Menu>
+        );
+    };
 
     const handleMenuClick = (e) => {
-        if (e.key === 'logout') {
+        if (e.key === "logout") {
             handleLogout();
-        } else if (e.key === 'profile') {
-            navigation('/profile');
+        } else if (e.key === "profile") {
+            navigation("/profile");
         }
-    }
-
-
-
+    };
 
     return (
         <div className="topbarContainer">
@@ -103,13 +98,22 @@ function Topbar() {
                 }}
             />
             {isLogged ? (
-                    <Button className="account-dropdown">
-                        <i className="fa fa-user" aria-hidden="true"></i>
-                        <span>{logUser.nom}</span>
-                    </Button>
-                 
+                <div style={{
+                    padding: "0 .2rem",
+                    border: "1px solid #ccc",
+                    height: "2.5rem",
+                    width: "8rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                }} className="primaryBotom">
+                    <i className="fa fa-user" aria-hidden="true"></i>
+                    <span>{logUser.nom}</span>
+                </div>
             ) : (
-                <Button onClick={() => navigation("/login")}>Se connecter</Button>
+                <Button onClick={() => navigation("/login")}>
+                    Se connecter
+                </Button>
             )}
         </div>
     );
