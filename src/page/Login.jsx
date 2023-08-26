@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../app/api/apiSlice";
-import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../features/auth/authSlice";
 
 import { Button, Checkbox, Form, Input, notification } from "antd";

@@ -38,8 +38,13 @@ const navigate = useNavigate();
         setIsLoading(false);
         if (response.user) {
             dispatch(setCredentials(response));
-            // Redirect or perform other actions upon successful registration
-            navigate("/");
+            await localStorage.setItem("logUser", JSON.stringify(response.user));
+            localStorage.setItem(
+              "token",
+              JSON.stringify(response.Authorization.token)
+            );
+            localStorage.setItem("isLog", true);
+            navigate("/login");
             return;
         }
         openErrorNotificationWithIcon(response.message);
@@ -100,6 +105,7 @@ const navigate = useNavigate();
                             label="Photo de profil"
                             style={{
                                 marginBottom: "2px",
+                                cursor: "pointer",
                             }}
                             name="photo_url"
                            
