@@ -134,7 +134,7 @@ export const LoginUser = async(data) => {
     const response = await fetch("https://lesinnovateurs.me/api/auth/login", {
         method: "POST",
         headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
     }).then((res) => res.json());

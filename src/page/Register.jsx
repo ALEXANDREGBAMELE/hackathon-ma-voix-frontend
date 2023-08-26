@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Form, Input, Button, notification, Upload, Select, Col } from "antd";
 import { Spin } from "antd";
@@ -17,7 +17,7 @@ function Register() {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
-
+const navigate = useNavigate();
     const openErrorNotificationWithIcon = (text) => {
         api.error({
             message: text,
@@ -39,6 +39,7 @@ function Register() {
         if (response.user) {
             dispatch(setCredentials(response));
             // Redirect or perform other actions upon successful registration
+            navigate("/");
             return;
         }
         openErrorNotificationWithIcon(response.message);
