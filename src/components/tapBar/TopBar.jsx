@@ -48,8 +48,6 @@ function Topbar() {
     const [current, setCurrent] = useState("/");
     const isLogged = JSON.parse(localStorage.getItem("isLog"));
     const logUser = JSON.parse(localStorage.getItem("logUser"));
-    console.log(logUser);
-    
 
     const navigation = useNavigate();
 

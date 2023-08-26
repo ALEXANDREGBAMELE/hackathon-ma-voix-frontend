@@ -5,6 +5,7 @@ import {
     LikeFilled,
     EditOutlined,
     SendOutlined,
+    MessageFilled,
 } from "@ant-design/icons";
 import { Avatar, Card, Button, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,12 +22,15 @@ import {
 import { curentUser, token } from "../../features/auth/authSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import Commente from "../Commente";
+import ImageModal from "./ImageModal";
 
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
     const [totalLikes, setTotalLikes] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
+    const [showImageModal, setShowImageModal] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
     const User = JSON.parse(localStorage.getItem("logUser"));
     let tokenUser = JSON.parse(localStorage.getItem("token"));
     const dispatch = useDispatch();
@@ -96,54 +100,56 @@ export const NewsCard = ({ post }) => {
     };
 
     return (
-        <Card
-            style={{
-                width: "40rem",
-                marginBottom: "1.5rem",
-                padding: "1rem",
-            }}
-            actions={[
-                <Button
-                    onClick={handleLike}
-                    style={{ color: isLiked ? "green" : "black" }}
-                    icon={
-                        isLiked ? (
-                            <LikeFilled  />
-                        ) : (
-                            <LikeOutlined />
-                        )
-                    }
-                    key="like"
-                >
-                    Like {totalLikes}
-                </Button>,
-                <Button icon={<EditOutlined />} key="comment">
-                    Commenter
-                </Button>,
-                <Button icon={<SendOutlined />} key="share">
-                    Partager
-                </Button>,
-            ]}
-        >
-            {contextHolder}
-            <Meta
-                avatar={
-                    <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
-                }
-                title={post.titre}
-                description={post.description}
-            />
-            <img
-                src={`https://lesinnovateurs.me/${post.url_media}`}
-                style={{
-                    width: "100%",
-                    height: "10rem",
-                    margin: "1rem",
-                    objectFit: "contain",
-                }}
-                alt="Image du post"
-            />
-            <Commente post={post} />
-        </Card>
+      <Card
+        style={{
+          width: "40rem",
+          marginBottom: "1.5rem",
+          padding: "1rem",
+        }}
+        actions={[
+          <Button
+            onClick={handleLike}
+            style={{ color: isLiked ? "green" : "black" }}
+            icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
+            key="like"
+          >
+            {totalLikes}
+          </Button>,
+          <Button icon={<MessageFilled />} key="comment"></Button>,
+          <Button icon={<SendOutlined />} key="share"></Button>,
+        ]}
+      >
+        {contextHolder}
+        <Meta
+          avatar={
+            <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+          }
+          title={post.titre}
+          description={post.description}
+        />
+        <img
+          src={`https://lesinnovateurs.me/${post.url_media}`}
+          style={{
+            width: "100%",
+            height: "100%",
+            margin: "1rem",
+            objectFit: "cover",
+            cursor: "pointer", 
+            maxHeight: "35rem"
+          }}
+          alt="Image du post"
+          onClick={() => {
+            setSelectedImage(`https://lesinnovateurs.me/${post.url_media}`);
+            setShowImageModal(true);
+          }}
+        />
+        <ImageModal
+          open={showImageModal}
+          imageUrl={selectedImage}
+          onClose={() => setShowImageModal(false)}
+        />
+
+        <Commente post={post} />
+      </Card>
     );
 };
