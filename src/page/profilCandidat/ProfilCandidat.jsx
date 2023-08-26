@@ -76,7 +76,7 @@ function ProfilCandidat() {
                 <div className="navbar">
                     <>
                         <Menu mode="horizontal" theme="light" defaultSelectedKeys={["1"]} style={{ display: "flex", justifyContent: "space-between", paddingRight: "65px", paddingBottom: "20px", paddingTop: "20px" }}>
-                            <Menu.Item key="1" icon={<HomeOutlined />}>
+                            <Menu.Item key="1" onClick={() => changeToContent(0)} icon={<HomeOutlined />}>
                                 Dashboard
                             </Menu.Item>
                             <Menu.Item key="3" onClick={() => changeToContent(3)} icon={<BarChartOutlined />}>
