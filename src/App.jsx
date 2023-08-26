@@ -36,7 +36,9 @@ const botomProps = {
 function App() {
     const [email, setEmail] = useState("");
 
-    const handleNewsletterSubscribe = async () => {
+  const handleNewsletterSubscribe = async () => {
+      console.log(email);
+      
       const response = await addNewsletter(email);
       console.log(response);
       
@@ -95,7 +97,7 @@ function App() {
                                 width: "100%",
                             }}
                         >
-                            <Input onChange={(text)=>setEmail(text)} placeholder="Votre addresse mail" />
+                            <Input onChange={(e)=>setEmail(e.target.value)} placeholder="Votre addresse mail" />
                             <CustomButon
                                 onClicked={handleSubmit}
                                 stylePropes={botomProps}
