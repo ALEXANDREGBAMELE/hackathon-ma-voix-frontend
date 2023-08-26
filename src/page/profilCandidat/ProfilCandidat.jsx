@@ -1,8 +1,10 @@
 import { React, useState } from "react";
 import Dashboard from "./MiniDashBoard";
-import CandidatPostForm from "./CandidatPostForm";
+import AjouterProgramme from "./AjouterProgramme.jsx";
+import ProgrammeCandidat from "./ProgrammeCandidat";
+import AjouterPost from "./AjouterPost";
 import { Menu, Input, Avatar, Badge, Modal } from "antd";
-import ProgrammePage from "./Programme";
+import PostCandidat from "./PostCandidat";
 import ProfilPage from "./ProfilPage";
 import NotificationPage from "./NotificationCandidat"
 import {
@@ -18,8 +20,8 @@ import {
 
 
 function ProfilCandidat() {
-
-    const contents = [<Dashboard />, <CandidatPostForm />, <NotificationPage />, <ProgrammePage />, <ProfilPage/>];
+    
+    const contents = [<Dashboard />,<PostCandidat />, <ProgrammeCandidat />, <NotificationPage />, <ProfilPage/>];
 
     const [currentContentIndex, setCurrentContentIndex] = useState(0);
 
@@ -55,7 +57,14 @@ function ProfilCandidat() {
                                 icon={<BarChartOutlined />}
                                 onClick={() => changeToContent(1)}
                             >
-                                Publier un Programme
+                                Post
+                            </Menu.Item>
+                            <Menu.Item
+                                key="3"
+                                icon={<BarChartOutlined />}
+                                onClick={() => changeToContent(2)}
+                            >
+                                Programme
                             </Menu.Item>
                             <Menu.Item key="4" icon={<UserOutlined />} onClick={() => changeToContent(4)}>
                                 Profil
@@ -79,10 +88,7 @@ function ProfilCandidat() {
                             <Menu.Item key="1" onClick={() => changeToContent(0)} icon={<HomeOutlined />}>
                                 Dashboard
                             </Menu.Item>
-                            <Menu.Item key="3" onClick={() => changeToContent(3)} icon={<BarChartOutlined />}>
-                                Programme
-                            </Menu.Item>
-                            <Menu.Item key="4" onClick={() => changeToContent(2)} icon={<Badge count={5} offset={[10, 0]} overflowCount={99}><BellOutlined /></Badge>}>
+                            <Menu.Item key="4" onClick={() => changeToContent(3)} icon={<Badge count={5} offset={[10, 0]} overflowCount={99}><BellOutlined /></Badge>}>
                                 Notifications
                             </Menu.Item>
                             <Menu.Item key="5">
