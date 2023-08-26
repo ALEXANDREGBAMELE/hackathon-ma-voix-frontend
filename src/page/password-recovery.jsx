@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Input, notification } from "antd";
 import { Spin } from "antd";
-import { resetPassword } from "../app/publicApi/public";
+import { resetPassword } from "../app/services/public";
 
 function RecoveryPassword() {
   const navigate = useNavigate();

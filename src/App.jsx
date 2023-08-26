@@ -17,7 +17,7 @@ import { curentUser } from "./features/auth/authSlice";
 
 import { Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
-import { addNewsletter } from "./app/publicApi/public";
+import { addNewsletter } from "./app/services/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 const botomProps = {

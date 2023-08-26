@@ -1,6 +1,6 @@
 // postSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllPosts } from '../app/publicApi/public';
+import { getAllPosts } from '../app/services/public';
 
 const initialState = {
     posts: [],

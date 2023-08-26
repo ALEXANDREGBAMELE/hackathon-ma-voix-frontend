@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../app/api/apiSlice";
-import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../features/auth/authSlice";
 
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import CustomButon from "../components/CustomButon";
 import { Spin } from "antd";
-import { LoginUser } from "../app/publicApi/public";
+import { LoginUser } from "../app/services/public";
 import { openErrorNotificationWithIcon } from "../components/CustomNotification";
 function Login() {
     const [email, setEmail] = useState("");
@@ -27,7 +26,9 @@ function Login() {
     const onFinish = async (values) => {
       setIsLoading(true);
       console.log(values);
-      
+      localStorage.removeItem("logUser");
+      localStorage.removeItem("token");
+      localStorage.removeItem("isLog");
       const resutl = await LoginUser(values);
       console.log(resutl);
       
@@ -36,6 +37,7 @@ function Login() {
             openErrorNotificationWithIcon(resutl.error);
             return;
         }
+        
         await localStorage.setItem("logUser", JSON.stringify(resutl.user));
         localStorage.setItem(
             "token",

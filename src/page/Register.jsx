@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Form, Input, Button, notification, Upload, Select, Col } from "antd";
 import { Spin } from "antd";
 import { setCredentials } from "../features/auth/authSlice";
-import { RegisterUser } from "../app/publicApi/public";
+import { RegisterUser } from "../app/services/public";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
@@ -38,8 +38,13 @@ const navigate = useNavigate();
         setIsLoading(false);
         if (response.user) {
             dispatch(setCredentials(response));
-            // Redirect or perform other actions upon successful registration
-            navigate("/");
+            await localStorage.setItem("logUser", JSON.stringify(response.user));
+            localStorage.setItem(
+              "token",
+              JSON.stringify(response.Authorization.token)
+            );
+            localStorage.setItem("isLog", true);
+            navigate("/login");
             return;
         }
         openErrorNotificationWithIcon(response.message);
@@ -100,6 +105,7 @@ const navigate = useNavigate();
                             label="Photo de profil"
                             style={{
                                 marginBottom: "2px",
+                                cursor: "pointer",
                             }}
                             name="photo_url"
                            

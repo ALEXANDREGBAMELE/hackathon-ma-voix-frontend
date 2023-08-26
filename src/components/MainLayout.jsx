@@ -3,7 +3,7 @@ import { EditOutlined, SendOutlined, LikeOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 const { Meta } = Card;
 import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
-import { getAllPosts } from "../app/publicApi/public";
+import { getAllPosts } from "../app/services/public";
 import { useEffect, useState } from "react";
 import { NewsCard } from "./candidatCard/NewsCard";
 const { Header, Content, Footer, Sider } = Layout;

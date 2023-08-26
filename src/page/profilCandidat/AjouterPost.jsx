@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-const CandidatPostForm = () => {
+const AjouterPost = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: '',
+        titre: '',
+        description: '',
+        url_media: '',
     });
 
     const handleChange = (e) => {
@@ -34,23 +33,22 @@ const CandidatPostForm = () => {
 
     return (
         <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop:"2rem",paddingBottom:"2rem" }}>
-            <div style={{ width: "60%", backgroundColor: "#e0e0e0", padding:"20px", borderRadius:"15px" }}>
-                <h1 style={{ color: "#027314", textAlign: "center" }}>Publier un programme</h1>
-                <form onSubmit={handleSubmit}>
+            <div style={{ width: "", backgroundColor: "#e0e0e0", padding:"20px", borderRadius:"15px" }}>
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div>
                         <label>Titre:</label><br /><br />
                         <input
                             type="text"
-                            name="firstName"
+                            name="titre"
                             value={formData.firstName}
                             onChange={handleChange}
                             style={{ backgroundColor: "white", width: "100%" }}
                         />
                     </div>
                     <div>
-                        <label>Message:</label><br /><br />
+                        <label>Description:</label><br /><br />
                         <textarea
-                            name="message"
+                            name="description"
                             value={formData.message}
                             onChange={handleChange}
                             rows={10}
@@ -62,7 +60,7 @@ const CandidatPostForm = () => {
                         />
                     </div>
                     <div>
-                        <label>Image:</label><br />
+                        <label>Photo:</label><br />
                         <input
                             type="file"
                             accept="image/*"
@@ -78,7 +76,7 @@ const CandidatPostForm = () => {
                         )}
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <button type="submit">Envoyer</button>
+                        <button type="submit">Poster</button>
                     </div>
                 </form>
             </div>
@@ -86,4 +84,4 @@ const CandidatPostForm = () => {
     );
 };
 
-export default CandidatPostForm;
+export default AjouterPost;
