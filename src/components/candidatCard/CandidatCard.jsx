@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MuyButon from "../MuyButon";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {followCandidat, getFollowedCandidats, unfollowCandidat} from "../../app/publicApi/public.js";
+import {followCandidat, getFollowedCandidats, unfollowCandidat} from "../../app/services/public.js";
 
 export default function CandidatCard({ candidat }) {
     const navigation = useNavigate();

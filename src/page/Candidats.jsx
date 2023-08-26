@@ -19,7 +19,7 @@ import {
     getAllActvities,
     getAllCandidats,
     getCandidatByCommune,
-} from "../app/publicApi/public";
+} from "../app/services/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 

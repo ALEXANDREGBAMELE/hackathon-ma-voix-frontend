@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, List, Avatar, Empty, Form, Input, Button} from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-import { getPostComments, addComment, deleteComment } from "../../app/publicApi/public";
+import { getPostComments, addComment, deleteComment } from "../../app/services/public";
 import "./commentModal.css"
 const CommentModal = ({ postId, visible, onClose }) => {
   const [comments, setComments] = useState([]);

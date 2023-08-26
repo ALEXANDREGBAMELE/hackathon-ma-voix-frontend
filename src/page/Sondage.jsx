@@ -16,7 +16,7 @@ import {
 } from "antd";
 import SondageSideBar from "../components/sideBar/SondageSideBar";
 import { useEffect, useState } from "react";
-import { getSondages, participeSondage } from "../app/publicApi/public";
+import { getSondages, participeSondage } from "../app/services/public";
 import FramerCard from "../components/swipeCard/FramerCard";
 import CarteInteractif from "../components/carteInteractif/CarteInteractif";
 import { curentUser, isLoggedIn, token } from "../features/auth/authSlice";

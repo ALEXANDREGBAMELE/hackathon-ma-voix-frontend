@@ -195,7 +195,6 @@ export const removeLike = async (userId, postId, token) => {
   return response;
 };
 
-
 export const addComment = async (token, content) => {
   const requestOptions = {
     method: "POST",
@@ -205,33 +204,33 @@ export const addComment = async (token, content) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      'id_post': content.id_post,
-       'commentaire': content.commentaire,
+      id_post: content.id_post,
+      commentaire: content.commentaire,
     }),
   };
 
-  const response = await fetch("https://lesinnovateurs.me/api/private/user/add-comment",
+  const response = await fetch(
+    "https://lesinnovateurs.me/api/private/user/add-comment",
     requestOptions
   ).then((res) => res.json());
   return response;
 };
 
 export const deleteComment = async (token, id) => {
-    const requestOptions = {
-        method: "DELETE",
-        headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
-    };
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
 
-    const response = await fetch(`https://lesinnovateurs.me/api/private/user/${id}/delete-comment`,
-        requestOptions
-    ).then((res) => res.json());
-    return response;
+  return await fetch(
+      `https://lesinnovateurs.me/api/private/user/${id}/delete-comment`,
+      requestOptions
+  ).then((res) => res.json());
 };
-
 
 export const likedPosts = async (userId, postId, token) => {
   const requestOptions = {
@@ -246,11 +245,10 @@ export const likedPosts = async (userId, postId, token) => {
       id_user: userId,
     }),
   };
-  const response = await fetch(
-    "https://lesinnovateurs.me/api/private/user/add-like",
-    requestOptions
+  return await fetch(
+      "https://lesinnovateurs.me/api/private/user/add-like",
+      requestOptions
   ).then((res) => res.json());
-  return response;
 };
 
 export const participeSondage = async (userId, sondageId, choix, token) => {
@@ -267,25 +265,23 @@ export const participeSondage = async (userId, sondageId, choix, token) => {
       choix,
     }),
   };
-  const response = await fetch(
-    "https://lesinnovateurs.me/api/private/user/add-vote",
-    requestOptions
+  return await fetch(
+      "https://lesinnovateurs.me/api/private/user/add-vote",
+      requestOptions
   ).then((res) => res.json());
-  return response;
 };
 
 export const addNewsletter = async (data) => {
-  const response = await fetch(
-    "https://lesinnovateurs.me/api/public/newsletter",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
+  return await fetch(
+      "https://lesinnovateurs.me/api/public/newsletter",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
   ).then((res) => res.json());
-  return response;
 };
 
 //follow candidat
@@ -303,11 +299,10 @@ export const followCandidat = async (userId, candidatId, token) => {
       id_user: userId,
     }),
   };
-  const response = await fetch(
-    "https://lesinnovateurs.me/api/private/user/follow-candidat",
-    requestOptions
+  return await fetch(
+      "https://lesinnovateurs.me/api/private/user/follow-candidat",
+      requestOptions
   ).then((res) => res.json());
-  return response;
 };
 
 export const unfollowCandidat = async (userId, candidatId, token) => {
@@ -323,11 +318,10 @@ export const unfollowCandidat = async (userId, candidatId, token) => {
       id_user: userId,
     }),
   };
-  const response = await fetch(
-    "https://lesinnovateurs.me/api/private/user/unfollow-candidat",
-    requestOptions
+  return await fetch(
+      "https://lesinnovateurs.me/api/private/user/unfollow-candidat",
+      requestOptions
   ).then((res) => res.json());
-  return response;
 };
 
 export const getFollowedCandidats = async (token) => {
@@ -339,19 +333,17 @@ export const getFollowedCandidats = async (token) => {
     },
   };
   return await fetch(
-    "https://lesinnovateurs.me/api/private/user/get-following",
-    requestOptions
+      "https://lesinnovateurs.me/api/private/user/get-following",
+      requestOptions
   ).then((res) => res.json());
 };
 export const getCandidatByCommune = async (commune) => {
-  const resp = await fetch(
-    `https://lesinnovateurs.me/api/public/candidats/commune/${commune}`
+  return await fetch(
+      `https://lesinnovateurs.me/api/public/candidats/commune/${commune}`
   ).then((res) => res.json());
-  return resp;
 };
 export const getPostByCommune = async (commune) => {
-  const resp = await fetch(
-    `https://lesinnovateurs.me/api/public/commune-posts/${commune}`
+  return await fetch(
+      `https://lesinnovateurs.me/api/public/commune-posts/${commune}`
   ).then((res) => res.json());
-  return resp;
 };

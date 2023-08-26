@@ -13,7 +13,7 @@ import {
   getAllPostLikes,
   addLike,
   removeLike, getPostComments
-} from "../../app/publicApi/public";
+} from "../../app/services/public";
 import {
   incrementLikes,
   decrementLikes,

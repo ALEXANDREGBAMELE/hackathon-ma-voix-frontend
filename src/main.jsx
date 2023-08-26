@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <Resultat />,
       },
       {
-        path: "profil/utilisateur",
+        path: "profile/utilisateur",
         element: (
           <AuthenticatedRoute>
             <PrivateRoute
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "profil/candidat",
+    path: "profile/candidat",
     element: (
       <AuthenticatedRoute>
         <PrivateRoute allowedRoles={[2, 1]} component={<ProfilCandidat />} />

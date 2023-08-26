@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Form, Input, Button, notification, Upload, Select, Col } from "antd";
 import { Spin } from "antd";
 import { setCredentials } from "../features/auth/authSlice";
-import { RegisterUser } from "../app/publicApi/public";
+import { RegisterUser } from "../app/services/public";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";

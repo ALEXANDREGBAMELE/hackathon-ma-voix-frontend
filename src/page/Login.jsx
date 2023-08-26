@@ -7,7 +7,7 @@ import { setCredentials } from "../features/auth/authSlice";
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import CustomButon from "../components/CustomButon";
 import { Spin } from "antd";
-import { LoginUser } from "../app/publicApi/public";
+import { LoginUser } from "../app/services/public";
 import { openErrorNotificationWithIcon } from "../components/CustomNotification";
 function Login() {
     const [email, setEmail] = useState("");

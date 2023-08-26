@@ -3,7 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router-dom";
 import { candidats } from "../../data";
 import { useEffect, useState } from "react";
-import { getAllPosts } from "../../app/publicApi/public";
+import { getAllPosts } from "../../app/services/public";
 export default function ActualiteCandidat({ post }) {
     const data = Array(5).fill(0);
     const { id } = useParams();

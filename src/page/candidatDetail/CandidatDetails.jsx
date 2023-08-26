@@ -9,7 +9,7 @@ import ActualiteCandidat from "./ActualiteCandidat";
 const { Header, Content, Footer, Sider } = Layout;
 import { useParams } from "react-router-dom";
 import { candidats } from "../../data";
-import { getAllCandidats } from "../../app/publicApi/public";
+import { getAllCandidats } from "../../app/services/public";
 const tabeItems = [
     {
         key: "1",
