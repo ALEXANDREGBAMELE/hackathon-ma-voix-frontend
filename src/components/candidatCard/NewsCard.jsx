@@ -5,7 +5,7 @@ import {
     EditOutlined,
     SendOutlined,
 } from "@ant-design/icons";
-import { Avatar, Card, Button } from "antd";
+import { Avatar, Card, Button, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
     getAllPostLikes,
@@ -18,7 +18,8 @@ import {
     addPost,
 } from "../../features/postSlice";
 import { curentUser, token } from "../../features/auth/authSlice";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Commente from "../Commente";
 
 const { Meta } = Card;
 
@@ -28,23 +29,28 @@ export const NewsCard = ({ post }) => {
     const User = JSON.parse(localStorage.getItem("logUser"));
     let tokenUser = JSON.parse(localStorage.getItem("token"));
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchLikesAndCheckLike = async () => {
             const allPostLikes = (await getAllPostLikes(post.id)).data.data;
             setTotalLikes(allPostLikes.length);
             const userLiked = allPostLikes.some(
-                (like) => like.id_user === User?.id
+                (like) => like.id_user == User?.id
             );
             setIsLiked(userLiked);
         };
 
         fetchLikesAndCheckLike();
-    }, [post.id, User]);
+    }, []);
+    const [messageApi, contextHolder] = message.useMessage();
 
     const handleLike = async () => {
         if (!User) {
-            Navigate("/login");
+            await messageApi.open({
+                type: "error",
+                content:
+                    "vous devez vous connecter pour effectuer cette action",
+            });
             return;
         }
 
@@ -57,9 +63,11 @@ export const NewsCard = ({ post }) => {
                     setTotalLikes(totalLikes - 1);
                     dispatch(decrementLikes(post.id));
                 } else {
-                    alert(
-                        "Une erreur s'est produite lors de la gestion du like."
-                    );
+                    await messageApi.open({
+                        type: "warning",
+                        content:
+                            "Une erreur s'est produite lors de la gestion du like.",
+                    });
                 }
             } else {
                 const like = await addLike(User.id, post.id, tokenUser);
@@ -69,14 +77,20 @@ export const NewsCard = ({ post }) => {
                     setTotalLikes(totalLikes + 1);
                     dispatch(incrementLikes(post.id));
                 } else {
-                    alert(
-                        "Une erreur s'est produite lors de la gestion du like."
-                    );
+                    await messageApi.open({
+                        type: "warning",
+                        content:
+                            "Une erreur s'est produite lors de la gestion du like.",
+                    });
                 }
             }
         } catch (error) {
             console.error("Erreur lors de la gestion du like :", error);
-            alert("Une erreur s'est produite lors de la gestion du like.");
+            await messageApi.open({
+                type: "warning",
+                content:
+                    "Une erreur s'est produite lors de la gestion du like.",
+            });
         }
     };
 
@@ -90,10 +104,17 @@ export const NewsCard = ({ post }) => {
             actions={[
                 <Button
                     onClick={handleLike}
-                    icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
+                    style={{ color: isLiked ? "green" : "black" }}
+                    icon={
+                        isLiked ? (
+                            <LikeFilled  />
+                        ) : (
+                            <LikeOutlined />
+                        )
+                    }
                     key="like"
                 >
-                    {isLiked ? "Unlike" : "Like"} {totalLikes}
+                    Like {totalLikes}
                 </Button>,
                 <Button icon={<EditOutlined />} key="comment">
                     Commenter
@@ -103,6 +124,7 @@ export const NewsCard = ({ post }) => {
                 </Button>,
             ]}
         >
+            {contextHolder}
             <Meta
                 avatar={
                     <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
@@ -120,6 +142,7 @@ export const NewsCard = ({ post }) => {
                 }}
                 alt="Image du post"
             />
+            <Commente post={post} />
         </Card>
     );
 };

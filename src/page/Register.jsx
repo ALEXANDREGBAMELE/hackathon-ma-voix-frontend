@@ -9,46 +9,15 @@ import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./Register.css"; // Import the updated CSS file
-const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader.result));
-    reader.readAsDataURL(img);
-};
-const { Option } = Select;
-const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-    if (!isJpgOrPng) {
-        message.error("You can only upload JPG/PNG file!");
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error("Image must smaller than 2MB!");
-    }
-    return isJpgOrPng && isLt2M;
-};
+import { UploadWidget } from "../components/UploadWidget";
+
 function Register() {
     const [loading, setLoading] = useState(false);
-    const uploadButton = (
-        <div>
-            {loading ? <LoadingOutlined /> : <PlusOutlined />}
-            <div
-                style={{
-                    marginTop: 8,
-                }}
-            >
-                choisir image
-            </div>
-        </div>
-  );
-  const options = [
-      { value: "one", label: "One" },
-      { value: "two", label: "Two", className: "myOptionClassName" },
-    
-  ];
+    const [imageUrl, setImageUrl] = useState("");
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
-    const [imageUrl, setImageUrl] = useState();
+
     const openErrorNotificationWithIcon = (text) => {
         api.error({
             message: text,
@@ -59,8 +28,13 @@ function Register() {
 
     const onFinish = async (values) => {
         setIsLoading(true);
-        const data = { ...values, role_id: 3, commune: "marcory" };
+        const data = { ...values, role_id: 3,photo_url:imageUrl };
+        console.log(imageUrl);
+        
+        console.log(data);
+
         const response = await RegisterUser(data);
+        console.log(response);
         setIsLoading(false);
         if (response.user) {
             dispatch(setCredentials(response));
@@ -72,22 +46,26 @@ function Register() {
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
+        console.log(imageUrl);
         openErrorNotificationWithIcon("Veuillez remplir tous les champs svp!");
     };
 
-    const handleChange = (info) => {
-        if (info.file.status === "uploading") {
-            setLoading(true);
-            return;
-        }
-        if (info.file.status === "done") {
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, (url) => {
-                setLoading(false);
-                setImageUrl(url);
-            });
-        }
-    };
+    const commun = [
+        { name: "", id: 0 },
+        { name: "Yopougon", id: 1 },
+        { name: "Adjame", id: 2 },
+        { name: "Cocody", id: 3 },
+        { name: "Plateau", id: 4 },
+        { name: "Abobo", id: 5 },
+        { name: "Koumassi", id: 6 },
+        { name: "Marcory", id: 7 },
+        { name: "Bingerville", id: 8 },
+        { name: "Songon", id: 9 },
+        { name: "TreichVille", id: 10 },
+        { name: "PortBouet", id: 11 },
+        { name: "Attécoubé", id: 12 },
+        { name: "Anyama", id: 13 },
+    ];
     return (
         <Spin spinning={isLoading}>
             <div className="register-box">
@@ -116,40 +94,16 @@ function Register() {
                         autoComplete="off"
                     >
                         {contextHolder}
+
                         <Form.Item
-                            label="Photo profil"
+                            label="Photo de profil"
                             style={{
                                 marginBottom: "2px",
                             }}
-                            name="profil"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Veuillez choisir une photo!",
-                                },
-                            ]}
+                            name="photo_url"
+                           
                         >
-                            <Upload
-                                name="avatar"
-                                listType="picture-circle"
-                                className="avatar-uploader"
-                                showUploadList={false}
-                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                beforeUpload={beforeUpload}
-                                onChange={handleChange}
-                            >
-                                {imageUrl ? (
-                                    <img
-                                        src={imageUrl}
-                                        alt="avatar"
-                                        style={{
-                                            width: "100%",
-                                        }}
-                                    />
-                                ) : (
-                                    uploadButton
-                                )}
-                            </Upload>
+                            <UploadWidget setImageUrl={setImageUrl} />
                         </Form.Item>
                         <div
                             style={{ display: "flex", gap: "10px" }}
@@ -232,13 +186,20 @@ function Register() {
                                     },
                                 ]}
                             >
-                                <Dropdown
-                                    disabled
-                                    onChange={(e) => console.log(e)}
-                                    value={options[0]}
-                                    placeholder="Select an option"
-                                />
-                                
+                                <select
+                                    style={{
+                                        width: "14rem",
+                                        border: "1px solid #d9d9d9",
+                                        height: "2.5rem",
+                                        borderRadius: "10px",
+                                    }}
+                                >
+                                    {commun.map((item) => (
+                                        <option key={item.id} value={item.name}>
+                                            {item.name}
+                                        </option>
+                                    ))}
+                                </select>
                             </Form.Item>
                         </div>
 
@@ -310,7 +271,12 @@ function Register() {
                             </Button>
                         </Form.Item>
                     </Form>
-                    <p>
+
+                    <p
+                        style={{
+                            padding: "1rem 1rem",
+                        }}
+                    >
                         Vous avez déjà un compte?
                         <Link to="/login">
                             <span>Se connecter</span>

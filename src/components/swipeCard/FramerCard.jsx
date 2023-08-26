@@ -39,29 +39,32 @@ export default function FramerCard({ sondages, name, choixSondage }) {
             if (!res) {
                 return;
             }
-        } else {
+            setDirection(dir);
+            setCurrentIndex((prev) => prev + 1);
+            setCardVisible(false);
+        }
+        if (dir === "left") {
             let id = sondage[currentIndex].id;
-            console.log(id);
-            let res = await choixSondage(id, true);
+            let res = await choixSondage(id, false);
             if (!res) {
                 return;
             }
+            setDirection(dir);
+            setCurrentIndex((prev) => prev + 1);
+            setCardVisible(false);
         }
-        setDirection(dir);
-        setCurrentIndex((prev) => prev + 1);
-        setCardVisible(false);
     };
 
     const handleButtonClick = (dir) => {
         handleSwipe(dir);
-        if (currentIndex >= sondage.length - 1) {
+        if (currentIndex > sondage.length - 1) {
             setShowResult(true);
         }
     };
 
     return (
         <div className="swipe-container">
-            {sondage.length > 0 ? (
+            {sondage.length >= 1 ? (
                 <AnimatePresence>
                     {!showResult && sondage[currentIndex] && (
                         <motion.div
@@ -70,13 +73,13 @@ export default function FramerCard({ sondages, name, choixSondage }) {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{
                                 opacity: 0.8,
-                                x: !showResult
+                                x: direction
                                     ? direction === "right"
                                         ? 450
                                         : -450
                                     : 0,
                             }}
-                            transition={{ duration: 0.9 }}
+                            transition={{ duration: 0.8 }}
                         >
                             <div className="card">
                                 {sondage[currentIndex].description}

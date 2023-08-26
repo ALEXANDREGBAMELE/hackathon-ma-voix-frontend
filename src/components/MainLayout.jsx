@@ -20,6 +20,7 @@ export default function MainLayout() {
     const handleCarteClick = (e) => {
         console.log("commune cliquer");
     };
+    
     useEffect(() => {
         const getPost = async () => {
             const getuser = JSON.parse(localStorage.getItem("logUser"));
@@ -66,7 +67,7 @@ export default function MainLayout() {
                             paddingBottom: "4rem",
                         }}
                     >
-                        {post.map((item, index) => {
+                        {post?.map((item, index) => {
                             return <NewsCard post={item} key={index} />;
                         })}
                     </div>

@@ -3,14 +3,19 @@ import Article from "../Article";
 import Sondage from "../Sondage";
 import CustomButon from "../CustomButon";
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 import "./sidebar.css";
 import CarteInteractif from "../carteInteractif/CarteInteractif";
-export default function CandidatSideBar() {
+export default function CandidatSideBar({ getCandidatByCommunes }) {
+    let handleClick = () => {
+        
+    }
+    
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTopsvg">
-                <CarteInteractif/>
+                <CarteInteractif handleCommuneClicked={getCandidatByCommunes} />
             </div>
             <div className="sideBarBottom">
                 <div className="title">
@@ -21,7 +26,9 @@ export default function CandidatSideBar() {
                     <Sondage key={s.id} article={s} />
                 ))}
                 <div className="botom">
-                    <CustomButon title="Voir plus" />
+                    <Link to="/sondage">
+                        <CustomButon title="Voir plus" />
+                    </Link>
                 </div>
             </div>
         </div>
