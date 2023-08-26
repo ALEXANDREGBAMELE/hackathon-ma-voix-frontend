@@ -15,8 +15,10 @@ import { Provider } from "react-redux";
 import Resultat from "./page/Resultat.jsx";
 import ProfilCandidat from "./page/profilCandidat/ProfilCandidat.jsx";
 import ProfilUtilisateur from "./page/profilUtilisateur/ProfilUtilisateur.jsx";
+import RecoveryPassword from "./page/password-recovery.jsx";
 import path from "path";
 import Dashboard from "./page/profilCandidat/MiniDashBoard.jsx";
+import Logout from "./page/Logout.jsx";
 
 const router = createBrowserRouter([
     {
@@ -47,7 +49,6 @@ const router = createBrowserRouter([
                 path: "/resultat",
                 element: <Resultat />,
             },
-            
             {
                 path: "profil/utilisateur",
                 element: <ProfilUtilisateur />,
@@ -72,6 +73,14 @@ const router = createBrowserRouter([
         element: <Login />,
     },
     {
+       path: "/password-recovery",
+         element: <RecoveryPassword />,
+    },
+    {
+        path: "/logout",
+        element: <Logout />,
+    },
+    {
         path: "/candidats",
         element: <Candidats />,
         children: [
@@ -84,6 +93,10 @@ const router = createBrowserRouter([
                 element: <CandidatDetails />,
             },
         ],
+    },
+    {
+        path: "/profil/candidat",
+        element: <ProfilCandidat />,
     },
 ]);
 

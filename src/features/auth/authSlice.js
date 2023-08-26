@@ -20,7 +20,20 @@ const authSlice = createSlice({
         logOut(state) {
             state.user = null
             state.token = null
+        },
+        isCandidate(state) {
+            if (state.user.role_id === 2) {
+                return true
+            }
+            return false
+        },
+        isElecteur(state) {
+            if (state.user.role_id === 3) {
+                return true
+            }
+            return false
         }
+
     }
 })
 export const { setCredentials, logOut } = authSlice.actions
