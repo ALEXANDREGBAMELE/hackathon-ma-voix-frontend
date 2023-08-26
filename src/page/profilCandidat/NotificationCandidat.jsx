@@ -22,6 +22,18 @@ const notifications = [
       content: "Une mise à jour importante est disponible...",
       date: "2023-08-18",
     },
+    {
+      id: 4,
+      message: "Mise à jour importante de l'application.",
+      content: "Une mise à jour importante est disponible...",
+      date: "2023-08-18",
+    },
+    {
+      id: 5,
+      message: "Mise à jour importante de l'application.",
+      content: "Une mise à jour importante est disponible...",
+      date: "2023-08-18",
+    },
   ];
   
 

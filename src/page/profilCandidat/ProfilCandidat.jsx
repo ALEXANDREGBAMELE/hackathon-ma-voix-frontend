@@ -29,7 +29,7 @@ function ProfilCandidat() {
     const photoProfil = "../../profil-yace.jpeg";
     const username = "Jean-Marc Yace"
     return (
-        <div style={{ display: "flex",overflow: "hidden",position: "fixed", top: "3rem", width: "100%"  }}>
+        <div style={{ display: "flex",overflow: "hidden",position: "fixed", top: ".5rem", width: "100%"  }}>
             <div className="left-section" style={{ width: "30%" }}>
                 <div className="sidebar" style={{ width: "100%", justifyContent:"center" }}>
                     <div className="top" style={{ height: "86.3px" }}>
