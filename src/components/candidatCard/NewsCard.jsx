@@ -23,18 +23,25 @@ import { curentUser, token } from "../../features/auth/authSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import Commente from "../Commente";
 import ImageModal from "./ImageModal";
+import CommentModal from "./CommentModal";
 
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
     const [totalLikes, setTotalLikes] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
-    const [showImageModal, setShowImageModal] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+    
     const User = JSON.parse(localStorage.getItem("logUser"));
     let tokenUser = JSON.parse(localStorage.getItem("token"));
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    //Pour les posts et comments
+    const [showImageModal, setShowImageModal] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
+    const [showCommentModal, setShowCommentModal] = useState(false);
+
+
     useEffect(() => {
         const fetchLikesAndCheckLike = async () => {
             const allPostLikes = (await getAllPostLikes(post.id)).data.data;
@@ -48,7 +55,7 @@ export const NewsCard = ({ post }) => {
         fetchLikesAndCheckLike();
     }, []);
     const [messageApi, contextHolder] = message.useMessage();
-
+    
     const handleLike = async () => {
         if (!User) {
             await messageApi.open({
@@ -115,10 +122,20 @@ export const NewsCard = ({ post }) => {
           >
             {totalLikes}
           </Button>,
-          <Button icon={<MessageFilled />} key="comment"></Button>,
+          <Button
+            icon={<MessageFilled />}
+            onClick={() => setShowCommentModal(true)}
+            key="comment"
+          ></Button>,
+
           <Button icon={<SendOutlined />} key="share"></Button>,
         ]}
       >
+        <CommentModal
+          postId={post.id}
+          open={showCommentModal}
+          onClose={() => setShowCommentModal(false)}
+        />
         {contextHolder}
         <Meta
           avatar={
@@ -134,8 +151,8 @@ export const NewsCard = ({ post }) => {
             height: "100%",
             margin: "1rem",
             objectFit: "cover",
-            cursor: "pointer", 
-            maxHeight: "35rem"
+            cursor: "pointer",
+            maxHeight: "35rem",
           }}
           alt="Image du post"
           onClick={() => {

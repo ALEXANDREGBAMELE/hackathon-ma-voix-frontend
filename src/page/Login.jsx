@@ -43,6 +43,10 @@ function Login() {
         );
         localStorage.setItem("isLog", true);
         dispatch(setCredentials(resutl));
+        if (resutl.user.role_id === 2){
+            navigate("/profile/candidat");
+            return;
+        }
         navigate("/");
     };
     const onFinishFailed = async () => {
