@@ -27,7 +27,9 @@ function Login() {
     const onFinish = async (values) => {
       setIsLoading(true);
       console.log(values);
-      
+      localStorage.removeItem("logUser");
+      localStorage.removeItem("token");
+      localStorage.removeItem("isLog");
       const resutl = await LoginUser(values);
       console.log(resutl);
       
@@ -36,6 +38,7 @@ function Login() {
             openErrorNotificationWithIcon(resutl.error);
             return;
         }
+        
         await localStorage.setItem("logUser", JSON.stringify(resutl.user));
         localStorage.setItem(
             "token",

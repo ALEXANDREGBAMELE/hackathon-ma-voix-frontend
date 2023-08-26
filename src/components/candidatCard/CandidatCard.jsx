@@ -14,6 +14,7 @@ export default function CandidatCard({ candidat }) {
     useEffect(() => {
         const checkFollowingStatus = async () => {
             try {
+                if (!userToken) return;
                 const response = await getFollowedCandidats(userToken);
                 const followedCandidats = response.data;
 

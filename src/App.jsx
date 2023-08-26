@@ -50,7 +50,6 @@ function App() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Empêche le rechargement de la page
     handleNewsletterSubscribe();
   };
   return (
@@ -108,6 +107,7 @@ function App() {
                   htmlType="submit"
                   styleProp={botomProps}
                   style={{ backgroundColor: "#ff7200", color: "#fff" }}
+                  onClick={handleSubmit}
                 >
                   S'abonner
                 </Button>
