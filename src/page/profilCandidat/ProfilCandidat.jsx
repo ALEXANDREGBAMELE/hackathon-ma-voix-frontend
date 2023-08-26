@@ -2,9 +2,9 @@ import { React, useState } from "react";
 import Dashboard from "./MiniDashBoard";
 import CandidatPostForm from "./CandidatPostForm";
 import { Menu, Input, Avatar, Badge, Modal } from "antd";
-import NotificationCandidat from "./NotificationCandidat";
 import ProgrammePage from "./Programme";
 import ProfilPage from "./ProfilPage";
+import NotificationPage from "./NotificationCandidat"
 import {
     HomeOutlined,
     UserOutlined,
@@ -19,7 +19,7 @@ import {
 
 function ProfilCandidat() {
 
-    const contents = [<Dashboard />, <CandidatPostForm />, <NotificationCandidat />, <ProgrammePage />, <NotificationCandidat />, <ProfilPage/>];
+    const contents = [<Dashboard />, <CandidatPostForm />, <NotificationPage />, <ProgrammePage />, <ProfilPage/>];
 
     const [currentContentIndex, setCurrentContentIndex] = useState(0);
 
@@ -29,7 +29,7 @@ function ProfilCandidat() {
     const photoProfil = "../../profil-yace.jpeg";
     const username = "Jean-Marc Yace"
     return (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex",overflow: "hidden",position: "fixed", top: "3rem", width: "100%"  }}>
             <div className="left-section" style={{ width: "30%" }}>
                 <div className="sidebar" style={{ width: "100%", justifyContent:"center" }}>
                     <div className="top" style={{ height: "86.3px" }}>
@@ -57,7 +57,7 @@ function ProfilCandidat() {
                             >
                                 Publier un Programme
                             </Menu.Item>
-                            <Menu.Item key="4" icon={<UserOutlined />} onClick={() => changeToContent(5)}>
+                            <Menu.Item key="4" icon={<UserOutlined />} onClick={() => changeToContent(4)}>
                                 Profil
                             </Menu.Item>
                             <Menu.Item key="5" icon={<SettingOutlined />} onClick={() => changeToContent()}>
@@ -93,7 +93,8 @@ function ProfilCandidat() {
                         </Menu>
                     </>
                 </div>
-                <div className="content" style={{ width: "100%" ,padding:"2rem", }}>
+                <div className="content" style={{ width: "100%", padding: "2rem", maxHeight: "600px", overflowY: "auto"}}>
+              
                     {contents[currentContentIndex]}
                 </div>
             </div>
