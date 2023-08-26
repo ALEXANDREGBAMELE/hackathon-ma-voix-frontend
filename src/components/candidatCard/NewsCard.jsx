@@ -133,7 +133,7 @@ export const NewsCard = ({ post }) => {
       >
         <CommentModal
           postId={post.id}
-          open={showCommentModal}
+          visible={showCommentModal}
           onClose={() => setShowCommentModal(false)}
         />
         {contextHolder}
