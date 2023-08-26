@@ -67,7 +67,7 @@ export default function MainLayout() {
                             paddingBottom: "4rem",
                         }}
                     >
-                        {post.map((item, index) => {
+                        {post?.map((item, index) => {
                             return <NewsCard post={item} key={index} />;
                         })}
                     </div>

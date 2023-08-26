@@ -9,20 +9,15 @@ import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./Register.css"; // Import the updated CSS file
+import { UploadWidget } from "../components/UploadWidget";
 
 function Register() {
     const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
-    const [selectedImage, setSelectedImage] = useState(null);
 
-    const handleImageChange = async(event) => {
-        const file = event.target.files[0]; // Récupérer le premier fichier sélectionné
-     await setSelectedImage(file);
-      console.log(file);
-      
-    };
     const openErrorNotificationWithIcon = (text) => {
         api.error({
             message: text,
@@ -33,20 +28,13 @@ function Register() {
 
     const onFinish = async (values) => {
         setIsLoading(true);
-      const data = { ...values, role_id: 3, photo_url: selectedImage };
-      const formData = new FormData();
-      formData.append("nom", data.nom);
-      formData.append("prenom", data.prenom);
-      formData.append("email", data.email);
-      formData.append("password", data.password);
-      formData.append("phone", data.phone);
-      formData.append("commune", data.commune);
-      formData.append("role_id", data.role_id);
-      formData.append("photo_url", data.photo_url);
-console.log(formData);
+        const data = { ...values, role_id: 3,photo_url:imageUrl };
+        console.log(imageUrl);
+        
+        console.log(data);
 
-      const response = await RegisterUser(formData);
-      console.log(response);
+        const response = await RegisterUser(data);
+        console.log(response);
         setIsLoading(false);
         if (response.user) {
             dispatch(setCredentials(response));
@@ -58,6 +46,7 @@ console.log(formData);
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
+        console.log(imageUrl);
         openErrorNotificationWithIcon("Veuillez remplir tous les champs svp!");
     };
 
@@ -105,22 +94,17 @@ console.log(formData);
                         autoComplete="off"
                     >
                         {contextHolder}
-                        {selectedImage && (
-                            <img
-                                src={
-                                    selectedImage
-                                        ? URL.createObjectURL(selectedImage)
-                                        : ""
-                                }
-                                alt="Selected"
-                                style={{ maxWidth: "100px" }}
-                            />
-                        )}
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                        />
+
+                        <Form.Item
+                            label="Photo de profil"
+                            style={{
+                                marginBottom: "2px",
+                            }}
+                            name="photo_url"
+                           
+                        >
+                            <UploadWidget setImageUrl={setImageUrl} />
+                        </Form.Item>
                         <div
                             style={{ display: "flex", gap: "10px" }}
                             className="name-container"

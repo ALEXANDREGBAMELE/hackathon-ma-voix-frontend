@@ -104,10 +104,17 @@ export const NewsCard = ({ post }) => {
             actions={[
                 <Button
                     onClick={handleLike}
-                    icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
+                    style={{ color: isLiked ? "green" : "black" }}
+                    icon={
+                        isLiked ? (
+                            <LikeFilled  />
+                        ) : (
+                            <LikeOutlined />
+                        )
+                    }
                     key="like"
                 >
-                    {isLiked ? "Unlike" : "Like"} {totalLikes}
+                    Like {totalLikes}
                 </Button>,
                 <Button icon={<EditOutlined />} key="comment">
                     Commenter

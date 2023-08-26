@@ -26,7 +26,7 @@ export default function CandidatSideBar({ getCandidatByCommunes }) {
                     <Sondage key={s.id} article={s} />
                 ))}
                 <div className="botom">
-                    <Link to="sondage">
+                    <Link to="/sondage">
                         <CustomButon title="Voir plus" />
                     </Link>
                 </div>

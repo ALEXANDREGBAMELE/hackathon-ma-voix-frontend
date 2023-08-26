@@ -28,7 +28,9 @@ export default function Sondage() {
     const [loading, setLoading] = useState(false);
     let user = JSON.parse(localStorage.getItem("logUser"));
 
-    const [select, setSelect] = useState(user?.commune ? user?.commune : "Yopougon");
+    const [select, setSelect] = useState(
+        user?.commune ? user?.commune : "Yopougon"
+    );
     const handleClick = (name) => {
         setSelect(name);
     };
@@ -37,8 +39,8 @@ export default function Sondage() {
     const navigate = useNavigate();
     useEffect(() => {
         const fetchSondage = async () => {
-            setLoading(true);
             try {
+                setLoading(true);
                 const sondagesData = await getSondages(user, tokenUser);
                 setSondage(sondagesData.data);
             } catch (error) {

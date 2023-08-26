@@ -216,6 +216,7 @@ export default function CarteInteractif({ handleCommuneClicked }) {
                     </g>
                     <g onClick={() => handleCommuneClick("Plateau")}>
                         <path
+                            onClick={() => handleCommuneClick("Plateau")}
                             style={{
                                 fill: "#CA9E67",
                                 stroke: "#020203",
@@ -234,6 +235,7 @@ export default function CarteInteractif({ handleCommuneClicked }) {
                         </text>
                     </g>
                     <g
+                        onClick={() => handleCommuneClick("Treichville")}
                         style={{
                             fill: "#CA9E67",
                             stroke: "#020203",
