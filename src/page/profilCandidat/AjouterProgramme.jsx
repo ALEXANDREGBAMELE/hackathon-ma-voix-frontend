@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CandidatPostForm = () => {
+const AjouterProgramme = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -34,11 +34,10 @@ const CandidatPostForm = () => {
 
     return (
         <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop:"2rem",paddingBottom:"2rem" }}>
-            <div style={{ width: "60%", backgroundColor: "#e0e0e0", padding:"20px", borderRadius:"15px" }}>
-                <h1 style={{ color: "#027314", textAlign: "center" }}>Publier un programme</h1>
+            <div style={{ backgroundColor: "#e0e0e0", padding:"20px", borderRadius:"15px" }}>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label>Titre:</label><br /><br />
+                        <label>Titre du programme:</label><br /><br />
                         <input
                             type="text"
                             name="firstName"
@@ -48,7 +47,7 @@ const CandidatPostForm = () => {
                         />
                     </div>
                     <div>
-                        <label>Message:</label><br /><br />
+                        <label>Contenu du programme:</label><br /><br />
                         <textarea
                             name="message"
                             value={formData.message}
@@ -61,22 +60,6 @@ const CandidatPostForm = () => {
                             }}
                         />
                     </div>
-                    <div>
-                        <label>Image:</label><br />
-                        <input
-                            type="file"
-                            accept="image/*"
-                            name="image"
-                            onChange={handleImageChange}
-                        />
-                        {formData.image && (
-                            <img
-                                src={URL.createObjectURL(formData.image)}
-                                alt="Prévisualisation"
-                                style={{ maxWidth: "100%", marginTop: "10px", height:"200px" }}
-                            />
-                        )}
-                    </div>
                     <div style={{ textAlign: "center" }}>
                         <button type="submit">Envoyer</button>
                     </div>
@@ -86,4 +69,4 @@ const CandidatPostForm = () => {
     );
 };
 
-export default CandidatPostForm;
+export default AjouterProgramme;
