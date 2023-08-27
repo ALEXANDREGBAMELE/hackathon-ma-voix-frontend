@@ -21,103 +21,94 @@ import { addNewsletter } from "./app/services/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
 const botomProps = {
-  borderTopRightRadius: "20px",
-  borderBottomRightRadius: "20px",
-  background: "#ff7200",
-  padding: " 0.5rem",
-  textAlign: "center",
-  fontSize: "medium",
-  cursor: "pointer",
-  color: " #fff",
+    borderTopLeftRadius: "0px",
+    borderBottomLeftRadius: "0px",
+    borderTopRightRadius: "20px",
+    borderBottomRightRadius: "20px",
+    background: "#ff7200",
+    textAlign: "center",
+    fontSize: "medium",
+    cursor: "pointer",
+    color: " #fff",
+    padding: " .64rem",
 };
 
 function App() {
-  const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
 
   const handleNewsletterSubscribe = async () => {
-    try {
-      const response = await addNewsletter({ email });
+      console.log(email);
+      
+      const response = await addNewsletter(email);
       console.log(response);
-      if (response.success) {
-        alert("Vous vous êtes abonné à la newsletter !");
-      } else {
-        alert("Une erreur s'est produite lors de l'abonnement.");
-      }
-    } catch (error) {
-      console.error("Erreur lors de l'abonnement à la newsletter :", error);
-      alert("Une erreur s'est produite lors de l'abonnement.");
-    }
-  };
+      
 
-  const handleSubmit = (e) => {
-    handleNewsletterSubscribe();
-  };
-  return (
-    <>
-      <Layout>
-        <Header
-          style={{
-            position: "sticky",
-            top: 0,
-            zIndex: 1,
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            background: "#fff",
-          }}
-        >
-          <Topbar />
-        </Header>
-        <Outlet />
-        <Footer
-          style={{
-            textAlign: "center",
-            position: "fixed",
-            bottom: 0,
-            width: "100vw",
-            background: "green",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <img
-            src="./logoB.png"
-            alt=""
-            style={{
-              width: "auto",
-              height: "3.5rem",
-              marginRight: "1rem",
-              objectFit: "cover",
-            }}
-          />
-          <span style={{ color: "#fff" }}>©2023 All rights reserved</span>
-          <form onSubmit={handleSubmit}>
-            <div className="newsLetter">
-              <h4>Abonnez-vous à notre NewsLetter</h4>
-              <Space.Compact>
-                <Input
-                  placeholder="Entrez votre email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  styleProp={botomProps}
-                  style={{ backgroundColor: "#ff7200", color: "#fff" }}
-                  onClick={handleSubmit}
+    };
+
+    const handleSubmit = () => {
+        handleNewsletterSubscribe();
+    };
+    return (
+        <>
+            <Layout>
+                <Header
+                    style={{
+                        position: "sticky",
+                        top: 0,
+                        zIndex: 1,
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        background: "#fff",
+                    }}
                 >
-                  S'abonner
-                </Button>
-              </Space.Compact>
-            </div>
-          </form>
-        </Footer>
-      </Layout>
-    </>
-  );
+                    <Topbar />
+                </Header>
+                <Outlet />
+                <Footer
+                    style={{
+                        textAlign: "center",
+                        position: "fixed",
+                        bottom: 0,
+                        width: "100vw",
+                        background: "green",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <img
+                        src="./logoB.png"
+                        alt=""
+                        style={{
+                            width: "auto",
+                            height: "3.5rem",
+                            marginRight: "1rem",
+                            objectFit: "cover",
+                        }}
+                    />
+                    <span style={{ color: "#fff" }}>
+                        ©2023 All rights reserved
+                    </span>
+                    <div className="newsLetter">
+                        <h4>Abonnez-vous à notre NewsLetter</h4>
+                        <Space.Compact
+                            style={{
+                                width: "100%",
+                            }}
+                        >
+                            <Input onChange={(e)=>setEmail(e.target.value)} placeholder="Votre addresse mail" />
+                            <CustomButon
+                                onClicked={handleSubmit}
+                                stylePropes={botomProps}
+                                title="S'abonner"
+                            />
+                        </Space.Compact>
+                    </div>
+                </Footer>
+            </Layout>
+        </>
+    );
 }
 
 export default App;

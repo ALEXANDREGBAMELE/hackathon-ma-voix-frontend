@@ -107,12 +107,12 @@ const CommentModal = ({ postId, visible, onClose }) => {
   }
 
   return (
-    <Modal title="Commentaires" open={visible} onCancel={onClose} footer={null}>
+    <Modal title="Commentaires" open={visible} onCancel={onClose} footer={null} className="comment-modal ">
       {comments.length > 0 ? (
         <List
           dataSource={comments}
           renderItem={(comment) => (
-            <List.Item>
+            <List.Item className="comment-header">
               <List.Item.Meta
                 avatar={
                   <Avatar
@@ -120,15 +120,16 @@ const CommentModal = ({ postId, visible, onClose }) => {
                       comment.user.photo_url ??
                       "https://lesinnovateurs.me/default_user.jpeg"
                     }
+                    className="comment-avatar"
                   />
                 }
                 title={comment.user.nom + " " + comment.user.prenom}
                 description={comment.commentaire}
               />
-              <div className="badge bg-warning">{comment.created_at}</div>
+              <div className="badge bg-warning comment-date">{comment.created_at}</div>
               {comment.user.id === user?.id && (
                 <button
-                  className="delete-comment-button"
+                  className="delete-comment-button "
                   onClick={() => handleDeleteComment(comment.id)}
                  title="supprimer">
                   <DeleteOutlined/> 
@@ -140,18 +141,19 @@ const CommentModal = ({ postId, visible, onClose }) => {
       ) : (
         <Empty description="Aucun commentaire pour le moment." />
       )}
-      <Form layout="vertical" onFinish={handleCommentSubmit}>
-        <Form.Item label="Votre commentaire">
+      <Form layout="vertical" onFinish={handleCommentSubmit} className="new-comment-form">
+        <Form.Item label="Votre commentaire" className="form-item">
           <input type="hidden" name="id_post" value={postId} />
           <Input.TextArea
             name="commentaire"
             rows={4}
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
+            className="comment-input"
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className="comment-submit">
             Ajouter un commentaire
           </Button>
         </Form.Item>

@@ -26,3 +26,35 @@
     color: #e70707;
     background-color: #fff;
 }
+
+.delete-comment-button:hover{
+    color: #fff;
+    background-color: #e70707;
+}
+
+.comment-modal{
+    .comment-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        border-bottom: 1px solid #e6e6e6;
+        .comment-avatar{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e6e6e6;
+            margin-right: 10px;
+        }
+        .comment-date{
+            font-size: 12px;
+            color: #999;
+        }
+    }
+  *{
+    box-sizing: border-box;
+  }
+}
+
+
+

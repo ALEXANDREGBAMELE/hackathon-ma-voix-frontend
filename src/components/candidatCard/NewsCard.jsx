@@ -1,23 +1,24 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
-  LikeOutlined,
-  LikeFilled,
-  EditOutlined,
-  SendOutlined,
-  MessageFilled,
+    LikeOutlined,
+    LikeFilled,
+    EditOutlined,
+    SendOutlined,
+    MessageFilled,
 } from "@ant-design/icons";
 import { Avatar, Card, Button, message, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAllPostLikes,
-  addLike,
-  removeLike, getPostComments
+    getAllPostLikes,
+    addLike,
+    removeLike,
+    getPostComments,
 } from "../../app/services/public";
 import {
-  incrementLikes,
-  decrementLikes,
-  addPost,
+    incrementLikes,
+    decrementLikes,
+    addPost,
 } from "../../features/postSlice";
 import { curentUser, token } from "../../features/auth/authSlice";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -29,44 +30,46 @@ import "./NewsCard.css";
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
-  const [totalLikes, setTotalLikes] = useState(0);
-  const [totalComments, setTotalComments] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
-  const [showFullText, setShowFullText] = useState(false);
-  const [showImageModal, setShowImageModal] = useState(false);
-  const [showCommentModal, setShowCommentModal] = useState(false);
+    const [totalLikes, setTotalLikes] = useState(0);
+    const [totalComments, setTotalComments] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+    const [showFullText, setShowFullText] = useState(false);
+    const [showImageModal, setShowImageModal] = useState(false);
+    const [showCommentModal, setShowCommentModal] = useState(false);
 
-  const dispatch = useDispatch();
-  const User = JSON.parse(localStorage.getItem("logUser"));
-  let tokenUser = JSON.parse(localStorage.getItem("token"));
+    const dispatch = useDispatch();
+    const User = JSON.parse(localStorage.getItem("logUser"));
+    let tokenUser = JSON.parse(localStorage.getItem("token"));
 
- useEffect(() => {
-   const fetchData = async () => {
-     // Fetch likes
-     const allPostLikes = (await getAllPostLikes(post.id)).data.data;
-     setTotalLikes(allPostLikes.length);
-     const userLiked = allPostLikes.some((like) => like.id_user == User?.id);
-     setIsLiked(userLiked);
+    useEffect(() => {
+        const fetchData = async () => {
+            // Fetch likes
+            const allPostLikes = (await getAllPostLikes(post.id)).data.data;
+            setTotalLikes(allPostLikes.length);
+            const userLiked = allPostLikes.some(
+                (like) => like.id_user == User?.id
+            );
+            setIsLiked(userLiked);
 
-     try {
-       const response = await getPostComments(post.id);
-       if (response.data.message === "Pas de commentaires") {
-         setTotalComments(0); // Aucun commentaire trouvé
-       } else {
-         setTotalComments(response.data.data.length); 
-       }
-     } catch (error) {
-       console.error(
-         "Erreur lors de la récupération des commentaires :",
-         error
-       );
-     }
-   };
+            try {
+                const response = await getPostComments(post.id);
+                if (response.data.message === "Pas de commentaires") {
+                    setTotalComments(0); // Aucun commentaire trouvé
+                } else {
+                    setTotalComments(response.data.data.length);
+                }
+            } catch (error) {
+                console.error(
+                    "Erreur lors de la récupération des commentaires :",
+                    error
+                );
+            }
+        };
 
-   fetchData();
- }, []);
+        fetchData();
+    }, []);
 
-  const [messageApi, contextHolder] = message.useMessage();
+    const [messageApi, contextHolder] = message.useMessage();
 
   const handleLike = async () => {
     if (!User) {
@@ -141,7 +144,7 @@ export const NewsCard = ({ post }) => {
         </div>
       </div>
       <div
-        className="post-image-container"
+        className="post-image-container animated fadeInLeft"
         onClick={() => setShowImageModal(true)}
       >
         <img
@@ -159,7 +162,6 @@ export const NewsCard = ({ post }) => {
         >
           {totalLikes}
         </Button>
-
         <Button
           icon={<MessageFilled />}
           onClick={() => setShowCommentModal(true)}
@@ -169,19 +171,23 @@ export const NewsCard = ({ post }) => {
           {totalComments}
         </Button>
 
-        <Button icon={<SendOutlined />} key="share" className="share-button" />
-      </div>
+                <Button
+                    icon={<SendOutlined />}
+                    key="share"
+                    className="share-button"
+                />
+            </div>
 
-      <CommentModal
-        postId={post.id}
-        visible={showCommentModal}
-        onClose={() => setShowCommentModal(false)}
-      />
-      <ImageModal
-        open={showImageModal}
-        imageUrl={`https://lesinnovateurs.me/${post.url_media}`}
-        onClose={() => setShowImageModal(false)}
-      />
-    </Card>
-  );
+            <CommentModal
+                postId={post.id}
+                visible={showCommentModal}
+                onClose={() => setShowCommentModal(false)}
+            />
+            <ImageModal
+                open={showImageModal}
+                imageUrl={`https://lesinnovateurs.me/${post.url_media}`}
+                onClose={() => setShowImageModal(false)}
+            />
+        </Card>
+    );
 };

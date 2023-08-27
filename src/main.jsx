@@ -60,10 +60,8 @@ const router = createBrowserRouter([
         path: "profile/utilisateur",
         element: (
           <AuthenticatedRoute>
-            <PrivateRoute
-              allowedRoles={[3, 1]}
-              component={<ProfilUtilisateur />}
-            />
+            <PrivateRoute allowedRoles={[3, 1]} element={<ProfilUtilisateur />} />
+              
           </AuthenticatedRoute>
         ),
       },
@@ -109,20 +107,7 @@ const router = createBrowserRouter([
       </AuthenticatedRoute>
     ),
   },
-  {
-    path: "/candidats",
-    element: <Candidats />,
-    children: [
-      {
-        path: "/candidats/:id",
-        element: <CandidatDetails />,
-      },
-      {
-        path: "/candidats/:commune/",
-        element: <CandidatDetails />,
-      },
-    ],
-  },
+
   {
     path: "*",
     element: <Navigate to="/login" />,
