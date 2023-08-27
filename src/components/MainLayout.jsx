@@ -13,12 +13,13 @@ export default function MainLayout() {
     const getPostByCommune = async (commune) => {
         setLoading(true);
         const post = await getAllPosts();
-        console.log(post);
+        console.log(post.data);
         setPost(post.data);
         setLoading(false);
     };
-    const handleCarteClick = (e) => {
-        console.log("commune cliquer");
+    const handleCarteClick = async (data) => {
+        let resp = await getPostByCommune(data);
+        console.log(resp);
     };
 
     useEffect(() => {

@@ -25,11 +25,12 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Commente from "../Commente";
 import ImageModal from "./ImageModal";
 import CommentModal from "./CommentModal";
-import "./NewsCard.css";
+// import "./NewsCard.css";
 
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
+    console.log(post);
     const [totalLikes, setTotalLikes] = useState(0);
     const [totalComments, setTotalComments] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
@@ -67,7 +68,7 @@ export const NewsCard = ({ post }) => {
         };
 
         fetchData();
-    }, []);
+    }, [totalComments, totalLikes]);
 
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -83,7 +84,6 @@ export const NewsCard = ({ post }) => {
     try {
       if (isLiked) {
         const unlike = await removeLike(User.id, post.id, tokenUser);
-        console.log(unlike);
         if (unlike.success) {
           setIsLiked(false);
           setTotalLikes(totalLikes - 1);

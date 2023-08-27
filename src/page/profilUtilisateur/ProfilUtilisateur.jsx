@@ -5,8 +5,10 @@ import {
     EditOutlined,
     UserOutlined,
     SettingOutlined,
+    LogoutOutlined
 } from "@ant-design/icons";
 
+import Logout from "../Logout.jsx"
 const { Meta } = Card;
 
 function ProfilUtilisateur() {
@@ -111,6 +113,10 @@ function ProfilUtilisateur() {
 
                 </Form>
             </Modal>
+            <Logout>
+                <LogoutOutlined />
+            </Logout>
+
         </div>
     );
 }

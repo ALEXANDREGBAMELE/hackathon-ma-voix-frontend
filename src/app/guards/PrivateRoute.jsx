@@ -4,7 +4,6 @@ import { Route, Navigate } from "react-router-dom";
 const PrivateRoute = ({ allowedRoles, element }) => {
   const isLogged = JSON.parse(localStorage.getItem("isLog"));
   const logUser = JSON.parse(localStorage.getItem("logUser"));
-  console.log(isLogged)
 
   if (isLogged && allowedRoles.includes(logUser.role_id)) {
     return element

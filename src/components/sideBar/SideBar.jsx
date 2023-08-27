@@ -5,10 +5,13 @@ import CustomButon from "../CustomButon";
 import "./sidebar.css";
 import CarteInteractif from "../carteInteractif/CarteInteractif";
 export default function SideBar({ handleCarteClick }) {
+    let handleClick =async (name) => {
+await handleCarteClick(name)
+    }
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTopsvg">
-                <CarteInteractif handleCommuneClicked={handleCarteClick} />
+                <CarteInteractif handleCommuneClicked={handleClick} />
             </div>
             <div className="sideBarBottom">
                 <div className="title">

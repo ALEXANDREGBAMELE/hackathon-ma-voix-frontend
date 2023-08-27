@@ -44,6 +44,15 @@ function Topbar() {
   const [current, setCurrent] = useState("/");
   const isLogged = JSON.parse(localStorage.getItem("isLog"));
   const logUser = JSON.parse(localStorage.getItem("logUser"));
+  let userAvatar = null;
+  //eviter cannot read property of null
+  const verif = logUser?.photo_url
+  if (verif){
+    userAvatar = 'https://lesinnovateurs.me/'+logUser.photo_url
+  }
+  else{
+    userAvatar = 'https://lesinnovateurs.me/default_user.jpeg'
+  }
 
   const navigation = useNavigate();
   const dispatch = useDispatch();
@@ -108,7 +117,11 @@ function Topbar() {
           className="primaryBotom"
           onClick={() => navigation("profile/utilisateur")}
         >
-          <Avatar src={logUser.photo_url}></Avatar>
+          <Avatar
+            src={
+              userAvatar
+            }
+          ></Avatar>
           <span>{logUser.nom}</span>
         </div>
       ) : (
