@@ -116,7 +116,7 @@ export const NewsCard = ({ post }) => {
 
   return (
     <Card
-      className={`facebook-post-card ${showFullText ? "expanded-card" : ""}`}
+      className={`facebook-post-card animated fadeIn ${showFullText ? "expanded-card" : ""}`}
     >
       <div className="post-content">
         <div className="post-header">
@@ -127,18 +127,16 @@ export const NewsCard = ({ post }) => {
           <div className="post-title">{post.titre}</div>
         </div>
         <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
-          {post.description.length > 150 ? (
-            <span>
-              {post.description.slice(0, 150)}{" "}
-              <span
-                className="see-more"
-                onClick={() => setShowFullText(!showFullText)}
-              >
-                Voir plus
-              </span>
+          {showFullText || post.description.length <= 150
+            ? post.description
+            : post.description.slice(0, 150) + "..."}
+          {post.description.length > 150 && (
+            <span
+              className="see-more badge"
+              onClick={() => setShowFullText(!showFullText)}
+            >
+              {showFullText ? "Voir moins" : "Voir plus"}
             </span>
-          ) : (
-            post.description
           )}
         </div>
       </div>
@@ -167,8 +165,8 @@ export const NewsCard = ({ post }) => {
           onClick={() => setShowCommentModal(true)}
           key="comment"
           className="comment-button"
-        >{totalComments}
-            
+        >
+          {totalComments}
         </Button>
 
         <Button icon={<SendOutlined />} key="share" className="share-button" />

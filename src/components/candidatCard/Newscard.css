@@ -107,3 +107,127 @@
 .share-button .anticon {
     margin-right: 6px;
 }
+
+.see-more .badge  {
+    background-color: #3578e5;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    border: 1px solid #3578e5;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.see-more:hover .badge {
+    background-color: #ffffff;
+    color: #3578e5;
+    border: 1px solid #3578e5;
+}
+
+.see-more:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .facebook-post-card {
+        padding: 8px;
+    }
+
+    .post-header {
+        margin-bottom: 4px;
+    }
+
+    .post-title {
+        font-size: 14px;
+    }
+
+    .post-text {
+        font-size: 12px;
+    }
+
+    .action-buttons {
+        width: 100%;
+    }
+}
+
+/* Animate.css */
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fadeOut {
+    animation-name: fadeOut;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInDown {
+    animation-name: slideInDown;
+}
+
+@keyframes slideOutDown {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.slideOutDown {
+    animation-name: slideOutDown;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInUp {
+    animation-name: slideInUp;
+}

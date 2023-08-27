@@ -7,22 +7,47 @@ const candidatServices = axios.create({
 });
 
 
+/**
+ * Intercepter les requetes pour ajouter le token
+ * @param {object} config
+ * @returns  {object} config
+ * */
+candidatServices.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            config.headers["Authorization"] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        Promise.reject(error);
+    }
+);
+
+
+
 export const addPost= async  (token, data) =>{
 
     const  requestOptions = {
         method: "POST",
-
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
         body: JSON.stringify(
             data
         )
     }
 
-    return await fetch(
-        "https://lesinnovateurs.me/api/private/user/get-following",
-        requestOptions
-    ).then((res) => res.json());
+    const response = await candidatServices.post("/private/candidat/add-post", requestOptions)
+    return response;
+}
 
+export const addProgramme= async  (token, data) =>{ 
+    const  requestOptions = {
+        method: "POST",
+        body: JSON.stringify(
+            data
+        )
+    }
+
+    const response = await candidatServices.post("/private/candidat/add-programme", requestOptions)
+    return response;
 }
