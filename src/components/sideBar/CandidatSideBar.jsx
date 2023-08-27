@@ -1,6 +1,6 @@
-import { news, sondages } from "../../data";
-import Article from "../Article";
-import Sondage from "../Sondage";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import { news } from "../../data";
 import CustomButon from "../CustomButon";
 import { Card } from "antd";
 import { Link } from "react-router-dom";
@@ -22,9 +22,7 @@ export default function CandidatSideBar({ getCandidatByCommunes }) {
                     <h3>Quelques sondages</h3>
                     <div></div>
                 </div>
-                {news.map((s) => (
-                    <Sondage key={s.id} article={s} />
-                ))}
+                
                 <div className="botom">
                     <Link to="/sondage">
                         <CustomButon title="Voir plus" />

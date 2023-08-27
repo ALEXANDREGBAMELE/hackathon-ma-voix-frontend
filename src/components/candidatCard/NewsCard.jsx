@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
@@ -21,7 +23,7 @@ import {
     addPost,
 } from "../../features/postSlice";
 import { curentUser, token } from "../../features/auth/authSlice";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Route } from "react-router-dom";
 import Commente from "../Commente";
 import ImageModal from "./ImageModal";
 import CommentModal from "./CommentModal";
@@ -119,77 +121,88 @@ export const NewsCard = ({ post }) => {
     }
   };
 
-  return (
-    <Card
-      className={`facebook-post-card animated fadeIn ${showFullText ? "expanded-card" : ""}`}
-    >
-      <div className="post-content">
-        <div className="post-header">
-          {contextHolder}
-          <div className="post-avatar">
-            <Avatar src={photo_candidat} />
-          </div>
-          <div className="post-title">{post.titre}</div>
-        </div>
-        <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
-          {showFullText || post.description.length <= 150
-            ? post.description
-            : post.description.slice(0, 150) + "..."}
-          {post.description.length > 150 && (
-            <span
-              className="see-more badge"
-              onClick={() => setShowFullText(!showFullText)}
-            >
-              {showFullText ? "Voir moins" : "Voir plus"}
-            </span>
-          )}
-        </div>
-      </div>
-      <div
-        className="post-image-container animated fadeInLeft"
-        onClick={() => setShowImageModal(true)}
+    const handleAvatarClick = async () => {
+      window.location.href = `/candidat/${post.candidat.id}`;
+    }
+
+    return (
+      <Card
+        className={`facebook-post-card animated fadeIn ${
+          showFullText ? "expanded-card" : ""
+        }`}
       >
-        <img
-          src={`https://lesinnovateurs.me/${post.url_media}`}
-          alt="Image du post"
-          className="post-image"
-        />
-      </div>
-      <div className="action-buttons">
-        <Button
-          onClick={handleLike}
-          className={`like-button ${isLiked ? "liked" : ""}`}
-          icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
-          key="like"
-        >
-          {totalLikes}
-        </Button>
-        <Button
-          icon={<MessageFilled />}
-          onClick={() => setShowCommentModal(true)}
-          key="comment"
-          className="comment-button"
-        >
-          {totalComments}
-        </Button>
-
-                <Button
-                    icon={<SendOutlined />}
-                    key="share"
-                    className="share-button"
-                />
+        <div className="post-content">
+          <div className="post-header">
+            {contextHolder}
+            <div className="post-avatar">
+              <a onClick={handleAvatarClick}>
+                <Avatar src={photo_candidat} />
+                <span className="candidat-name badge success">
+                  {post.candidat.user.nom + " " + post.candidat.user.prenom}
+                </span>
+              </a>
             </div>
+            <div className="post-title">{post.titre}</div>
+          </div>
+          <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
+            {showFullText || post.description.length <= 150
+              ? post.description
+              : post.description.slice(0, 150) + "..."}
+            {post.description.length > 150 && (
+              <span
+                className="see-more badge"
+                onClick={() => setShowFullText(!showFullText)}
+              >
+                {showFullText ? "Voir moins" : "Voir plus"}
+              </span>
+            )}
+          </div>
+        </div>
+        <div
+          className="post-image-container animated fadeInLeft"
+          onClick={() => setShowImageModal(true)}
+        >
+          <img
+            src={`https://lesinnovateurs.me/${post.url_media}`}
+            alt="Image du post"
+            className="post-image"
+          />
+        </div>
+        <div className="action-buttons">
+          <Button
+            onClick={handleLike}
+            className={`like-button ${isLiked ? "liked" : ""}`}
+            icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
+            key="like"
+          >
+            {totalLikes}
+          </Button>
+          <Button
+            icon={<MessageFilled />}
+            onClick={() => setShowCommentModal(true)}
+            key="comment"
+            className="comment-button"
+          >
+            {totalComments}
+          </Button>
 
-            <CommentModal
-                postId={post.id}
-                visible={showCommentModal}
-                onClose={() => setShowCommentModal(false)}
-            />
-            <ImageModal
-                open={showImageModal}
-                imageUrl={`https://lesinnovateurs.me/${post.url_media}`}
-                onClose={() => setShowImageModal(false)}
-            />
-        </Card>
+          <Button
+            icon={<SendOutlined />}
+            key="share"
+            className="share-button"
+          />
+        </div>
+
+        <CommentModal
+          postId={post.id}
+          visible={showCommentModal}
+          onClose={() => setShowCommentModal(false)}
+        />
+        <ImageModal
+          open={showImageModal}
+          imageUrl={`https://lesinnovateurs.me/${post.url_media}`}
+          onClose={() => setShowImageModal(false)}
+        />
+      </Card>
     );
 };

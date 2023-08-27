@@ -1,22 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Article from "./components/Article";
-import { news, sondages } from "./data";
 import CustomButon from "./components/CustomButon";
-import Sondage from "./components/Sondage";
 import Topbar from "./components/tapBar/TopBar";
-import { ConfigProvider } from "antd";
-import SideBar from "./components/sideBar/SideBar";
-import Footers from "./components/Footer";
-import MainLayout from "./components/MainLayout";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { curentUser } from "./features/auth/authSlice";
 
 import { Outlet } from "react-router-dom";
-import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
+import { Layout, Input, Space } from "antd";
 import { addNewsletter } from "./app/services/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;

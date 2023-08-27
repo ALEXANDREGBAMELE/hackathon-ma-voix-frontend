@@ -1,6 +1,5 @@
-import { news, sondages } from "../../data";
-import Article from "../Article";
-import Sondage from "../Sondage";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import CustomButon from "../CustomButon";
 import "./sidebar.css";
 import CarteInteractif from "../carteInteractif/CarteInteractif";
@@ -18,9 +17,7 @@ await handleCarteClick(name)
                     <h3>Quelques sondages</h3>
                     <div></div>
                 </div>
-                {news.map((s) => (
-                    <Sondage key={s.id} article={s} />
-                ))}
+                
                 <div className="botom">
                     <CustomButon title="Voir plus" />
                 </div>

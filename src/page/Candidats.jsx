@@ -1,22 +1,14 @@
+/* eslint-disable no-unused-vars */
 import CandidatCard from "../components/candidatCard/CandidatCard";
-import { candidats } from "../data";
-import { Pagination } from "antd";
-import { Card, List } from "antd";
+import { List } from "antd";
 import {
-    Breadcrumb,
     Layout,
-    Menu,
-    theme,
     Input,
-    Button,
-    Space,
     Spin,
 } from "antd";
-import SideBar from "../components/sideBar/SideBar";
 import CandidatSideBar from "../components/sideBar/CandidatSideBar";
 import { useEffect, useState } from "react";
 import {
-    getAllActvities,
     getAllCandidats,
     getCandidatByCommune,
 } from "../app/services/public";
@@ -31,7 +23,6 @@ export default function Candidats() {
         const getCandidats = async () => {
             setLoading(true);
             const candidats = await getAllCandidats();
-            console.log(candidats.data);
             setCandidat(candidats.data);
             setLoading(false);
         };

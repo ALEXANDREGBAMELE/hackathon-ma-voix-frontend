@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import {React, useState, useEffect } from "react";
 import { Modal, List, Avatar, Empty, Form, Input, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 

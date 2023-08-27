@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Card } from "antd";
+import  { React, useEffect, useState } from "react";
 import { Tabs, Layout } from "antd";
-import Sondage from "../../components/Sondage";
 import Article from "../../components/Article";
 import DetailCandidatSideBar from "../../components/sideBar/DetailCandidatSideBar";
-import { NewsCard } from "../../components/candidatCard/NewsCard";
 import ActualiteCandidat from "./ActualiteCandidat";
 const { Header, Content, Footer, Sider } = Layout;
 import { useParams } from "react-router-dom";
-import { candidats } from "../../data";
 import { getAllCandidats } from "../../app/services/public";
 const tabeItems = [
     {
