@@ -69,6 +69,8 @@ export const getCommentAllRepliques = (id) => {
     }
 };
 
+
+//ELECTIONS
 export const getAllElections = () => {
     try {
         return publicServices.get("/public/elections");
@@ -77,6 +79,8 @@ export const getAllElections = () => {
     }
 };
 
+
+//ELECTION DATA
 export const getElectionData = (id) => {
     try {
         return publicServices.get(`/public/election/${id}`);
@@ -85,6 +89,8 @@ export const getElectionData = (id) => {
     }
 };
 
+
+//ELECTION PARTICIPANTS
 export const getElectionParticipants = (id) => {
     try {
         return publicServices.get(`/public/election/${id}/participants`);
@@ -93,7 +99,7 @@ export const getElectionParticipants = (id) => {
     }
 };
 
-
+//RESET PASSWORD
 export const resetPassword = (data) => {
     try {
         return publicServices.post("/public/user/reset-password", data);

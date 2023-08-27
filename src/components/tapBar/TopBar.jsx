@@ -25,7 +25,7 @@ const menuItems = [
   },
   {
     label: "Elections",
-    key: "resultat",
+    key: "elections",
   },
 ];
 

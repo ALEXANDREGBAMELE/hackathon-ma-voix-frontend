@@ -16,7 +16,7 @@ import Login from "./page/Login.jsx";
 import CandidatDetails from "./page/candidatDetail/CandidatDetails.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import Resultat from "./page/Resultat.jsx";
+import ELections from "./components/events/ELections.jsx";
 import ProfilCandidat from "./page/profilCandidat/ProfilCandidat.jsx";
 import ProfilUtilisateur from "./page/profilUtilisateur/ProfilUtilisateur.jsx";
 import RecoveryPassword from "./page/password-recovery.jsx";
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
         element: <Sondage />,
       },
       {
-        path: "/resultat",
-        element: <Resultat />,
+        path: "/elections",
+        element: <ELections />,
       },
       {
         path: "profile/utilisateur",
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
     path: "profile/candidat",
     element: (
       <AuthenticatedRoute>
-        <PrivateRoute allowedRoles={[2, 1]} component={<ProfilCandidat />} />
+        <PrivateRoute allowedRoles={[2, 1]} element={<ProfilCandidat />} />
       </AuthenticatedRoute>
     ),
   },
