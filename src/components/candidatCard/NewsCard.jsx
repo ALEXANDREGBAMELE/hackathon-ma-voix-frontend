@@ -25,7 +25,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Commente from "../Commente";
 import ImageModal from "./ImageModal";
 import CommentModal from "./CommentModal";
-import "./NewsCard.css";
+// import "./NewsCard.css";
 
 const { Meta } = Card;
 
@@ -67,7 +67,7 @@ export const NewsCard = ({ post }) => {
         };
 
         fetchData();
-    }, []);
+    }, [totalComments, totalLikes]);
 
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -142,10 +142,10 @@ export const NewsCard = ({ post }) => {
                 >
                     {post.description.length > 150 ? (
                         <span>
-                            {post.description.slice(0, 150)}{" "}
+                            {post.description.slice(0, 150)}
                             <span
                                 className="see-more"
-                                onClick={() => setShowFullText(!showFullText)}
+                                onClick={() => setShowFullText((prev) => !prev)}
                             >
                                 Voir plus
                             </span>

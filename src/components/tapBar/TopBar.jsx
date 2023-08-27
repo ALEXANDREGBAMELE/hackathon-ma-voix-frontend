@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Menu, Button, Dropdown } from "antd";
+import { Menu, Button, Avatar } from "antd";
 import {
     AppstoreOutlined,
     MailOutlined,
@@ -98,16 +98,20 @@ function Topbar() {
                 }}
             />
             {isLogged ? (
-                <div style={{
-                    padding: "0 .2rem",
-                    border: "1px solid #ccc",
-                    height: "2.5rem",
-                    width: "8rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-around",
-                }} className="primaryBotom">
-                    <i className="fa fa-user" aria-hidden="true"></i>
+                <div
+                    style={{
+                        padding: "0 .2rem",
+                        border: "1px solid #ccc",
+                        height: "2.5rem",
+                        width: "8rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-around",
+                    }}
+                    className="primaryBotom"
+                    onClick={() => navigation("profil/utilisateur")}
+                >
+                    <Avatar src={logUser.photo_url}></Avatar>
                     <span>{logUser.nom}</span>
                 </div>
             ) : (

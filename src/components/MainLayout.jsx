@@ -17,8 +17,9 @@ export default function MainLayout() {
         setPost(post.data);
         setLoading(false);
     };
-    const handleCarteClick = (e) => {
-        console.log("commune cliquer");
+    const handleCarteClick = async (data) => {
+        let resp = await getPostByCommune(data);
+        console.log(resp);
     };
 
     useEffect(() => {
