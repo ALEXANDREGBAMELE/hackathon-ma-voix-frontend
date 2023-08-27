@@ -24,9 +24,6 @@ export function ELections() {
 
     }, []);
 
-    return (
-        //display each elections on card and if elections is empty display message of not elections programed yet
-
-
 }
+
 export default ELections;
