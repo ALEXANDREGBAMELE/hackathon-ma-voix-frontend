@@ -24,7 +24,7 @@ export default function ActualiteCandidat({ post }) {
         <InfiniteScroll
             style={{
                 paddingBottom: "5rem",
-                paddingTop: "10rem",
+                paddingTop: "1rem",
             }}
             dataLength={candidatPost.length}
         >

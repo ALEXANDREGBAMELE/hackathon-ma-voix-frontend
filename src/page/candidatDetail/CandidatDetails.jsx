@@ -6,6 +6,7 @@ import ActualiteCandidat from "./ActualiteCandidat";
 const { Header, Content, Footer, Sider } = Layout;
 import { useParams } from "react-router-dom";
 import { getAllCandidats } from "../../app/services/public";
+import ProgrameCandidat from "./ProgrameCandidat";
 const tabeItems = [
     {
         key: "1",
@@ -15,14 +16,7 @@ const tabeItems = [
     {
         key: "2",
         label: `Programmes`,
-        children: (
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptas temporibus quas a provident cumque numquam sequi
-                doloribus, nisi modi maiores expedita ullam dolores ex neque
-                ipsa voluptatibus optio molestias? Porro?
-            </p>
-        ),
+        children:<ProgrameCandidat/>,
     },
     {
         key: "3",
