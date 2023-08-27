@@ -104,12 +104,11 @@ export default function CandidatCard({ candidat }) {
   };
 
   return (
-    <div className="candi-card" 
+    <div
+      className="candi-card"
       style={{
-                backgroundImage: `url("${url}")`,
-
+        backgroundImage: `url("${url}")`,
       }}
-        
     >
       <div className="candi-topCard">
         <div className="candi-userName">
@@ -148,7 +147,16 @@ export default function CandidatCard({ candidat }) {
             }
             icon={isFollowing ? <UserDeleteOutlined /> : <UserAddOutlined />}
           />
-          <div style={{ fontSize: "0.8rem" }}>{totalfollower} Followers</div>
+
+          <Button
+            onClick={handleClick}
+            type="default"
+            shape="circle"
+            size="large"
+            className="candi-viewButton"
+            icon={<EyeOutlined />}
+          />
+          <div style={{ fontSize: "0.8rem" }}>{totalfollower} Follower{totalfollower > 1 ? "s" : ""}</div>
         </div>
       </div>
     </div>

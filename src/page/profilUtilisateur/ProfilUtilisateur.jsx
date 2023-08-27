@@ -26,13 +26,33 @@ function ProfilUtilisateur() {
         console.log("Received values of form: ", values);
         setIsModalVisible(false);
     };
+
     // Les immages
-    const photoProfil = "../../profil-yace.jpeg";
-    const photoBackground = "../../mairie-cocody.jpeg";
-    const username = "Jean-Marc Yacé"
-    const usermail = "jeanmarcyace@gmail.com"
+   
+    const photoBackground = "../../bg.jpg";
+    const user = JSON.parse(localStorage.getItem("logUser"));
+    let userAvatar = null;
+
+    const verif = user?.photo_url
+    if (verif && !user.photo_url.contains('cloudinary')){
+        userAvatar = 'https://lesinnovateurs.me/'+user.photo_url
+    }
+    else if (verif && user.photo_url.contains('cloudinary')) {
+        userAvatar = user.photo_url
+    }
+    else{
+        userAvatar = 'https://lesinnovateurs.me/default_user.jpeg'
+    }
+
     return (
-        <div className="profil-page" style={{ with: "", backgroundColor:"", padding:"10px 25% 10px 25%"}}>
+        <div
+            className="profil-page"
+            style={{
+                with: "",
+                backgroundColor: "",
+                padding: "10px 25% 10px 25%",
+            }}
+        >
             <div
                 className="background-image"
                 style={{
@@ -45,24 +65,49 @@ function ProfilUtilisateur() {
                     justifyContent: "center",
                 }}
             >
-                <div className="avatar-section" style={{ position: "relative", top: "23%" }}>
-                    <Avatar size={150} src={photoProfil} alt="" />
-                    <Button className="edit-avatar-button" icon={<EditOutlined />} />
+                <div
+                    className="avatar-section"
+                    style={{ position: "relative", top: "23%" }}
+                >
+                    <Avatar size={150} src={userAvatar} alt="" />
+                    <Button
+                        className="edit-avatar-button"
+                        icon={<EditOutlined />}
+                    />
                 </div>
             </div>
             <Card className="profile-card">
                 <Meta
-                    avatar={<Avatar src={photoProfil} alt="" />}
-                    title={username}
-                    description={usermail}
+                    avatar={<Avatar src={userAvatar} alt="" />}
+                    title={user.nom}
+                    description={user.email}
                 />
-                <div className="user-details" style={{ display: "flex", gap: "50px" }}>
+                <div
+                    className="user-details"
+                    style={{ display: "flex", gap: "50px" }}
+                >
                     <div className="right" style={{ width: "40%" }}>
-                        <p><span style={{ fontSize: "" }}>Nom : </span></p>
-                        <p><span style={{ fontSize: "" }}>Prenom : </span></p>
-                        <p><span style={{ fontSize: "" }}>Mot de passe : </span></p>
-                        <p><span style={{ fontSize: "" }}>E-mail : </span></p>
-                        <p><span style={{ fontSize: "" }}>Commune : </span></p>
+                        <p>
+                            <span style={{ fontSize: "" }}>
+                                Nom :{user.nom}
+                            </span>
+                        </p>
+                        <p>
+                            <span style={{ fontSize: "" }}>
+                                Prenom : {user.prenom}
+                            </span>
+                        </p>
+
+                        <p>
+                            <span style={{ fontSize: "" }}>
+                                E-mail :{user.email}
+                            </span>
+                        </p>
+                        <p>
+                            <span style={{ fontSize: "" }}>
+                                Commune :{user.commune}
+                            </span>
+                        </p>
                     </div>
                 </div>
                 <Button
@@ -76,14 +121,11 @@ function ProfilUtilisateur() {
 
             <Modal
                 title="Modifier les informations personnelles"
-                visible={isModalVisible}
+                open={isModalVisible}
                 onCancel={handleCancel}
                 footer={null}
             >
                 <Form name="profil-form" onFinish={onFinish}>
-
-
-
                     <Form name="update-profile-form" onFinish={onFinish}>
                         <Form.Item label="Nom" name="nom">
                             <Input />
@@ -109,14 +151,11 @@ function ProfilUtilisateur() {
                             </Button>
                         </Form.Item>
                     </Form>
-
-
                 </Form>
             </Modal>
             <Logout>
                 <LogoutOutlined />
             </Logout>
-
         </div>
     );
 }

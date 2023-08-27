@@ -26,7 +26,7 @@ const tabeItems = [
     },
     {
         key: "3",
-        label: `programe `,
+        label: `Historique `,
         children: <p>Historique professionnel content</p>,
     },
 ];
@@ -77,7 +77,7 @@ export default function CandidatDetails() {
             <Layout
                 className="site-layout"
                 style={{
-                    marginLeft: 450,
+                    marginLeft: 0,
                 }}
             >
                 <Content
@@ -92,7 +92,7 @@ export default function CandidatDetails() {
                             top: "4rem",
                             paddingTop: ".1rem",
                             zIndex: 1,
-                            background: "#fff",
+                            background: "",
                             width: "49%",
                             display: "flex",
                             justifyContent: "center",
@@ -100,17 +100,31 @@ export default function CandidatDetails() {
                         }}
                         className="candidatInfo"
                     >
-                        <div className="right">
+                        <div className="right" 
+                        style={{
+                            background: "", 
+                            left: "78%",
+                            top:"10%",
+                            position: "fixed",
+                            padding:"10px",
+                            border:"solid grey 1px",
+                            visibility:"visible"
+                            
+                        }}>
+                            <h1>Adaman Bictogo <br />Candidat RHDP</h1><br />
                             <img
                                 src={url}
                                 alt=""
                                 style={{
-                                    height: "12rem",
-                                    width: "12rem",
+                                    height: "20rem",
+                                    width: "100%",
+
 
                                     objectFit: "cover",
                                 }}
                             />
+                            <br />
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus ipsa, necessitatibus aperiam excepturi rerum repudiandae ipsum obcaecati iure maxime optio quidem eligendi, explicabo quos minima alias amet dolorem reiciendis assumenda!
                         </div>
                         <div
                             style={{
@@ -125,7 +139,8 @@ export default function CandidatDetails() {
                         <Tabs
                             tabBarStyle={{
                                 position: "fixed",
-                                top: "15.8rem",
+                                top: "3.8rem",
+                                left: "25%",
                                 paddingTop: ".1rem",
                                 zIndex: 1,
                                 background: "#fff",
