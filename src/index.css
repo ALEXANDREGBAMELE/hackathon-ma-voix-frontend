@@ -206,6 +206,10 @@ rect text {
     fill: #E42A16;
 }
 
+svg {
+    cursor: pointer;
+}
+
 
 /* newscard start */
 
@@ -323,7 +327,6 @@ rect text {
 /* newscard end */
 
 
-
 /* CandidatCard*/
 
 .candi-card {
@@ -407,5 +410,3 @@ rect text {
 
 
 /* CandidatCard*/
-
-
