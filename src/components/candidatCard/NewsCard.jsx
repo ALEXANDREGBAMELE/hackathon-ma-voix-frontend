@@ -42,6 +42,8 @@ export const NewsCard = ({ post }) => {
     const User = JSON.parse(localStorage.getItem("logUser"));
     let tokenUser = JSON.parse(localStorage.getItem("token"));
 
+    const photo_candidat = post.candidat.user.photo_url && !post.candidat.user.photo_url.includes("cloudinary") ? `https://lesinnovateurs.me/${post.candidat.user.photo_url}` : post.candidat.user.photo_url;
+
     useEffect(() => {
         const fetchData = async () => {
             // Fetch likes
@@ -125,7 +127,7 @@ export const NewsCard = ({ post }) => {
         <div className="post-header">
           {contextHolder}
           <div className="post-avatar">
-            <Avatar src={url} />
+            <Avatar src={photo_candidat} />
           </div>
           <div className="post-title">{post.titre}</div>
         </div>
