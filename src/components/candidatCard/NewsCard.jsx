@@ -44,7 +44,11 @@ export const NewsCard = ({ post }) => {
     const User = JSON.parse(localStorage.getItem("logUser"));
     let tokenUser = JSON.parse(localStorage.getItem("token"));
 
-    const photo_candidat = post?.candidat.user?.photo_url && !post.candidat.user.photo_url.includes("cloudinary") ? `https://lesinnovateurs.me/${post?.candidat.user.photo_url}` : post?.candidat.user.photo_url;
+const photo_candidat =
+    post.candidat.user.photo_url &&
+    !post.candidat.user.photo_url.includes("cloudinary")
+        ? `https://lesinnovateurs.me/${post.candidat.user.photo_url}`
+        : post.candidat.user.photo_url;
 
     useEffect(() => {
         const fetchData = async () => {
