@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import { Card, Row, Col, Statistic,Modal,Form } from "antd";
 import { UserOutlined, BarChartOutlined, CalendarOutlined, FileTextOutlined } from "@ant-design/icons";
 import AjouterProgramme from "./AjouterProgramme";
@@ -12,6 +12,21 @@ const data = [
 
 const ProgrammeCandidat = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    useEffect(() => {
+        try {
+            const getMyProgrammes = async () => {
+                const response = await  
+                console.log(response);
+            };
+            getMyProgrammes();
+
+        } catch (error) {
+            console.error("Erreur lors de la récupération des programmes :", error);
+        }
+    }, []);
+
+
 
     const showModal = () => {
         setIsModalVisible(true);

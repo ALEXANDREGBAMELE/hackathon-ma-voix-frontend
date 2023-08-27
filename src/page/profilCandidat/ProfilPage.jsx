@@ -83,7 +83,7 @@ function ProfilPage() {
 
             <Modal
                 title="Modifier les informations personnelles"
-                visible={isModalVisible}
+                menu={isModalVisible}
                 onCancel={handleCancel}
                 footer={null}
             >
