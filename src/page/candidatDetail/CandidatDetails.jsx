@@ -44,6 +44,10 @@ export default function CandidatDetails() {
     const { id } = useParams();
     const [candidat, setCandidat] = useState({});
     const [candidats, setCandidats] = useState([]);
+    console.log("hello")
+    const url = candidat && candidat.photo_url && !candidat.photo_url.includes("cloudinary")
+        ? `https://lesinnovateurs.me/${candidat.photo_url}`
+        : candidat.photo_url;
     const onTab1Change = (key) => {
         setActiveTabKey2(key);
     };
@@ -102,7 +106,7 @@ export default function CandidatDetails() {
                     >
                         <div className="right">
                             <img
-                                src={`https://lesinnovateurs.me/${candidat?.photo_url}`}
+                                src={url}
                                 alt=""
                                 style={{
                                     height: "12rem",
@@ -118,13 +122,7 @@ export default function CandidatDetails() {
                             }}
                             className="left"
                         >
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Nostrum, maiores. Nam, quasi optio suscipit
-                            esse sapiente cupiditate pariatur maiores, libero,
-                            similique itaque nulla natus quod voluptatem ullam
-                            sunt fuga ipsam! am, quasi optio suscipit esse
-                            sapiente cupiditate pariatur maiores, libero,
-                            similique itaque nulla natus quod voluptatem
+                            {candidat.bio}
                         </div>
                     </div>
                     <div style={{ paddingTop: "4rem" }}>

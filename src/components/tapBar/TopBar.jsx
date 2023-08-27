@@ -87,7 +87,7 @@ function Topbar() {
     <div className="topbarContainer">
       <div className="img_logo">
         <Link to="/">
-          <img src="./05.png" alt="logo" />
+          <img src="/05.png" alt="logo" />
         </Link>
       </div>
       <Menu

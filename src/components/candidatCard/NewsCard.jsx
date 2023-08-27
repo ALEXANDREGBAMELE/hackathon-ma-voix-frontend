@@ -30,7 +30,7 @@ import CommentModal from "./CommentModal";
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
-    console.log(post);
+    const url = `https://lesinnovateurs.me/${post.url_media}`;
     const [totalLikes, setTotalLikes] = useState(0);
     const [totalComments, setTotalComments] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
@@ -125,7 +125,7 @@ export const NewsCard = ({ post }) => {
         <div className="post-header">
           {contextHolder}
           <div className="post-avatar">
-            <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+            <Avatar src={url} />
           </div>
           <div className="post-title">{post.titre}</div>
         </div>

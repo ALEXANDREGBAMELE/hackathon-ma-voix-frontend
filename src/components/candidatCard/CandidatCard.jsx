@@ -10,6 +10,10 @@ export default function CandidatCard({ candidat }) {
     const navigation = useNavigate();
     const [isFollowing, setIsFollowing] = useState(false);
     const userToken = useSelector((state) => state.auth.token);
+    const url = candidat.user && candidat.user.photo_url && !candidat.user.photo_url.includes("cloudinary")
+        ? `https://lesinnovateurs.me/${candidat.user.photo_url}`
+        : candidat.user.photo_url;
+
 
     useEffect(() => {
         const checkFollowingStatus = async () => {
@@ -60,7 +64,7 @@ export default function CandidatCard({ candidat }) {
                 height: "16rem",
 
                 justifyContent: "space-between",
-                backgroundImage: `url("https://lesinnovateurs.me/${candidat.user.photo_url}")`,
+                backgroundImage: `url("${url}")`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
