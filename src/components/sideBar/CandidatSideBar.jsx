@@ -11,23 +11,16 @@ export default function CandidatSideBar({ getCandidatByCommunes }) {
     let handleClick = () => {
         
     }
-    
+    let styleProps = {
+        height:"22rem"
+    }
     return (
         <div className="sidebarCotainer">
-            <div className="sideBarTopsvg">
-                <CarteInteractif handleCommuneClicked={getCandidatByCommunes} />
-            </div>
-            <div className="sideBarBottom">
-                <div className="title">
-                    <h3>Quelques sondages</h3>
-                    <div></div>
-                </div>
+            <div
                 
-                <div className="botom">
-                    <Link to="/sondage">
-                        <CustomButon title="Voir plus" />
-                    </Link>
-                </div>
+                className="sideBarTopsvg"
+            >
+                <CarteInteractif styleProps={styleProps} handleCommuneClicked={getCandidatByCommunes} />
             </div>
         </div>
     );
