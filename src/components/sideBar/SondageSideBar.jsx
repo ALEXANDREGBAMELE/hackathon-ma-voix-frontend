@@ -42,10 +42,13 @@ export default function SondageSideBar({ handleClick, handleCommuneClicked }) {
         setAvis("");
         openNotificationWithIcon("succes");
     };
+     let styleProps = {
+         height: "21rem",
+     };
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTopsvg">
-                <CarteInteractif handleCommuneClicked={handleCommuneClicked} />
+                <CarteInteractif styleProps={styleProps} handleCommuneClicked={handleCommuneClicked} />
             </div>
 
             <div className="sideBarBottom sondageSide">
@@ -56,8 +59,8 @@ export default function SondageSideBar({ handleClick, handleCommuneClicked }) {
                 </div>
                 <TextArea
                     style={{
-                        marginTop: "1rem",
-                        height: "60%",
+                        marginTop: ".5rem",
+                        height: "40%",
                         marginBottom: "1rem",
                     }}
                     rows={4}

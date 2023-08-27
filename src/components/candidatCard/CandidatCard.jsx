@@ -27,7 +27,7 @@ export default function CandidatCard({ candidat }) {
   );
   const isFollowingThis =
     candidat.followers && candidat.followers.length > 0
-      ? candidat.followers.some((follower) => follower.id_user === user.id)
+      ? candidat.followers.some((follower) => follower.id_user === user?.id)
       : false;
   const [messageApi, contextHolder] = message.useMessage();
 

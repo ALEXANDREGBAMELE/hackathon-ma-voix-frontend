@@ -4,23 +4,19 @@ import CustomButon from "../CustomButon";
 import "./sidebar.css";
 import CarteInteractif from "../carteInteractif/CarteInteractif";
 export default function SideBar({ handleCarteClick }) {
-    let handleClick =async (name) => {
-await handleCarteClick(name)
-    }
+    let handleClick = async (name) => {
+        await handleCarteClick(name);
+    };
+    let styleProps = {
+        height: "22rem",
+    };
     return (
         <div className="sidebarCotainer">
             <div className="sideBarTopsvg">
-                <CarteInteractif handleCommuneClicked={handleClick} />
-            </div>
-            <div className="sideBarBottom">
-                <div className="title">
-                    <h3>Quelques sondages</h3>
-                    <div></div>
-                </div>
-                
-                <div className="botom">
-                    <CustomButon title="Voir plus" />
-                </div>
+                <CarteInteractif
+                    styleProps={styleProps}
+                    handleCommuneClicked={handleClick}
+                />
             </div>
         </div>
     );
