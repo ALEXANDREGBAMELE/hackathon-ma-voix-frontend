@@ -1,35 +1,51 @@
+/* eslint-disable react/jsx-key */
 import { React, useState } from "react";
 import Dashboard from "./MiniDashBoard";
-import AjouterProgramme from "./AjouterProgramme.jsx";
 import ProgrammeCandidat from "./ProgrammeCandidat";
-import AjouterPost from "./AjouterPost";
-import { Menu, Input, Avatar, Badge, Modal } from "antd";
+import { Menu, Avatar, Badge } from "antd";
 import PostCandidat from "./PostCandidat";
 import ProfilPage from "./ProfilPage";
 import NotificationPage from "./NotificationCandidat"
 import {
     HomeOutlined,
     UserOutlined,
-    CalendarOutlined,
     BarChartOutlined,
     BellOutlined,
     SettingOutlined,
     LogoutOutlined
 
 } from "@ant-design/icons";
+import Logout from "../Logout";
+import CandidatAllPosts from "./CandidatAllPosts.jsx";
+
 
 
 function ProfilCandidat() {
     
-    const contents = [<Dashboard />,<PostCandidat />, <ProgrammeCandidat />, <NotificationPage />, <ProfilPage/>];
+    const contents = [<Dashboard />,<PostCandidat />, <ProgrammeCandidat />, <NotificationPage />, <ProfilPage/>, <CandidatAllPosts />];
+
+    const logUser = JSON.parse(localStorage.getItem("logUser"));
+    let userAvatar = null;
+    //eviter cannot read property of null
+    const verif = logUser?.photo_url
+    if (verif && !logUser.photo_url.contains('cloudinary')){
+        userAvatar = logUser.photo_url
+    }
+    else if (verif && logUser.photo_url.contains('cloudinary')) {
+        userAvatar = logUser.photo_url
+    }
+    else{
+        userAvatar = 'https://lesinnovateurs.me/default_user.jpeg'
+    }
+
 
     const [currentContentIndex, setCurrentContentIndex] = useState(0);
 
     const changeToContent = (index) => {
         setCurrentContentIndex(index);
     };
-    const photoProfil = "../../profil-yace.jpeg";
-    const username = "Jean-Marc Yace"
+    const photoProfil = userAvatar
+    const username = logUser?.nom + " " + logUser?.prenom
     return (
         <div style={{ display: "flex",overflow: "hidden",position: "fixed", top: ".5rem", width: "100%"  }}>
             <div className="left-section" style={{ width: "30%" }}>
@@ -57,8 +73,17 @@ function ProfilCandidat() {
                                 icon={<BarChartOutlined />}
                                 onClick={() => changeToContent(1)}
                             >
-                                Post
+                                Faire un Post
                             </Menu.Item>
+                            <Menu.Item
+                                onclick={() => changeToContent(5)}
+                                key="7"
+                                icon={<BarChartOutlined />}
+
+                             >
+                                Mes Posts
+                            </Menu.Item>
+
                             <Menu.Item
                                 key="3"
                                 icon={<BarChartOutlined />}
@@ -72,7 +97,7 @@ function ProfilCandidat() {
                             <Menu.Item key="5" icon={<SettingOutlined />} onClick={() => changeToContent()}>
                                 Paramètres
                             </Menu.Item>
-                            <Menu.Item key="6" icon={<LogoutOutlined />} onClick={() => changeToContent()}>
+                            <Menu.Item key="6" icon={<Logout />} onClick={() => changeToContent()}>
                                 Déconnexion
                             </Menu.Item>
                         </Menu>

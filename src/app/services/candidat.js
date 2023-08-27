@@ -14,7 +14,7 @@ const candidatServices = axios.create({
  * */
 candidatServices.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("token");
+        const token = JSON.parse(localStorage.getItem("token"));
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }
@@ -59,10 +59,126 @@ export const getFollowersById = async (id) => {
 }
 
 export const getMyfollowers = async () => {
-    const resp = await candidatServices.get(`/private/candidat/get-my-followers}`);
+    const login = JSON.parse(localStorage.getItem("logUser"));
+    const resp = await candidatServices.get(`/private/candidat/${login.id}/get-my-followers`);
     return resp.data;
 
 }
+
+export const getMyProgrammes = async () => {
+    const login = JSON.parse(localStorage.getItem("logUser"));
+
+
+    const resp = await candidatServices.get(
+      `/private/candidat/${login.id}/my-programmes`
+    );
+    return resp.data;
+
+}
+
+export const getMyPosts = async () => {
+    
+    const login = JSON.parse(localStorage.getItem("logUser"));
+    const resp = await candidatServices.get(`/private/candidat/${login.id}/get-posts`);
+    return resp.data;
+
+}
+
+export const getMyMeets = async () => {
+    const resp = await candidatServices.get('/private/candidat/get-meets');
+    return resp.data;
+
+
+
+}
+
+export const getMyActivities = async () => {
+    const resp = await candidatServices.get('/private/candidat/get-activities');
+    return resp.data;
+
+}
+
+export const getMyProgramme = async (id) => {
+    const resp = await candidatServices.get(`/private/candidat/get-programme/${id}`);
+    return resp.data;
+
+}
+
+
+export const deletePost = async (id) => {
+    const resp = await candidatServices.delete(`/private/candidat/${id}/delete-post`);
+    return resp.data;
+
+}
+
+export const deleteMeet = async (id) => {
+    const resp = await candidatServices.delete(`/private/candidat/${id}/delete-meet`);
+    return resp.data;
+
+}
+
+export const deleteActivity = async (id) => {
+    const resp = await candidatServices.delete(`/private/candidat/${id}/delete-activity`);
+    return resp.data;
+
+}
+
+
+export const deleteProgramme = async (id) => {
+    const resp = await candidatServices.delete(`/private/candidat/delete-programme/${id}`);
+    return resp.data;
+
+}
+
+
+export const updateProgramme = async (id, data) => {
+    const resp = await candidatServices.put(`/private/candidat/update-programme/${id}`, data);
+    return resp.data;
+
+}
+
+export const updateActivity = async (id, data) => {
+    const resp = await candidatServices.put(`/private/candidat/update-activity/${id}`, data);
+    return resp.data;
+
+}
+
+export const updateMeet = async (id, data) => {
+    const resp = await candidatServices.put(`/private/candidat/update-meet/${id}`, data);
+    return resp.data;
+
+}   
+
+export const addMeet = async (data) => {
+    const resp = await candidatServices.post(`/private/candidat/add-meet`, data);                                                                                           
+
+    return resp.data;
+
+}
+
+export const addActivity = async (data) => {
+    const resp = await candidatServices.post(`/private/candidat/add-activity`, data);
+    return resp.data;
+    
+}
+
+export const addFollower = async (data) => {
+
+    const resp = await candidatServices.post(`/private/candidat/add-follower`, data);
+    return resp.data;
+
+}
+
+
+export const addLike = async (data) => {
+
+    const resp = await candidatServices.post(`/private/candidat/add-like`, data);
+    return resp.data;
+
+}
+
+
+
 
 /*
 POST
