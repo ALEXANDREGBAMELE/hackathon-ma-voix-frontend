@@ -76,9 +76,9 @@ const CommentModal = ({ postId, visible, onClose }) => {
     setCommentText("");
   };
 
-  const handleDeleteComment = async () => {
+  const handleDeleteComment = async (id) => {
     const tokenUser = JSON.parse(localStorage.getItem("token"));
-    console.log(tokenUser, postId);
+    console.log(tokenUser, id);
     if (!user) {
       return;
     }
