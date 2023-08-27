@@ -86,7 +86,7 @@ const CommentModal = ({ postId, visible, onClose }) => {
       return;
     }
 
-    const response = await deleteComment(tokenUser, postId);
+    const response = await deleteComment(tokenUser, id);
     console.log(response);
     if (!response.success) {
       console.error("Erreur lors de la suppression du commentaire");
