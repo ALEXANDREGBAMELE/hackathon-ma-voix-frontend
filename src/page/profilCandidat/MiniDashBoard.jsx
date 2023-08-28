@@ -102,16 +102,12 @@ const Dashboard = () => {
         </Col>
         <Col span={8} className="candidat-dashboard-col">
           <Card className="candidat-dashboard-card">
-            <Button
-              
-            >
               <Statistic
                 title="Programmes"
                 value={programmes}
                 valueStyle={{ color: "#3f8600" }}
                 prefix={<BarChartOutlined />}
               />
-            </Button>
           </Card>
         </Col>
         <Col span={8} className="candidat-dashboard-col">

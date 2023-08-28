@@ -52,6 +52,10 @@ export const NewsCard = ({ post }) => {
       ? `https://lesinnovateurs.me/${post.candidat.user.photo_url}`
       : post.candidat.user.photo_url;
 
+  const url_media = post.url_media && !post.url_media.includes("cloudinary")
+    ? `https://lesinnovateurs.me/${post.url_media}`
+    : post.url_media;
+
   useEffect(() => {
     const fetchData = async () => {
       // Fetch likes
@@ -149,9 +153,10 @@ export const NewsCard = ({ post }) => {
           <div className="post-title">{post.titre}</div>
         </div>
         <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
-          {showFullText || post.description.length <= 150
-            ? post.description
-            : post.description.slice(0, 150) + "..."}
+          <div
+            dangerouslySetInnerHTML={{ __html: post.description }}
+            className="html-content"
+          />
           {post.description.length > 150 && (
             <span
               className="see-more badge"
@@ -166,11 +171,7 @@ export const NewsCard = ({ post }) => {
         className="post-image-container animated fadeInLeft"
         onClick={() => setShowImageModal(true)}
       >
-        <img
-          src={`https://lesinnovateurs.me/${post.url_media}`}
-          alt="Image du post"
-          className="post-image"
-        />
+        <img src={url_media} alt="Image du post" className="post-image" />
       </div>
       <div className="action-buttons">
         <Button
