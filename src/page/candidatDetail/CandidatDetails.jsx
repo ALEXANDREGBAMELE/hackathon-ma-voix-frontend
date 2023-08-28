@@ -122,8 +122,6 @@ export default function CandidatDetails() {
                                 style={{
                                     height: "20rem",
                                     width: "100%",
-
-
                                     objectFit: "cover",
                                 }}
                             />
@@ -139,16 +137,16 @@ export default function CandidatDetails() {
                             {candidat.bio}
                         </div>
                     </div>
-                    <div style={{ paddingTop: "4rem" }}>
+                    <div style={{ paddingTop: "0rem" }}>
                         <Tabs
                             tabBarStyle={{
                                 position: "fixed",
                                 top: "3.8rem",
-                                left: "25%",
+                                left: "28%",
                                 paddingTop: ".1rem",
                                 zIndex: 1,
                                 background: "#fff",
-                                width: "49%",
+                                width: "44%",
                                 height: "4rem",
                             }}
                             defaultActiveKey="1"
