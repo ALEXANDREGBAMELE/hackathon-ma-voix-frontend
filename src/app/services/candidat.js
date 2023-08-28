@@ -68,7 +68,6 @@ export const getMyfollowers = async () => {
 export const getMyProgrammes = async () => {
     const login = JSON.parse(localStorage.getItem("logUser"));
 
-
     const resp = await candidatServices.get(
       `/private/candidat/${login.id}/my-programmes`
     );
@@ -98,7 +97,7 @@ export const getMyActivities = async () => {
 
 }
 
-export const getMyProgramme = async (id) => {
+export const getMyProgrammeById = async (id) => {
     const resp = await candidatServices.get(`/private/candidat/get-programme/${id}`);
     return resp.data;
 

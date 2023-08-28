@@ -34,10 +34,10 @@ function ProfilUtilisateur() {
     let userAvatar = null;
 
     const verif = user?.photo_url
-    if (verif && !user.photo_url.contains('cloudinary')){
+    if (verif && !user.photo_url.includes('cloudinary')){
         userAvatar = 'https://lesinnovateurs.me/'+user.photo_url
     }
-    else if (verif && user.photo_url.contains('cloudinary')) {
+    else if (verif && user.photo_url.includes('cloudinary')) {
         userAvatar = user.photo_url
     }
     else{

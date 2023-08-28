@@ -44,6 +44,7 @@ export default function CandidatCard({ candidat }) {
         if (!userToken) return;
         const response = await getFollowedCandidats(userToken);
         const followedCandidats = response.followings;
+        console.log(followedCandidats);
 
         if (followedCandidats.length === 0) {
           setIsFollowing(false);

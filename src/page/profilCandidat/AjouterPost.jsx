@@ -1,87 +1,56 @@
-import React, { useState } from "react";
-
+// PostCandidat.jsx
+import {React, useState } from "react";
+import { Form, Input, Button } from "antd";
+import { UploadWidget } from "../../components/UploadWidget";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 const AjouterPost = () => {
-    const [formData, setFormData] = useState({
-        titre: '',
-        description: '',
-        url_media: '',
-    });
+  const [imageUrl, setImageUrl] = useState("");
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+   const [content, setContent] = useState("");
 
-    const handleImageChange = (e) => {
-        const imageFile = e.target.files[0];
-        setFormData((prevData) => ({
-            ...prevData,
-            image: imageFile,
-        }));
-    };
+   const handleContentChange = (value) => {
+     setContent(value);
+   };
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // les données au backend ou effectuer d'autres actions
-        console.log(formData);
-    };
-
-
-    return (
-        <div className="container" style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop:"2rem",paddingBottom:"2rem" }}>
-            <div style={{ width: "", backgroundColor: "#e0e0e0", padding:"20px", borderRadius:"15px" }}>
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <div>
-                        <label>Titre:</label><br /><br />
-                        <input
-                            type="text"
-                            name="titre"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            style={{ backgroundColor: "white", width: "100%" }}
-                        />
-                    </div>
-                    <div>
-                        <label>Description:</label><br /><br />
-                        <textarea
-                            name="description"
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows={10}
-                            cols={80}
-                            style={{
-                                padding: "2rem",
-                                width: "100%",
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <label>Photo:</label><br />
-                        <input
-                            type="file"
-                            accept="image/*"
-                            name="image"
-                            onChange={handleImageChange}
-                        />
-                        {formData.image && (
-                            <img
-                                src={URL.createObjectURL(formData.image)}
-                                alt="Prévisualisation"
-                                style={{ maxWidth: "100%", marginTop: "10px", height:"200px" }}
-                            />
-                        )}
-                    </div>
-                    <div style={{ textAlign: "center" }}>
-                        <button type="submit">Poster</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+   const handleSubmit = () => {
+     // Envoyez le contenu à votre backend ou effectuez d'autres actions
+     console.log(content);
+   };
+  const onFinish = (values) => {
+    console.log("Form values:", values);
+  };
+ return (
+    <div className="candidat-form">
+      <h2>Ajouter un post</h2>
+      <Form onFinish={onFinish} className="ajouter-post-form">
+        <Form.Item
+          className="ajouter-post-item"
+          name="title"
+          label="Titre"
+          rules={[{ required: true, message: "Veuillez entrer un titre!" }]}
+        >
+          <Input className="ajouter-post-input" />
+        </Form.Item>
+        <Form.Item
+          className="ajouter-post-item"
+          name="content"
+          label="Contenu"
+          rules={[{ required: true, message: "Veuillez entrer du contenu!" }]}
+        >
+          <ReactQuill value={content} onChange={handleContentChange} />
+        </Form.Item>
+        <Form.Item name="url_media" label="Media">
+          <UploadWidget setImageUrl={setImageUrl} />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Poster
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
 };
 
 export default AjouterPost;
