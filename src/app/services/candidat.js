@@ -10,8 +10,10 @@ const fetchWithAuthorization = async (url, method, data) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(url, requestOptions);
-  return response.json();
+  const response = await fetch(url, requestOptions).then((response) =>
+    response.json()
+  );
+  return response;
 };
 
 export const addPost = async (data) => {

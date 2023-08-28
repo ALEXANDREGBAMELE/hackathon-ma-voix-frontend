@@ -201,7 +201,7 @@ export const NewsCard = ({ post }) => {
       />
       <ImageModal
         open={showImageModal}
-        imageUrl={`https://lesinnovateurs.me/${post.url_media}`}
+        imageUrl={url_media}
         onClose={() => setShowImageModal(false)}
       />
     </Card>
