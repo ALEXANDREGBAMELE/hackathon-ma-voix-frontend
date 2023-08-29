@@ -30,6 +30,11 @@ export const addPost = async (data) => {
   return fetchWithAuthorization(api_url, "POST", data);
 };
 
+export const updatePost = async (id, data) => {
+  const api_url = `${API_BASE_URL}/private/candidat/update-post/${id}`;
+  return fetchWithAuthorization(api_url, "PUT", data);
+};
+
 export const addProgramme = async (data) => {
   const api_url = `${API_BASE_URL}/private/candidat/add-programme`;
   return fetchWithAuthorization(api_url, "POST", data);

@@ -108,6 +108,22 @@
     animation-timing-function: linear;
 }
 
+.post-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.post-header .option-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+
+
 
 /* Styles pour le formulaire d'ajout de post */
 .candidat-form {
@@ -187,3 +203,69 @@
 .upload-widget-button:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
+
+/* Styles pour les ... verticaux pour les actions sur les posts option-button, update-icon, delete-icon */
+
+.option-button {
+    background-color: transparent;
+    color: #000;
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    right: -5;
+
+}
+
+.option-button:hover .option-button-icon {
+    opacity: 1;
+}
+
+.option-button-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.option-button-icon:hover {
+    opacity: 1;
+}
+
+.update-icon {
+    width: 20px;
+    height: 20px;
+    color: #007bff;
+    background-color: transparent;
+}
+
+.delete-icon {
+    width: 20px;
+    height: 20px;
+    color: #dc3545;
+    background-color: transparent;
+}
+
+.delete-icon:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.update-icon:hover {
+    color: #fff;
+    background-color: #007bff;
+}
+
+
+
+/* Styles pour le bouton "Modifier" */
+
+.update-post-form {
+    width: 100%;
+}
+
+
+

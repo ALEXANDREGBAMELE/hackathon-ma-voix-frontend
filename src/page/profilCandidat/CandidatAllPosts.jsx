@@ -1,19 +1,23 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Avatar, Button, Card, message } from "antd";
+import { Avatar, Button, Card, message, Modal } from "antd";
 import {
   LikeFilled,
   LikeOutlined,
   MessageFilled,
-  SendOutlined,
+  SendOutlined, EditFilled, DeleteFilled, EyeFilled
 } from "@ant-design/icons";
 import CommentModal from "../../components/candidatCard/CommentModal.jsx";
 import ImageModal from "../../components/candidatCard/ImageModal.jsx";
-import { getMyPosts,  } from "../../app/services/candidat.js";
 import { getAllPostLikes, getPostComments , removeLike, addLike, addComment} from "../../app/services/public.js";
+import { decrementLikes, incrementLikes } from "../../features/postSlice.js";
+import { deletePost } from "../../app/services/candidat.js";
+import AjouterPost from "./AjouterPost.jsx";
 
-const CandidatAllPosts = ({post}) => {
-  const url = `https://lesinnovateurs.me/${post.url_media}`;
+// eslint-disable-next-line react/prop-types
+const CandidatAllPosts = ({ post }) => {
+  
   const [totalLikes, setTotalLikes] = useState(0);
   const [totalComments, setTotalComments] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -23,7 +27,9 @@ const CandidatAllPosts = ({post}) => {
 
   //s'il n'y aucun post, display le empty icon
   const [emptyPost, setEmptyPost] = useState(false);
-
+  if (post.length === 0) {
+    setEmptyPost(true);
+  }
   const containsHtmlTags = /<[^>]*>/.test(post.description);
 
   const dispatch = useDispatch();
@@ -65,7 +71,7 @@ const CandidatAllPosts = ({post}) => {
     };
 
     fetchData();
-  }, [totalComments, totalLikes]);
+  }, [User?.id, post.id, totalComments, totalLikes]);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -118,94 +124,171 @@ const CandidatAllPosts = ({post}) => {
     window.location.href = `/candidat/${post.candidat.id}`;
   };
 
+  const handleUpdatePost = (post) => {
+    console.log(post);
+
+  };
+
+  const handleDeletePost = (postId) => {
+    // Logique pour gérer la suppression du post
+
+    Modal.confirm({
+      title: "Supprimer le post",
+      content: "Êtes-vous sûr de vouloir supprimer ce post ?",
+      okText: "Oui",
+      icon: <DeleteFilled />,
+      confirmLoading: true,
+      cancelText: "Non",
+
+      onOk: async () => {
+        const delPost = await deletePost(postId);
+        console.log(delPost);
+        if (delPost.success) {
+          await messageApi.open({
+            type: "success",
+            content: "Post supprimé avec succès",
+          });
+          window.location.reload();
+        } else {
+          await messageApi.open({
+            type: "error",
+            content: "Une erreur s'est produite lors de la suppression du post",
+          });
+        }
+
+      },
+    });
+
+  };
+
+
   return (
-    <Card
-      className={`facebook-post-card animated fadeIn ${
-        showFullText ? "expanded-card" : ""
-      }`}
-    >
-      <div className="post-content">
-        <div className="post-header">
-          {contextHolder}
-          <div className="post-avatar">
-            <a onClick={handleAvatarClick}>
-              <Avatar src={photo_candidat} />
-              <span className="candidat-name badge success">
-                {post.candidat.user.nom + " " + post.candidat.user.prenom}
-              </span>
-            </a>
-          </div>
-          <div className="post-title">{post.titre}</div>
+    <div>
+      {emptyPost ? (
+        <div className="empty-post">
+          <p> Aucun post trouvé</p>
         </div>
-        <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
-          {containsHtmlTags ? (
-            <div
-              dangerouslySetInnerHTML={{ __html: post.description }}
-              className="html-content"
-            />
-          ) : (
-            <>
-              {showFullText || post.description.length <= 150
-                ? post.description
-                : post.description.slice(0, 150) + "..."}
-              {post.description.length > 150 && (
-                <span
-                  className="see-more badge"
-                  onClick={() => setShowFullText(!showFullText)}
-                >
-                  {showFullText ? "Voir moins" : "Voir plus"}
+      ) : (
+        <Card
+          className={`facebook-post-card animated fadeIn ${
+            showFullText ? "expanded-card" : ""
+          }`}
+        >
+          <div className="post-content">
+            <div className="post-header">
+              {contextHolder}
+              <div className="post-avatar">
+                <a onClick={handleAvatarClick}>
+                  <Avatar src={photo_candidat} />
+                  <span className="candidat-name badge success">
+                    {post.candidat.user.nom + " " + post.candidat.user.prenom}
+                  </span>
+                </a>
+              </div>
+              <div className="post-title">{post.titre}</div>
+              <div className="option-button">
+                <span icon={<EditFilled />} key="edit">
+                  Actions
+                  <div className="option-button-icon">
+                    <div className="update-icon">
+                      <Button
+                        type="text"
+                        onClick={() => handleUpdatePost(post)}
+                        icon={<EyeFilled />}
+                      >
+                        Modifier
+                      </Button>
+                    </div>
+                    <div className="delete-icon">
+                      <Button
+                        type="text"
+                        onClick={() => handleDeletePost(post.id)}
+                        color="red"
+                        icon={<DeleteFilled
+                           />}
+                      >
+                        Supprimer
+                      </Button>
+                    </div>
+                  </div>
                 </span>
+              </div>
+            </div>
+            <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
+              {containsHtmlTags ? (
+                <div
+                  dangerouslySetInnerHTML={{ __html: post.description }}
+                  className="html-content"
+                />
+              ) : (
+                <>
+                  {showFullText || post.description.length <= 150
+                    ? post.description
+                    : post.description.slice(0, 150) + "..."}
+                  {post.description.length > 150 && (
+                    <span
+                      className="see-more badge"
+                      onClick={() => setShowFullText(!showFullText)}
+                    >
+                      {showFullText ? "Voir moins" : "Voir plus"}
+                    </span>
+                  )}
+                </>
               )}
-            </>
-          )}
-        </div>
-      </div>
-      <div
-        className="post-image-container animated fadeInLeft"
-        onClick={() => setShowImageModal(true)}
-      >
-        <img
-          src={url_media}
-          style={{
-            maxHeight: "25rem",
-            objectFit: "cover",
-          }}
-          alt="Image du post"
-          className="post-image"
-        />
-      </div>
-      <div className="action-buttons">
-        <Button
-          onClick={handleLike}
-          className={`like-button ${isLiked ? "liked" : ""}`}
-          icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
-          key="like"
-        >
-          {totalLikes}
-        </Button>
-        <Button
-          icon={<MessageFilled />}
-          onClick={() => setShowCommentModal(true)}
-          key="comment"
-          className="comment-button"
-        >
-          {totalComments}
-        </Button>
+            </div>
+          </div>
+          <div
+            className="post-image-container animated fadeInLeft"
+            onClick={() => setShowImageModal(true)}
+          >
+            <img
+              src={url_media}
+              style={{
+                maxHeight: "25rem",
+                objectFit: "cover",
+              }}
+              alt="Image du post"
+              className="post-image"
+            />
+          </div>
+          <div className="action-buttons">
+            <Button
+              onClick={handleLike}
+              className={`like-button ${isLiked ? "liked" : ""}`}
+              icon={isLiked ? <LikeFilled /> : <LikeOutlined />}
+              key="like"
+            >
+              {totalLikes}
+            </Button>
+            <Button
+              icon={<MessageFilled />}
+              onClick={() => setShowCommentModal(true)}
+              key="comment"
+              className="comment-button"
+            >
+              {totalComments}
+            </Button>
 
-        <Button icon={<SendOutlined />} key="share" className="share-button" />
-      </div>
+            <Button
+              icon={<SendOutlined />}
+              key="share"
+              className="share-button"
+            />
+          </div>
 
-      <CommentModal
-        postId={post.id}
-        visible={showCommentModal}
-        onClose={() => setShowCommentModal(false)}
-      />
-      <ImageModal
-        open={showImageModal}
-        imageUrl={url}
-        onClose={() => setShowImageModal(false)}
-      />
-    </Card>
+          <CommentModal
+            postId={post.id}
+            visible={showCommentModal}
+            onClose={() => setShowCommentModal(false)}
+          />
+          <ImageModal
+            open={showImageModal}
+            imageUrl={url_media}
+            onClose={() => setShowImageModal(false)}
+          />
+        </Card>
+      )}
+    </div>
   );
 };
 export default CandidatAllPosts;
