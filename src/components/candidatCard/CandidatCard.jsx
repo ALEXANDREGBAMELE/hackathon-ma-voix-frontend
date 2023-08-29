@@ -38,6 +38,11 @@ export default function CandidatCard({ candidat }) {
       ? `https://lesinnovateurs.me/${candidat.user.photo_url}`
       : candidat.user.photo_url;
 
+  const logo_parti = candidat.parti_politique && candidat.parti_politique.logo && !candidat.parti_politique.logo.includes("cloudinary")
+    ? `https://lesinnovateurs.me/${candidat.parti_politique.logo}`
+    : candidat.parti_politique.logo;
+
+
   useEffect(() => {
     const checkFollowingStatus = async () => {
       try {
@@ -114,10 +119,7 @@ export default function CandidatCard({ candidat }) {
       <div className="candi-topCard">
         <div className="candi-userName">
           <img
-            src={
-              candidat.parti_politique
-                ? `https://lesinnovateurs.me/${candidat.parti_politique.logo}`
-                : ""
+            src={logo_parti
             }
             style={{ width: "2.5rem", height: "2.5rem" }}
             alt=""

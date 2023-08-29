@@ -6,8 +6,6 @@ import { Menu, Avatar, Badge } from "antd";
 import PostCandidat from "./PostCandidat";
 import ProfilPage from "./ProfilPage";
 import NotificationPage from "./NotificationCandidat"
-import CandidatAllPosts from "./CandidatAllPosts";
-import { useNavigate } from "react-router-dom";
 import {
     HomeOutlined,
     UserOutlined,
@@ -25,7 +23,7 @@ import "./style-candidat.css";
 
 function ProfilCandidat() {
     
-    const contents = [<Dashboard />,<AjouterPost />, <CandidatAllPosts />, <ProgrammeCandidat />, <NotificationPage />, <ProfilPage/>];
+    const contents = [<Dashboard />,<AjouterPost />, <PostCandidat />, <ProgrammeCandidat />, <NotificationPage />, <ProfilPage/>];
 
     const logUser = JSON.parse(localStorage.getItem("logUser"));
     let userAvatar = null;

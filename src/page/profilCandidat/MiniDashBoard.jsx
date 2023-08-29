@@ -13,18 +13,19 @@ const Dashboard = () => {
 
   const logUser = JSON.parse(localStorage.getItem("logUser"));
   const token = JSON.parse(localStorage.getItem("token"));
+  console.log(logUser);
+  console.log(token);
 
   useEffect(() => {
-    if (!logUser || !token) {
-      window.location.href = "/login";
-    }
+
+    
     try {
       const getFollowers = async () => {
         const response = await getMyfollowers();
         console.log(response);
         setFollowers(response.followers.length);
       };
-      getFollowers();
+      getFollowers().then(r => r);
 
 
       
@@ -35,10 +36,12 @@ const Dashboard = () => {
     try{
       const getProgramme = async () => {
         const response = await getMyProgrammes();
-        console.log(response);
+        if (response.message && response.message === "Unauthenticated."){
+          localStorage.clear();
+        }
         setProgrammes(response.data.length);
       }
-      getProgramme();
+      getProgramme().then(r => r);
     }catch(error){
       console.error("Erreur lors de la récupération des programmes :", error);
 
@@ -51,9 +54,9 @@ const Dashboard = () => {
         if (response.message) {
           return;
         }
-        setPosts(response.data.length);
+        setPosts(response.posts.length);
       }
-      myPost();
+      myPost().then(r => r);
     }catch(error){
       console.error("Erreur lors de la récupération des posts :", error);
 
@@ -63,9 +66,12 @@ const Dashboard = () => {
       const myActivity = async () => {
         const response = await getMyActivities();
         console.log(response);
+        if (response.message) {
+          return;
+        }
         setActivity(response.data.length);
       }
-      myActivity();
+      myActivity().then(r => r);
     }catch(error){
       console.error("Erreur lors de la récupération des activités :", error);
 
@@ -75,9 +81,12 @@ const Dashboard = () => {
       const getMeetings = async () => {
         const response = await getMyMeets();
         console.log(response);
+        if (response.message) {
+            return;
+        }
         setMeetings(response.data.length);
       }
-      getMeetings();
+      getMeetings().then(r => r);
     }catch(error){
       console.error("Erreur lors de la récupération des meetings :", error);
 

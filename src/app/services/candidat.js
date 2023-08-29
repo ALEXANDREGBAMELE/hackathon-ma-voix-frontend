@@ -2,23 +2,37 @@ const API_BASE_URL = "https://lesinnovateurs.me/api";
 
 const fetchWithAuthorization = async (url, method, data) => {
   const token = JSON.parse(localStorage.getItem("token"));
+
   const requestOptions = {
     method: method,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(data),
   };
-  const response = await fetch(url, requestOptions).then((response) =>
-    response.json()
-  );
-  return response;
+
+  if (data) {
+    requestOptions.body = JSON.stringify(data);
+  }
+
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const addPost = async (data) => {
   const api_url = `${API_BASE_URL}/private/candidat/add-post`;
   return fetchWithAuthorization(api_url, "POST", data);
+};
+
+export const updatePost = async (id, data) => {
+  const api_url = `${API_BASE_URL}/private/candidat/update-post/${id}`;
+  return fetchWithAuthorization(api_url, "PUT", data);
 };
 
 export const addProgramme = async (data) => {
@@ -33,47 +47,39 @@ export const updateProgramme = async (id, data) => {
 
 export const getFollowersById = async (id) => {
   const api_url = `${API_BASE_URL}/public/candidat-followers/${id}`;
-  const response = await fetch(api_url);
-  return response.json();
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const getMyfollowers = async () => {
   const login = JSON.parse(localStorage.getItem("logUser"));
   const api_url = `${API_BASE_URL}/private/candidat/${login.id}/get-my-followers`;
-  const response = await fetch(api_url);
-  return response.json();
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const getMyProgrammes = async () => {
-  const login = JSON.parse(localStorage.getItem("logUser"));
-  const api_url = `${API_BASE_URL}/private/candidat/${login.id}/my-programmes`;
-  const response = await fetch(api_url);
-  return response.json();
+  const api_url = `${API_BASE_URL}/private/candidat/my-programmes`;
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const getMyPosts = async () => {
   const login = JSON.parse(localStorage.getItem("logUser"));
   const api_url = `${API_BASE_URL}/private/candidat/${login.id}/get-posts`;
-  const response = await fetch(api_url);
-  return response.json();
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const getMyMeets = async () => {
   const api_url = `${API_BASE_URL}/private/candidat/get-meets`;
-  const response = await fetch(api_url);
-  return response.json();
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const getMyActivities = async () => {
   const api_url = `${API_BASE_URL}/private/candidat/get-activities`;
-  const response = await fetch(api_url);
-  return response.json();
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const getMyProgrammeById = async (id) => {
   const api_url = `${API_BASE_URL}/private/candidat/get-programme/${id}`;
-  const response = await fetch(api_url);
-  return response.json();
+  return fetchWithAuthorization(api_url, "GET");
 };
 
 export const deletePost = async (id) => {

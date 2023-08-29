@@ -7,7 +7,11 @@ const PrivateRoute = ({ allowedRoles, element }) => {
 
   if (isLogged && allowedRoles.includes(logUser.role_id)) {
     return element
-  } else {
+  }
+  else if (isLogged && logUser.role_id === 2) {
+    return <Navigate to="/profile/candiat" />;
+  }
+   else {
     return <Navigate to="/login" />;
   }
 }

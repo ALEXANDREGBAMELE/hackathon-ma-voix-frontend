@@ -4,8 +4,12 @@ import { Form, Input, Button, message } from "antd";
 import { UploadWidget } from "../../components/UploadWidget";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { addPost } from "../../app/services/candidat.js";
-const AjouterPost = () => {
+import { addPost, updatePost} from "../../app/services/candidat.js";
+const AjouterPost = ({post}) => {
+
+  const [title, setTitle] = useState("Ajouter un post");
+  const [submit , setSubmit] = useState("Poster");
+  const [action, setAction] = useState(0)
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +24,16 @@ const AjouterPost = () => {
   const handleTitleChange = (event) => {
     setTitre(event.target.value);
   };
+
+  if (post){
+    setImageUrl(post.url_media);
+    setContent(post.description);
+    setTitre(post.titre);
+    setTitle("Modifier un post");
+    setSubmit("Modifier");
+    setAction(1);
+
+  }
 
   const onFinish = (values) => {
     values.url_media = imageUrl;
@@ -45,7 +59,7 @@ const AjouterPost = () => {
     const addPostData = async () => {
       try {
         setLoading(true);
-        const response = await addPost(data);
+        const response = action === 1 ? await updatePost(post.id, data) : await addPost(data);
         console.log(response);
         if (response.message) {
           messageApi.error(response.message);
@@ -67,19 +81,16 @@ const AjouterPost = () => {
   };
 
   useEffect(() => {
-    console.log("imageUrl", imageUrl);
-    setContent("");
-    
   
-  }, [imageUrl]);
+  }, [messageApi]);
 
 
   return (
     <div className="candidat-form">
-      <h2>Ajouter un post</h2>
+      <h1>{title}</h1>
       <Form className="ajouter-post-form" onFinish={onFinish}>
         <Form.Item className="ajouter-post-item" name="titre" label="Titre">
-          <Input className="ajouter-post-input" onChange={handleTitleChange} />
+          <Input className="ajouter-post-input" onChange={handleTitleChange} value={titre}/>
         </Form.Item>
         <Form.Item
           className="ajouter-post-item"
@@ -105,7 +116,7 @@ const AjouterPost = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Poster
+            {submit}
           </Button>
         </Form.Item>
       </Form>

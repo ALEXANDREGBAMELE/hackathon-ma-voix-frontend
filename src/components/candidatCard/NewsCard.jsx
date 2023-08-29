@@ -42,6 +42,9 @@ export const NewsCard = ({ post }) => {
   //s'il n'y aucun post, display le empty icon
   const [emptyPost, setEmptyPost] = useState(false);
 
+  const containsHtmlTags = /<[^>]*>/.test(post.description);
+
+
   const dispatch = useDispatch();
   const User = JSON.parse(localStorage.getItem("logUser"));
   let tokenUser = JSON.parse(localStorage.getItem("token"));
@@ -153,17 +156,25 @@ export const NewsCard = ({ post }) => {
           <div className="post-title">{post.titre}</div>
         </div>
         <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
-          <div
-            dangerouslySetInnerHTML={{ __html: post.description }}
-            className="html-content"
-          />
-          {post.description.length > 150 && (
-            <span
-              className="see-more badge"
-              onClick={() => setShowFullText(!showFullText)}
-            >
-              {showFullText ? "Voir moins" : "Voir plus"}
-            </span>
+          {containsHtmlTags ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: post.description }}
+              className="html-content"
+            />
+          ) : (
+            <>
+              {showFullText || post.description.length <= 150
+                ? post.description
+                : post.description.slice(0, 150) + "..."}
+              {post.description.length > 150 && (
+                <span
+                  className="see-more badge"
+                  onClick={() => setShowFullText(!showFullText)}
+                >
+                  {showFullText ? "Voir moins" : "Voir plus"}
+                </span>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -204,7 +215,7 @@ export const NewsCard = ({ post }) => {
       />
       <ImageModal
         open={showImageModal}
-        imageUrl={url_media}
+        imageUrl={url}
         onClose={() => setShowImageModal(false)}
       />
     </Card>
