@@ -408,5 +408,12 @@ svg {
     font-size: 0.8rem;
 }
 
+.election-card:hover {
+    scale: 1.03;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    transition: all 0.4s ease-in-out;
+}
+
 
 /* CandidatCard*/
