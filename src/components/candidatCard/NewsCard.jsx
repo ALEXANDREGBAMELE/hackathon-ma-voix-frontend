@@ -171,7 +171,10 @@ export const NewsCard = ({ post }) => {
         className="post-image-container animated fadeInLeft"
         onClick={() => setShowImageModal(true)}
       >
-        <img src={url_media} alt="Image du post" className="post-image" />
+        <img src={url_media} style={{
+          maxHeight: "25rem",
+          objectFit: "cover",
+        }} alt="Image du post" className="post-image" />
       </div>
       <div className="action-buttons">
         <Button
