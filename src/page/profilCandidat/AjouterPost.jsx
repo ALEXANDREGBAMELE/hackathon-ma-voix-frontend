@@ -67,11 +67,8 @@ const AjouterPost = () => {
   };
 
   useEffect(() => {
-    console.log("imageUrl", imageUrl);
-    setContent("");
-    
   
-  }, [imageUrl]);
+  }, [messageApi]);
 
 
   return (

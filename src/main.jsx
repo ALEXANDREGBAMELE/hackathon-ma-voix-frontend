@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <MainLayout />,
+        element: <PrivateRoute element={<MainLayout />} allowedRoles={[1, 3]} />,
       },
       {
         path: "/candidats",

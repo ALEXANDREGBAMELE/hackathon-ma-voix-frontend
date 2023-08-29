@@ -30,7 +30,6 @@ function Login() {
       localStorage.removeItem("token");
       localStorage.removeItem("isLog");
       const resutl = await LoginUser(values);
-      console.log(resutl);
       
         setIsLoading(false);
         if (!resutl.user) {

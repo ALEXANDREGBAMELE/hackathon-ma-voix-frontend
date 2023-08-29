@@ -6,8 +6,8 @@ import { Route, Navigate } from "react-router-dom";
 
 const AuthenticatedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("isLog");
-  
-  if (isAuthenticated) {
+  const logUser = JSON.parse(localStorage.getItem("logUser"));
+  if (isAuthenticated ) {
     return children;
   } else {
     return <Navigate to="/login" />;
