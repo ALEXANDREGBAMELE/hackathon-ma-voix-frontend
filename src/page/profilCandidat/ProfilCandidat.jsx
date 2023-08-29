@@ -7,6 +7,7 @@ import PostCandidat from "./PostCandidat";
 import ProfilPage from "./ProfilPage";
 import NotificationPage from "./NotificationCandidat"
 import CandidatAllPosts from "./CandidatAllPosts";
+import { useNavigate } from "react-router-dom";
 import {
     HomeOutlined,
     UserOutlined,
@@ -47,6 +48,14 @@ function ProfilCandidat() {
         console.log(index);
         setCurrentContentIndex(index);
     };
+    const handleLogout = () => {
+        localStorage.removeItem("logUser");
+        localStorage.removeItem("token");
+        localStorage.removeItem("isLog");
+        localStorage.clear();
+        navigate("/login");
+      };
+
     const photoProfil = userAvatar
     const username = logUser?.nom + " " + logUser?.prenom
     return (
@@ -111,7 +120,7 @@ function ProfilCandidat() {
                 <Menu.Item
                   key="5"
                   icon={<UserOutlined />}
-                  onClick={() => changeToContent(4)}
+                  onClick={() => changeToContent(5)}
                 >
                   Profil
                 </Menu.Item>
@@ -124,8 +133,8 @@ function ProfilCandidat() {
                 </Menu.Item>
                 <Menu.Item
                   key="7"
-                  icon={<Logout />}
-                  onClick={() => changeToContent(6)}
+                  icon={<LogoutOutlined />}
+                  onClick = {() => handleLogout}
                 >
                   Déconnexion
                 </Menu.Item>
@@ -162,7 +171,7 @@ function ProfilCandidat() {
                 </Menu.Item>
                 <Menu.Item
                   key="4"
-                  onClick={() => changeToContent(3)}
+                  onClick={() => changeToContent(4)}
                   icon={
                     <Badge count={5} offset={[10, 0]} overflowCount={99}>
                       <BellOutlined />
