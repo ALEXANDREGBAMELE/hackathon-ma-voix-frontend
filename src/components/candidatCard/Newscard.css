@@ -35,6 +35,13 @@
 
 .post-avatar {
     margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+
 }
 
 .post-title {
@@ -231,3 +238,60 @@
 .slideInUp {
     animation-name: slideInUp;
 }
+
+
+.candidat-name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #3578e5;
+    margin-bottom: 10px;
+    animation-name: slideInUp;
+    transition: all 0.3s ease-in-out;
+}
+
+.post-avatar .candidat-name{
+    font-size: 14px;
+    font-weight: 600;
+    color: #3578e5;
+    margin-bottom: 10px;
+}
+
+.candidat-name:hover{
+    text-decoration: underline;
+}
+
+.candidat-name.badge.success{
+    background-color: #3578e5;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    border: 1px solid #3578e5;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.candidat-name.badge.success:hover{
+    background-color: #ffffff;
+    color: #3578e5;
+    border: 1px solid #3578e5;
+}
+
+
+.post-header.animated.bestanimationinfinit{
+    animation-name: bestanimationinfinit;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes bestanimationinfinit {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+

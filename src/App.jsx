@@ -1,25 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Article from "./components/Article";
-import { news, sondages } from "./data";
 import CustomButon from "./components/CustomButon";
-import Sondage from "./components/Sondage";
 import Topbar from "./components/tapBar/TopBar";
-import { ConfigProvider } from "antd";
-import SideBar from "./components/sideBar/SideBar";
-import Footers from "./components/Footer";
-import MainLayout from "./components/MainLayout";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { curentUser } from "./features/auth/authSlice";
 
-import { Outlet } from "react-router-dom";
-import { Breadcrumb, Layout, Menu, theme, Input, Button, Space } from "antd";
+import { Outlet, } from "react-router-dom";
+import { Layout, Input, Space, message } from "antd";
 import { addNewsletter } from "./app/services/public";
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
+
 const botomProps = {
     borderTopLeftRadius: "0px",
     borderBottomLeftRadius: "0px",
@@ -36,11 +26,36 @@ const botomProps = {
 function App() {
     const [email, setEmail] = useState("");
 
+    //message config
+    const [messageApi, contextHolder] = message.useMessage();
+
+
   const handleNewsletterSubscribe = async () => {
-      console.log(email);
+        if (!email) {
+            messageApi.error("Veuillez entrer une adresse mail valide");
+            return
+        }
       
-      const response = await addNewsletter(email);
-      console.log(response);
+        try {
+            const response = await addNewsletter({email: email});
+            console.log(response);
+            if (response.success) {
+                setEmail("");
+                 messageApi.success("Vous êtes bien abonné à notre newsletter");
+                 return
+
+            }
+            if (!response.message === "La valeur du champ 'email' est invalide.") {
+                messageApi.error("Veuillez entrer une adresse mail valide");
+                return
+            }
+            
+            messageApi.error("Oups! Vous êtes déjà abonné à notre newsletter");
+            setEmail("");
+        } catch (error) {
+            console.error("Erreur lors de l'abonnement à la newsletter:", error);
+            messageApi.error("Erreur lors de l'abonnement à la newsletter");
+        }
       
 
     };
@@ -63,6 +78,7 @@ function App() {
                     }}
                 >
                     <Topbar />
+                    {contextHolder}
                 </Header>
                 <Outlet />
                 <Footer
@@ -102,6 +118,7 @@ function App() {
                                 onClicked={handleSubmit}
                                 stylePropes={botomProps}
                                 title="S'abonner"
+                                type={"fillPrimary"}
                             />
                         </Space.Compact>
                     </div>

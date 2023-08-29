@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 
-export default function CarteInteractif({ handleCommuneClicked }) {
+export default function CarteInteractif({ handleCommuneClicked,styleProps }) {
     const [hoveredCommune, setHoveredCommune] = useState(null);
     const [clickCommune, setClickCommune] = useState(null);
 
@@ -25,6 +27,7 @@ export default function CarteInteractif({ handleCommuneClicked }) {
           justifyContent: "center",
           alignItems: "center",
           paddingTop: "1px",
+          ...styleProps
         }}
       >
         <svg

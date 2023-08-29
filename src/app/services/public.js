@@ -92,12 +92,7 @@ export const getElectionParticipants = (id) => {
   }
 };
 
-const data = {
-  phone: "required|string",
-  nom: "required|string",
-  email: "required|string",
-  password: "required|string",
-};
+
 export const resetPassword = (data) => {
   try {
     return publicServices.post("/public/user/reset-password", data);

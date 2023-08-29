@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Menu, Button, Dropdown, Avatar } from "antd";
 import {
@@ -47,8 +48,11 @@ function Topbar() {
   let userAvatar = null;
   //eviter cannot read property of null
   const verif = logUser?.photo_url
-  if (verif){
+  if (verif && !logUser.photo_url.includes('cloudinary')){
     userAvatar = 'https://lesinnovateurs.me/'+logUser.photo_url
+  }
+  else if (verif && logUser.photo_url.includes('cloudinary')) {
+    userAvatar = logUser.photo_url
   }
   else{
     userAvatar = 'https://lesinnovateurs.me/default_user.jpeg'

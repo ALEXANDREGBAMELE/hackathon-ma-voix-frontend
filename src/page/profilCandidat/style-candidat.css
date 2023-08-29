@@ -1,0 +1,189 @@
+.candidat-dashboard{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #a2a7a2;
+    box-shadow: 0 0 10px #ccc;
+    animation: 1.5s ease-out 0s 1 slideInFromLeft;
+    
+}
+
+.candidat-dashboard .candidat-dashboard-row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.candidat-dashboard .candidat-dashboard-row .candidat-dashboard-col{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.candidat-dashboard .candidat-dashboard-row .candidat-dashboard-col .candidat-dashboard-card{
+    cursor: pointer;
+    padding: 20px;
+    border: 1px solid #ba1616;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #ccc;
+    animation: 1.5s ease-out 0s 1 slideInFromRight;
+    
+}
+
+
+/*animation*/
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    60% {
+        transform: translateX(20%);
+    }
+    80% {
+        transform: translateX(-20%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    80% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* univers animatio 3d */
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    80% {
+        transform: rotateY(100deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+
+    
+}
+
+@keyframes rotate2 {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(-360deg);
+    }
+
+    
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+    
+}
+
+.candidat-dashboard .candidat-dashboard-row .candidat-dashboard-col{
+    animation: 5s ease-out 0s 1 rotate;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+
+/* Styles pour le formulaire d'ajout de post */
+.candidat-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px #ccc;
+    max-width: 800px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.ajouter-post-form {
+    width: 100%;
+}
+
+.ajouter-post-item {
+    margin-bottom: 20px;
+}
+
+.ajouter-post-input:first-child {
+    width: 80%;
+    margin: auto;
+}
+
+/* Styles pour le bouton "Poster" */
+.ajouter-post-form .ant-btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.ajouter-post-form .ant-btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.ajouter-post-form .ant-btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* Styles pour l'éditeur de texte React Quill */
+.react-quill {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Styles pour le champ de téléchargement d'image */
+.upload-widget-container {
+    display: flex;
+    align-items: center;
+}
+
+.upload-widget-preview {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+}
+
+/* Styles pour le label du champ de téléchargement d'image */
+.upload-widget-label {
+    margin-right: 10px;
+}
+
+/* Styles pour le bouton du champ de téléchargement d'image */
+.upload-widget-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.upload-widget-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.upload-widget-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}

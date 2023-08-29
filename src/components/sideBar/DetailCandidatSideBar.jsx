@@ -1,7 +1,3 @@
-import { candidats, news, sondages } from "../../data";
-import Article from "../Article";
-import Sondage from "../Sondage";
-import CustomButon from "../CustomButon";
 import { useParams } from "react-router-dom";
 import { Card } from "antd";
 const { Meta } = Card;

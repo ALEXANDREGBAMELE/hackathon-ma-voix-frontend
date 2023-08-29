@@ -26,12 +26,24 @@ function ProfilUtilisateur() {
         console.log("Received values of form: ", values);
         setIsModalVisible(false);
     };
+
     // Les immages
-    const photoProfil = "../../profil-yace.jpeg";
+   
     const photoBackground = "../../bg.jpg";
-    const username = "Jean-Marc Yacé"
-    const usermail = "jeanmarcyace@gmail.com"
     const user = JSON.parse(localStorage.getItem("logUser"));
+    let userAvatar = null;
+
+    const verif = user?.photo_url
+    if (verif && !user.photo_url.includes('cloudinary')){
+        userAvatar = 'https://lesinnovateurs.me/'+user.photo_url
+    }
+    else if (verif && user.photo_url.includes('cloudinary')) {
+        userAvatar = user.photo_url
+    }
+    else{
+        userAvatar = 'https://lesinnovateurs.me/default_user.jpeg'
+    }
+
     return (
         <div
             className="profil-page"
@@ -57,7 +69,7 @@ function ProfilUtilisateur() {
                     className="avatar-section"
                     style={{ position: "relative", top: "23%" }}
                 >
-                    <Avatar size={150} src={user.photo_url} alt="" />
+                    <Avatar size={150} src={userAvatar} alt="" />
                     <Button
                         className="edit-avatar-button"
                         icon={<EditOutlined />}
@@ -66,7 +78,7 @@ function ProfilUtilisateur() {
             </div>
             <Card className="profile-card">
                 <Meta
-                    avatar={<Avatar src={user.photo_url} alt="" />}
+                    avatar={<Avatar src={userAvatar} alt="" />}
                     title={user.nom}
                     description={user.email}
                 />

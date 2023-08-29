@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Card } from "antd";
+import  { React, useEffect, useState } from "react";
 import { Tabs, Layout } from "antd";
-import Sondage from "../../components/Sondage";
 import Article from "../../components/Article";
 import DetailCandidatSideBar from "../../components/sideBar/DetailCandidatSideBar";
-import { NewsCard } from "../../components/candidatCard/NewsCard";
 import ActualiteCandidat from "./ActualiteCandidat";
 const { Header, Content, Footer, Sider } = Layout;
 import { useParams } from "react-router-dom";
-import { candidats } from "../../data";
 import { getAllCandidats } from "../../app/services/public";
+import ProgrameCandidat from "./ProgrameCandidat";
 const tabeItems = [
     {
         key: "1",
@@ -19,14 +16,7 @@ const tabeItems = [
     {
         key: "2",
         label: `Programmes`,
-        children: (
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptas temporibus quas a provident cumque numquam sequi
-                doloribus, nisi modi maiores expedita ullam dolores ex neque
-                ipsa voluptatibus optio molestias? Porro?
-            </p>
-        ),
+        children:<ProgrameCandidat/>,
     },
     {
         key: "3",

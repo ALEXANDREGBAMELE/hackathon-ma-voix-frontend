@@ -206,6 +206,10 @@ rect text {
     fill: #E42A16;
 }
 
+svg {
+    cursor: pointer;
+}
+
 
 /* newscard start */
 
@@ -321,3 +325,95 @@ rect text {
 
 
 /* newscard end */
+
+
+/* CandidatCard*/
+
+.candi-card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 16rem;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    animation: fadeIn 0.5s ease-in-out;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.candi-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+}
+
+.candi-topCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.candi-userName {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.candi-botomCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(2, 2, 2, 0.2);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    font-weight: bold;
+}
+
+.candi-centerCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.candi-buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+.candi-followButton {
+    margin-right: 1rem;
+    color: green;
+}
+
+.candi-unfollowButton {
+    margin-right: 1rem;
+    color: red;
+}
+
+.candi-followerCount {
+    font-size: 0.8rem;
+}
+
+.candi-followingCount {
+    font-size: 0.8rem;
+}
+
+.election-card:hover {
+    scale: 1.03;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    transition: all 0.4s ease-in-out;
+}
+
+
+/* CandidatCard*/

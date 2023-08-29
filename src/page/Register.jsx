@@ -17,7 +17,7 @@ function Register() {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
-const navigate = useNavigate();
+    const navigate = useNavigate();
     const openErrorNotificationWithIcon = (text) => {
         api.error({
             message: text,

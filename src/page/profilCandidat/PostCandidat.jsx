@@ -78,7 +78,7 @@ function PostCandidat() {
       </div>
       <Modal
         title="Ajouter un post"
-        visible={isModalVisible}
+        menu={isModalVisible}
         onCancel={handleCancel}
         footer={null}
       >

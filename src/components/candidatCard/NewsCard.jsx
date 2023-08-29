@@ -1,28 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
-    LikeOutlined,
-    LikeFilled,
-    EditOutlined,
-    SendOutlined,
-    MessageFilled,
+  LikeOutlined,
+  LikeFilled,
+  EditOutlined,
+  SendOutlined,
+  MessageFilled,
 } from "@ant-design/icons";
 import { Avatar, Card, Button, message, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    getAllPostLikes,
-    addLike,
-    removeLike,
-    getPostComments,
+  getAllPostLikes,
+  addLike,
+  removeLike,
+  getPostComments,
 } from "../../app/services/public";
 import {
-    incrementLikes,
-    decrementLikes,
-    addPost,
+  incrementLikes,
+  decrementLikes,
+  addPost,
 } from "../../features/postSlice";
 import { curentUser, token } from "../../features/auth/authSlice";
-import { Navigate, useNavigate } from "react-router-dom";
-import Commente from "../Commente";
+import { Navigate, useNavigate, Route } from "react-router-dom";
 import ImageModal from "./ImageModal";
 import CommentModal from "./CommentModal";
 // import "./NewsCard.css";
@@ -30,49 +31,58 @@ import CommentModal from "./CommentModal";
 const { Meta } = Card;
 
 export const NewsCard = ({ post }) => {
-    const url = `https://lesinnovateurs.me/${post.url_media}`;
-    const [totalLikes, setTotalLikes] = useState(0);
-    const [totalComments, setTotalComments] = useState(0);
-    const [isLiked, setIsLiked] = useState(false);
-    const [showFullText, setShowFullText] = useState(false);
-    const [showImageModal, setShowImageModal] = useState(false);
-    const [showCommentModal, setShowCommentModal] = useState(false);
+  const url = `https://lesinnovateurs.me/${post.url_media}`;
+  const [totalLikes, setTotalLikes] = useState(0);
+  const [totalComments, setTotalComments] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false);
 
-    const dispatch = useDispatch();
-    const User = JSON.parse(localStorage.getItem("logUser"));
-    let tokenUser = JSON.parse(localStorage.getItem("token"));
+  //s'il n'y aucun post, display le empty icon
+  const [emptyPost, setEmptyPost] = useState(false);
 
-    const photo_candidat = post.candidat.user.photo_url && !post.candidat.user.photo_url.includes("cloudinary") ? `https://lesinnovateurs.me/${post.candidat.user.photo_url}` : post.candidat.user.photo_url;
+  const dispatch = useDispatch();
+  const User = JSON.parse(localStorage.getItem("logUser"));
+  let tokenUser = JSON.parse(localStorage.getItem("token"));
 
-    useEffect(() => {
-        const fetchData = async () => {
-            // Fetch likes
-            const allPostLikes = (await getAllPostLikes(post.id)).data.data;
-            setTotalLikes(allPostLikes.length);
-            const userLiked = allPostLikes.some(
-                (like) => like.id_user == User?.id
-            );
-            setIsLiked(userLiked);
+  const photo_candidat =
+    post.candidat.user.photo_url &&
+    !post.candidat.user.photo_url.includes("cloudinary")
+      ? `https://lesinnovateurs.me/${post.candidat.user.photo_url}`
+      : post.candidat.user.photo_url;
 
-            try {
-                const response = await getPostComments(post.id);
-                if (response.data.message === "Pas de commentaires") {
-                    setTotalComments(0); // Aucun commentaire trouvé
-                } else {
-                    setTotalComments(response.data.data.length);
-                }
-            } catch (error) {
-                console.error(
-                    "Erreur lors de la récupération des commentaires :",
-                    error
-                );
-            }
-        };
+  const url_media = post.url_media && !post.url_media.includes("cloudinary")
+    ? `https://lesinnovateurs.me/${post.url_media}`
+    : post.url_media;
 
-        fetchData();
-    }, [totalComments, totalLikes]);
+  useEffect(() => {
+    const fetchData = async () => {
+      // Fetch likes
+      const allPostLikes = (await getAllPostLikes(post.id)).data.data;
+      setTotalLikes(allPostLikes.length);
+      const userLiked = allPostLikes.some((like) => like.id_user == User?.id);
+      setIsLiked(userLiked);
 
-    const [messageApi, contextHolder] = message.useMessage();
+      try {
+        const response = await getPostComments(post.id);
+        if (response.data.message === "Pas de commentaires") {
+          setTotalComments(0); // Aucun commentaire trouvé
+        } else {
+          setTotalComments(response.data.data.length);
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des commentaires :",
+          error
+        );
+      }
+    };
+
+    fetchData();
+  }, [totalComments, totalLikes]);
+
+  const [messageApi, contextHolder] = message.useMessage();
 
   const handleLike = async () => {
     if (!User) {
@@ -119,22 +129,34 @@ export const NewsCard = ({ post }) => {
     }
   };
 
+  const handleAvatarClick = async () => {
+    window.location.href = `/candidat/${post.candidat.id}`;
+  };
+
   return (
     <Card
-      className={`facebook-post-card animated fadeIn ${showFullText ? "expanded-card" : ""}`}
+      className={`facebook-post-card animated fadeIn ${
+        showFullText ? "expanded-card" : ""
+      }`}
     >
       <div className="post-content">
         <div className="post-header">
           {contextHolder}
           <div className="post-avatar">
-            <Avatar src={photo_candidat} />
+            <a onClick={handleAvatarClick}>
+              <Avatar src={photo_candidat} />
+              <span className="candidat-name badge success">
+                {post.candidat.user.nom + " " + post.candidat.user.prenom}
+              </span>
+            </a>
           </div>
           <div className="post-title">{post.titre}</div>
         </div>
         <div className={`post-text ${showFullText ? "expanded-text" : ""}`}>
-          {showFullText || post.description.length <= 150
-            ? post.description
-            : post.description.slice(0, 150) + "..."}
+          <div
+            dangerouslySetInnerHTML={{ __html: post.description }}
+            className="html-content"
+          />
           {post.description.length > 150 && (
             <span
               className="see-more badge"
@@ -149,11 +171,10 @@ export const NewsCard = ({ post }) => {
         className="post-image-container animated fadeInLeft"
         onClick={() => setShowImageModal(true)}
       >
-        <img
-          src={`https://lesinnovateurs.me/${post.url_media}`}
-          alt="Image du post"
-          className="post-image"
-        />
+        <img src={url_media} style={{
+          maxHeight: "25rem",
+          objectFit: "cover",
+        }} alt="Image du post" className="post-image" />
       </div>
       <div className="action-buttons">
         <Button
@@ -173,23 +194,19 @@ export const NewsCard = ({ post }) => {
           {totalComments}
         </Button>
 
-                <Button
-                    icon={<SendOutlined />}
-                    key="share"
-                    className="share-button"
-                />
-            </div>
+        <Button icon={<SendOutlined />} key="share" className="share-button" />
+      </div>
 
-            <CommentModal
-                postId={post.id}
-                visible={showCommentModal}
-                onClose={() => setShowCommentModal(false)}
-            />
-            <ImageModal
-                open={showImageModal}
-                imageUrl={`https://lesinnovateurs.me/${post.url_media}`}
-                onClose={() => setShowImageModal(false)}
-            />
-        </Card>
-    );
+      <CommentModal
+        postId={post.id}
+        visible={showCommentModal}
+        onClose={() => setShowCommentModal(false)}
+      />
+      <ImageModal
+        open={showImageModal}
+        imageUrl={url_media}
+        onClose={() => setShowImageModal(false)}
+      />
+    </Card>
+  );
 };

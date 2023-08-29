@@ -32,27 +32,27 @@ export default function FramerCard({ sondages, name, choixSondage }) {
     }, [name, sondages]);
 
     const handleSwipe = async (dir) => {
-        if (dir === "right") {
+        setDirection(dir);
+        if (dir == "right") {
             let id = sondage[currentIndex].id;
 
             let res = await choixSondage(id, true);
+            setDirection(true);
             if (!res) {
                 return;
             }
-            setDirection(dir);
-            setCurrentIndex((prev) => prev + 1);
-            setCardVisible(false);
         }
-        if (dir === "left") {
+        if (dir == "left") {
             let id = sondage[currentIndex].id;
             let res = await choixSondage(id, false);
+
             if (!res) {
                 return;
             }
-            setDirection(dir);
-            setCurrentIndex((prev) => prev + 1);
-            setCardVisible(false);
         }
+
+        setCurrentIndex((prev) => prev + 1);
+        setCardVisible(false);
     };
 
     const handleButtonClick = (dir) => {
@@ -61,10 +61,17 @@ export default function FramerCard({ sondages, name, choixSondage }) {
             setShowResult(true);
         }
     };
-
+    let diretion = (dir) => {
+        if (dir == "right") {
+            return 450;
+        }
+        if (dir == "left") {
+            return -450;
+        }
+    };
     return (
         <div className="swipe-container">
-            {sondage.length >= 1 ? (
+            {sondage.length > 0 ? (
                 <AnimatePresence>
                     {!showResult && sondage[currentIndex] && (
                         <motion.div
@@ -73,13 +80,9 @@ export default function FramerCard({ sondages, name, choixSondage }) {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{
                                 opacity: 0.8,
-                                x: direction
-                                    ? direction === "right"
-                                        ? 450
-                                        : -450
-                                    : 0,
+                                x: diretion(direction),
                             }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.6 }}
                         >
                             <div className="card">
                                 {sondage[currentIndex].description}

@@ -20,8 +20,6 @@ import ELections from "./components/events/ELections.jsx";
 import ProfilCandidat from "./page/profilCandidat/ProfilCandidat.jsx";
 import ProfilUtilisateur from "./page/profilUtilisateur/ProfilUtilisateur.jsx";
 import RecoveryPassword from "./page/password-recovery.jsx";
-import path from "path";
-import Dashboard from "./page/profilCandidat/MiniDashBoard.jsx";
 import Logout from "./page/Logout.jsx";
 import PrivateRoute from "./app/guards/PrivateRoute.jsx";
 import AuthenticatedRoute from "./app/guards/AuthenticatedRoute.jsx";
@@ -60,8 +58,10 @@ const router = createBrowserRouter([
         path: "profile/utilisateur",
         element: (
           <AuthenticatedRoute>
-            <PrivateRoute allowedRoles={[3, 1]} element={<ProfilUtilisateur />} />
-              
+            <PrivateRoute
+              allowedRoles={[3, 1]}
+              element={<ProfilUtilisateur />}
+            />
           </AuthenticatedRoute>
         ),
       },
