@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Modal } from "antd";
-import { UserOutlined, BarChartOutlined, CalendarOutlined, FileTextOutlined } from "@ant-design/icons";
+import { Card, Row, Col, Modal} from "antd";
+import { UserOutlined, BarChartOutlined, CalendarOutlined, DislikeOutlined ,EditOutlined, LikeOutlined } from "@ant-design/icons";
 import AjouterProgramme from "./AjouterProgramme";
 
 const data = [
@@ -50,9 +50,14 @@ const ProgrammeCandidat = () => {
                         <Card
                             hoverable
                             style={{ width: 260 }}
-                            cover={<img alt="example" src="https://journee-nationale-des-dys-rhone.com/wp-content/uploads/2017/08/programme-image.png" style={{height:"100px"}} />}
+                            cover={<img alt="example" src="https://journee-nationale-des-dys-rhone.com/wp-content/uploads/2017/08/programme-image.png" style={{ height: "100px" }} />}
+                            actions={[
+                                <LikeOutlined key="setting" />,
+                                <DislikeOutlined key="edit" />,
+                            ]}
                         >
                             <Meta title="SALUBRITE" description=" Abidjan, le 24 mai 2022- Le directeur général de l’Assainissement et de la Salubrité, Lazeni Ouattara, a réaffirmé l’ambition du gouvernement ivoirien d’apporter une réponse efficace et durable à la question de la salubrité. www.instagram.com" />
+
                         </Card>
                     </Col>
                 ))}
