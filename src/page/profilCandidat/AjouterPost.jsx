@@ -110,7 +110,7 @@ const AjouterPost = ({post}) => {
           name="url_media"
           label="Media"
           className="ajouter-post-item"
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "2.5rem"}}
         >
           <UploadWidget setImageUrl={setImageUrl} />
         </Form.Item>

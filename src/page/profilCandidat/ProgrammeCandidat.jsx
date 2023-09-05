@@ -1,5 +1,5 @@
-import React,{useState, useEffect} from "react";
-import { Card, Row, Col, Statistic,Modal,Form } from "antd";
+import React, { useState, useEffect } from "react";
+import { Card, Row, Col, Modal } from "antd";
 import { UserOutlined, BarChartOutlined, CalendarOutlined, FileTextOutlined } from "@ant-design/icons";
 import AjouterProgramme from "./AjouterProgramme";
 
@@ -16,8 +16,8 @@ const ProgrammeCandidat = () => {
     useEffect(() => {
         try {
             const getMyProgrammes = async () => {
-                const response = await  
-                console.log(response);
+                const response = await
+                    console.log(response);
             };
             getMyProgrammes();
 
@@ -40,20 +40,19 @@ const ProgrammeCandidat = () => {
         console.log("Received values of form: ", values);
         setIsModalVisible(false);
     };
+    const { Meta } = Card;
     return (
         <div style={{ padding: "20px", justifyContent: "center", textAlign: "center" }}>
             <button style={{ position: "fixed", left: "26.7%", top: "12%" }} onClick={showModal}>Nouveau Programme</button>
             <Row gutter={16} style={{ marginTop: "10px" }}>
                 {data.map((item, index) => (
                     <Col key={index} span={8}>
-                        <Card>
-                            <Statistic
-                                title={item.title}
-                                value={item.value}
-                                // prefix={item.icon}
-                                valueStyle={{ color: item.color }}
-                                titleStyle={{ color: item.color }}
-                            />
+                        <Card
+                            hoverable
+                            style={{ width: 260 }}
+                            cover={<img alt="example" src="https://journee-nationale-des-dys-rhone.com/wp-content/uploads/2017/08/programme-image.png" style={{height:"100px"}} />}
+                        >
+                            <Meta title="SALUBRITE" description=" Abidjan, le 24 mai 2022- Le directeur général de l’Assainissement et de la Salubrité, Lazeni Ouattara, a réaffirmé l’ambition du gouvernement ivoirien d’apporter une réponse efficace et durable à la question de la salubrité. www.instagram.com" />
                         </Card>
                     </Col>
                 ))}
