@@ -7,6 +7,7 @@ const { Header, Content, Footer, Sider } = Layout;
 import { useParams } from "react-router-dom";
 import { getAllCandidats } from "../../app/services/public";
 import ProgrameCandidat from "./ProgrameCandidat";
+import HistoriqueCandidat from "./HistoriqueCandidat";
 const tabeItems = [
     {
         key: "1",
@@ -21,7 +22,7 @@ const tabeItems = [
     {
         key: "3",
         label: `Historique `,
-        children: <p>Historique professionnel content</p>,
+        children: <HistoriqueCandidat/>,
     },
 ];
 const contentListNoTitle = {
@@ -94,30 +95,6 @@ export default function CandidatDetails() {
                         }}
                         className="candidatInfo"
                     >
-                        <div className="right" 
-                        style={{
-                            background: "", 
-                            left: "78%",
-                            top:"10%",
-                            position: "fixed",
-                            padding:"10px",
-                            border:"solid grey 1px",
-                            visibility:"visible"
-                            
-                        }}>
-                            <h1>Adaman Bictogo <br />Candidat RHDP</h1><br />
-                            <img
-                                src={url}
-                                alt=""
-                                style={{
-                                    height: "20rem",
-                                    width: "100%",
-                                    objectFit: "cover",
-                                }}
-                            />
-                            <br />
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus ipsa, necessitatibus aperiam excepturi rerum repudiandae ipsum obcaecati iure maxime optio quidem eligendi, explicabo quos minima alias amet dolorem reiciendis assumenda!
-                        </div>
                         <div
                             style={{
                                 padding: "1rem",
